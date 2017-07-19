@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Welcome Home {% endblock %} </title>
+</head>
+<body>
+   {% block pagecontent %}
+    <p>
+	Real Pal - Home
+    </p>
+    {% include 'partials/nav-bar.html' %}
+   {% endblock %}
+</body>
+</html>

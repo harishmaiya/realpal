@@ -1,0 +1,17 @@
+# Byte-compiled / optimized 
+__pycache__/
+*.py[cod]
+db.sqlite3
+migrations/
+media/
+
+# Distribution / packaging
+.Python
+env/
+pyenv/
+build/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
