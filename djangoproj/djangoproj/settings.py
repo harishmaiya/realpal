@@ -25,7 +25,7 @@ SECRET_KEY = '(5e@l-av_33*$h_l@bm*38*^jb=!6&k*q1_i@)b7(qbjdhp+j9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['realpal.io']
+ALLOWED_HOSTS = ['realpal.io', 'www.realpal.io']
 
 
 # Application definition
