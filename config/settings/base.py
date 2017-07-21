@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 4  # (realpal/config/settings/base.py - 3 = realpal/)
+ROOT_DIR = environ.Path(__file__) - 3 # (realpal/config/settings/base.py - 3 = realpal/)
 APPS_DIR = ROOT_DIR.path('realpal')
 
 # Load operating system environment variables and then prepare to use them
