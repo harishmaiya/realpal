@@ -161,13 +161,13 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
 
 .header .row .prepare{padding: 0; background:url('../images/prepare.png') no-repeat 75% 50%}
 
-.header .row .buy{padding: 0; background:url('../images/signature.jpeg') no-repeat center}
+.header .row .purchase{padding: 0; background:url('../images/signature.jpeg') no-repeat center}
 
-.header .row .live{padding: 0; background:url('../images/live.jpg') no-repeat center}
+.header .row .own{padding: 0; background:url('../images/own.jpg') no-repeat center}
 
 .header .row .prepare,
-.header .row .buy,
-.header .row .live
+.header .row .purchase,
+.header .row .own
 {
 
     -webkit-background-size: cover;
