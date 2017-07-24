@@ -12,8 +12,8 @@ html,body{overflow-x: hidden}
 .bold{font-weight: bold}
 
 @media (min-width: 1200px){
-    
-    .container 
+
+    .container
     {
         width: 1249px;
     }
@@ -45,7 +45,7 @@ html,body{overflow-x: hidden}
 .navbar{
     background-color: #fafafa;
     position: absolute;
-    min-height: 80px    
+    min-height: 80px
 }
 
 .navbar .navbar-header .navbar-brand{
@@ -75,10 +75,10 @@ html,body{overflow-x: hidden}
     font-weight: 400;
     letter-spacing: .5px ;
     background:none;
-    -webkit-transition: color .1s cubic-bezier(.55,.09,.68,.53);    
-    -moz-transition: color .1s cubic-bezier(.55,.09,.68,.53);    
-    -o-transition: color .1s cubic-bezier(.55,.09,.68,.53);    
-    transition: color .1s cubic-bezier(.55,.09,.68,.53);    
+    -webkit-transition: color .1s cubic-bezier(.55,.09,.68,.53);
+    -moz-transition: color .1s cubic-bezier(.55,.09,.68,.53);
+    -o-transition: color .1s cubic-bezier(.55,.09,.68,.53);
+    transition: color .1s cubic-bezier(.55,.09,.68,.53);
 }
 
 .navbar .collapse ul li a:hover{color: #B77E66;background: none}
@@ -116,15 +116,15 @@ html,body{overflow-x: hidden}
 
 .header .row .prepare{padding: 0; background:url('../images/prepare.png') no-repeat 75% 50%}
 
-.header .row .buy{padding: 0; background:url('../images/signature.jpeg') no-repeat center}
+.header .row .purchase{padding: 0; background:url('../images/signature.jpeg') no-repeat center}
 
-.header .row .live{padding: 0; background:url('../images/live.jpg') no-repeat center}
+.header .row .own{padding: 0; background:url('../images/own.jpg') no-repeat center}
 
 .header .row .prepare,
-.header .row .buy,
-.header .row .live
+.header .row .purchase,
+.header .row .own
 {
-    
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -170,7 +170,7 @@ html,body{overflow-x: hidden}
 
 .text h3
 {
-    margin: 0; 
+    margin: 0;
     font-size: 48px;
     line-height: 48px;
     padding-left: 15px;
@@ -186,7 +186,7 @@ html,body{overflow-x: hidden}
 
 .benefits .box{padding-top: 45px}
 
-.benefits .box i 
+.benefits .box i
 {
     color: #e2dddd;
     border: none;
@@ -199,7 +199,7 @@ html,body{overflow-x: hidden}
 
 .benefits .box .fa-wifi {line-height: 105px}
 
-.benefits .box .lead 
+.benefits .box .lead
 {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -208,11 +208,11 @@ html,body{overflow-x: hidden}
     font-weight: 600;
 }
 
-.benefits p:not(.lead) 
+.benefits p:not(.lead)
 {
     font-size: 20px;
     line-height: 27px;
-    color: #4a4a4a  
+    color: #4a4a4a
 }
 
 /*End Benefits Section */
@@ -246,7 +246,7 @@ html,body{overflow-x: hidden}
     background-color: rgba(109, 103, 103, 0.7);
     color: #FFF;
     border: none
-    
+
 }
 
 /* End Contact us Section */
@@ -285,14 +285,14 @@ html,body{overflow-x: hidden}
 .learn .btn:hover{background-color: #FFF;color:#b77e66}
 
 @media(max-width:800px){
-     
+
     .learn .h1
     {
         font-size: 24px;
         line-height: 28px;
         margin-bottom: 25px
     }
-    
+
 }
 
 /* Start Learn About Section */
@@ -351,7 +351,7 @@ html,body{overflow-x: hidden}
     height: 35px;
     line-height: 35px;
     display: inline-block
-    
+
 }
 
 .footer .copyright .terms{display: inline-block;line-height: 40px}
@@ -364,9 +364,9 @@ html,body{overflow-x: hidden}
 }
 
 @media(max-width:992px){
-    
+
     .footer .contact{margin-top: 30px;float: left}
-    
+
 }
 
 /* End Ultimate Footer Section */
