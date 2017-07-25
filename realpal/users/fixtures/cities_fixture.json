@@ -3,7 +3,7 @@
     "model": "users.city",
     "pk": 1,
     "fields": {
-      "name": "San Fransisco",
+      "name": "Silicon Valley",
       "state": "CA"
     }
   },

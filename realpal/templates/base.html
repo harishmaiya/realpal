@@ -71,9 +71,9 @@
                     <div class="col-lg-2 col-sm-6">
                         <h3 class="textSerif">Real Pal</h3>
                         <ul class="list-unstyled site-map sans">
-                            <li><a>Prepare</a></li>
-                            <li><a>Purchase</a></li>
-                            <li><a>Own</a></li>
+                            <li><a href="{% url 'mainapp:prepare' %}">Prepare</a></li>
+                            <li><a href="{% url 'mainapp:purchase' %}">Purchase</a></li>
+                            <li><a href="{% url 'mainapp:own' %}">Own</a></li>
                             <li><a>Investor</a></li>
                             <li><a>Sign In</a></li>
                         </ul>
@@ -125,8 +125,8 @@
                             <li class="navy"><i class="fa fa-youtube fa-lg"></i></li>
                         </ul>
                         <div class="terms pull-right text-center">
-                            <a class="lead sans">Privacy</a>
-                            <a class="lead sans">Terms</a>
+                            <a href="{% url 'mainapp:privacy' %}" class="lead sans">Privacy</a>
+                            <a href="{% url 'mainapp:terms' %}" class="lead sans">Terms</a>
                         </div>
                     </div>
                 </div>

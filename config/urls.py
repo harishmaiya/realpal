@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^users/', include('realpal.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
     # Your stuff: custom urls includes go here
-    url(r'^', include('realpal.mainapp.urls'), name='mainapp'),
+    url(r'^', include('realpal.mainapp.urls', namespace='mainapp')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

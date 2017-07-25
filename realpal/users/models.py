@@ -40,9 +40,10 @@ class User(AbstractUser):
     HOME_TYPE_CHOICES = (
         ('SF', 'Single Family'),
         ('TH', 'Townhome'),
-        ('CN', 'Condonomiums'),
-        ('O', 'Other Options')
+        ('CN', 'Condominium'),
+        ('OT', 'Other Options')
     )
+    zipcode = models.CharField(max_length=10, blank=True, null=True)
     home_type = models.CharField(
         max_length=2, choices=HOME_TYPE_CHOICES, blank=True
     )
