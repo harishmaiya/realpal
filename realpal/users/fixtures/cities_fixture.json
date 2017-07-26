@@ -1,0 +1,18 @@
+[
+  {
+    "model": "users.city",
+    "pk": 1,
+    "fields": {
+      "name": "Silicon Valley",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 2,
+    "fields": {
+      "name": "New York",
+      "state": "NY"
+    }
+  }
+]
