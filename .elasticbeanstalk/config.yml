@@ -1,13 +1,7 @@
 branch-defaults:
-  dev:
-    environment: realpal-dev
   master:
     environment: realpal-dev
     group_suffix: null
-environment-defaults:
-  realpal-dev:
-    branch: null
-    repository: null
 global:
   application_name: realpal
   branch: null

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- Internet Explorer meta -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- First mobile meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}REALPAL{% endblock title %}</title>
+        
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+        
+        {% block css %}
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"/>
+        <link href="{% static 'css/base_onboarding.css' %}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700" >
+        {% endblock %}
+        
+    </head>
+    
+    <body>
+
+        <!-- Start section banner -->
+
+        <section class="banner back-darkBlue text-center">
+            <div class="container">
+                <div class="row">
+                    <h4 class="sans">REAL PAL</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- End section banner -->
+       
+        
+      {% block content %}
+
+      {% endblock content %}
+        
+
+        <!-- Start Footer section -->
+
+        <section class="footer sans">
+            <div class="container">
+                <div class="row">
+                    <a class="lead pull-left">Real Pal</a>
+                    <a class="pull-right">PRIVACY</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- End Footer section -->
+        
+      {% block javascript %}
+        
+        <script src="js/jquery-1.12.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
+      {% endblock javascript %} 
+    </body>
+</html>

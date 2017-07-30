@@ -1,0 +1,157 @@
+html,body{overflow-x: hidden;color:#4a4a4a}
+
+.back-darkBlue{background-color:#022d46}
+
+.bold{font-weight: bold}
+
+@media (min-width: 1200px){
+    
+    .container 
+    {
+        width: 1249px;
+    }
+
+}
+
+.droid{font-family: 'Droid Sans', sans-serif;}
+
+.domine{font-family: 'Domine', serif;}
+
+button
+{
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+/* Star Banner Section */
+
+.banner{height: 45px;color: #FFF;}
+
+.banner h4
+{
+    letter-spacing: 1.3px;
+    font-size: 19px;
+    transform: scale(1.2, 1);
+    margin-top: 13px;
+    font-weight: 600;
+}
+
+/* End Banner Section */
+
+/* Start Categories Section */
+
+.categories{padding: 16px;}
+
+.categories p{margin-bottom: 0}
+
+.categories .header{margin: 40px auto 20px; max-width: 600px;padding-right: 20px;}
+
+.categories .header h1
+{   padding-bottom: 10px;
+    color: #4a4a4a;
+    font-size: 31px;
+    font-family: serif;
+    margin: 0
+}
+
+.categories .header h3{font-size: 18px; margin: 0}
+
+.categories .button-select
+{
+    max-width: 1000px;
+    margin: 65px auto 35px
+}
+
+.categories .button-select .home
+{
+    margin-bottom: 15px;
+    max-width: 140px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline-block
+}
+
+.categories .button-select .home button
+{
+    min-width: 116px;
+    min-height: 124px;
+    cursor: pointer;
+    background-color: #fff; 
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.categories .button-select .home button i,
+.categories .button-select .home button .icon
+{
+    width: 90px;
+    height: 90px;
+    line-height: 85px;
+    border: 1px solid #4a4a4a;
+    border-radius: 50%;
+}
+
+.categories .button-select .home button:hover i,
+.categories .button-select .home button:hover .icon 
+{
+    background-color: #f9f2ed;
+    border: none;
+}
+
+.categories .button-select .home button .icon{margin:auto}
+
+.categories .button-select .home button img
+{
+    height: 65px;
+    width: 65px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.categories .button-select .home button .status
+{
+    margin-top: 15px;
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #4a4a4a
+}
+
+.categories .button-select .home button:hover .status {color: #B77E66}
+
+.categories .skip
+{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    margin-top: 10px;
+    padding: 12px 20px;
+}
+
+/* End Categories Section */
+
+/* Start Footer Section */
+
+.footer
+{   margin-top: 200px;
+    background-color: #022d46;
+    height: 65px;
+}
+
+.footer a
+{   
+    color: #FFF;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding-top: 22.5px;
+}
+
+.footer a:last-child{font-size: 14px;transform: scale(1.1, 1)}
+
+.footer .lead{padding-top: 17px;margin-bottom: 0}
+
+/* End Footer Section */
