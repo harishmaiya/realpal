@@ -12,12 +12,12 @@ from boto.s3.connection import OrdinaryCallingFormat
 
 
 from .base import *  # noqa
-
+import os
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Raises ImproperlyConfigured exception if DJANGO_SECRET_KEY not in os.environ
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 
 # This ensures that Django will be able to detect a secure connection
@@ -126,8 +126,6 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # Uses Amazon RDS for database hosting, which doesn't follow the Heroku-style spec
-print('im in here before database')
-print(env('RDS_DB_NAME'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
