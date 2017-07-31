@@ -49,4 +49,5 @@ redis>=2.10.5
 
 
 # Your custom requirements go here
-channels
+channels==1.1.6
+asgi-redis==1.4.2
