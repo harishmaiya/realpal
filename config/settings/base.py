@@ -57,7 +57,7 @@ LOCAL_APPS = [
     # custom users app
     'realpal.users.apps.UsersConfig',
     # Your stuff: custom apps go here
-    'realpal.mainapp.apps.MainappConfig'
+    'realpal.mainapp'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
