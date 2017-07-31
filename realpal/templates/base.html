@@ -1,4 +1,5 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load staticfiles i18n %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -30,9 +31,7 @@
 
   </head>
 
-
   <body>
-
 
          <!-- Start Navbar -->
 
@@ -42,7 +41,7 @@
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#our-navbar" aria-expanded="false">
                   <i class="fa fa-bars fa-2x"></i>
               </button>
-              <a class="navbar-brand sans navy text-center bold" href="#">
+              <a class="navbar-brand sans navy text-center bold" href="/">
                   REAL PAL
               </a>
             </div>
@@ -50,7 +49,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a class="navy sans" href="#">Locations</a></li>
                 <li><a class="navy sans" href="#">Sign In</a></li>
-                <li class="btn back-brown sans"><a href="#">Get Started</a></li>
+                <li class="btn back-brown sans"><a href="onboarding">Get Started</a></li>
               </ul>
             </div>
           </div><!-- /.container-fluid -->
@@ -74,16 +73,16 @@
                             <li><a href="{% url 'mainapp:prepare' %}">Prepare</a></li>
                             <li><a href="{% url 'mainapp:purchase' %}">Purchase</a></li>
                             <li><a href="{% url 'mainapp:own' %}">Own</a></li>
-                            <li><a>Investor</a></li>
-                            <li><a>Sign In</a></li>
+                            <li><a href="#">Investor</a></li>
+                            <li><a href="#">Sign In</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2 pull-left col-sm-6">
                         <h3 class="textSerif">Company</h3>
                         <ul class="list-unstyled links sans">
-                            <li><a>About Us</a></li>
-                            <li><a>Careers</a></li>
-                            <li><a>Press</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-4 col-lg-offset-4 col-sm-6  contact">
@@ -94,7 +93,7 @@
                                     <i class="fa fa-question fa-2x"></i>
                               </div>
                               <div class="media-body">
-                                <p class="sans">Visit our FAQ page</p>
+                                <p class="sans"><a href="#">Visit our FAQ page</a></p>
                               </div>
                             </div>
                             <div class="media">
