@@ -80,7 +80,6 @@ button
     cursor: pointer;
     background-color: #fff; 
     white-space: nowrap;
-    vertical-align: middle;
 }
 
 .categories .button-select .home button i,
@@ -91,6 +90,8 @@ button
     line-height: 85px;
     border: 1px solid #4a4a4a;
     border-radius: 50%;
+    color: #000;
+    vertical-align: middle
 }
 
 .categories .button-select .home button:hover i,
@@ -101,6 +102,8 @@ button
 }
 
 .categories .button-select .home button .icon{margin:auto}
+
+.categories .button-select .home button .icon a {vertical-align: middle;}
 
 .categories .button-select .home button img
 {
