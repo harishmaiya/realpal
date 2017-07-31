@@ -4,20 +4,18 @@ Production Configurations
 - Use Amazon's S3 for storing static files and uploaded media
 - Use mailgun to send emails
 - Use Redis for cache
-
-
 """
 
 from boto.s3.connection import OrdinaryCallingFormat
 
 
 from .base import *  # noqa
-import os
+
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-# Raises ImproperlyConfigured exception if DJANGO_SECRET_KEY not in os.os.environ.getiron
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+# Raises ImproperlyConfigured exception if DJANGO_SECRET_KEY not in os.environ
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 
 # This ensures that Django will be able to detect a secure connection
@@ -31,14 +29,14 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # set this to 60 seconds and then to 518400 when you can prove it works
 SECURE_HSTS_SECONDS = 60
-SECURE_HSTS_INCLUDE_SUBDOMAINS = os.environ.get(
-    'DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS', True)
-SECURE_CONTENT_TYPE_NOSNIFF = os.environ.get(
-    'DJANGO_SECURE_CONTENT_TYPE_NOSNIFF', True)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
+    'DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
+    'DJANGO_SECURE_CONTENT_TYPE_NOSNIFF', default=True)
 SECURE_BROWSER_XSS_FILTER = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
-SECURE_SSL_REDIRECT = os.environ.get('DJANGO_SECURE_SSL_REDIRECT', True)
+SECURE_SSL_REDIRECT = env.bool('DJANGO_SECURE_SSL_REDIRECT', default=True)
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
@@ -47,7 +45,7 @@ X_FRAME_OPTIONS = 'DENY'
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['.realpal.io', ])
 # END SITE CONFIGURATION
 
 INSTALLED_APPS += ['gunicorn', ]
@@ -59,9 +57,10 @@ INSTALLED_APPS += ['gunicorn', ]
 # ------------------------
 # See: http://django-storages.readthedocs.io/en/latest/index.html
 INSTALLED_APPS += ['storages', ]
-AWS_ACCESS_KEY_ID = os.environ.get('DJANGO_AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('DJANGO_AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('DJANGO_AWS_STORAGE_BUCKET_NAME')
+
+AWS_ACCESS_KEY_ID = env('DJANGO_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('DJANGO_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
 AWS_AUTO_CREATE_BUCKET = True
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
@@ -79,7 +78,6 @@ AWS_HEADERS = {
 
 # URL that handles the media served from MEDIA_ROOT, used for managing
 # stored files.
-
 #  See:http://stackoverflow.com/questions/10390244/
 from storages.backends.s3boto import S3BotoStorage
 StaticRootS3BotoStorage = lambda: S3BotoStorage(location='static')
@@ -88,9 +86,9 @@ DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3BotoStorage'
 
 MEDIA_URL = 'https://s3.amazonaws.com/%s/media/' % AWS_STORAGE_BUCKET_NAME
 
+
 # Static Assets
 # ------------------------
-
 STATIC_URL = 'https://s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
 STATICFILES_STORAGE = 'config.settings.production.StaticRootS3BotoStorage'
 # See: https://github.com/antonagestam/collectfast
@@ -101,16 +99,16 @@ INSTALLED_APPS = ['collectfast', ] + INSTALLED_APPS
 
 # EMAIL
 # ------------------------------------------------------------------------------
-DEFAULT_FROM_EMAIL = os.environ.get('DJANGO_DEFAULT_FROM_EMAIL',
-                         default='realpal <noreply@realpal.io>')
-EMAIL_SUBJECT_PREFIX = os.environ.get('DJANGO_EMAIL_SUBJECT_PREFIX', default='[realpal]')
-SERVER_EMAIL = os.environ.get('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
+DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
+                         default='Realpal <noreply@realpal.io>')
+EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[Hello From Realpal]')
+SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 
 # Anymail with Mailgun
 INSTALLED_APPS += ['anymail', ]
 ANYMAIL = {
-    'MAILGUN_API_KEY': os.environ.get('DJANGO_MAILGUN_API_KEY'),
-    'MAILGUN_SENDER_DOMAIN': os.environ.get('MAILGUN_SENDER_DOMAIN')
+    'MAILGUN_API_KEY': env('DJANGO_MAILGUN_API_KEY'),
+    'MAILGUN_SENDER_DOMAIN': env('MAILGUN_SENDER_DOMAIN')
 }
 EMAIL_BACKEND = 'anymail.backends.mailgun.MailgunBackend'
 
@@ -125,26 +123,12 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
-# Uses Amazon RDS for database hosting, which doesn't follow the Heroku-style spec
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('RDS_DB_NAME'),
-        'USER': os.environ.get('RDS_USERNAME'),
-        'PASSWORD': os.environ.get('RDS_PASSWORD'),
-        'HOST': os.environ.get('RDS_HOSTNAME'),
-        'PORT': os.environ.get('RDS_PORT'),
-    }
-}
-
+# Use the Heroku-style specification
+# Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
+DATABASES['default'] = env.db('DATABASE_URL')
 
 # CACHING
-# ------------------------------------------------------------------------------
-REDIS_LOCATION = 'redis://{}:{}/0'.format(
-    os.environ.get('REDIS_ENDPOINT_ADDRESS'),
-    os.environ.get('REDIS_PORT')
-)
-
+REDIS_LOCATION = '{0}/{1}'.format(env('REDIS_URL', default='redis://127.0.0.1:6379'), 0)
 # Heroku URL does not pass the DB number, so we parse it in
 CACHES = {
     'default': {
@@ -157,7 +141,6 @@ CACHES = {
         }
     }
 }
-
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -206,9 +189,8 @@ LOGGING = {
         }
     }
 }
-
-# Custom Admin URL, use {% url 'admin:index' %}
-ADMIN_URL = os.environ.get('DJANGO_ADMIN_URL')
+# Custom Admin URL, use {% raw %}{% url 'admin:index' %}{% endraw %}
+ADMIN_URL = env('DJANGO_ADMIN_URL')
 
 # Your production stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
