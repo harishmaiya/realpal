@@ -45,6 +45,7 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
+    'channels',
     'crispy_forms',  # Form layouts
     'allauth',  # registration
     'allauth.account',  # registration
@@ -170,6 +171,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
             ],
+            'builtins': [
+                'django.contrib.staticfiles.templatetags.staticfiles',
+            ],
         },
     },
 ]
@@ -272,3 +276,12 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [env('REDIS_URL', default='redis://localhost:6379')],
+        },
+        "ROUTING": "realpal.mainapp.routing.channel_routing"
+    }
+}
