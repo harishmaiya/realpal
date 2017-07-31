@@ -8,21 +8,21 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-4 prepare">
                         <div class="overlay"></div>
-                        <a href="#" class="">
+                        <a href="{% url 'mainapp:prepare' %}" class="">
                             <span class="textSerif">Prepare</span>
                             <span class="works sans">How Real Pal can help you -></span>
                         </a>
                     </div>
                     <div class="col-xs-12 col-md-4 purchase">
                         <div class="overlay"></div>
-                        <a href="#" class="">
+                        <a href="{% url 'mainapp:purchase' %}" class="">
                             <span class="textSerif">Purchase</span>
                             <span class="works sans">How Real Pal can help you -></span>
                         </a>
                     </div>
                     <div class="col-xs-12 col-md-4 own">
                         <div class="overlay"></div>
-                        <a href="#" class="">
+                        <a href="{% url 'mainapp:own' %}" class="">
                             <span class="textSerif">Own</span>
                             <span class="works sans">How Real Pal can help you -></span>
                         </a>
@@ -85,7 +85,7 @@
                         <h2 class="h1 textSerif">Learn more about how<br> Real Pal works</h2>
                     </div>
                     <div class="col-md-3">
-                        <button class="btn back-brown sans">Get Started</button>
+                      <button class="btn back-brown sans"><a href="onboarding">Get Started</a></button>
                     </div>
                 </div>
             </div>

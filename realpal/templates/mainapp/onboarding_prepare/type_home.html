@@ -1,0 +1,54 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+        <link href="{% static 'css/onboarding_list_icons.css' %}" rel="stylesheet"/>
+
+        <!-- Start Categories section -->
+
+        <section class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">What kind of home are your considering?</h1>
+                    <h3 class="droid">Interest rate and property tax may vary upon house type</h3>
+                </div>
+                <div class="button-select text-center">
+                    <div class="home">
+                      <a href="max-budget">
+                        <button>
+                            <i class="fa fa-home fa-4x"></i>
+                            <a class="status droid">Single family home</a>
+                        </button>
+                      </a>
+                    </div>
+                    <div class="home">
+                      <a href="max-budget">
+                        <button>
+                            <div class="icon"><img src="fonts/townhouse-svgrepo-com.svg"></div>
+                            <a class="status droid">Town home</a>
+                        </button>
+                      </a>
+                    </div>
+                    <div class="home">
+                      <a href="max-budget">
+                        <button>
+                            <div class="icon"><img src="fonts/building-tower-svgrepo-com.svg"></div>
+                            <a class="status droid">Condominium</a>
+                        </button>
+                      </a>
+                    </div>
+                    <div class="home">
+                      <a href="max-budget">
+                        <button>
+                            <i class="fa fa-exclamation fa-4x"></i>
+                            <a class="status droid">New construction (any type)</a>
+                        </button>
+                      </a>
+                    </div>
+                </div>
+                <button class="skip">Flexible with options</button>
+              </a>
+            </div>
+        </section>
+
+        <!-- End Categories section -->
+{% endblock %}
