@@ -1,0 +1,40 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+        <link href="{% static 'css/onboarding_list_options.css' %}" rel="stylesheet"/>
+
+        <!-- Start Categories section -->
+
+        <section class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">Your Profile</h1>
+                    <h3 class="droid">Helps us understand and serve you better</h3>
+                </div>
+              <a href="first-time">
+                <div class="button-select">
+                    <button class="btn center-block">
+                        <p class="status droid">Single</p>
+                        <p class="description domine">Steady income</p>
+                    </button>
+                    <button class="btn center-block">
+                        <p class="status droid">Married</p>
+                        <p class="description domine">No kid(s) in school</p>
+                    </button>
+                    <button class="btn center-block">
+                        <p class="status droid">Married</p>
+                        <p class="description domine">School going kid(s)</p>
+                    </button>
+                    <button class="btn center-block">
+                        <p class="status droid">Investing</p>
+                        <p class="description domine">For cashflow</p>
+                    </button>
+                </div>
+                <button class="skip">Skip this step</button>
+              </a>
+            </div>
+        </section>
+
+        <!-- End Categories section -->
+
+{% endblock %}

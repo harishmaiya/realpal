@@ -1,0 +1,28 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+        <link href="{% static 'css/onboarding_inputbox.css' %}" rel="stylesheet"/>
+
+        <!-- Start Categories section -->
+
+        <section class="categories text-center">
+            <div class="container">
+                <div class="header">
+                <h1 class="domine">Do you have maximum budget?</h1>
+                </div>
+                <form class="form-inline">
+                    <input class="form-control input-lg" type="text">
+                    <div class="dollar-sign">$</div>
+                </form>
+                <a href="rent">
+                  <button class="next center-block droid">Continue</button>
+                </a>
+                <a href="rent">
+                  <button class="skip center-block droid">Skip this step</button>
+                </a>
+            </div>
+        </section>
+
+        <!-- End Categories section -->
+
+{% endblock %}

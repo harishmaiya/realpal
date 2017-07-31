@@ -1,0 +1,62 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+        
+        <!-- Pages common style css file + this page two lines additional style -->
+
+        <link href="{% static 'css/onboarding_3.css' %}" rel="stylesheet"/>
+
+        <style>
+
+            /* style that over write the style of onboarding_3/8 */
+
+            .icon .status{display: inline !important; font-weight: normal !important;}
+
+        </style>
+    
+        <!-- Start Categories section -->
+        
+        <section class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">What is your credit score?</h1>
+                    <h3 class="droid">It affects the loan programs and interest rates you would qualify for. As well as amount for downpayment.</h3>
+                </div>
+                <div class="button-select text-center">
+                    <div class="home">
+                        <button  >
+                            <div class="icon"><a class="status droid lead">780+</a></div>
+                        </button>
+                    </div>
+                    <div class="home">
+                        <button  >
+                            <div class="icon"><a class="status droid lead">740 - 779</a></div>
+                        </button>
+                    </div>
+                    <div class="home">
+                        <button  >
+                            <div class="icon"><a class="status droid lead">700 - 739</a></div>
+                        </button>
+                    </div>
+                    <div class="home">
+                        <button  >
+                            <div class="icon"><a class="status droid lead">660 - 699</a></div>
+                        </button>
+                    </div>
+                    <div class="home">
+                        <button  >
+                            <div class="icon"><a class="status droid lead">600 - 659</a></div>
+                        </button>
+                    </div>
+                    <div class="home">
+                        <button  >
+                            <div class="icon"><a class="status droid lead">< 599</a></div>
+                        </button>
+                    </div>
+                </div>
+                <button class="skip droid">Skip this step</button>
+            </div>
+        </section>
+        
+        <!-- End Categories section -->7
+
+{% endblock %}
