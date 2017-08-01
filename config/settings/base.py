@@ -111,7 +111,7 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///realpal'),
+   'default': env.db('DATABASE_URL', default='postgres:///realpal'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 

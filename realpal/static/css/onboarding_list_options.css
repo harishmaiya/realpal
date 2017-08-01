@@ -51,7 +51,7 @@ html,body{overflow-x: hidden;color:#4a4a4a}
     border: 1px solid #4a4a4a;
     background-color: #fff;
     overflow: hidden;
-    height: 93px;
+    height: 95px;
     width: 360px;
     line-height: 75px;
     margin-bottom: 20px;
@@ -72,7 +72,10 @@ html,body{overflow-x: hidden;color:#4a4a4a}
     font-size: 18px;
     color: #7d7d7d;
     margin-top: 5px;
+    padding-bottom: 5px
 }
+
+.categories .btn .status{ margin-top: -15px;height: 45px}
 
 .categories .skip
 {
