@@ -1,5 +1,5 @@
 from django import forms
-
+from .models import City
 
 class SignupForm(forms.Form):
     first_name = forms.CharField(max_length=30, label='First Name')
@@ -10,10 +10,13 @@ class SignupForm(forms.Form):
     ## User Profile Fields
     status = forms.CharField(max_length=5)
     firsthome = forms.CharField(max_length=5)
-    home_type = forms.CharField(max_length=5)
     howsoon = forms.CharField(max_length=5)
     max_budget = forms.CharField(max_length=50)
     rent = forms.CharField(max_length=50)
+    house_type = forms.CharField(required=False)
+    house_age = forms.CharField(required=False)
+    house_condition = forms.CharField(required=False)
+    cities = forms.CharField(required=False)
 
     def signup(self, request, user):
         user.first_name = self.cleaned_data['first_name']
@@ -31,9 +34,18 @@ class SignupForm(forms.Form):
         else:
             user.firsthome = True
 
-        user.home_type = self.cleaned_data['home_type']
+        user.house_type = self.cleaned_data['house_type']
         user.howsoon = self.cleaned_data['howsoon']
         user.budget = float(self.cleaned_data['max_budget'])
         user.current_rent = float(self.cleaned_data['rent'])
+        user.house_type = self.cleaned_data['house_type']
+        user.house_age = self.cleaned_data['house_age']
+        user.house_cond = self.cleaned_data['house_condition']
 
         user.save()
+
+        cities = self.cleaned_data['cities']
+        if cities is not '':
+            ids = cities.split(',')
+            for id in ids:
+                user.cities.add(City.objects.get(id=id))

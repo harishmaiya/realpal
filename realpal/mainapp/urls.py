@@ -72,5 +72,15 @@ urlpatterns = [
         r'^onboarding/prepare/timeline',
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/timeline.html'),
         name='prepare-timeline'
+    ),
+    url(
+        r'^onboarding/prepare/house-choice',
+        TemplateView.as_view(template_name='mainapp/onboarding_prepare/house_choices.html'),
+        name='prepare-timeline'
+    ),
+    url(
+        r'^onboarding/prepare/areas-choice',
+        views.serve_cities,
+        name='prepare-areas'
     )
 ]

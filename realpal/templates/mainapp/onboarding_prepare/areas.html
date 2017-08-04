@@ -13,66 +13,13 @@
                 </div>
                 <div class="button-select">
                     <div class="row">
-                        <div class="col-xs-4">
-                            <button class="btn ">
-                                <p class="status droid">San Mateo</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                                <p class="status droid">Palo Alto</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                                <p class="status droid long-T">Mountain<br>View</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                           <button class="btn">
-                                <p class="status droid">San Jose</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                                <p class="status droid">Milpitas</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                            <p class="status droid">Fremont</p>
-                        </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                                <p class="status droid">Hayward</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                           <button class="btn">
-                                <p class="status droid">Oakland</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                           <button class="btn">
-                                <p class="status droid long-T">South<br/>San Francisco</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                                <p class="status droid">San Francisco</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                                <p class="status droid">Livermore</p>
-                            </button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn">
-                                <p class="status droid">Pleasanton</p>
-                            </button>
-                        </div>
+                        {% for city in cities %}
+                            <div class="col-xs-4">
+                                <button class="btn " data-val="{{ city.id }}">
+                                    <p class="status droid">{{ city.name }}</p>
+                                </button>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <a href="{% url 'mainapp:prepare-maxbudget' %}">
@@ -85,5 +32,16 @@
         </section>
 
         <!-- End Categories section -->
+        <script>
+            localStorage.cities = '';
+            var cities = []
+            $(".btn").on("click", function(){
+                cities.push($(this).attr("data-val"));
+            });
 
+            $(".continue").on("click", function(){
+                localStorage.cities = cities.join();
+            });
+
+        </script>
 {% endblock %}

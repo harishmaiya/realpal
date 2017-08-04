@@ -19,16 +19,16 @@
                             <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
                         </div>
                          <div class="col-sm-6">
-                            <button class="btn center-block">
+                            <button class="btn btntype center-block" data-val="SF">
                                 <p class="status droid">Single family</p>
                             </button>
-                            <button class="btn center-block">
+                            <button class="btn btntype center-block" data-val="TH">
                                 <p class="status droid">Town home</p>
                             </button>
-                            <button class="btn center-block">
+                            <button class="btn btntype center-block" data-val="CN">
                                 <p class="status droid">Condominium</p>
                             </button>
-                            <button class="btn center-block">
+                            <button class="btn btntype center-block" data-val="FX">
                                 <p class="status droid">Flexible</p>
                             </button>
                         </div>
@@ -40,16 +40,16 @@
                         <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
                       </div>
                       <div class="col-sm-6">
-                        <button class="btn center-block">
+                        <button class="btn btnage center-block" data-val="NC">
                             <p class="status droid">New construction</p>
                         </button>
-                        <button class="btn center-block">
+                        <button class="btn btnage center-block" data-val="15">
                             <p class="status droid">1-15</p>
                         </button>
-                        <button class="btn center-block">
+                        <button class="btn btnage center-block" data-val="30">
                             <p class="status droid">15-30</p>
                         </button>
-                        <button class="btn center-block">
+                        <button class="btn btnage center-block" data-val="OLD">
                             <p class="status droid">30+</p>
                         </button>
                       </div>
@@ -61,13 +61,13 @@
                             <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
                         </div>
                         <div class="col-sm-6 condition">
-                            <button class="btn center-block">
+                            <button class="btn btncon center-block" data-val="UP">
                                 <p class="status droid">Updated</p>
                             </button>
-                            <button class="btn center-block long-T">
+                            <button class="btn btncon center-block long-T" data-val="SL">
                                 <p class="status droid">Slightly dated<br>okay</p>
                             </button>
-                            <button class="btn center-block">
+                            <button class="btn btncon center-block" data-val="FU">
                                 <p class="status droid">Fixer upper</p>
                             </button>
                         </div>
@@ -79,6 +79,25 @@
               </a>
             </div>
         </section>
+
+        <script>
+            localStorage.housetype = ''
+            localStorage.houseage = ''
+            localStorage.housecondition = ''
+
+            $(".btntype").on("click", function(){
+                localStorage.housetype = $(this).attr("data-val");
+            });
+
+            $(".btnage").on("click", function(){
+                localStorage.houseage = $(this).attr("data-val");
+            });
+
+            $(".btncon").on("click", function(){
+                localStorage.housecondition = $(this).attr("data-val");
+            });
+
+        </script>
 
         <!-- End Categories section -->
 

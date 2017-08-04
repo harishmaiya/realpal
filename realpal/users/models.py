@@ -38,7 +38,7 @@ class User(AbstractUser):
         ('MNK', 'Married with No Kids'),
         ('MNSK', 'Married with No School Kids'),
         ('MSK', 'Married with School Kids'),
-        ('INV', 'Investor'),
+        ('INV', 'Investor')
     )
     status = models.CharField(
         max_length=4, choices=STATUS_CHOICES, default='SI'
@@ -49,7 +49,7 @@ class User(AbstractUser):
         ('TH', 'Townhome'),
         ('CN', 'Condominium'),
         ('NC', 'New Construction'),
-        ('OT', 'Other Options')
+        ('OT', 'Other Options'),
         ('FX', 'Flexible')
     )
     house_type = models.CharField(
@@ -100,6 +100,7 @@ class User(AbstractUser):
     )
 
     how_soon = models.CharField(max_length=3, choices=HOW_SOON_CHOICES, null=True)
+
 
     def __str__(self):
         return self.username
