@@ -1,3 +1,5 @@
+/* Start Framework */
+
 html,body{overflow-x: hidden;color:#4a4a4a}
 
 .back-darkBlue{background-color:#022d46}
@@ -16,6 +18,10 @@ html,body{overflow-x: hidden;color:#4a4a4a}
 .textSerif{font-family:"Sentinel SSm A","Sentinel SSm B",serif; font-weight: 300;}
 
 .sans{font-family: 'Open Sans', sans-serif;}
+
+*:focus { outline: 0 !important }
+
+/* End Framework */
 
 /* Star Banner Section */
 
