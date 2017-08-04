@@ -14,19 +14,19 @@
               <a href="first-time">
                 <div class="button-select">
                     <button class="btn center-block">
-                        <p class="status droid">Single</p>
+                        <p class="status droid" data-val="SI">Single</p>
                         <p class="description domine">Steady income</p>
                     </button>
                     <button class="btn center-block">
-                        <p class="status droid">Married</p>
+                        <p class="status droid" data-val="MNK">Married</p>
                         <p class="description domine">No kid(s) in school</p>
                     </button>
                     <button class="btn center-block">
-                        <p class="status droid">Married</p>
+                        <p class="status droid" data-val="MNSK">Married</p>
                         <p class="description domine">School going kid(s)</p>
                     </button>
                     <button class="btn center-block">
-                        <p class="status droid">Investing</p>
+                        <p class="status droid" data-val="MSK">Investing</p>
                         <p class="description domine">For cashflow</p>
                     </button>
                 </div>
@@ -37,4 +37,13 @@
 
         <!-- End Categories section -->
 
+        <script>
+        $(".btn").on("click", function(){
+            localStorage.status = $(this).find('p:first').attr('data-val');
+        });
+
+        $(".skip").on("click", function(){
+            localStorage.status = "";
+        });
+        </script>
 {% endblock %}

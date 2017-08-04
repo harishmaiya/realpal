@@ -24,5 +24,13 @@
         </section>
 
         <!-- End Categories section -->
+        <script>
+        $(".next").on("click", function(){
+            localStorage.max_budget =$('input:text').val()
+        });
 
+        $(".skip").on("click", function(){
+            localStorage.max_budget = "0.00";
+        });
+        </script>
 {% endblock %}

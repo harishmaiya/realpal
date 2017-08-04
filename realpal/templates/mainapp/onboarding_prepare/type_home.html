@@ -14,7 +14,7 @@
                 <div class="button-select text-center">
                     <div class="home">
                       <a href="max-budget">
-                        <button>
+                        <button class="btn" data-val="SF">
                             <i class="fa fa-home fa-4x"></i>
                             <a class="status droid">Single family home</a>
                         </button>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="home">
                       <a href="max-budget">
-                        <button>
+                        <button class="btn" data-val="TW">
                             <div class="icon"><img src="{% static 'fonts/townhouse-svgrepo-com.svg' %}"></div>
                             <a class="status droid">Town home</a>
                         </button>
@@ -30,25 +30,35 @@
                     </div>
                     <div class="home">
                       <a href="max-budget">
-                        <button>
+                        <button class="btn" data-val="CN">
                             <div class="icon"><img src="{% static 'fonts/building-tower-svgrepo-com.svg' %}"></div>
-                            <a class="status droid">Condominium</a>
+                            <a class="status droid" >Condominium</a>
                         </button>
                       </a>
                     </div>
                     <div class="home">
                       <a href="max-budget">
-                        <button>
+                        <button class="btn" data-val="NC">
                             <i class="fa fa-exclamation fa-4x"></i>
-                            <a class="status droid">New construction (any type)</a>
+                            <a class="status droid" >New construction (any type)</a>
                         </button>
                       </a>
                     </div>
                 </div>
-                <button class="skip">Flexible with options</button>
+                <button class="skip" data-val="OT">Flexible with options</button>
               </a>
             </div>
         </section>
 
+
+        <script>
+        $(".btn").on("click", function(){
+            localStorage.home_type = $(this).attr('data-val');
+        });
+
+        $(".skip").on("click", function(){
+            localStorage.home_type = "OT";
+        });
+        </script>
         <!-- End Categories section -->
 {% endblock %}

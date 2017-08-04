@@ -1,23 +1,66 @@
-{% extends "account/base.html" %}
+{% extends "base_onboarding.html" %}
+{% load widget_tweaks %}
 
 {% load i18n %}
 {% load crispy_forms_tags %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block inner %}
-<h1>{% trans "Sign Up" %}</h1>
+{% block content %}
+<link href="{% static 'css/sign-up.css' %}" rel="stylesheet"/>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<section class="categories text-center">
+    <div class="container">
+        <div class="header">
+        <h1 class="domine">You're almost done</h1>
+        <h3 class="droid">Complete your profile to get started with Real Pal.</h3>
+        </div>
+<div class="row">
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
+    <form role="form" class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {{ form.errors }}
+
+      {{ form.status.as_hidden }}
+      {{ form.firsthome.as_hidden }}
+      {{ form.home_type.as_hidden }}
+      {{ form.howsoon.as_hidden }}
+      {{ form.max_budget.as_hidden }}
+      {{ form.rent.as_hidden }}
+
+      <div class="form-group domine">
+          {% render_field form.first_name type="text" class="form-control input-lg center-block" placeholder="First name" %}
+      </div>
+
+      <div class="form-group domine">
+          {% render_field form.last_name type="text" class="form-control input-lg" placeholder="Last name" %}
+      </div>
+      <div class="form-group domine">
+          {% render_field form.zipcode type="text" class="form-control input-lg" placeholder="Zip" %}
+      </div>
+      <div class="form-group domine">
+          {% render_field form.phone type="text" class="form-control input-lg" placeholder="Phone" %}
+      </div>
+      <div class="form-group domine">
+          {% render_field form.email type="text" class="form-control input-lg" placeholder="Email" %}
+      </div>
+      <div class="form-group domine">
+          {% render_field form.password1 type="text" class="form-control input-lg" placeholder="Enter Password" %}
+      </div>
+      <div class="form-group domine">
+          {% render_field form.password2 type="text" class="form-control input-lg" placeholder="Enter Password Again" %}
+      </div>
+      <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </form>
+</div>
+
+<script>
+    $("#id_status").val(localStorage.status);
+    $("#id_firsthome").val(localStorage.firsthome);
+    $("#id_home_type").val(localStorage.home_type);
+    $("#id_howsoon").val(localStorage.howsoon);
+    $("#id_max_budget").val(localStorage.max_budget);
+    $("#id_rent").val(localStorage.rent);
+</script>
 
 {% endblock %}
-

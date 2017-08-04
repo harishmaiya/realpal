@@ -26,5 +26,13 @@
         </section>
 
         <!-- End Categories section -->
+        <script>
+            $(".continue").on("click", function(){
+                localStorage.rent = $('input:text').val();
+            });
 
+            $(".skip").on("click", function(){
+                localStorage.rent = 0.00;
+            });
+        </script>
 {% endblock %}

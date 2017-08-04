@@ -41,6 +41,7 @@ class User(AbstractUser):
         ('SF', 'Single Family'),
         ('TH', 'Townhome'),
         ('CN', 'Condominium'),
+        ('NC', 'New Construction'),
         ('OT', 'Other Options')
     )
     zipcode = models.CharField(max_length=10, blank=True, null=True)
@@ -64,6 +65,16 @@ class User(AbstractUser):
     interested_cities = models.ForeignKey(
         City, related_name='interested_users', null=True
     )
+    firsthome = models.BooleanField(default=True)
+    HOW_SOON_CHOICES = (
+        ('3', '0-3 Months'),
+        ('6', '3-6 Months'),
+        ('12', '6-12 Months'),
+        ('12+', '12+ Months'),
+        ('SK', 'Skip')
+    )
+
+    how_soon = models.CharField(max_length=3, choices=HOW_SOON_CHOICES, null=True)
 
     def __str__(self):
         return self.username

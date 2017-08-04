@@ -72,11 +72,6 @@ urlpatterns = [
         r'^onboarding/prepare/timeline',
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/timeline.html'),
         name='prepare-timeline'
-    ),
-    url(
-        r'^signup',
-        TemplateView.as_view(template_name='pages/sign-up.html'),
-        name='signup'
-    ),
+    )
 
 ]
