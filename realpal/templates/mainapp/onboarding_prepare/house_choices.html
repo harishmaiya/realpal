@@ -1,0 +1,85 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+        <link href="{% static 'css/onboarding_combo_options.css' %}" rel="stylesheet"/>
+
+        <!-- Start Categories section -->
+
+        <section class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">House Choices</h1>
+                    <h3 class="droid">Tax rebates, mortgage rates vary upon this</h3>
+                </div>
+                <div class="options">
+
+                    <div class="question row">
+                        <h2 class="domine text-center">Type of house</h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
+                        </div>
+                         <div class="col-sm-6">
+                            <button class="btn center-block">
+                                <p class="status droid">Single family</p>
+                            </button>
+                            <button class="btn center-block">
+                                <p class="status droid">Town home</p>
+                            </button>
+                            <button class="btn center-block">
+                                <p class="status droid">Condominium</p>
+                            </button>
+                            <button class="btn center-block">
+                                <p class="status droid">Flexible</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="question row">
+                      <h2 class="domine text-center">Age of house</h2>
+                      <div class="col-sm-6">
+                        <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
+                      </div>
+                      <div class="col-sm-6">
+                        <button class="btn center-block">
+                            <p class="status droid">New construction</p>
+                        </button>
+                        <button class="btn center-block">
+                            <p class="status droid">1-15</p>
+                        </button>
+                        <button class="btn center-block">
+                            <p class="status droid">15-30</p>
+                        </button>
+                        <button class="btn center-block">
+                            <p class="status droid">30+</p>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="question row">
+                        <h2 class="domine text-center">Condition of house</h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
+                        </div>
+                        <div class="col-sm-6 condition">
+                            <button class="btn center-block">
+                                <p class="status droid">Updated</p>
+                            </button>
+                            <button class="btn center-block long-T">
+                                <p class="status droid">Slightly dated<br>okay</p>
+                            </button>
+                            <button class="btn center-block">
+                                <p class="status droid">Fixer upper</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+              <a href="{% url 'mainapp:prepare-areas' %}">
+                <button class="next center-block droid">Continue</button>
+                <button class="skip">Skip this step</button>
+              </a>
+            </div>
+        </section>
+
+        <!-- End Categories section -->
+
+{% endblock %}
