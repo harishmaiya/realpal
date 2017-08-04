@@ -55,7 +55,7 @@ urlpatterns = [
     ),
     url(
         r'^onboarding/prepare/home-type$',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/type_home.html'),
+        TemplateView.as_view(template_name='mainapp/onboarding_prepare/home_type.html'),
         name='prepare-hometype'
     ),
     url(
@@ -73,5 +73,4 @@ urlpatterns = [
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/timeline.html'),
         name='prepare-timeline'
     )
-
 ]
