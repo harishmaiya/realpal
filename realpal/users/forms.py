@@ -1,6 +1,7 @@
 from django import forms
 from .models import City
 
+
 class SignupForm(forms.Form):
     first_name = forms.CharField(max_length=30, label='First Name')
     last_name = forms.CharField(max_length=30, label='Last Name')
@@ -8,11 +9,11 @@ class SignupForm(forms.Form):
     phone = forms.CharField(max_length=15)
 
     ## User Profile Fields
-    status = forms.CharField(max_length=5)
-    firsthome = forms.CharField(max_length=5)
-    howsoon = forms.CharField(max_length=5)
-    max_budget = forms.CharField(max_length=50)
-    rent = forms.CharField(max_length=50)
+    status = forms.CharField(max_length=5, required=False)
+    firsthome = forms.CharField(max_length=5, required=False)
+    howsoon = forms.CharField(max_length=5, required=False)
+    max_budget = forms.CharField(max_length=50, required=False)
+    rent = forms.CharField(max_length=50, required=False)
     house_type = forms.CharField(required=False)
     house_age = forms.CharField(required=False)
     house_condition = forms.CharField(required=False)
