@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = [
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'widget_tweaks'
 ]
 
 # Apps specific for this project go here.
@@ -111,7 +112,7 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///realpal'),
+   'default': env.db('DATABASE_URL', default='postgres:///realpal'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -170,6 +171,9 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
+            ],
+            'builtins': [
+                'django.contrib.staticfiles.templatetags.staticfiles',
             ],
         },
     },
@@ -282,3 +286,10 @@ CHANNEL_LAYERS = {
         "ROUTING": "realpal.mainapp.routing.channel_routing"
     }
 }
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'realpal.users.forms.SignupForm'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+LOGIN_REDIRECT_URL = '/'

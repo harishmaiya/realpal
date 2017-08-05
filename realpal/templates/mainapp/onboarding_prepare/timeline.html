@@ -1,0 +1,71 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+        <link href="{% static 'css/onboarding_timeline.css' %}" rel="stylesheet"/>
+
+        <!-- Start Categories section -->
+
+        <section class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">When do you plan to buy your house?</h1>
+                </div>
+                <div class="button-select text-center">
+                    <div class="home">
+                    <a href="/accounts/signup">
+                        <button class="btn"  data-val="3">
+                            <div class="icon"></div>
+                            <a class="status droid" >0-3 months</a>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="home">
+                    <a href="/accounts/signup">
+                        <button class="btn"  data-val="6">
+                            <div class="icon"></div>
+                            <a class="status droid">3-6 months</a>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="home">
+                    <a href="/accounts/signup">
+                        <button class="btn" data-val="12">
+                            <div class="icon"></div>
+                            <a class="status droid">6-12 months</a>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="home">
+                    <a href="/accounts/signup">
+                        <button class="btn" data-val="12+">
+                            <div class="icon"></div>
+                            <a class="status droid" >12+ months</a>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="home">
+                    <a href="/accounts/signup">
+                        <button class="btn">
+                            <i class="fa fa-question fa-2x"></i>
+                            <a class="status droid">I'm not sure</a>
+                        </button>
+                    </a>
+                    </div>
+                </div>
+                <a href="/accounts/signup">
+                <button class="skip">Skip this step</button>
+                </a>
+            </div>
+        </section>
+
+        <!-- End Categories section -->
+        <script>
+        $(".btn").on("click", function(){
+            localStorage.howsoon = $(this).attr("data-val");
+        });
+
+        $(".skip").on("click", function(){
+            localStorage.howsoon = "SK";
+        });
+        </script>
+{% endblock %}
