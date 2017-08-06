@@ -35,7 +35,6 @@ class SignupForm(forms.Form):
         else:
             user.firsthome = True
 
-        user.house_type = self.cleaned_data['house_type']
         user.howsoon = self.cleaned_data['howsoon']
         user.budget = float(self.cleaned_data['max_budget'])
         user.current_rent = float(self.cleaned_data['rent'])
