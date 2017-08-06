@@ -27,6 +27,10 @@
       {{ form.howsoon.as_hidden }}
       {{ form.max_budget.as_hidden }}
       {{ form.rent.as_hidden }}
+      {{ form.cities.as_hidden }}
+      {{ form.house_condition.as_hidden }}
+      {{ form.house_age.as_hidden }}
+      {{ form.house_type.as_hidden }}
 
       <div class="form-group domine">
           {% render_field form.first_name type="text" class="form-control input-lg center-block" placeholder="First name" %}
@@ -55,12 +59,17 @@
 </div>
 
 <script>
+
     $("#id_status").val(localStorage.status);
     $("#id_firsthome").val(localStorage.firsthome);
-    $("#id_home_type").val(localStorage.home_type);
+    $("#id_house_type").val(localStorage.housetype);
     $("#id_howsoon").val(localStorage.howsoon);
     $("#id_max_budget").val(localStorage.max_budget);
     $("#id_rent").val(localStorage.rent);
+    $("#id_cities").val(localStorage.cities);
+    $("#id_house_condition").val(localStorage.housecondition);
+    $("#id_house_age").val(localStorage.houseage);
+
 </script>
 
 {% endblock %}

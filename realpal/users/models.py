@@ -5,11 +5,6 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 
-class City(models.Model):
-    name = models.CharField(max_length=60)
-    state = models.CharField(max_length=40)
-
-
 @python_2_unicode_compatible
 class User(AbstractUser):
 
@@ -87,9 +82,7 @@ class User(AbstractUser):
         max_length=10, choices=CREDIT_SCORE_CHOICES, blank=True, null=True
     )
 
-    interested_cities = models.ForeignKey(
-        City, related_name='interested_users', null=True
-    )
+
     firsthome = models.BooleanField(default=True)
     HOW_SOON_CHOICES = (
         ('3', '0-3 Months'),
@@ -107,3 +100,11 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
+
+
+class City(models.Model):
+    name = models.CharField(max_length=60)
+    state = models.CharField(max_length=40)
+    interested_users = models.ForeignKey(
+        User, related_name='cities', null=True
+    )
