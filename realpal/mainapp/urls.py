@@ -76,7 +76,7 @@ urlpatterns = [
     url(
         r'^onboarding/prepare/house-choice',
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/house_choices.html'),
-        name='prepare-timeline'
+        name='prepare-house-choices'
     ),
     url(
         r'^onboarding/prepare/areas-choice',

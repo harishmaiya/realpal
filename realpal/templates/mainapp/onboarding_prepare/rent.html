@@ -28,7 +28,14 @@
         <!-- End Categories section -->
         <script>
             $(".continue").on("click", function(){
-                localStorage.rent = $('input:text').val();
+                var textVal = $("input:text").val()
+
+                if(textVal!=""){
+                    localStorage.rent = textVal;
+                } else {
+                    localStorage.rent = "0.00";
+                }
+
             });
 
             $(".skip").on("click", function(){
