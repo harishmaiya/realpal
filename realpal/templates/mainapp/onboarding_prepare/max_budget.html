@@ -24,5 +24,19 @@
         </section>
 
         <!-- End Categories section -->
+        <script>
+        $(".next").on("click", function(){
+            var textVal = $("input:text").val()
 
+            if(textVal!=""){
+                localStorage.max_budget = $('input:text').val();
+            } else {
+                localStorage.max_budget = "0.00";
+            }
+            });
+
+        $(".skip").on("click", function(){
+            localStorage.max_budget = "0.00";
+        });
+        </script>
 {% endblock %}

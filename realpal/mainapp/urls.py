@@ -55,7 +55,7 @@ urlpatterns = [
     ),
     url(
         r'^onboarding/prepare/home-type$',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/type_home.html'),
+        TemplateView.as_view(template_name='mainapp/onboarding_prepare/home_type.html'),
         name='prepare-hometype'
     ),
     url(
@@ -74,9 +74,13 @@ urlpatterns = [
         name='prepare-timeline'
     ),
     url(
-        r'^signup',
-        TemplateView.as_view(template_name='pages/sign-up.html'),
-        name='signup'
+        r'^onboarding/prepare/house-choice',
+        TemplateView.as_view(template_name='mainapp/onboarding_prepare/house_choices.html'),
+        name='prepare-house-choices'
     ),
-
+    url(
+        r'^onboarding/prepare/areas-choice',
+        views.serve_cities,
+        name='prepare-areas'
+    )
 ]
