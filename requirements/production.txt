@@ -18,8 +18,3 @@ Collectfast==0.5.2
 # Email backends for Mailgun, Postmark, SendGrid and more
 # -------------------------------------------------------
 django-anymail==0.11
-
-# Addtional (as shown by errors)
-dotenv
-
-
