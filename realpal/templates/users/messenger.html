@@ -1,4 +1,4 @@
-{% extends "base_profile.html" %}
+{% extends "users/base_profile.html" %}
 {% block content %}
 
         <link href="{% static 'css/user_message.css' %}" rel="stylesheet"/>
@@ -24,7 +24,7 @@
             <div class="container">
                 <form role="form" class="form-inline">
                     <div class="row">
-                        <textarea type="text" class="pull-left col-xs-11" name="message-bar" placeholder="Message Our Agent"></textarea>
+                        <textarea type="text" class="pull-left col-xs-11" name="message-bar" placeholder="Message your pal"></textarea>
                         <hr>
                         <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
                     </div>
