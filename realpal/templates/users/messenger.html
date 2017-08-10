@@ -1,0 +1,36 @@
+{% extends "base_profile.html" %}
+{% block content %}
+
+        <link href="{% static 'css/user_message.css' %}" rel="stylesheet"/>
+
+        <!-- Start body section -->
+
+        <section class="body">
+          <div id="main" >
+
+            <!-- content (messeges) -->
+
+            <p>content here</p>
+
+
+          </div>
+        </section>
+
+        <!-- End body section -->
+
+        <!-- Start chat box section -->
+
+        <section class="chat-box">
+            <div class="container">
+                <form role="form" class="form-inline">
+                    <div class="row">
+                        <textarea type="text" class="pull-left col-xs-11" name="message-bar" placeholder="Message Our Agent"></textarea>
+                        <hr>
+                        <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- End chat box -->
+        {% endblock %}

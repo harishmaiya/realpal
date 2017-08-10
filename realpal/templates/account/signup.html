@@ -15,7 +15,8 @@
         <h1 class="domine">You're almost done</h1>
         <h3 class="droid">Complete your profile to get started with Real Pal.</h3>
         </div>
-<div class="row">
+    </div>
+    <div class="row">
 
     <form role="form" class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
@@ -56,7 +57,8 @@
       </div>
       <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
     </form>
-</div>
+  </div>
+</section>
 
 <script>
 
@@ -71,5 +73,4 @@
     $("#id_house_age").val(localStorage.houseage);
 
 </script>
-
 {% endblock %}

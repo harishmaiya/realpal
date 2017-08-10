@@ -8,4 +8,10 @@ urlpatterns = [
         TemplateView.as_view(template_name='pages/home.html'),
         name='home'
     ),
+    url(
+        r'^messenger$',
+        TemplateView.as_view(template_name='users/messenger.html'),
+        name='messenger'
+    ),
+
 ]
