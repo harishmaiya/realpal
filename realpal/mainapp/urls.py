@@ -24,6 +24,11 @@ urlpatterns = [
         name='terms'
     ),
     url(
+        r'^aboutus$',
+        TemplateView.as_view(template_name='mainapp/aboutus.html'),
+        name='aboutus'
+    ),
+    url(
         r'^prepare$',
         TemplateView.as_view(template_name='mainapp/prepare.html'),
         name='prepare'

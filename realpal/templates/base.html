@@ -80,7 +80,7 @@
                     <div class="col-lg-2 pull-left col-sm-6">
                         <h3 class="textSerif">Company</h3>
                         <ul class="list-unstyled links sans">
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="{% url 'mainapp:aboutus' %}">About Us</a></li>
                             <li><a href="#">Careers</a></li>
                             <li><a href="#">Press</a></li>
                         </ul>
@@ -120,8 +120,8 @@
                     <div class="social">
                         <span class="lead sans">Follow Us:</span>
                         <ul class="social-icons text-center list-unstyled">
-                            <li class="navy"><i class="fa fa-facebook fa-lg"></i></li>
-                            <li class="navy"><i class="fa fa-youtube fa-lg"></i></li>
+                          <li class="navy"><a href="https://www.facebook.com/RealPal-296427890768369/" rel="noopener noreferrer" target="_blank"><i class="fa fa-facebook fa-lg"></i></a></li>
+                          <li class="navy"><a href="https://www.youtube.com/channel/UCfa29cXl0l2GDNBuSuqsm-g?guided_help_flow=3" rel="noopener noreferrer" target="_blank"> <i class="fa fa-youtube fa-lg"></i></a></li>
                         </ul>
                         <div class="terms pull-right text-center">
                             <a href="{% url 'mainapp:privacy' %}" class="lead sans">Privacy</a>
