@@ -30,7 +30,7 @@ urlpatterns = [
     ),
     url(
         r'^prepare$',
-        TemplateView.as_view(template_name='mainapp/prepare.html'),
+        TemplateView.as_view(template_name='pages/how-it-works.html'),
         name='prepare'
     ),
     url(
