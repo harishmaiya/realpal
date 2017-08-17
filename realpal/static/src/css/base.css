@@ -206,6 +206,10 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
 
 }
 
+.main {
+    flex: 1;
+}
+
 .footer .copyright .terms{display: inline-block;line-height: 40px}
 
 .footer .copyright .terms a{

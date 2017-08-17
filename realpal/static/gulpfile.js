@@ -15,7 +15,7 @@ gulp.task('serve', ['copy-assets', 'copy-vendor', 'sass', 'babel', 'imagemin'], 
         open: false
     });
 
-    gulp.watch('src/scss/**/*.scss', ['sass']);
+    gulp.watch('src/sass/*.scss', ['sass']);
     gulp.watch('../templates/**/*.html', browserSync.reload);
     gulp.watch('src/js/*.js', ['babel']).on('change', browserSync.reload);
 });
@@ -39,18 +39,18 @@ gulp.task('babel', function () {
 });
 
 gulp.task('imagemin', () =>
-    gulp.src('src/assets/images/**/*')
+    gulp.src('src/images/**/*')
         .pipe(imagemin([
             imagemin.gifsicle({interlaced: true}),
             imagemin.jpegtran({progressive: true}),
             imagemin.optipng({optimizationLevel: 5}),
         ]))
-        .pipe(gulp.dest('app/assets/images'))
+        .pipe(gulp.dest('app/images'))
 );
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function () {
-    return gulp.src('src/scss/*.scss')
+    return gulp.src('src/css/*.css')
         .pipe(sass({outputStyle: 'compressed'}, {errLogToConsole: true}))
         .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
 

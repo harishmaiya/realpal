@@ -26,9 +26,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700">
 
         <!-- This file stores project-specific CSS -->
-        <link href="{% static 'css/base.css' %}" rel="stylesheet">
-        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
-        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"/>
+        <link href="{% static 'app/css/base.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/bootstrap.css' %}" rel="stylesheet"/>
+        <link href="{% static 'app/css/font-awesome.min.css' %}" rel="stylesheet"/>
 
     {% endblock %}
 
@@ -39,9 +39,9 @@
 {% include "pages/partials/nav.html" %}
 <!-- End Navbar -->
 
-{% block content %}
-
-{% endblock content %}
+<main class="main">
+    {% block content %}{% endblock %}
+</main>
 
 <!-- Start Ultimate Footer Section-->
 {% include "pages/partials/footer.html" %}
@@ -67,11 +67,11 @@
 
     <!-- place project specific Javascript in this file -->
 
-    <script src="{% static 'js/project.js' %}"></script>
-    <script src="{% static 'js/jquery-1.12.2.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/home.js' %}"></script>
-    <script src="{% static 'js/how-it-works.js' %}"></script>
+    <script src="{% static 'app/js/project.js' %}"></script>
+    <script src="{% static 'app/js/jquery-1.12.2.min.js' %}"></script>
+    <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app/js/home.js' %}"></script>
+    <script src="{% static 'app/js/how-it-works.js' %}"></script>
 
 {% endblock javascript %}
 </body>
