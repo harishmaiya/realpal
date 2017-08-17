@@ -5,7 +5,7 @@ A short description of the project.
 
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
+:target: https://github.com/pydanny/cookiecutter-django/
      :alt: Built with Cookiecutter Django
 
 
@@ -29,6 +29,14 @@ Setting Up Your Users
     $ python manage.py createsuperuser
 
 For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+
+Static Files - HTML/css/js
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+In your project root:
+cd realpal/static
+npm install
+gulp
+
 
 Test coverage
 ^^^^^^^^^^^^^
