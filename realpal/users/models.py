@@ -21,7 +21,7 @@ class User(AbstractUser):
         regex=r'^\+?\d{9,15}$',
         message="Phone number must be entered in the format: '+2777181947'. Up to 15 digits allowed."
     )
-    phone_number = models.CharField(validators=[phone_regex], max_length=16)
+    phone_number = models.CharField(validators=[phone_regex], blank=True, max_length=16)
 
     annual_income = models.FloatField(blank=True, null=True)
 
@@ -31,11 +31,11 @@ class User(AbstractUser):
 
     firsthome = models.BooleanField(default=True)
 
-    house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True)
+    house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, null=True)
 
-    house_age = models.SmallIntegerField(choices=HOUSE_AGE_CHOICES, blank=True)
+    house_age = models.SmallIntegerField(choices=HOUSE_AGE_CHOICES, null=True)
 
-    house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, blank=True)
+    house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, null=True)
 
     budget = models.FloatField(blank=True, null=True)
 
@@ -45,7 +45,7 @@ class User(AbstractUser):
 
     language = models.SmallIntegerField(choices=LANGUAGE_CHOICES, default=LC_EN)
 
-    credit_score = models.SmallIntegerField(choices=CREDIT_SCORE_CHOICES, blank=True, null=True)
+    credit_score = models.SmallIntegerField(choices=CREDIT_SCORE_CHOICES, null=True)
 
     def __str__(self):
         return self.username
