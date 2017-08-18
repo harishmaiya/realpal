@@ -25,40 +25,27 @@ class User(AbstractUser):
 
     annual_income = models.FloatField(blank=True, null=True)
 
-    purchase_step = models.SmallIntegerField(
-        max_length=3, choices=PURCHASE_STEP_CHOICES, default='DAP'
-    )
+    purchase_step = models.SmallIntegerField( choices=PURCHASE_STEP_CHOICES, default=PS_DAP)
 
-    status = models.SmallIntegerField(
-        max_length=4, choices=STATUS_CHOICES, default=SC_SI
-    )
+    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=SC_SI)
 
     firsthome = models.BooleanField(default=True)
 
-    house_type = models.SmallIntegerField(
-        max_length=2, choices=HOUSE_TYPE_CHOICES, blank=True
-    )
+    house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True)
 
-    house_age = models.SmallIntegerField(
-        max_length=3, choices=HOUSE_AGE_CHOICES, blank=True
-    )
+    house_age = models.SmallIntegerField( choices=HOUSE_AGE_CHOICES, blank=True)
 
-    house_cond = models.SmallIntegerField(
-        max_length=3, choices=HOUSE_CONDITION_CHOICES, blank=True
-    )
+    house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, blank=True)
 
     budget = models.FloatField(blank=True, null=True)
+
     current_rent = models.FloatField(blank=True, null=True)
 
-    how_soon = models.SmallIntegerField(max_length=3, choices=HOW_SOON_CHOICES, null=True)
+    how_soon = models.SmallIntegerField(choices=HOW_SOON_CHOICES, null=True)
 
-    language = models.SmallIntegerField(
-        max_length=2, choices=LANGUAGE_CHOICES, default=LC_EN
-    )
+    language = models.SmallIntegerField(choices=LANGUAGE_CHOICES, default=LC_EN)
 
-    credit_score = models.SmallIntegerField(
-        max_length=10, choices=CREDIT_SCORE_CHOICES, blank=True, null=True
-    )
+    credit_score = models.SmallIntegerField(choices=CREDIT_SCORE_CHOICES, blank=True, null=True)
 
     def __str__(self):
         return self.username
