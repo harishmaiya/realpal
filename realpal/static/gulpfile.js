@@ -15,7 +15,7 @@ gulp.task('serve', ['copy-assets', 'copy-vendor', 'sass', 'babel', 'imagemin'], 
         open: false
     });
 
-    gulp.watch('src/sass/*.scss', ['sass']);
+    gulp.watch('src/css/*.css', ['sass']);
     gulp.watch('../templates/**/*.html', browserSync.reload);
     gulp.watch('src/js/*.js', ['babel']).on('change', browserSync.reload);
 });
