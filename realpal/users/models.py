@@ -4,12 +4,19 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from realpal.users.constants import *
+
 
 @python_2_unicode_compatible
 class User(AbstractUser):
 
     # First Name and Last Name do not cover name patterns
     # around the globe.
+    USER_TYPE_CHOICES = (
+        (AGENT_USER, 'Agent'),
+        (CLIENT_USER, 'Client')
+    )
+    user_type = models.SmallIntegerField(choices=USER_TYPE_CHOICES, default=CLIENT_USER)
     name = models.CharField(_('Name of User'), blank=True, max_length=255)
     zipcode = models.CharField(max_length=10, blank=True, null=True)
 
@@ -82,7 +89,6 @@ class User(AbstractUser):
         max_length=10, choices=CREDIT_SCORE_CHOICES, blank=True, null=True
     )
 
-
     firsthome = models.BooleanField(default=True)
     HOW_SOON_CHOICES = (
         ('3', '0-3 Months'),
@@ -93,7 +99,6 @@ class User(AbstractUser):
     )
 
     how_soon = models.CharField(max_length=3, choices=HOW_SOON_CHOICES, null=True)
-
 
     def __str__(self):
         return self.username
