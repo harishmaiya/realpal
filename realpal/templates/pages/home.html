@@ -1,96 +1,100 @@
 {% extends "base.html" %}
 {% block content %}
-        
-        <link href="{% static 'css/home.css' %}" rel="stylesheet"/>
-
-        <!-- Start Intro -->
-
-        <section class="header text-center textSerif">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-md-4 prepare">
-                        <div class="overlay"></div>
-                        <a href="{% url 'mainapp:prepare' %}" class="">
-                            <span class="textSerif">Prepare</span>
-                            <span class="works sans">How Real Pal can help you -></span>
-                        </a>
-                    </div>
-                    <div class="col-xs-12 col-md-4 purchase">
-                        <div class="overlay"></div>
-                        <a href="{% url 'mainapp:purchase' %}" class="">
-                            <span class="textSerif">Purchase</span>
-                            <span class="works sans">How Real Pal can help you -></span>
-                        </a>
-                    </div>
-                    <div class="col-xs-12 col-md-4 own">
-                        <div class="overlay"></div>
-                        <a href="{% url 'mainapp:own' %}" class="">
-                            <span class="textSerif">Own</span>
-                            <span class="works sans">How Real Pal can help you -></span>
-                        </a>
-                    </div>
+    <!-- Start Intro -->
+    <link href="{% static 'src/css/home.css' %}" rel="stylesheet"/>
+    <section class="header text-center textSerif">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-4 prepare">
+                    <div class="overlay"></div>
+                    <a href="{% url 'mainapp:prepare' %}" class="">
+                        <span class="textSerif">Prepare</span>
+                        <span class="works sans">How Real Pal can help you -></span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-md-4 purchase">
+                    <div class="overlay"></div>
+                    <a href="{% url 'mainapp:purchase' %}" class="">
+                        <span class="textSerif">Purchase</span>
+                        <span class="works sans">How Real Pal can help you -></span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-md-4 own">
+                    <div class="overlay"></div>
+                    <a href="{% url 'mainapp:own' %}" class="">
+                        <span class="textSerif">Own</span>
+                        <span class="works sans">How Real Pal can help you -></span>
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- End Intro -->
+    <!-- End Intro -->
 
-        <!-- Start Text section -->
+    <!-- Start Text section -->
 
-        <section  class="text">
-            <div class="container" >
-                <div class="row text-center">
-                    <div class="col-md-10 col-md-offset-1">
-                        <h2 class="text-center brown textSerif">
-                            Buying your biggest asset is a well advised journey with right deals at every step. Being your trusted pal we like to help you have happy home.
-                        </h2>
-                    </div>
+    <section class="text">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2 class="text-center brown textSerif">
+                        Buying your biggest asset is a well advised journey with right deals at every step. Being your
+                        trusted pal we like to help you have happy home.
+                    </h2>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- End Text section -->
+    <!-- End Text section -->
 
-        <!-- Start Benefits Section -->
+    <!-- Start Benefits Section -->
 
-        <section id="why" class="benefits text-center  navy">
-            <div class="container">
-                <div class="row">
-                    <h2 class="h1 textSerif">The benefits of Real Pal</h2>
-                    <div class="box col-md-4">
-                        <i class="fa fa-check fa-5x back-navy"></i>
-                        <p class="lead sans">Honest and knowledgeable</p>
-                        <p class="textSerif">Lorem ipsum dolor sit amet, quis impedit albucius sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum cu vim. No has eros gloriatur, sea ei nullam debitis senserit.</p>
-                    </div>
-                    <div class="box col-md-4">
-                        <i class="fa fa-wifi fa-5x back-navy"></i>
-                        <p class="lead sans">Guide who listens</p>
-                        <p class="textSerif">Chat with a real person—in real time—about everything from fit to budget to outfitting advice.</p>
-                    </div>
-                    <div class="box col-md-4">
-                        <i class="fa fa-refresh fa-5x back-navy"></i>
-                        <p class="lead sans">Comfortable experience</p>
-                        <p class="textSerif">Lorem ipsum dolor sit amet, quis impedit albucius sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum cu vim. No has eros gloriatur, sea ei nullam debitis senserit.</p>
-                    </div>
+    <section id="why" class="benefits text-center  navy">
+        <div class="container">
+            <div class="row">
+                <h2 class="h1 textSerif">The benefits of Real Pal</h2>
+                <div class="box col-md-4">
+                    <i class="fa fa-check fa-5x back-navy"></i>
+                    <p class="lead sans">Honest and knowledgeable</p>
+                    <p class="textSerif">Lorem ipsum dolor sit amet, quis impedit albucius sed ne. Vim animal legimus
+                        cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum cu vim. No has eros
+                        gloriatur, sea ei nullam debitis senserit.</p>
+                </div>
+                <div class="box col-md-4">
+                    <i class="fa fa-wifi fa-5x back-navy"></i>
+                    <p class="lead sans">Guide who listens</p>
+                    <p class="textSerif">Chat with a real person—in real time—about everything from fit to budget to
+                        outfitting advice.</p>
+                </div>
+                <div class="box col-md-4">
+                    <i class="fa fa-refresh fa-5x back-navy"></i>
+                    <p class="lead sans">Comfortable experience</p>
+                    <p class="textSerif">Lorem ipsum dolor sit amet, quis impedit albucius sed ne. Vim animal legimus
+                        cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum cu vim. No has eros
+                        gloriatur, sea ei nullam debitis senserit.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- End Benefits  Section -->
+    <!-- End Benefits  Section -->
 
-        <!-- Start Learn About Section -->
+    <!-- Start Learn About Section -->
 
-        <section class="learn back-brown text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h2 class="h1 textSerif">Learn more about how<br> Real Pal works</h2>
-                    </div>
-                    <div class="col-md-3">
-                      <button class="btn back-brown sans"><a href="{% url 'mainapp:onboarding' %}">Get Started</a></button>
-                    </div>
+    <section class="learn back-brown text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="h1 textSerif">Learn more about how<br> Real Pal works</h2>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn back-brown sans"><a href="{% url 'mainapp:onboarding' %}">Get Started</a>
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
 {% endblock %}

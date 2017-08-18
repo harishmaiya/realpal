@@ -1,5 +1,19 @@
 /* These styles are generated from project.scss. */
 
+/* Fonts */
+
+@font-face {
+    font-family: 'BentonSans Bold';
+    font-weight: bold;
+    src: url("../fonts/bentonsans-bold-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'BentonSans Book';
+    src: url("../fonts/bentonsans-light-webfont.woff") format("woff");
+}
+
+
 .alert-debug {
   color: black;
   background-color: white;
@@ -42,7 +56,7 @@
 
 html,body{overflow-x: hidden}
 
-body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
+body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 
 .brown{color:#B77E66}
 .navy{color:#232F39}
@@ -62,7 +76,7 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
 
 }
 
-.h1{font-size: 48px;font-family: 'Domine', serif; letter-spacing: .5}
+.h1{font-size: 48px;font-family: 'BentonSans Book', Fallback, sans-serif; letter-spacing: .5}
 
 .overlay{
     position: absolute;
@@ -78,9 +92,9 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
     display: none
 }
 
-.textSerif{font-family:"Sentinel SSm A","Sentinel SSm B",serif; font-weight: 300;}
+.textSerif{font-family:'BentonSans Book', Fallback, sans-serif;font-weight: 300;}
 
-.sans{font-family: 'Open Sans', sans-serif;}
+.sans{font-family: 'BentonSans Bold', Fallback, sans-serif;}
 
 /* End Workframe */
 
@@ -204,6 +218,10 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
     line-height: 35px;
     display: inline-block
 
+}
+
+.main {
+    flex: 1;
 }
 
 .footer .copyright .terms{display: inline-block;line-height: 40px}

@@ -7,12 +7,19 @@ from django.core.validators import RegexValidator
 from .constants import PURCHASE_STEP_CHOICES, STATUS_CHOICES, CREDIT_SCORE_CHOICES, HOUSE_AGE_CHOICES, \
     HOUSE_CONDITION_CHOICES, HOUSE_TYPE_CHOICES, HOW_SOON_CHOICES, LANGUAGE_CHOICES, NEIGHBORHOOD_TYPE
 
+from realpal.users.constants import *
+
 
 @python_2_unicode_compatible
 class User(AbstractUser):
 
     # First Name and Last Name do not cover name patterns
     # around the globe.
+    USER_TYPE_CHOICES = (
+        (AGENT_USER, 'Agent'),
+        (CLIENT_USER, 'Client')
+    )
+    user_type = models.SmallIntegerField(choices=USER_TYPE_CHOICES, default=CLIENT_USER)
     name = models.CharField(_('Name of User'), blank=True, max_length=255)
     zipcode = models.CharField(max_length=10, blank=True, null=True)
 

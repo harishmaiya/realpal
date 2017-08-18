@@ -1,3 +1,5 @@
+AGENT_USER = 0
+CLIENT_USER = 1
 PURCHASE_STEP_CHOICES = (
         ('DAP', 'Decide and Prepare'),
         ('EAO', 'Evaluate and Offer'),
