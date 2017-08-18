@@ -220,6 +220,10 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 
 }
 
+.main {
+    flex: 1;
+}
+
 .footer .copyright .terms{display: inline-block;line-height: 40px}
 
 .footer .copyright .terms a{
