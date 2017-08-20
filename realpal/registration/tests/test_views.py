@@ -26,8 +26,8 @@ class RegistrationTest(TestCase):
 
     def test_get(self):
         # test to see that all pages are reachable
-        for url_name, url in self.urls:
-            response = self.client.get(url)
+        for url_name in self.urls:
+            response = self.client.get(self.urls[url_name])
             self.assertEqual(response.status_code, 200)
 
     def test_post(self):
@@ -58,8 +58,8 @@ class RegistrationTest(TestCase):
         users_before = User.objects.count()
 
         # test to see that all views will post correctly
-        for url_name, url_data in data:
-            response = self.client.post(self.urls[url_name], data=[data[url_name]])
+        for url_name in self.urls:
+            response = self.client.post(self.urls[url_name], data=data[url_name])
             self.assertEqual(response.status_code, 302)
 
         # test to verify we have one more user
