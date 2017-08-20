@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from . import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -43,6 +44,11 @@ urlpatterns = [
         name='own'
     ),
     url(
+        r'^onboarding$',
+        TemplateView.as_view(template_name='mainapp/onboarding.html'),
+        name='onboarding'
+    ),
+    url(
         r'^onboarding/prepare/profile$',
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/profile.html'),
         name='prepare-profile'
@@ -77,5 +83,9 @@ urlpatterns = [
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/house_choices.html'),
         name='prepare-housechoice'
     ),
-
+    url(
+        r'^onboarding/prepare/areas-choice',
+        views.serve_cities,
+        name='prepare-areas'
+    )
 ]

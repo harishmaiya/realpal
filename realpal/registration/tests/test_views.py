@@ -11,6 +11,7 @@ class RegistrationTest(TestCase):
         'marital_status': reverse('register:marital-status'),
         'first_home': reverse('register:first-home'),
         'house_type': reverse('register:house-type'),
+        'city': reverse('register:city'),
         'max_budget': reverse('register:max-budget'),
         'current_rent': reverse('register:current-rent'),
         'how_soon': reverse('register:how-soon'),
