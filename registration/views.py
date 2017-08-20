@@ -2,6 +2,7 @@ from django.views import View
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, HouseAgeForm, \
     HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
+from realpal.users.models import User
 
 
 class RegisterPurchaseStep(View):
@@ -89,7 +90,7 @@ class RegisterHouseType(View):
         registration_data = {'house_age': request.session.get('house_age', None)}
         house_age_form = HouseAgeForm(request.POST or None, initial=registration_data)
 
-        registration_data = {'house_type': request.session.get('house_type', None)}
+        registration_data = {'house_condition': request.session.get('house_condition', None)}
         house_condition_form = HouseConditionForm(request.POST or None, initial=registration_data)
 
         if house_type_form.is_valid() and house_age_form.is_valid() and house_condition_form.is_valid():
@@ -183,17 +184,35 @@ class RegisterHowSoon(View):
 
 class RegisterPersonalProfile(View):
 
-    template_name = 'registration/how_soon.html'
+    template_name = 'registration/personal_profile.html'
 
     def get(self, request, *args, **kwargs):
         form = PersonalProfileForm()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'how_soon': request.session.get('how_soon', None)}
-        form = PersonalProfileForm(request.POST or None, initial=registration_data)
+        form = PersonalProfileForm(request.POST or None)
         if form.is_valid():
-            request.session['how_soon'] = form.cleaned_data['how_soon']
+            user = User.objects.create(
+                first_name=form.cleaned_data['first_name'],
+                last_name=form.cleaned_data['last_name'],
+                zipcode=form.cleaned_data['zipcode'],
+                phone_number=form.cleaned_data['phone_number'],
+                email=form.cleaned_data['email'],
+
+                purchase_step=request.session.get('purchase_step', None),
+                status=request.session.get('marital_status', None),
+                firsthome=request.session.get('first_home', None),
+                house_type=request.session.get('house_type', None),
+                house_age=request.session.get('house_age', None),
+                house_cond=request.session.get('house_condition', None),
+                budget=request.session.get('max_budget', None),
+                current_rent=request.session.get('current_rent', None),
+                how_soon=request.session.get('how_soon', None),
+
+            )
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
             return HttpResponse('Well Done on finishing registration')
         return render(request, self.template_name, {'form': form})
 

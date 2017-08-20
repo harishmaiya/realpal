@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from realpal.users.models import User, City
 
 
@@ -20,7 +21,6 @@ class FirstHomeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['firsthome']
-        widgets = {'firsthome': forms.RadioSelect}
 
 
 class HouseTypeForm(forms.ModelForm):
@@ -66,7 +66,7 @@ class HowSoonForm(forms.ModelForm):
         fields = ['how_soon']
 
 
-class PersonalProfileForm(forms.ModelForm):
+class PersonalProfileForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'zipcode', 'phone_number', 'email', 'password']
+        fields = ['first_name', 'last_name', 'zipcode', 'phone_number', 'email']
