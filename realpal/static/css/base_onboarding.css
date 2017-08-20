@@ -15,7 +15,7 @@ html,body{overflow-x: hidden;color:#4a4a4a; height: 100%}
 
 }
 
-.textSerif{font-family:"Sentinel SSm A","Sentinel SSm B",serif; font-weight: 300;}
+.textSerif{font-family:serif;}
 
 .sans{font-family: 'Open Sans', sans-serif;}
 
