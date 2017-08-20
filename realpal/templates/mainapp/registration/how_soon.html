@@ -1,0 +1,34 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+    <link href="{% static 'css/onboarding_timeline.css' %}" rel="stylesheet"/>
+
+    <!-- Start Categories section -->
+
+    <section class="categories text-center">
+        <div class="container">
+            <div class="header">
+                <h1 class="domine">When do you plan to buy your house?</h1>
+            </div>
+            <form action="" method="post" class="button-select text-center">
+                {{ form.as_p }}
+                <button class="skip" type="submit">Next</button>
+                <a href="/accounts/signup">
+                    <button class="skip" type="button">Skip this step</button>
+                </a>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- End Categories section -->
+    <script>
+        $(".btn").on("click", function () {
+            localStorage.howsoon = $(this).attr("data-val");
+        });
+
+        $(".skip").on("click", function () {
+            localStorage.howsoon = "SK";
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+    <link href="{% static 'css/onboarding_grid_options.css' %}" rel="stylesheet"/>
+
+    <!-- Start Categories section -->
+
+    <section class="categories text-center">
+        <div class="container">
+            <div class="header">
+                <h1 class="domine">Neighborhood your are interested in</h1>
+                <h3 class="droid">Get local trends and street level info</h3>
+            </div>
+            <form class="button-select" method="post" action="">
+                <div class="row">
+                    {{ form.as_p }}
+                </div>
+
+                <button class="continue center-block droid" type="submit">Continue</button>
+                <a href="{% url 'register-max-budget' %}">
+                    <button class="skip" type="button">Anywhere in Silicon Valley</button>
+                </a>
+            </form>
+        </div>
+    </section>
+
+    <!-- End Categories section -->
+    <script>
+        localStorage.cities = '';
+        var cities = []
+        $(".btn").on("click", function () {
+            cities.push($(this).attr("data-val"));
+        });
+
+        $(".continue").on("click", function () {
+            localStorage.cities = cities.join();
+        });
+
+    </script>
+{% endblock %}

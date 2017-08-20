@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-        
+
         <link href="{% static 'css/how-it-works.css' %}" rel="stylesheet"/>
-        
+
         <!-- Start Intro -->
-        
+
         <div class="header">
             <div class="container">
                 <div class="row">
@@ -17,17 +17,17 @@
                             <hr>
                             <p class="bold">Making Sense Of Real Estate Deals</p>
                             <p class="descreption">Lorem ipsum dolor sit amet, in meis disputationi sed, has an esse case euismod. Eros epicurei pericula in pro, ei diam verear inermis has. Ne sed fugit volutpat</p>
-                            <a class="btn back-brown" href="#">Get Started</a>
+                            <a class="btn back-brown" href="{%   url 'register-purchase-step' %}">Get Started</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- End Intro -->
-        
+
         <!-- Start Sub-Navbar -->
-        
+
          <div class="sub-nav col-xs-12 back-beige">
                         <ul class="list-unstyled pull-right">
                             <li ><a href="#" class="navy active">Buying Journey</a></li>
@@ -38,11 +38,11 @@
                             <li><a href="#contact" class="navy">Contact Us</a></li>
                         </ul>
                     </div>
-        
+
         <!-- End Sub-Navbar -->
-        
+
         <!-- Start How It Works -->
-        
+
         <section id="how" class="how-works back-beige text-center navy">
             <div class="container" >
                 <div class="row">
@@ -54,36 +54,36 @@
                         </div>
                         <ul class=" blocks list-unstyled">
                              <li class="block l col-sm-6 no1">
-                                <img class="img-responsive" src="{% static 'images/decide.jpg' %}"/>   
+                                <img class="img-responsive" src="{% static 'images/decide.jpg' %}"/>
                                 <div class="caption">
                                     <h3 class="bold">Decide & prepare for house purchase </h3>
                                     <p>Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum</p>
                                 </div>
                             </li>
                             <li class="block r col-sm-6 no2">
-                                <img class="img-responsive" src="{% static 'images/evaluate.jpeg' %}"/>   
+                                <img class="img-responsive" src="{% static 'images/evaluate.jpeg' %}"/>
                                 <div class="caption">
                                     <h3 class="bold">Evaluate & get right deals during buying</h3>
                                     <p>Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum Vim animal legimus cu. Quaeque</p>
                                 </div>
                             </li>
                             <li class="block l col-sm-6 no3">
-                                <img class="img-responsive" src="{% static 'images/signature.jpeg' %}"/>   
+                                <img class="img-responsive" src="{% static 'images/signature.jpeg' %}"/>
                                 <div class="caption">
                                     <h3 class="bold"> House owning & assistance during purchase</h3>
                                     <p>Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum ea, dolorem indoctum</p>
                                 </div>
                             </li>
-                        </ul>  
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- End How It Works -->
 
         <!-- Start Evaluate Section -->
-        
+
         <section id="properties" class="evaluate navy">
             <div class="container">
                 <div class="row">
@@ -113,7 +113,7 @@
                                         <h2 class="brown" >$20000</h2>
                                     </div>
                                     <div class="col-xs-6">
-                                       <span class="btn back-brown pull-right"><a href="#">Get Started</a></span>
+                                       <span class="btn back-brown pull-right"><a href="{%   url 'register-purchase-step' %}">Get Started</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                         <h2 class="brown" >$25000</h2>
                                     </div>
                                     <div class="col-xs-6">
-                                       <span class="btn back-brown pull-right"><a href="#">Get Started</a></span>
+                                       <span class="btn back-brown pull-right"><a href="{%   url 'register-purchase-step' %}">Get Started</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                                         <h2 class="brown" >$30000</h2>
                                     </div>
                                     <div class="col-xs-6">
-                                       <span class="btn back-brown pull-right"><a href="#">Get Started</a></span>
+                                       <span class="btn back-brown pull-right"><a href="{%   url 'register-purchase-step' %}">Get Started</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -184,11 +184,11 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- End Evaluate Section -->
-        
+
         <!-- Start Benefits Section -->
-        
+
         <section id="why" class="benefits text-center back-beige navy">
             <div class="container">
                 <div class="row">
@@ -212,12 +212,12 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- End Benefits  Section -->
-        
+
         <!-- Start Contact us Section-->
-        
-        
+
+
         <section id="contact" class="contact-us text-center">
             <div class="overlay">
                 <div class="container">
@@ -252,7 +252,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- End Contact us Section-->
 
 {% endblock %}

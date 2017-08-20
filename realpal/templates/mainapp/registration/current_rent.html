@@ -1,0 +1,46 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+    <link href="{% static 'css/onboarding_inputbox.css' %}" rel="stylesheet"/>
+
+    <!-- Start Categories section -->
+
+    <section class="categories text-center">
+        <div class="container">
+            <div class="header">
+                <h1 class="domine">What is your current rent?</h1>
+                <h3 class="droid">To evaluate buy vs rent</h3>
+            </div>
+
+            <form class="form-inline" action="" method="post">
+                <input class="form-control input-lg" type="text">
+                <div class="dollar-sign">$</div>
+                {{ form.as_p }}
+                    <button class="continue center-block" type="submit">Continue</button>
+
+                <a href="{% url 'register-how-soon' %}">
+                    <button class="skip center-block" type="button">Skip this step</button>
+                </a>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- End Categories section -->
+    <script>
+        $(".continue").on("click", function () {
+            var textVal = $("input:text").val()
+
+            if (textVal != "") {
+                localStorage.rent = textVal;
+            } else {
+                localStorage.rent = "0.00";
+            }
+
+        });
+
+        $(".skip").on("click", function () {
+            localStorage.rent = 0.00;
+        });
+    </script>
+{% endblock %}

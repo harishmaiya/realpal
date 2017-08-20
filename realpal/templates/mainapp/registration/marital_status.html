@@ -1,0 +1,21 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+    <link href="{% static 'css/onboarding_list_options.css' %}" rel="stylesheet"/>
+    <!-- Start Categories section -->
+    <section class="categories text-center">
+        <div class="container">
+            <div class="header">
+                <h1 class="domine">Your Profile</h1>
+                <h3 class="droid">Helps us understand and serve you better</h3>
+            </div>
+            <form method="post" action="">
+                {{ form.as_p }}
+                <button type="submit">Next</button>
+                <a href="{% url 'register-first-home' %}">
+                    <button class="skip" type="button">Skip this step</button>
+                </a>
+            </form>
+        </div>
+    </section>
+    <!-- End Categories section -->
+{% endblock %}
