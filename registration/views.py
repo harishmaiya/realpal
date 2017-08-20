@@ -12,7 +12,7 @@ class RegisterPurchaseStep(View):
     def get(self, request, *args, **kwargs):
         registration_data = {'purchase_step': request.session.get('purchase_step', None)}
         form = PurchaseStepForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         registration_data = {'purchase_step': request.session.get('purchase_step', None)}
@@ -20,7 +20,7 @@ class RegisterPurchaseStep(View):
         if form.is_valid():
             request.session['purchase_step'] = form.cleaned_data['purchase_step']
             return HttpResponseRedirect(reverse('register:marital-status'))
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=400)
 
 
 class RegisterMaritalStatus(View):
@@ -30,7 +30,7 @@ class RegisterMaritalStatus(View):
     def get(self, request, *args, **kwargs):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
         form = MaritalStatusForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
@@ -38,7 +38,7 @@ class RegisterMaritalStatus(View):
         if form.is_valid():
             request.session['marital_status'] = form.cleaned_data['status']
             return HttpResponseRedirect(reverse('register:first-home'))
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=400)
 
 
 class RegisterFirstHome(View):
@@ -48,7 +48,7 @@ class RegisterFirstHome(View):
     def get(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
         form = FirstHomeForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
@@ -56,7 +56,7 @@ class RegisterFirstHome(View):
         if form.is_valid():
             request.session['first_home'] = form.cleaned_data['firsthome']
             return HttpResponseRedirect(reverse('register:house-type'))
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=400)
 
 
 class RegisterHouseType(View):
@@ -80,7 +80,8 @@ class RegisterHouseType(View):
                 'house_type_form': house_type_form,
                 'house_age_form': house_age_form,
                 'house_condition_form': house_condition_form
-            }
+            },
+            status=200
         )
 
     def post(self, request, *args, **kwargs):
@@ -96,7 +97,7 @@ class RegisterHouseType(View):
         if house_type_form.is_valid() and house_age_form.is_valid() and house_condition_form.is_valid():
             request.session['house_type'] = house_type_form.cleaned_data['house_type']
             request.session['house_age'] = house_age_form.cleaned_data['house_age']
-            request.session['house_type'] = house_condition_form.cleaned_data['house_cond']
+            request.session['house_condition'] = house_condition_form.cleaned_data['house_cond']
             return HttpResponseRedirect(reverse('register:city'))
 
         return render(
@@ -106,7 +107,7 @@ class RegisterHouseType(View):
                 'house_type_form': house_type_form,
                 'house_age_form': house_age_form,
                 'house_condition_form': house_condition_form
-            }
+            }, status=400
         )
 
 
@@ -117,7 +118,7 @@ class RegisterCity(View):
     def get(self, request, *args, **kwargs):
         registration_data = {'city': request.session.get('city', None)}
         form = CityForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         registration_data = {'city': request.session.get('city', None)}
@@ -125,7 +126,7 @@ class RegisterCity(View):
         if form.is_valid():
             request.session['city'] = form.cleaned_data['city']
             return HttpResponseRedirect(reverse('register:max-budget'))
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=400)
 
 
 class RegisterMaxBudget(View):
@@ -135,7 +136,7 @@ class RegisterMaxBudget(View):
     def get(self, request, *args, **kwargs):
         registration_data = {'max_budget': request.session.get('max_budget', None)}
         form = MaxBudgetForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         registration_data = {'max_budget': request.session.get('max_budget', None)}
@@ -143,7 +144,7 @@ class RegisterMaxBudget(View):
         if form.is_valid():
             request.session['max_budget'] = form.cleaned_data['budget']
             return HttpResponseRedirect(reverse('register:current-rent'))
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=400)
 
 
 class RegisterCurrentRent(View):
@@ -153,7 +154,7 @@ class RegisterCurrentRent(View):
     def get(self, request, *args, **kwargs):
         registration_data = {'current_rent': request.session.get('current_rent', None)}
         form = CurrentRentForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         registration_data = {'current_rent': request.session.get('current_rent', None)}
@@ -161,7 +162,7 @@ class RegisterCurrentRent(View):
         if form.is_valid():
             request.session['current_rent'] = form.cleaned_data['current_rent']
             return HttpResponseRedirect(reverse('register:how-soon'))
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=400)
 
 
 class RegisterHowSoon(View):
@@ -171,7 +172,7 @@ class RegisterHowSoon(View):
     def get(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', None)}
         form = HowSoonForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', None)}
@@ -179,7 +180,7 @@ class RegisterHowSoon(View):
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
             return HttpResponseRedirect(reverse('register:personal-profile'))
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=400)
 
 
 class RegisterPersonalProfile(View):
@@ -188,7 +189,7 @@ class RegisterPersonalProfile(View):
 
     def get(self, request, *args, **kwargs):
         form = PersonalProfileForm()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
         form = PersonalProfileForm(request.POST or None)
@@ -213,6 +214,5 @@ class RegisterPersonalProfile(View):
             )
             user.set_password(form.cleaned_data['password1'])
             user.save()
-            return HttpResponse('Well Done on finishing registration')
-        return render(request, self.template_name, {'form': form})
-
+            return HttpResponse('Well Done on finishing registration', status=200)
+        return render(request, self.template_name, {'form': form}, status=400)
