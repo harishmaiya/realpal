@@ -40,7 +40,7 @@
 
 /* Start Workframe */
 
-html,body{overflow-x: hidden}
+html,body{overflow-x: hidden; height: 100%}
 
 body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
 
