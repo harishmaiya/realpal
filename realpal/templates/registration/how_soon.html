@@ -11,6 +11,7 @@
                 <h1 class="domine">When do you plan to buy your house?</h1>
             </div>
             <form action="" method="post" class="button-select text-center">
+                {% csrf_token %}
                 {{ form.as_p }}
                 <button class="skip" type="submit">Next</button>
                 <a href="{% url 'register:personal-profile' %}">

@@ -9,6 +9,7 @@
                 <h3 class="droid">Helps us understand and serve you better</h3>
             </div>
             <form method="post" action="">
+                {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Next</button>
                 <a href="{% url 'register:first-home' %}">

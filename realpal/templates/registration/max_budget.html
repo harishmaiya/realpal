@@ -11,6 +11,7 @@
                 <h1 class="domine">Do you have maximum budget?</h1>
             </div>
             <form class="form-inline" method="post" action="">
+                {% csrf_token %}
                 {{ form.as_p }}
                 <div class="dollar-sign">$</div>
                 <button class="next center-block droid" type="submit">Continue</button>

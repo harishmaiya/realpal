@@ -12,6 +12,7 @@
                     <h3 class="droid">So you can know about tax advantages, house choosing criteria</h3>
                 </div>
               <form action="" method="post">
+                  {% csrf_token %}
                   {{ form.as_p }}
                   <button type="submit">Next</button>
               </form>

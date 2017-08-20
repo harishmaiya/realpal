@@ -12,6 +12,7 @@
                 <h3 class="droid">Get local trends and street level info</h3>
             </div>
             <form class="button-select" method="post" action="">
+                {% csrf_token %}
                 <div class="row">
                     {{ form.as_p }}
                 </div>

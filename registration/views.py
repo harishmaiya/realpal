@@ -1,5 +1,5 @@
 from django.views import View
-from django.shortcuts import render, HttpResponseRedirect, reverse
+from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, HouseAgeForm, \
     HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 
@@ -159,7 +159,7 @@ class RegisterCurrentRent(View):
         form = CurrentRentForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['current_rent'] = form.cleaned_data['current_rent']
-            return HttpResponseRedirect(reverse('register:max-budget'))
+            return HttpResponseRedirect(reverse('register:how-soon'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -194,6 +194,6 @@ class RegisterPersonalProfile(View):
         form = PersonalProfileForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
-            return HttpResponseRedirect(reverse('register:max-budget'))
+            return HttpResponse('Well Done on finishing registration')
         return render(request, self.template_name, {'form': form})
 
