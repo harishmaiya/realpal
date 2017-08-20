@@ -90,9 +90,5 @@ urlpatterns = [
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/house_choices.html'),
         name='prepare-housechoice'
     ),
-    url(
-        r'^onboarding/prepare/areas-choice',
-        views.serve_cities,
-        name='prepare-areas'
-    )
+
 ]
