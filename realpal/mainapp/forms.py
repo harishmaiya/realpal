@@ -45,7 +45,7 @@ class HouseConditionForm(forms.ModelForm):
 
 
 class CityForm(forms.Form):
-    city = forms.ModelChoiceField(queryset=City.objects.all(), widget={forms.RadioSelect})
+    city = forms.ModelChoiceField(queryset=City.objects.all())
 
 
 class MaxBudgetForm(forms.ModelForm):
@@ -64,3 +64,9 @@ class HowSoonForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['current_rent']
+
+
+class PersonalProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'zipcode', 'phone_number', 'email', 'password']

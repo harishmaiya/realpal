@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 from django.views.generic import TemplateView
 from realpal.mainapp.views import RegisterPurchaseStep, RegisterMaritalStatus, RegisterFirstHome, RegisterHouseType,\
-    RegisterCity, RegisterMaxBudget, RegisterCurrentRent, RegisterHowSoon
+    RegisterCity, RegisterMaxBudget, RegisterCurrentRent, RegisterHowSoon, RegisterPersonalProfile
 
 urlpatterns = [
     url(
@@ -53,6 +53,8 @@ urlpatterns = [
     url(r'^register/max-budget$', RegisterMaxBudget.as_view(), name='register-max-budget'),
     url(r'^register/current-rent$', RegisterCurrentRent.as_view(), name='register-current-rent'),
     url(r'^register/how-soon$', RegisterHowSoon.as_view(), name='register-how-soon'),
+    url(r'^register/personal-profile$', RegisterPersonalProfile.as_view(), name='register-personal-profile'),
+
     url(
         r'^onboarding/prepare/profile$',
         TemplateView.as_view(template_name='mainapp/onboarding_prepare/profile.html'),

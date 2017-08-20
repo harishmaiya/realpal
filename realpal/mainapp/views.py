@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from realpal.users.models import City
 from realpal.mainapp.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, HouseAgeForm, \
-    HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm
+    HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 from django.views import View
 
 
@@ -185,6 +185,23 @@ class RegisterHowSoon(View):
     def post(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', None)}
         form = HowSoonForm(request.POST or None, initial=registration_data)
+        if form.is_valid():
+            request.session['how_soon'] = form.cleaned_data['how_soon']
+            return HttpResponseRedirect(reverse('register-personal-profile'))
+        return render(request, self.template_name, {'form': form})
+
+
+class RegisterPersonalProfile(View):
+
+    template_name = 'mainapp/registration/how_soon.html'
+
+    def get(self, request, *args, **kwargs):
+        form = PersonalProfileForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        registration_data = {'how_soon': request.session.get('how_soon', None)}
+        form = PersonalProfileForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
             return HttpResponseRedirect(reverse('register-max-budget'))
