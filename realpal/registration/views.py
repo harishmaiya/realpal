@@ -215,5 +215,5 @@ class RegisterPersonalProfile(View):
             )
             user.set_password(form.cleaned_data['password1'])
             user.save()
-            return HttpResponse('Well Done on finishing registration', status=200)
+            return HttpResponse('Well Done on finishing registration', status=302)
         return render(request, self.template_name, {'form': form}, status=400)

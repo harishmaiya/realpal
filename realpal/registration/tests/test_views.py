@@ -11,7 +11,6 @@ class RegistrationTest(TestCase):
         'marital_status': reverse('register:marital-status'),
         'first_home': reverse('register:first-home'),
         'house_type': reverse('register:house-type'),
-        'city': reverse('register:city'),
         'max_budget': reverse('register:max-budget'),
         'current_rent': reverse('register:current-rent'),
         'how_soon': reverse('register:how-soon'),
@@ -41,7 +40,6 @@ class RegistrationTest(TestCase):
             'marital_status': {'status': 1},
             'first_home': {'firsthome': True},
             'house_type': {'house_type': 1, 'house_age': 1, 'house_cond': 1},
-            'city': {'city': 1},
             'max_budget': {'budget': 12000.50},
             'current_rent': {'current_rent': 321.49},
             'how_soon': {'how_soon': 1},
@@ -51,6 +49,8 @@ class RegistrationTest(TestCase):
                 'zipcode': '10118',
                 'phone_number': '+263771819478',
                 'email': 'test_email@gmail.com',
+                'password1': 'test_password',
+                'password2': 'test_password',
             },
         }
 
