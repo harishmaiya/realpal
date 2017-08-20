@@ -35,7 +35,7 @@ class RegisterMaritalStatus(View):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
         form = MaritalStatusForm(request.POST or None, initial=registration_data)
         if form.is_valid():
-            request.session['marital_status'] = form.cleaned_data['marital_status']
+            request.session['marital_status'] = form.cleaned_data['status']
             return HttpResponseRedirect(reverse('register:first-home'))
         return render(request, self.template_name, {'form': form})
 
@@ -53,7 +53,7 @@ class RegisterFirstHome(View):
         registration_data = {'first_home': request.session.get('first_home', None)}
         form = FirstHomeForm(request.POST or None, initial=registration_data)
         if form.is_valid():
-            request.session['first_home'] = form.cleaned_data['first_home']
+            request.session['first_home'] = form.cleaned_data['firsthome']
             return HttpResponseRedirect(reverse('register:house-type'))
         return render(request, self.template_name, {'form': form})
 
@@ -95,7 +95,7 @@ class RegisterHouseType(View):
         if house_type_form.is_valid() and house_age_form.is_valid() and house_condition_form.is_valid():
             request.session['house_type'] = house_type_form.cleaned_data['house_type']
             request.session['house_age'] = house_age_form.cleaned_data['house_age']
-            request.session['house_type'] = house_condition_form.cleaned_data['house_type']
+            request.session['house_type'] = house_condition_form.cleaned_data['house_cond']
             return HttpResponseRedirect(reverse('register:city'))
 
         return render(
@@ -140,7 +140,7 @@ class RegisterMaxBudget(View):
         registration_data = {'max_budget': request.session.get('max_budget', None)}
         form = MaxBudgetForm(request.POST or None, initial=registration_data)
         if form.is_valid():
-            request.session['max_budget'] = form.cleaned_data['max_budget']
+            request.session['max_budget'] = form.cleaned_data['budget']
             return HttpResponseRedirect(reverse('register:current-rent'))
         return render(request, self.template_name, {'form': form})
 

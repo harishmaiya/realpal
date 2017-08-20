@@ -63,7 +63,7 @@ class CurrentRentForm(forms.ModelForm):
 class HowSoonForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['current_rent']
+        fields = ['how_soon']
 
 
 class PersonalProfileForm(forms.ModelForm):
