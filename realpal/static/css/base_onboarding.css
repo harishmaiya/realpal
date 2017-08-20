@@ -25,7 +25,7 @@ html,body{overflow-x: hidden;color:#4a4a4a}
 
 /* Star Banner Section */
 
-.banner{height: 45px;color: #FFF;}
+.banner{height: 45px; margin-bottom:-45px; color: #FFF;}
 
 .banner h4
 {
@@ -38,14 +38,17 @@ html,body{overflow-x: hidden;color:#4a4a4a}
 
 /* End Banner Section */
 
+/* Start Body Section */
+
+.body{min-height: 100%}
+
+.body #main {overflow:auto; padding-top:45px; padding-bottom:65px}
+
+/* End Body Section */
 
 /* Start Footer Section */
 
-.footer
-{
-    background-color: #022d46;
-    height: 65px;
-}
+.footer{background-color:#022d46; height:65px; margin-top:-65px}
 
 .footer a
 {   
