@@ -91,7 +91,8 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
 .navbar{
     background-color: #fafafa;
     position: absolute;
-    min-height: 80px
+    min-height: 80px;
+    margin-bottom:-80px
 }
 
 .navbar .navbar-header .navbar-brand{
@@ -154,9 +155,19 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
 
 /* End Navbar */
 
+/* Start Body Section */
+
+.body{min-height: 100%}
+
+.body #main {overflow:auto; padding-top:80px; padding-bottom:406px}
+
+/* End Body Section */
+
 /* Start Ultimate Footer Section */
 
 .footer{
+    height: 406px;
+    margin-top:-406px;
     padding-top: 20px;
     color: #FFF;
     font-family: sans-serif
