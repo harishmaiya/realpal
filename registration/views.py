@@ -18,7 +18,7 @@ class RegisterPurchaseStep(View):
         form = PurchaseStepForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['purchase_step'] = form.cleaned_data['purchase_step']
-            return HttpResponseRedirect(reverse('register-marital-status'))
+            return HttpResponseRedirect(reverse('register:marital-status'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -36,7 +36,7 @@ class RegisterMaritalStatus(View):
         form = MaritalStatusForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['marital_status'] = form.cleaned_data['marital_status']
-            return HttpResponseRedirect(reverse('register-first-home'))
+            return HttpResponseRedirect(reverse('register:first-home'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -54,7 +54,7 @@ class RegisterFirstHome(View):
         form = FirstHomeForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['first_home'] = form.cleaned_data['first_home']
-            return HttpResponseRedirect(reverse('register-house-type'))
+            return HttpResponseRedirect(reverse('register:house-type'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -96,7 +96,7 @@ class RegisterHouseType(View):
             request.session['house_type'] = house_type_form.cleaned_data['house_type']
             request.session['house_age'] = house_age_form.cleaned_data['house_age']
             request.session['house_type'] = house_condition_form.cleaned_data['house_type']
-            return HttpResponseRedirect(reverse('register-city'))
+            return HttpResponseRedirect(reverse('register:city'))
 
         return render(
             request,
@@ -123,7 +123,7 @@ class RegisterCity(View):
         form = CityForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['city'] = form.cleaned_data['city']
-            return HttpResponseRedirect(reverse('register-max-budget'))
+            return HttpResponseRedirect(reverse('register:max-budget'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -141,7 +141,7 @@ class RegisterMaxBudget(View):
         form = MaxBudgetForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['max_budget'] = form.cleaned_data['max_budget']
-            return HttpResponseRedirect(reverse('register-current-rent'))
+            return HttpResponseRedirect(reverse('register:current-rent'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -159,7 +159,7 @@ class RegisterCurrentRent(View):
         form = CurrentRentForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['current_rent'] = form.cleaned_data['current_rent']
-            return HttpResponseRedirect(reverse('register-max-budget'))
+            return HttpResponseRedirect(reverse('register:max-budget'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -177,7 +177,7 @@ class RegisterHowSoon(View):
         form = HowSoonForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
-            return HttpResponseRedirect(reverse('register-personal-profile'))
+            return HttpResponseRedirect(reverse('register:personal-profile'))
         return render(request, self.template_name, {'form': form})
 
 
@@ -194,6 +194,6 @@ class RegisterPersonalProfile(View):
         form = PersonalProfileForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
-            return HttpResponseRedirect(reverse('register-max-budget'))
+            return HttpResponseRedirect(reverse('register:max-budget'))
         return render(request, self.template_name, {'form': form})
 
