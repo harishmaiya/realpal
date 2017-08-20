@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from registration.views import RegisterPurchaseStep, RegisterMaritalStatus, RegisterFirstHome, RegisterHouseType,\
-    RegisterCity, RegisterMaxBudget, RegisterCurrentRent, RegisterHowSoon, RegisterPersonalProfile
 
+from realpal.registration.views import RegisterPurchaseStep, RegisterMaritalStatus, RegisterFirstHome, RegisterHouseType, \
+    RegisterCity, RegisterMaxBudget, RegisterCurrentRent, RegisterHowSoon, RegisterPersonalProfile
 
 urlpatterns = [
     url(r'^purchase-step$', RegisterPurchaseStep.as_view(), name='purchase-step'),

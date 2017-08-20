@@ -1,6 +1,7 @@
-from django.views import View
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
-from registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, HouseAgeForm, \
+from django.views import View
+
+from realpal.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, HouseAgeForm, \
     HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 from realpal.users.models import User
 
