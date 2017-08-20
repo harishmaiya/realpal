@@ -78,7 +78,9 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
     display: none
 }
 
-.textSerif{font-family:"Sentinel SSm A","Sentinel SSm B",serif; font-weight: 300;}
+.lead{font-weight: 400}
+
+.textSerif{font-family:serif;}
 
 .sans{font-family: 'Open Sans', sans-serif;}
 
