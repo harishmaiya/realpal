@@ -1,22 +1,12 @@
+from django.views import View
 from django.shortcuts import render, HttpResponseRedirect, reverse
-from realpal.users.models import City
 from realpal.mainapp.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, HouseAgeForm, \
     HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
-from django.views import View
-
-
-def serve_cities(request):
-    cities = City.objects.all()
-    return render(
-        request,
-        'mainapp/onboarding_prepare/areas.html',
-        {'cities': cities}
-    )
 
 
 class RegisterPurchaseStep(View):
 
-    template_name = 'mainapp/registration/purchase_step.html'
+    template_name = 'registration/purchase_step.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'purchase_step': request.session.get('purchase_step', None)}
@@ -34,7 +24,7 @@ class RegisterPurchaseStep(View):
 
 class RegisterMaritalStatus(View):
 
-    template_name = 'mainapp/registration/marital_status.html'
+    template_name = 'registration/marital_status.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
@@ -52,7 +42,7 @@ class RegisterMaritalStatus(View):
 
 class RegisterFirstHome(View):
 
-    template_name = 'mainapp/registration/first_home.html'
+    template_name = 'registration/first_home.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
@@ -70,7 +60,7 @@ class RegisterFirstHome(View):
 
 class RegisterHouseType(View):
 
-    template_name = 'mainapp/registration/house_type.html'
+    template_name = 'registration/house_type.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'house_type': request.session.get('house_type', None)}
@@ -121,7 +111,7 @@ class RegisterHouseType(View):
 
 class RegisterCity(View):
 
-    template_name = 'mainapp/registration/city.html'
+    template_name = 'registration/city.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'city': request.session.get('city', None)}
@@ -139,7 +129,7 @@ class RegisterCity(View):
 
 class RegisterMaxBudget(View):
 
-    template_name = 'mainapp/registration/max_budget.html'
+    template_name = 'registration/max_budget.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'max_budget': request.session.get('max_budget', None)}
@@ -157,7 +147,7 @@ class RegisterMaxBudget(View):
 
 class RegisterCurrentRent(View):
 
-    template_name = 'mainapp/registration/current_rent.html'
+    template_name = 'registration/current_rent.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'current_rent': request.session.get('current_rent', None)}
@@ -175,7 +165,7 @@ class RegisterCurrentRent(View):
 
 class RegisterHowSoon(View):
 
-    template_name = 'mainapp/registration/how_soon.html'
+    template_name = 'registration/how_soon.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', None)}
@@ -193,7 +183,7 @@ class RegisterHowSoon(View):
 
 class RegisterPersonalProfile(View):
 
-    template_name = 'mainapp/registration/how_soon.html'
+    template_name = 'registration/how_soon.html'
 
     def get(self, request, *args, **kwargs):
         form = PersonalProfileForm()
