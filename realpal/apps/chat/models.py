@@ -16,11 +16,10 @@ class Room(models.Model):
 
 
 class Message(models.Model):
-    room = models.ForeignKey(Room, related_name='room')
+    room = models.ForeignKey(Room, related_name='room', db_index=True)
     sent_by = models.ForeignKey(User, related_name='sender')
     text = models.TextField()
     attachment = models.FileField(upload_to=message_attachment, blank=True, null=True)
-    timestamp = models.DateTimeField(auto_now_add=True, db_index=True)
 
     def __str__(self):
         return '{timestamp}: sender: {sender}'.format(

@@ -23,5 +23,5 @@ def user_post_save_callback(sender, **kwargs):
         user_new_room, created = Room.objects.get_or_create(
             client=user
         )
-        if user_new_room:
+        if created:
             logger.debug('{} created'.format(user_new_room))

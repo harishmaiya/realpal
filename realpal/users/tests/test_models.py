@@ -21,5 +21,4 @@ class TestUser(TestCase):
         )
 
     def test_user_room_creation(self):
-        user_room = Room.objects.get(client=self.user)
-        self.assertEqual(user_room.client, self.user)
+        self.assertEqual(1, Room.objects.filter(client=self.user).count())
