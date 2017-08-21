@@ -8,8 +8,8 @@ def message_attachment(instance, filename):
 
 
 class Room(models.Model):
-    client = models.ForeignKey(User, related_name='Client')
-    agent = models.ForeignKey(User, related_name='Agent')
+    client = models.ForeignKey(User, related_name='Client',  on_delete=models.CASCADE)
+    agent = models.ForeignKey(User, related_name='Agent', blank=True, null=True)
 
     def __str__(self):
         return '{owner} room'.format(owner=self.client.username)
