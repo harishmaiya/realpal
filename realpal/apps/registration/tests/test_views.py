@@ -41,6 +41,7 @@ class RegistrationTest(TestCase):
             'marital_status': {'status': 1},
             'first_home': {'firsthome': True},
             'house_type': {'house_type': 1, 'house_age': 1, 'house_cond': 1},
+            'city': {'city': None},
             'max_budget': {'budget': 12000.50},
             'current_rent': {'current_rent': 321.49},
             'how_soon': {'how_soon': 1},

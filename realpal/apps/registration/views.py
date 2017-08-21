@@ -1,12 +1,13 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from django.views import View
 
-from realpal.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, HouseAgeForm, \
+from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
+    HouseAgeForm, \
     HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 from realpal.users.models import User
 
 
-class RegisterPurchaseStep(View):
+class PurchaseStepView(View):
 
     template_name = 'registration/purchase_step.html'
 
@@ -24,7 +25,7 @@ class RegisterPurchaseStep(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class RegisterMaritalStatus(View):
+class MaritalStatusView(View):
 
     template_name = 'registration/marital_status.html'
 
@@ -42,7 +43,7 @@ class RegisterMaritalStatus(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class RegisterFirstHome(View):
+class FirstHomeView(View):
 
     template_name = 'registration/first_home.html'
 
@@ -60,7 +61,7 @@ class RegisterFirstHome(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class RegisterHouseType(View):
+class HouseTypeView(View):
 
     template_name = 'registration/house_type.html'
 
@@ -112,7 +113,7 @@ class RegisterHouseType(View):
         )
 
 
-class RegisterCity(View):
+class CityView(View):
 
     template_name = 'registration/city.html'
 
@@ -130,7 +131,7 @@ class RegisterCity(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class RegisterMaxBudget(View):
+class MaxBudgetView(View):
 
     template_name = 'registration/max_budget.html'
 
@@ -148,7 +149,7 @@ class RegisterMaxBudget(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class RegisterCurrentRent(View):
+class CurrentRentView(View):
 
     template_name = 'registration/current_rent.html'
 
@@ -166,7 +167,7 @@ class RegisterCurrentRent(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class RegisterHowSoon(View):
+class HowSoonView(View):
 
     template_name = 'registration/how_soon.html'
 
@@ -184,7 +185,7 @@ class RegisterHowSoon(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class RegisterPersonalProfile(View):
+class PersonalProfileView(View):
 
     template_name = 'registration/personal_profile.html'
 

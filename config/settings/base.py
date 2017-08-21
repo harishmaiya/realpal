@@ -60,7 +60,7 @@ LOCAL_APPS = [
     # Your stuff: custom apps go here
     'realpal.mainapp.apps.MainappConfig',
     # the app that deals with registration
-    'realpal.registration'
+    'realpal.apps.registration'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
