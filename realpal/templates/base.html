@@ -1,7 +1,7 @@
 {% load staticfiles i18n %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %}Real Pal - Personal guide for house buying{% endblock title %}</title>
@@ -15,144 +15,53 @@
     <![endif]-->
 
     {% block css %}
-    <!-- Latest compiled and minified Bootstrap 4 Alpha 4 CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <!-- Your stuff: Third-party CSS libraries go here -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700" >
+        <!-- Latest compiled and minified Bootstrap 4 Alpha 4 CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">    <!-- Your stuff: Third-party CSS libraries go here -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+              crossorigin="anonymous">
 
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
-    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"/>
+        <!-- This file stores project-specific CSS -->
+        <link href="{% static 'src/css/base.css' %}" rel="stylesheet">
 
     {% endblock %}
 
-  </head>
+</head>
 
-  <body>
+<body>
+<!-- Start Navbar -->
+{% include "pages/partials/nav.html" %}
+<!-- End Navbar -->
 
-         <!-- Start Navbar -->
+<main class="main">
+    {% block content %}{% endblock %}
+</main>
 
-        <nav class="navbar navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header ">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#our-navbar" aria-expanded="false">
-                  <i class="fa fa-bars fa-2x"></i>
-              </button>
-              <a class="navbar-brand sans navy text-center bold" href="/">
-                  REAL PAL
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="our-navbar">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a class="navy sans" href="#">Locations</a></li>
-                <li><a class="navy sans" href="{% url 'users:messenger' %}">Sign In</a></li>
-                <li class="btn back-brown sans"><a href="onboarding">Get Started</a></li>
-              </ul>
-            </div>
-          </div><!-- /.container-fluid -->
-        </nav>
+<!-- Start Ultimate Footer Section-->
+{% include "pages/partials/footer.html" %}
+<!-- End Ultimate Footer Section-->
 
-         <!-- End Navbar -->
+{% block modal %}{% endblock modal %}
 
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{% block javascript %}
+    <!-- Required by Bootstrap v4 Alpha 4 -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <!-- Your stuff: Third-party javascript libraries go here -->
 
-      {% block content %}
+    <!-- place project specific Javascript in this file -->
 
-      {% endblock content %}
-
-         <!-- Start Ultimate Footer Section-->
-
-        <section class="footer back-navy">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-sm-6">
-                        <h3 class="textSerif">Real Pal</h3>
-                        <ul class="list-unstyled site-map sans">
-                            <li><a href="{% url 'mainapp:prepare' %}">Prepare</a></li>
-                            <li><a href="{% url 'mainapp:purchase' %}">Purchase</a></li>
-                            <li><a href="{% url 'mainapp:own' %}">Own</a></li>
-                            <li><a href="#">Investor</a></li>
-                            <li><a href="#">Sign In</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 pull-left col-sm-6">
-                        <h3 class="textSerif">Company</h3>
-                        <ul class="list-unstyled links sans">
-                            <li><a href="{% url 'mainapp:aboutus' %}">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Press</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-lg-offset-4 col-sm-6  contact">
-                        <h3 class="textSerif">Have a Question?</h3>
-                        <div class=" contact-info">
-                            <div class="media">
-                              <div class="media-left text-center">
-                                    <i class="fa fa-question fa-2x"></i>
-                              </div>
-                              <div class="media-body">
-                                <p class="sans"><a href="#">Visit our FAQ page</a></p>
-                              </div>
-                            </div>
-                            <div class="media">
-                              <div class="media-left text-center">
-                                <i class="fa fa-phone fa-2x"></i>
-                              </div>
-                              <div class="media-body">
-                                <p class="sans">+1 (408) 462-1707 </p>
-                              </div>
-                            </div>
-                            <div class="media">
-                              <div class="media-left text-center">
-                                <i class="fa fa-envelope fa-lg"></i>
-                              </div>
-                              <div class="media-body">
-                                <p class="sans">info@realpal.com </p>
-                              </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="copyright ">
-                    <div class="social">
-                        <span class="lead sans">Follow Us:</span>
-                        <ul class="social-icons text-center list-unstyled">
-                          <li class="navy"><a href="https://www.facebook.com/RealPal-296427890768369/" rel="noopener noreferrer" target="_blank"><i class="fa fa-facebook fa-lg"></i></a></li>
-                          <li class="navy"><a href="https://www.youtube.com/channel/UCfa29cXl0l2GDNBuSuqsm-g?guided_help_flow=3" rel="noopener noreferrer" target="_blank"> <i class="fa fa-youtube fa-lg"></i></a></li>
-                        </ul>
-                        <div class="terms pull-right text-center">
-                            <a href="{% url 'mainapp:privacy' %}" class="lead sans">Privacy</a>
-                            <a href="{% url 'mainapp:terms' %}" class="lead sans">Terms</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- End Ultimate Footer Section-->
-
-    {% block modal %}{% endblock modal %}
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
-      <!-- Required by Bootstrap v4 Alpha 4 -->
-      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      <!-- Your stuff: Third-party javascript libraries go here -->
-
-      <!-- place project specific Javascript in this file -->
-
-      <script src="{% static 'js/project.js' %}"></script>
-      <script src="{% static 'js/jquery-1.12.2.min.js' %}"></script>
-      <script src="{% static 'js/bootstrap.min.js' %}"></script>
-      <script src="{% static 'js/home.js' %}"></script>
-      <script src="{% static 'js/how-it-works.js' %}"></script>
-
-    {% endblock javascript %}
-  </body>
+    <script src="{% static 'app/js/main.js' %}"></script>
+    <script src="{% static 'app/js/vendor/vendor.js' %}"></script>
+{% endblock javascript %}
+</body>
 </html>

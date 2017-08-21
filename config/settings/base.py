@@ -58,7 +58,8 @@ LOCAL_APPS = [
     # custom users app
     'realpal.users.apps.UsersConfig',
     # Your stuff: custom apps go here
-    'realpal.mainapp.apps.MainappConfig'
+    'realpal.mainapp.apps.MainappConfig',
+    'realpal.apps.chat.apps.ChatConfig'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -283,7 +284,7 @@ CHANNEL_LAYERS = {
         "CONFIG": {
             "hosts": [env('REDIS_URL', default='redis://localhost:6379')],
         },
-        "ROUTING": "realpal.mainapp.routing.channel_routing"
+        "ROUTING": "realpal.apps.chat.routing.channel_routing"
     }
 }
 
