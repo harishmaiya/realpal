@@ -1,13 +1,14 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
+var prefix = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['copy-assets', 'scripts', 'vendor', 'imagemin'], function () {
+gulp.task('serve', [ 'scripts', 'vendor', 'css', 'imagemin'], function () {
 
   browserSync.init({
     notify: false,
@@ -16,9 +17,7 @@ gulp.task('serve', ['copy-assets', 'scripts', 'vendor', 'imagemin'], function ()
     open: false
   });
 
-  // gulp.watch('src/sass/*.scss', ['sass']);
   gulp.watch('../templates/**/*.html', browserSync.reload);
-  // gulp.watch('src/js/*.js', ['babel']).on('change', browserSync.reload);
   gulp.watch('src/js/*.js').on('change', browserSync.reload);
 });
 
@@ -38,12 +37,13 @@ gulp.task('scripts', function () {
     .pipe(browserSync.reload({stream: true, once: true}));
 });
 
+
 gulp.task('css', function () {
   gulp.src('src/**/*.css')
-  // .pipe(concat('style.css'))
+    .pipe(concat('style.css'))
+    .pipe(uglify())
     .pipe(cssmin())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('app/css'));
 });
 
 gulp.task('imagemin', function () {
@@ -57,14 +57,5 @@ gulp.task('imagemin', function () {
   }
 );
 
-// Compile sass into CSS & auto-inject into browsers
-// gulp.task('sass', function () {
-//   return gulp.src('src/css/*.css')
-//     .pipe(sass({outputStyle: 'compressed'}, {errLogToConsole: true}))
-//     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
-//
-//     .pipe(gulp.dest('app/css'))
-//     .pipe(browserSync.stream());
-// });
 
 gulp.task('default', ['serve']);
