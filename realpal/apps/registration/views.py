@@ -202,6 +202,7 @@ class PersonalProfileView(View):
                 zipcode=form.cleaned_data['zipcode'],
                 phone_number=form.cleaned_data['phone_number'],
                 email=form.cleaned_data['email'],
+                username=form.cleaned_data['email'],
 
                 purchase_step=request.session.get('purchase_step', None),
                 status=request.session.get('marital_status', None),
