@@ -8,7 +8,7 @@ var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 
 // Static Server + watching scss/html files
-gulp.task('serve', [ 'scripts', 'vendor', 'css', 'imagemin'], function () {
+gulp.task('serve', [ 'copy-assets','scripts', 'vendor','vendor-css', 'css', 'imagemin'], function () {
 
   browserSync.init({
     notify: false,
@@ -20,7 +20,10 @@ gulp.task('serve', [ 'scripts', 'vendor', 'css', 'imagemin'], function () {
   gulp.watch('../templates/**/*.html', browserSync.reload);
   gulp.watch('src/js/*.js').on('change', browserSync.reload);
 });
-
+gulp.task('copy-assets', function () {
+  gulp.src(['src/assets/**/*', '!src/assets/fonts/'])
+    .pipe(gulp.dest('app/assets/'));
+});
 gulp.task('vendor', function () {
   gulp.src('src/js/vendor/*.js')
     .pipe(concat('vendor.js'))
@@ -37,13 +40,17 @@ gulp.task('scripts', function () {
     .pipe(browserSync.reload({stream: true, once: true}));
 });
 
-
 gulp.task('css', function () {
-  gulp.src('src/**/*.css')
+  gulp.src('src/css/*.css')
     .pipe(concat('style.css'))
-    .pipe(uglify())
     .pipe(cssmin())
     .pipe(gulp.dest('app/css'));
+});
+gulp.task('vendor-css', function () {
+  gulp.src('src/css/vendor/*.css')
+    .pipe(concat('vendor.css'))
+    .pipe(cssmin())
+    .pipe(gulp.dest('app/css/vendor'));
 });
 
 gulp.task('imagemin', function () {
@@ -56,6 +63,5 @@ gulp.task('imagemin', function () {
       .pipe(gulp.dest('app/images'))
   }
 );
-
 
 gulp.task('default', ['serve']);
