@@ -1,6 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 from realpal.users.models import User
+from realpal.users.constants import *
 
 
 class RegistrationTest(TestCase):
@@ -11,7 +12,6 @@ class RegistrationTest(TestCase):
         'marital_status': reverse('register:marital-status'),
         'first_home': reverse('register:first-home'),
         'house_type': reverse('register:house-type'),
-        'city': reverse('register:city'),
         'max_budget': reverse('register:max-budget'),
         'current_rent': reverse('register:current-rent'),
         'how_soon': reverse('register:how-soon'),
@@ -37,14 +37,13 @@ class RegistrationTest(TestCase):
          we test posting to the matching url from self.urls
         """
         data = {
-            'purchase_step': {'purchase_step': 1},
-            'marital_status': {'status': 1},
+            'purchase_step': {'purchase_step': PS_DAP},
+            'marital_status': {'status': SC_SI},
             'first_home': {'firsthome': True},
-            'house_type': {'house_type': 1, 'house_age': 1, 'house_cond': 1},
-            'city': {'city': None},
-            'max_budget': {'budget': 12000.50},
+            'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
+            'max_budget': {'budget': 1200.59},
             'current_rent': {'current_rent': 321.49},
-            'how_soon': {'how_soon': 1},
+            'how_soon': {'how_soon': HS_3},
             'personal_profile': {
                 'first_name': 'TestFirstName',
                 'last_name': 'TestLastName',
