@@ -7,6 +7,11 @@ from django.core.validators import RegexValidator
 from realpal.users.constants import *
 
 
+class City(models.Model):
+    name = models.CharField(max_length=60)
+    state = models.CharField(max_length=40)
+
+
 @python_2_unicode_compatible
 class User(AbstractUser):
 
@@ -37,6 +42,8 @@ class User(AbstractUser):
 
     house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, null=True)
 
+    preferred_city = models.ForeignKey(City, null=True)
+
     budget = models.FloatField(blank=True, null=True)
 
     current_rent = models.FloatField(blank=True, null=True)
@@ -52,11 +59,3 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
-
-
-class City(models.Model):
-    name = models.CharField(max_length=60)
-    state = models.CharField(max_length=40)
-    interested_users = models.ForeignKey(
-        User, related_name='cities', null=True
-    )
