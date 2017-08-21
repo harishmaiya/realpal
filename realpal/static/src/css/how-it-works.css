@@ -68,7 +68,7 @@
 
 /* Start How It Works Section */
 
-.how-works{padding-top: 140px;padding-bottom: 50px}
+.how-works{padding-top: 140px;padding-bottom: 75px}
 
 .how-works .h1{font-size: 48px;font-family: 'Domine', serif}
 
@@ -81,8 +81,8 @@
 .how-works .time-path .timeline {
     position: absolute ;
     width: 4px !important ;
-    height:54% ;
-    top:  23%;
+    height: 84%;
+    top: 14.5%;
     left: calc(50% - 1px);
     background-color: #dad4c8;
     padding: 0
@@ -98,6 +98,8 @@
     left: 0;
     background-color: #b77d64;
 }
+
+
 
 /* number circles */
 
@@ -152,16 +154,22 @@
     }
     
     .r:after {
-        left: 21px
+        left: 0px
     }
     
 }
 
-.how-works .blocks{margin-top: 50px}
+.how-works .blocks{margin-top: 50px;}
 
 .how-works .blocks h3{font-size: 20px; padding-bottom: 15px}
 
 .how-works .blocks .block .caption{font-size: 18px;background-color: #fafafa;padding: 25px 32px;}
+
+.how-works .blocks .block .caption,
+.how-works .blocks .block img
+{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.2);
+}
 
 .how-works .blocks .active-l:before,
 .how-works .blocks .active-r:before {background-color:#232F39;color: #FFF}
@@ -172,35 +180,185 @@
 
 .how-works .blocks .l{padding-left: 0;padding-right: 45px}
 
-.how-works .blocks .l:last-of-type{margin-top: -150px;margin-bottom: 60px}
+.how-works .blocks .l:not(:first-of-type){margin-top: -150px;margin-bottom: 60px}
 
 .how-works .blocks .r{padding-left: 45px;padding-right: 0;margin-top: 320px}
 
 @media(max-width:767px){
     
-    .how-works .blocks .l{padding-right: 5px}
+    .how-works .blocks .l{padding-right: 5px;margin-top: 0!important}
     
     .how-works .blocks .r
     {
         padding-left: 0;
-        margin-bottom: 165px;
+        margin-bottom: 15px;
         margin-top: 15px
     }
     
     .how-works .blocks img {width: 100%}
 }
 
+.how-works .blocks .btn
+{
+    color: #FFF;
+    border: 0;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 16px;
+    line-height: 16px;
+    cursor: pointer
+}
+
+.how-works .blocks .btn:hover{background-color:#a5725d;color: #FFF}
+
+.how-works .blocks .btn a{padding: 0;color: #FFF;}
+
+.how-works .blocks .btn a:hover{text-decoration: none}
 
 /* End Timeline */
 
 /* End How It Works Section */
 
+/* Start Cost Section */
+
+.cost{padding-top: 90px;padding-bottom: 110px;color: #4a4a4a}
+
+.cost .h1{letter-spacing: 1.2px;margin-bottom: 20px;margin-top: 0}
+
+@media (min-width: 1200px){
+    
+    .cost .container 
+    {
+        width: 880px;
+    }
+
+}
+
+.cost .description
+{
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 31px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+
+.cost .setPrice
+{
+    background-color: #f5f5f1;width: 618px;    
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.2);
+    padding: 10px 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 18px
+}
+
+.cost i
+{
+    padding-top: 20px;    
+    padding-top: 40px;
+    border: 1px solid #B77E66;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+    line-height: 0px;
+}
+
+.cost .row p:not(.price)
+{
+    font-size: 14px;
+    line-height: 1.5;
+    padding-top: 20px;
+    margin-bottom: 5px
+}
+
+.cost .price{font-size: 18px;line-height: 27px;}
+
+.cost .row div{padding-top: 20px;padding-bottom: 40px}
+
+.cost .btn
+{
+    margin-top:40px;
+    color: #FFF;
+    border: 0;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 16px;
+    line-height: 16px;
+    cursor: pointer
+}
+
+.cost .btn:hover{background-color:#a5725d;color: #FFF}
+
+.cost .btn a{padding: 0;color: #FFF;}
+
+.cost .btn a:hover{text-decoration: none}
+
+/* End Cost Section */
+
+/* Start expect Section */
+
+.expect
+{
+    background: url('../images/expect.jpeg') fixed no-repeat center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #4a4a4a
+}
+
+.expect .card
+{
+    background-color: #FFF;   
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.2);
+    border-radius: 2px;
+    padding: 0 20px 40px;
+    max-width: 380px
+}
+
+.expect .h1{font-size: 26px; line-height: 38px;}
+
+.expect p{font-size: 15px;line-height: 21px;margin-bottom: 30px}
+
+.expect ul li 
+{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 21px;
+    display: block!important;
+    max-width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #dfdfdf;
+    text-align: left
+}
+
+.expect ul li:last-of-type{border-bottom: 1px solid #dfdfdf;}
+
+.expect .btn
+{
+    margin-top:20px;
+    margin-bottom:10px;
+    color: #FFF;
+    border: 0;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 16px;
+    line-height: 16px;
+    cursor: pointer
+}
+
+.expect .btn:hover{background-color:#a5725d;color: #FFF}
+
+.expect .btn a{padding: 0;color: #FFF;}
+
+.expect .btn a:hover{text-decoration: none}
+
+/* End expect Section */
+
 /* Start Find Section */
 
-.find
-{
-    background: url('../images/evaluate.n.jpg') fixed no-repeat center;
-}
+.find{background: url('../images/DreamHouse.jpg') fixed no-repeat center;}
 
 .find .overlay{
     background: rgba(9,9,9,.7);
