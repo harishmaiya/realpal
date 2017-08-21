@@ -1,7 +1,5 @@
 /* Start Intro */
 
-.header{margin-top: 60px}
-
 .header .container {width: 100%;padding: 0}
 
 .header .row .prepare{padding: 0; background:url('../images/prepare.png') no-repeat 75% 50%}
@@ -143,7 +141,7 @@
 
 /* Start Learn About Section */
 
-.learn{color: #FFF;padding: 40px 0 45px}
+.learn{color: #FFF; padding: 40px 0 45px; margin-bottom: -17px;}
 
 .learn .container{width: 960px}
 
