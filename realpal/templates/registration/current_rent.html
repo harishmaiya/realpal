@@ -25,22 +25,4 @@
 
         </div>
     </section>
-
-    <!-- End Categories section -->
-    <script>
-        $(".continue").on("click", function () {
-            var textVal = $("input:text").val()
-
-            if (textVal != "") {
-                localStorage.rent = textVal;
-            } else {
-                localStorage.rent = "0.00";
-            }
-
-        });
-
-        $(".skip").on("click", function () {
-            localStorage.rent = 0.00;
-        });
-    </script>
 {% endblock %}

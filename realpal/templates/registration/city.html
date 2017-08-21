@@ -24,18 +24,4 @@
             </form>
         </div>
     </section>
-
-    <!-- End Categories section -->
-    <script>
-        localStorage.cities = '';
-        var cities = []
-        $(".btn").on("click", function () {
-            cities.push($(this).attr("data-val"));
-        });
-
-        $(".continue").on("click", function () {
-            localStorage.cities = cities.join();
-        });
-
-    </script>
 {% endblock %}

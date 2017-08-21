@@ -1,6 +1,6 @@
 from django.test import Client, TestCase
 from django.urls import reverse
-from realpal.users.models import User
+from realpal.users.models import User, City
 from realpal.users.constants import *
 
 
@@ -12,6 +12,7 @@ class RegistrationTest(TestCase):
         'marital_status': reverse('register:marital-status'),
         'first_home': reverse('register:first-home'),
         'house_type': reverse('register:house-type'),
+        'city': reverse('register:city'),
         'max_budget': reverse('register:max-budget'),
         'current_rent': reverse('register:current-rent'),
         'how_soon': reverse('register:how-soon'),
@@ -41,6 +42,7 @@ class RegistrationTest(TestCase):
             'marital_status': {'status': SC_SI},
             'first_home': {'firsthome': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
+            'city': {'preferred_city': None},
             'max_budget': {'budget': 1200.59},
             'current_rent': {'current_rent': 321.49},
             'how_soon': {'how_soon': HS_3},

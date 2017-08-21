@@ -126,7 +126,7 @@ class CityView(View):
         registration_data = {'city': request.session.get('city', None)}
         form = CityForm(request.POST or None, initial=registration_data)
         if form.is_valid():
-            request.session['city'] = form.cleaned_data['city']
+            request.session['city'] = form.cleaned_data['preferred_city'].id
             return HttpResponseRedirect(reverse('register:max-budget'))
         return render(request, self.template_name, {'form': form}, status=400)
 
@@ -209,6 +209,7 @@ class PersonalProfileView(View):
                 house_type=request.session.get('house_type', None),
                 house_age=request.session.get('house_age', None),
                 house_cond=request.session.get('house_condition', None),
+                preferred_city=request.session.get('city', None),
                 budget=request.session.get('max_budget', None),
                 current_rent=request.session.get('current_rent', None),
                 how_soon=request.session.get('how_soon', None),
@@ -216,5 +217,10 @@ class PersonalProfileView(View):
             )
             user.set_password(form.cleaned_data['password1'])
             user.save()
+
+            # lets clear these session variables since we are done using them
+            for key in request.session.keys():
+                del request.session[key]
+
             return HttpResponse('Well Done on finishing registration', status=302)
         return render(request, self.template_name, {'form': form}, status=400)

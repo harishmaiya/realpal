@@ -52,26 +52,4 @@
 
         </div>
     </section>
-
-    <script>
-        localStorage.housetype = ''
-        localStorage.houseage = ''
-        localStorage.housecondition = ''
-
-        $(".btntype").on("click", function () {
-            localStorage.housetype = $(this).attr("data-val");
-        });
-
-        $(".btnage").on("click", function () {
-            localStorage.houseage = $(this).attr("data-val");
-        });
-
-        $(".btncon").on("click", function () {
-            localStorage.housecondition = $(this).attr("data-val");
-        });
-
-    </script>
-
-    <!-- End Categories section -->
-
 {% endblock %}

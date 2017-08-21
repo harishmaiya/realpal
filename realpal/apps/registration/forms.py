@@ -44,8 +44,10 @@ class HouseConditionForm(forms.ModelForm):
         widgets = {'house_cond': forms.RadioSelect}
 
 
-class CityForm(forms.Form):
-    city = forms.ModelChoiceField(queryset=City.objects.all())
+class CityForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['preferred_city']
 
 
 class MaxBudgetForm(forms.ModelForm):
