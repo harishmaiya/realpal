@@ -65,3 +65,4 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
