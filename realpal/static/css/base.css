@@ -90,7 +90,7 @@ body{font-family: 'Droid Sans', sans-serif; counter-reset:my-counter}
 
 .navbar{
     background-color: #fafafa;
-    position: absolute;
+    position: relative;
     min-height: 80px;
     margin-bottom:-80px
 }
