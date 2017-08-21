@@ -1,0 +1,88 @@
+html,body{overflow-x: hidden}
+
+.brown{color:#B77E66}
+.navy{color:#232F39}
+.beige{color:#F9F2ED}
+
+.back-brown{background-color:#B77E66}
+.back-darkBlue{background-color:#022d46}
+.back-beige{background-color:#F9F2ED}
+
+.bold{font-weight: bold}
+
+@media (min-width: 1200px){
+
+    .container
+    {
+        width: 1249px;
+    }
+
+}
+
+.textSerif{font-family:"Sentinel SSm A","Sentinel SSm B",serif; font-weight: 300;}
+
+.sans{font-family: 'Open Sans', sans-serif;}
+
+/* Star Banner Section */
+
+.banner{height: 45px;color: #FFF;}
+
+.banner h4
+{
+    letter-spacing: 1.3px;
+    font-size: 19px;
+    transform: scale(1.2, 1);
+    margin-top: 13px;
+    font-weight: 600;
+}
+
+/* End Banner Section */
+
+/* Start Categories Section */
+
+.categories{padding-bottom: 110px;}
+
+.categories h1
+{
+    color: #4a4a4a;
+    margin-top: 44px;
+    margin-bottom: 60px;
+    font-size: 31px;
+}
+
+.categories .btn
+{
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #4a4a4a;
+    background-color: #fff;
+    overflow: hidden;
+    height: 93px;
+    max-width: 360px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 90px
+}
+/* End Categories Section */
+
+/* Start Footer Section */
+
+.footer
+{
+    background-color: #022d46;
+    height: 65px;
+}
+
+.footer a
+{
+    color: #FFF;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding-top: 22.5px;
+}
+
+.footer a:last-child{font-size: 14px;transform: scale(1.1, 1)}
+
+.footer .lead{padding-top: 17px;margin-bottom: 0}
+
+/* End Footer Section */

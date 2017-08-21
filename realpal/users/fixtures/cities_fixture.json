@@ -51,7 +51,7 @@
     "model": "users.city",
     "pk": 7,
     "fields": {
-      "name": "South San Francisco",
+      "name": "South San Fran",
       "state": "CA"
     }
   },
