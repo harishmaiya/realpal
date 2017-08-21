@@ -8,7 +8,7 @@ var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 
 // Static Server + watching scss/html files
-gulp.task('serve', [ 'copy-assets','scripts', 'vendor','vendor-css', 'css', 'imagemin'], function () {
+gulp.task('serve', [ 'copy-assets','scripts','css','vendor', 'imagemin'], function () {
 
   browserSync.init({
     notify: false,
@@ -42,7 +42,7 @@ gulp.task('scripts', function () {
 
 gulp.task('css', function () {
   gulp.src('src/css/*.css')
-    .pipe(concat('style.css'))
+    .pipe(concat('style.min.css'))
     .pipe(cssmin())
     .pipe(gulp.dest('app/css'));
 });
