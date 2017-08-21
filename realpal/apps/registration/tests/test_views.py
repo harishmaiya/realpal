@@ -105,7 +105,7 @@ class RegistrationTest(TestCase):
             },
         }
 
-        # test to see that all views will post correctly
+        # test to see that all views will post incorrectly
         for url_name in data:
             data_to_pass = dict(data[url_name])  # use dict to explicitly convert string to dictionary
             response = self.client.post(self.urls[url_name], data=data_to_pass)
