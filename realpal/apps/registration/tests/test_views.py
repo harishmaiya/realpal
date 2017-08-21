@@ -61,7 +61,8 @@ class RegistrationTest(TestCase):
 
         # test to see that all views will post correctly
         for url_name in self.urls:
-            response = self.client.post(self.urls[url_name], data=data[url_name])
+            data_to_pass = dict(data[url_name])  # use dict to explicitly convert string to dictionary
+            response = self.client.post(self.urls[url_name], data=data_to_pass)
             self.assertEqual(response.status_code, 302)
 
         # test to verify we have one more user
