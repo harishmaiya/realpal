@@ -118,12 +118,12 @@ class CityView(View):
     template_name = 'registration/city.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'city': request.session.get('city', None)}
+        registration_data = {'city': request.session.get('city', '')}
         form = CityForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'city': request.session.get('city', None)}
+        registration_data = {'city': request.session.get('city', '')}
         form = CityForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['city'] = form.cleaned_data['preferred_city']
@@ -209,7 +209,7 @@ class PersonalProfileView(View):
                 house_type=request.session.get('house_type', None),
                 house_age=request.session.get('house_age', None),
                 house_cond=request.session.get('house_condition', None),
-                preferred_city=request.session.get('city', None),
+                preferred_city=request.session.get('city', ''),
                 budget=request.session.get('max_budget', None),
                 current_rent=request.session.get('current_rent', None),
                 how_soon=request.session.get('how_soon', None),

@@ -7,6 +7,10 @@ from realpal.users.constants import *
 class RegistrationTest(TestCase):
     client = Client()
 
+    # here we create this list of keys so we can iterate in this order, the personal profile step must be the last
+    keys = ('purchase_step', 'marital_status', 'first_home', 'house_type', 'city', 'max_budget', 'current_rent',
+            'how_soon', 'personal_profile')
+
     urls = {
         'purchase_step': reverse('register:purchase-step'),
         'marital_status': reverse('register:marital-status'),
@@ -27,7 +31,7 @@ class RegistrationTest(TestCase):
 
     def test_get(self):
         # test to see that all pages are reachable
-        for url_name in self.urls:
+        for url_name in self.keys:
             response = self.client.get(self.urls[url_name])
             self.assertEqual(response.status_code, 200)
 
@@ -42,27 +46,26 @@ class RegistrationTest(TestCase):
             'marital_status': {'status': SC_SI},
             'first_home': {'firsthome': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
-            'city': {'preferred_city': None},
+            'city': {'preferred_city': ''},
             'max_budget': {'budget': 1200.59},
             'current_rent': {'current_rent': 321.49},
             'how_soon': {'how_soon': HS_3},
+            'personal_profile': {
+                'first_name': 'TestFirstName',
+                'last_name': 'TestLastName',
+                'zipcode': '10118',
+                'phone_number': '+263771819478',
+                'email': 'test_email@gmail.com',
+                'password1': 'test_password',
+                'password2': 'test_password',
+            },
         }
-
-        'personal_profile': {
-            'first_name': 'TestFirstName',
-            'last_name': 'TestLastName',
-            'zipcode': '10118',
-            'phone_number': '+263771819478',
-            'email': 'test_email@gmail.com',
-            'password1': 'test_password',
-            'password2': 'test_password',
-        },
 
         # lets get the number of users before saving another
         users_before = User.objects.count()
 
         # test to see that all views will post correctly
-        for url_name in self.urls:
+        for url_name in self.keys:
             data_to_pass = dict(data[url_name])  # use dict to explicitly convert string to dictionary
             response = self.client.post(self.urls[url_name], data=data_to_pass)
             self.assertEqual(response.status_code, 302)
