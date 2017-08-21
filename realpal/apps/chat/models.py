@@ -22,7 +22,6 @@ class Message(models.Model):
     attachment = models.FileField(upload_to=message_attachment, blank=True, null=True)
 
     def __str__(self):
-        return '{timestamp}: sender: {sender}'.format(
-            timestamp=self.formatted_timestamp,
+        return 'sender: {sender}'.format(
             sender=self.sent_by.name,
         )
