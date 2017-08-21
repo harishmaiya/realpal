@@ -46,16 +46,17 @@ class RegistrationTest(TestCase):
             'max_budget': {'budget': 1200.59},
             'current_rent': {'current_rent': 321.49},
             'how_soon': {'how_soon': HS_3},
-            'personal_profile': {
-                'first_name': 'TestFirstName',
-                'last_name': 'TestLastName',
-                'zipcode': '10118',
-                'phone_number': '+263771819478',
-                'email': 'test_email@gmail.com',
-                'password1': 'test_password',
-                'password2': 'test_password',
-            },
         }
+
+        'personal_profile': {
+            'first_name': 'TestFirstName',
+            'last_name': 'TestLastName',
+            'zipcode': '10118',
+            'phone_number': '+263771819478',
+            'email': 'test_email@gmail.com',
+            'password1': 'test_password',
+            'password2': 'test_password',
+        },
 
         # lets get the number of users before saving another
         users_before = User.objects.count()
