@@ -26,7 +26,3 @@ class Message(models.Model):
             timestamp=self.formatted_timestamp,
             sender=self.sent_by.name,
         )
-
-    @property
-    def formatted_timestamp(self):
-        return self.timestamp.strftime('%b %-d %-I:%M %p')
