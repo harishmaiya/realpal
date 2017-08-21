@@ -6,7 +6,7 @@ from channels.auth import channel_session_user_from_http, channel_session_user
 from channels import Group
 import json
 import logging
-from realpal.mainapp.models import Room
+from realpal.apps.chat.models import Room
 
 
 log = logging.getLogger(__name__)
