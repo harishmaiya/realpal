@@ -34,7 +34,7 @@ gulp.task('vendor', function () {
 
 gulp.task('scripts', function () {
   gulp.src('src/js/*.js')
-    .pipe(concat('main.js'))
+    .pipe(concat('main.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('app/js'))
     .pipe(browserSync.reload({stream: true, once: true}));
