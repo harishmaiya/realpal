@@ -1,6 +1,6 @@
 from django.test import Client, TestCase
 from django.urls import reverse
-from realpal.users.models import User, City
+from realpal.users.models import User
 from realpal.users.constants import *
 
 
