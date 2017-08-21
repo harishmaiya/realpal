@@ -48,6 +48,7 @@ class CityForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['preferred_city']
+        widgets = {'preferred_city': forms.Select}
 
 
 class MaxBudgetForm(forms.ModelForm):

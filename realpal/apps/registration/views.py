@@ -4,7 +4,7 @@ from django.views import View
 from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
     HouseAgeForm, \
     HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
-from realpal.users.models import User
+from realpal.users.models import User, City
 
 
 class PurchaseStepView(View):
@@ -118,17 +118,14 @@ class CityView(View):
     template_name = 'registration/city.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'city': request.session.get('city', '')}
-        form = CityForm(initial=registration_data)
+        form = CityForm()
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'city': request.session.get('city', '')}
-        form = CityForm(request.POST or None, initial=registration_data)
-        if form.is_valid():
-            request.session['city'] = form.cleaned_data['preferred_city']
-            return HttpResponseRedirect(reverse('register:max-budget'))
-        return render(request, self.template_name, {'form': form}, status=400)
+        form = CityForm(request.POST)
+        if form.data['preferred_city']:
+            request.session['city'] = form.data['preferred_city']
+        return HttpResponseRedirect(reverse('register:max-budget'))
 
 
 class MaxBudgetView(View):
@@ -196,6 +193,10 @@ class PersonalProfileView(View):
     def post(self, request, *args, **kwargs):
         form = PersonalProfileForm(request.POST or None)
         if form.is_valid():
+            try:
+                city = City.objects.get(id=request.session.get('city', ''))
+            except (ValueError, City.DoesNotExist):
+                city = None
             user = User.objects.create(
                 first_name=form.cleaned_data['first_name'],
                 last_name=form.cleaned_data['last_name'],
@@ -210,7 +211,7 @@ class PersonalProfileView(View):
                 house_type=request.session.get('house_type', None),
                 house_age=request.session.get('house_age', None),
                 house_cond=request.session.get('house_condition', None),
-                preferred_city=request.session.get('city', ''),
+                preferred_city=city,
                 budget=request.session.get('max_budget', None),
                 current_rent=request.session.get('current_rent', None),
                 how_soon=request.session.get('how_soon', None),

@@ -1,6 +1,6 @@
 from django.test import Client, TestCase
 from django.urls import reverse
-from realpal.users.models import User
+from realpal.users.models import User, City
 from realpal.users.constants import *
 
 
@@ -92,7 +92,6 @@ class RegistrationTest(TestCase):
         # now lets test with incorrect data to make sure all these give us 400 status codes,
         # these are the mandatory fields that cannot be skipped
         data = {
-            'city': {'preferred_city': None},
             'max_budget': {'budget': 'TEXT'},  # should be a number
             'personal_profile': {
                 'first_name': 'TestFirstName',
