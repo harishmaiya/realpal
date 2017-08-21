@@ -1,68 +1,66 @@
 {% load staticfiles i18n %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <!-- Internet Explorer meta -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- First mobile meta -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Real Pal - Personal guide for house buying{% endblock title %}</title>
+<head>
+    <meta charset="UTF-8"/>
+    <!-- Internet Explorer meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- First mobile meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Real Pal - Personal guide for house buying{% endblock title %}</title>
 
-        <!--[if lt IE 9]>
-        <script src="js/html5shiv.min.js"></script>
-        <script src="js/respond.min.js"></script>
+    <!--[if lt IE 9]>
         <![endif]-->
 
-        {% block css %}
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <!-- Your stuff: Third-party CSS libraries go here -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {% block css %}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">    <!-- Your stuff: Third-party CSS libraries go here -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+              crossorigin="anonymous">
         <link href="{% static 'css/base_onboarding.css' %}" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700" >
-        {% endblock %}
-        <script src="{% static 'js/jquery-1.12.2.min.js' %}"></script>
+    {% endblock %}
 
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <!-- Start section banner -->
+<!-- Start section banner -->
 
-        <section class="banner back-darkBlue text-center">
-            <div class="container">
-                <div class="row">
-                    <h4 class="sans">REAL PAL</h4>
-                </div>
-            </div>
-        </section>
+<section class="banner back-darkBlue text-center">
+    <div class="container">
+        <div class="row">
+            <h4 class="sans">REAL PAL</h4>
+        </div>
+    </div>
+</section>
 
-        <!-- End section banner -->
+<!-- End section banner -->
 
-      {% block content %}
+{% block content %}
 
-      {% endblock content %}
+{% endblock content %}
 
-        <!-- Start Footer section -->
+<!-- Start Footer section -->
 
-        <section class="footer sans">
-            <div class="container">
-                <div class="row">
-                    <a class="lead pull-left" href="/">Real Pal</a>
-                    <a class="pull-right">PRIVACY</a>
-                </div>
-            </div>
-        </section>
+<section class="footer sans">
+    <div class="container">
+        <div class="row">
+            <a class="lead pull-left" href="/">Real Pal</a>
+            <a class="pull-right">PRIVACY</a>
+        </div>
+    </div>
+</section>
 
-        <!-- End Footer section -->
+<!-- End Footer section -->
 
-      {% block javascript %}
+{% block javascript %}
 
-      <script src="{% static 'js/project.js' %}"></script>
-      <script src="{% static 'js/bootstrap.min.js' %}"></script>
-      <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'app/js/main.js' %}"></script>
+    <script src="{% static 'app/js/vendor/vendor.js' %}"></script>
 
-      {% endblock javascript %}
-    </body>
+{% endblock javascript %}
+</body>
 </html>
