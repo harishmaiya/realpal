@@ -170,7 +170,11 @@
     transition: all .5s ease-in-out;
 }
 
-.learn .btn:hover{background-color: #FFF;color:#b77e66}
+.learn .btn:hover{background-color: #FFF;}
+
+.learn .btn a{color: #FFF; text-decoration: none}
+ 
+.learn .btn a:hover{color: #b77e66!important;}
 
 @media(max-width:800px){
 
