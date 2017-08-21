@@ -5,7 +5,7 @@ import logging
 from realpal.apps.chat.models import Room, Message
 
 
-log = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 @channel_session_user_from_http
