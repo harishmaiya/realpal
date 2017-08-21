@@ -21,9 +21,13 @@ $(document).ready(function () {
             
             $(".sub-nav").addClass("fixed");
             
+            $(".sub-nav").removeClass("back-beige");
+            
         } else {
             
             $(".sub-nav").removeClass("fixed");
+            
+            $(".sub-nav").addClass("back-beige");
         };
        
        // coloring the first circle
@@ -40,7 +44,7 @@ $(document).ready(function () {
        
        // coloring the second circle
        
-       if ($(this).scrollTop() >= 1015) {
+       if ($(this).scrollTop() >= 1148) {
             
             $(".no2").addClass("active-r");
             
@@ -52,7 +56,7 @@ $(document).ready(function () {
        
        //coloring the third circle
        
-       if ($(this).scrollTop() >= 1200) {
+       if ($(this).scrollTop() >= 1500) {
             
             $(".no3").addClass("active-l");
             
@@ -62,9 +66,33 @@ $(document).ready(function () {
             
         }
        
+       //coloring the forth circle
+       
+       if ($(this).scrollTop() >= 1900) {
+            
+            $(".no4").addClass("active-l");
+            
+        }else{
+            
+            $(".no4").removeClass("active-l")
+            
+        }
+       
+       //coloring the fifth circle
+       
+       if ($(this).scrollTop() >= 2300) {
+            
+            $(".no5").addClass("active-l");
+            
+        }else{
+            
+            $(".no5").removeClass("active-l")
+            
+        }
+       
        // coloring the timeline while scolling
        
-       var percent = ($(window).scrollTop() - $(".no1").offset().top)/3;
+       var percent = ($(window).scrollTop() - $(".no1").offset().top)/17;
        
        
        console.log(percent + "%");
