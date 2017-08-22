@@ -9,15 +9,14 @@
             <div class="container">
                 <h1 class="textSerif">What step are you in?</h1>
 
-              <a href="onboarding/prepare/profile">
-                <div class="btn sans center-block">Decide & prepare</div>
-              </a>
-                <div class="btn sans center-block">Evaluate & put an offer</div>
-                <div class="btn sans center-block">Home owner benefits</div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Next</button>
+                </form>
+
 
             </div>
         </section>
-
         <!-- End Categories section -->
-
 {% endblock %}
