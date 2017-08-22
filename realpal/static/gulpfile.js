@@ -16,7 +16,7 @@ gulp.task('serve', [ 'copy-assets','scripts','sass','vendor', 'imagemin'], funct
     proxy: 'localhost:8000',
     open: false
   });
-  gulp.watch('src/scss/**/*.scss', ['sass']);
+  gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('../templates/**/*.html', browserSync.reload);
   gulp.watch('src/js/*.js').on('change', browserSync.reload);
 });
@@ -43,6 +43,7 @@ gulp.task('scripts', function () {
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function () {
   return gulp.src('src/sass/*.scss')
+    .pipe(concat('main.min.css'))
     .pipe(sass({outputStyle: 'compressed'}, {errLogToConsole: true}))
     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
 

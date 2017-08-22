@@ -1,16 +1,5 @@
 /* Start Workframe */
 
-html,body{overflow-x: hidden}
-
-.brown{color:#A52A2A}
-.navy{color:#232F39}
-.beige{color:#F9F2ED}
-.back-brown{background-color:#A52A2A}
-.back-navy{background-color:#232F39}
-.back-beige{background-color:#F9F2ED}
-
-.bold{font-weight: bold}
-
 @media (min-width: 1200px){
     
     .container 
@@ -33,8 +22,6 @@ html,body{overflow-x: hidden}
     transition: all .5s ease-in-out;
     display: none
 }
-
-.sans{font-family: 'Open Sans', sans-serif;}
 
 /* End Workframe */
 
