@@ -44,10 +44,10 @@ html,body{overflow-x: hidden}
 
 
 
-.brown{color:#B77E66}
+.brown{color:#A52A2A}
 .navy{color:#232F39}
 .beige{color:#F9F2ED}
-.back-brown{background-color:#B77E66}
+.back-brown{background-color:#A52A2A}
 .back-navy{background-color:#232F39}
 .back-beige{background-color:#F9F2ED}
 
@@ -62,7 +62,7 @@ html,body{overflow-x: hidden}
 
 }
 
-.h1{font-size: 48px;font-family: 'BentonSans Book', Fallback, sans-serif; letter-spacing: .5}
+.h1{letter-spacing: .5}
 
 .overlay{
   position: absolute;
@@ -78,9 +78,8 @@ html,body{overflow-x: hidden}
   display: none
 }
 
-.textSerif{font-family:'BentonSans Book', Fallback, sans-serif;font-weight: 300;}
+.textSerif{font-weight: 300;}
 
-.sans{font-family: 'BentonSans Bold', Fallback, sans-serif;}
 
 /* End Workframe */
 
@@ -124,7 +123,7 @@ html,body{overflow-x: hidden}
   transition: color .1s cubic-bezier(.55,.09,.68,.53);
 }
 
-.navbar .collapse ul li a:hover{color: #B77E66;background: none}
+.navbar .collapse ul li a:hover{color: #A52A2A;background: none}
 
 .navbar .collapse ul .dropdown-menu
 {
@@ -143,7 +142,7 @@ html,body{overflow-x: hidden}
   padding: 11px 30px;
 }
 
-.navbar .collapse ul .btn:hover{background-color:#a5725d;}
+.navbar .collapse ul .btn:hover{background-color:#A52A2A;}
 
 .navbar .collapse ul .btn a{padding: 0;color: #FFF;}
 
