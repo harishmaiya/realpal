@@ -50,13 +50,6 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('vendor-css', function () {
-  gulp.src('src/css/vendor/*.css')
-    .pipe(concat('vendor.css'))
-    .pipe(cssmin())
-    .pipe(gulp.dest('app/css/vendor'));
-});
-
 gulp.task('imagemin', function () {
     gulp.src('src/images/**/*')
       .pipe(imagemin([
