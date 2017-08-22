@@ -1,0 +1,55 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+    <link href="{% static 'css/onboarding_combo_options.css' %}" rel="stylesheet"/>
+
+    <!-- Start Categories section -->
+
+    <section class="categories text-center">
+        <div class="container">
+            <div class="header">
+                <h1 class="domine">House Choices</h1>
+                <h3 class="droid">Tax rebates, mortgage rates vary upon this</h3>
+            </div>
+            <form action="" method="post" class="options">
+                {% csrf_token %}
+
+                <div class="question row">
+                    <h2 class="domine text-center">Type of house</h2>
+                    <div class="col-sm-6">
+                        <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
+                    </div>
+                    <div class="col-sm-6">
+                        {{ house_type_form.as_p }}
+                    </div>
+                </div>
+
+                <div class="question row">
+                    <h2 class="domine text-center">Age of house</h2>
+                    <div class="col-sm-6">
+                        <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
+                    </div>
+                    <div class="col-sm-6">
+                        {{ house_age_form.as_p }}
+                    </div>
+                </div>
+
+                <div class="question row">
+                    <h2 class="domine text-center">Condition of house</h2>
+                    <div class="col-sm-6">
+                        <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
+                    </div>
+                    <div class="col-sm-6 condition">
+                        {{ house_condition_form.as_p }}
+                    </div>
+                </div>
+
+                <button class="next center-block droid" type="submit">Next</button>
+                <a href="{% url 'register:city' %}">
+                    <button class="skip">Skip this step</button>
+                </a>
+            </form>
+
+        </div>
+    </section>
+{% endblock %}
