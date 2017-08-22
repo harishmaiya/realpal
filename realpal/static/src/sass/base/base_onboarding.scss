@@ -51,7 +51,7 @@ html,body{overflow-x: hidden;color:#4a4a4a; height: 100%}
 .footer{background-color:#022d46; height:65px; margin-top:-65px}
 
 .footer a
-{   
+{
     color: #FFF;
     text-decoration: none;
     letter-spacing: 1px;
@@ -63,3 +63,11 @@ html,body{overflow-x: hidden;color:#4a4a4a; height: 100%}
 .footer .lead{padding-top: 17px;margin-bottom: 0}
 
 /* End Footer Section */
+@import "../onboarding/onboarding";
+@import "../onboarding/onboarding_combo_options";
+@import "../onboarding/onboarding_grid_options";
+@import "../onboarding/onboarding_inputbox";
+@import "../onboarding/onboarding_list_icons";
+@import "../onboarding/onboarding_list_options";
+@import "../onboarding/onboarding_timeline";
+@import "../onboarding/onboarding_yesno";
