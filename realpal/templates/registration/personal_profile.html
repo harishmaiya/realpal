@@ -1,0 +1,29 @@
+{% extends "base_onboarding.html" %}
+{% load widget_tweaks %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<link href="{% static 'css/sign-up.css' %}" rel="stylesheet"/>
+
+<section class="categories text-center">
+    <div class="container">
+        <div class="header">
+        <h1 class="domine">You're almost done</h1>
+        <h3 class="droid">Complete your profile to get started with Real Pal.</h3>
+        </div>
+    </div>
+    <div class="row">
+
+    <form role="form" class="signup" id="signup_form" method="post" action="">
+      {% csrf_token %}
+        {{ form.as_p }}
+      <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

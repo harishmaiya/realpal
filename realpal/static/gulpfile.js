@@ -8,7 +8,7 @@ var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 
 // Static Server + watching scss/html files
-gulp.task('serve', [ 'copy-assets','scripts','css','vendor', 'imagemin'], function () {
+gulp.task('serve', [ 'copy-assets','scripts','sass','vendor', 'imagemin'], function () {
 
   browserSync.init({
     notify: false,
@@ -16,7 +16,7 @@ gulp.task('serve', [ 'copy-assets','scripts','css','vendor', 'imagemin'], functi
     proxy: 'localhost:8000',
     open: false
   });
-
+  gulp.watch('src/scss/**/*.scss', ['sass']);
   gulp.watch('../templates/**/*.html', browserSync.reload);
   gulp.watch('src/js/*.js').on('change', browserSync.reload);
 });
@@ -40,12 +40,16 @@ gulp.task('scripts', function () {
     .pipe(browserSync.reload({stream: true, once: true}));
 });
 
-gulp.task('css', function () {
-  gulp.src('src/css/*.css')
-    .pipe(concat('style.min.css'))
-    .pipe(cssmin())
-    .pipe(gulp.dest('app/css'));
+// Compile sass into CSS & auto-inject into browsers
+gulp.task('sass', function () {
+  return gulp.src('src/sass/*.scss')
+    .pipe(sass({outputStyle: 'compressed'}, {errLogToConsole: true}))
+    .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
+
+    .pipe(gulp.dest('app/css'))
+    .pipe(browserSync.stream());
 });
+
 gulp.task('vendor-css', function () {
   gulp.src('src/css/vendor/*.css')
     .pipe(concat('vendor.css'))
