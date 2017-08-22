@@ -59,6 +59,9 @@ LOCAL_APPS = [
     'realpal.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'realpal.mainapp.apps.MainappConfig',
+    # the app that deals with registration
+    'realpal.apps.registration',
+
     'realpal.apps.chat.apps.ChatConfig'
 ]
 

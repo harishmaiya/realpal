@@ -5,6 +5,12 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import RegexValidator
 from realpal.users.constants import *
+import uuid
+
+
+class City(models.Model):
+    name = models.CharField(max_length=60)
+    state = models.CharField(max_length=40)
 
 
 @python_2_unicode_compatible
@@ -37,6 +43,8 @@ class User(AbstractUser):
 
     house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, null=True)
 
+    preferred_city = models.ForeignKey(City, blank=True, null=True)
+
     budget = models.FloatField(blank=True, null=True)
 
     current_rent = models.FloatField(blank=True, null=True)
@@ -54,9 +62,7 @@ class User(AbstractUser):
         return reverse('users:detail', kwargs={'username': self.username})
 
 
-class City(models.Model):
-    name = models.CharField(max_length=60)
-    state = models.CharField(max_length=40)
-    interested_users = models.ForeignKey(
-        User, related_name='cities', null=True
-    )
+class PasswordReset(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    uuid = models.CharField(max_length=64, verbose_name=u"Activation key", default=uuid.uuid1)
+    date_created = models.DateField(auto_now_add=True)
