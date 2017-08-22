@@ -64,25 +64,3 @@ html,body{overflow-x: hidden}
     line-height: 90px
 }
 /* End Categories Section */
-
-/* Start Footer Section */
-
-.footer
-{
-    background-color: #022d46;
-    height: 65px;
-}
-
-.footer a
-{
-    color: #FFF;
-    text-decoration: none;
-    letter-spacing: 1px;
-    padding-top: 22.5px;
-}
-
-.footer a:last-child{font-size: 14px;transform: scale(1.1, 1)}
-
-.footer .lead{padding-top: 17px;margin-bottom: 0}
-
-/* End Footer Section */
