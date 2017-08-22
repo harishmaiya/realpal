@@ -4,7 +4,7 @@
 
 .header .container {width: 100%;padding: 0}
 
-.header .row .prepare{padding: 0; background:url('../images/prepare.png') no-repeat 75% 50%}
+.header .row .prepare{padding: 0; background:url('../images/prepare.jpg') no-repeat 75% 50%}
 
 .header .row .purchase{padding: 0; background:url('../images/signature.jpeg') no-repeat center}
 
@@ -144,8 +144,6 @@
 /* Start Learn About Section */
 
 .learn{color: #FFF;padding: 40px 0 45px}
-
-.learn .container{width: 960px}
 
 .learn .h1{margin: 0 30px 0 0;
     font-size: 55px;
