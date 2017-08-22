@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
 from .views import PurchaseStepView, MaritalStatusView, FirstHomeView,\
-    HouseTypeView, CityView, MaxBudgetView, CurrentRentView, HowSoonView, PersonalProfileView
+    HouseTypeView, CityView, MaxBudgetView, CurrentRentView, HowSoonView, PersonalProfileView, ActivateAccout
 
 urlpatterns = [
     url(r'^purchase-step$', PurchaseStepView.as_view(), name='purchase-step'),
@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^current-rent$', CurrentRentView.as_view(), name='current-rent'),
     url(r'^how-soon$', HowSoonView.as_view(), name='how-soon'),
     url(r'^personal-profile$', PersonalProfileView.as_view(), name='personal-profile'),
+    url(r'^activate$', ActivateAccout.as_view(), name='activate-account'),
     url(
         r'^activation-error$',
         TemplateView.as_view(template_name='registration/activation_error.html'),

@@ -1,11 +1,15 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import RegexValidator
 from realpal.users.constants import *
+from django.core.mail import EmailMultiAlternatives
 import uuid
+from django.template import loader
+from django.utils.html import strip_tags
 
 
 class City(models.Model):
@@ -60,6 +64,54 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
+
+    def send_confirmation_email(self):
+        token = PasswordReset.objects.create(user=self)
+        link = settings.BASE_URL + reverse('register:activate-account', kwargs={'uuid': token.uuid})
+
+        context = {
+            'activation_link': link,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'subject': settings.EMAIL_SUBJECT_PREFIX,
+        }
+
+        template = 'register/activation_email.html'
+
+        msg = EmailMultiAlternatives(
+            subject=settings.EMAIL_SUBJECT_PREFIX,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[self.email],
+            headers={"Reply-To:": settings.DEFAULT_FROM_EMAIL}
+        )
+        self.send_email(context, msg, template)
+
+    def send_welcome_email(self):
+
+        context = {
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'subject': settings.EMAIL_SUBJECT_PREFIX,
+        }
+        template = 'register/welcome_email.html'
+
+        msg = EmailMultiAlternatives(
+            subject=settings.EMAIL_SUBJECT_PREFIX,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[self.email],
+            headers={"Reply-To:": settings.DEFAULT_FROM_EMAIL}
+        )
+        self.send_email(context, msg, template)
+
+    def send_email(self, context, msg, template):
+        email_html = loader.get_template(template).render(context)
+        email_txt = strip_tags(email_html)
+        msg.body = email_txt
+        msg.attach_alternative(email_html, 'text/html')
+        try:
+            msg.send(fail_silently=False)
+        except Exception as er:
+            None
 
 
 class PasswordReset(models.Model):
