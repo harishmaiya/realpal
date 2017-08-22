@@ -24,12 +24,6 @@ class RegistrationTest(TestCase):
         'personal_profile': reverse('register:personal-profile'),
     }
 
-    def setUp(self):
-        super().setUp()
-
-    def tearDown(self):
-        super().tearDown()
-
     def test_get(self):
         # test to see that all pages are reachable
         for url_name in self.keys:
