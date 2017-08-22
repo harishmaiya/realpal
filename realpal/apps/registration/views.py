@@ -4,7 +4,7 @@ from django.views import View
 from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
     HouseAgeForm, \
     HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
-from realpal.users.models import User, City
+from realpal.users.models import User, City, PasswordReset
 
 
 class PurchaseStepView(View):
@@ -216,9 +216,32 @@ class PersonalProfileView(View):
                 current_rent=request.session.get('current_rent', None),
                 how_soon=request.session.get('how_soon', None),
 
+                is_active=False
+
             )
             user.set_password(form.cleaned_data['password1'])
             user.save()
 
             return HttpResponse('Well Done on finishing registration', status=302)
         return render(request, self.template_name, {'form': form}, status=400)
+
+
+class ConfirmRegistrationLink(View):
+    def get(self, request, *args, **kwargs):
+        uuid = kwargs.get('uuid', '')
+        instance = PasswordReset.objects.filter(uuid=uuid)
+        if not instance.count() == 1:
+            return HttpResponseRedirect('register:activation-error')
+        user = instance[:1].get().user
+        user.is_active = True
+        user.save()
+        instance.delete()
+        user.send_welcome_email()
+        return render(
+            request,
+            'register/activation-success.html',
+            {
+                'success': 'Congratulations, you have registered successfully'
+            },
+            status=200
+        )
