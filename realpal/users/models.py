@@ -5,6 +5,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import RegexValidator
 from realpal.users.constants import *
+import uuid
 
 
 class City(models.Model):
@@ -59,3 +60,9 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
+
+
+class PasswordReset(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    uuid = models.CharField(max_length=64, verbose_name=u"Activation key", default=uuid.uuid1)
+    date_created = models.DateField(auto_now_add=True)
