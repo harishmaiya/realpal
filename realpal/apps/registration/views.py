@@ -240,7 +240,7 @@ class ActivateAccount(View):
         user.send_welcome_email()
         return render(
             request,
-            'register/activation-success.html',
+            'registration/activation-success.html',
             {
                 'success': 'Congratulations, you have registered successfully'
             },

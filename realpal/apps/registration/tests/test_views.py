@@ -92,7 +92,7 @@ class RegistrationTest(TestCase):
         self.assertEqual(len(mail.outbox), 1)
 
         # Verify that the subject of the first message is correct.
-        self.assertEqual(mail.outbox[0].subject, settings.ACTIVATION_EMAIL_SUBJECT)
+        self.assertEqual(mail.outbox[0].subject, settings.EMAIL_SUBJECT_PREFIX)
 
         # test to see if a password reset object for the new user was created
         instances = PasswordReset.objects.filter(user=user)
