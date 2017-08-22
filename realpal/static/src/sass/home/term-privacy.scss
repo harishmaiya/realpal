@@ -1,62 +1,6 @@
-/* These styles are generated from project.scss. */
-
-/* Fonts */
-
-@font-face {
-    font-family: 'BentonSans Bold';
-    font-weight: bold;
-    src: url("../assets/fonts/bentonsans-bold-webfont.woff") format("woff");
-}
-
-@font-face {
-    font-family: 'BentonSans Book';
-    src: url("../assets/fonts/bentonsans-light-webfont.woff") format("woff");
-}
-
-
-.alert-debug {
-  color: black;
-  background-color: white;
-  border-color: #d6e9c6;
-}
-
-.alert-error {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
-}
-
-/* This is a fix for the bootstrap4 alpha release */
-@media (max-width: 47.9em) {
-  .navbar-nav .nav-item {
-    float: none;
-    width: 100%;
-    display: inline-block;
-  }
-
-  .navbar-nav .nav-item + .nav-item {
-    margin-left: 0;
-  }
-
-  .nav.navbar-nav.pull-xs-right {
-    float: none !important;
-  }
-}
-
-/* Display django-debug-toolbar.
-   See https://github.com/django-debug-toolbar/django-debug-toolbar/issues/742
-   and https://github.com/pydanny/cookiecutter-django/issues/317
-*/
-[hidden][style="display: block;"] {
-  display: block !important;
-}
-
-
 /* Start Workframe */
 
 html,body{overflow-x: hidden}
-
-body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 
 .brown{color:#A52A2A}
 .navy{color:#232F39}
@@ -68,15 +12,13 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 .bold{font-weight: bold}
 
 @media (min-width: 1200px){
-
-    .container
+    
+    .container 
     {
         width: 1249px;
     }
 
 }
-
-.h1{font-size: 48px;font-family: 'BentonSans Book', Fallback, sans-serif; letter-spacing: .5}
 
 .overlay{
     position: absolute;
@@ -92,9 +34,9 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
     display: none
 }
 
-.textSerif{font-family:'BentonSans Book', Fallback, sans-serif;font-weight: 300;}
+.textSerif{font-family: 'Domine', serif; font-weight: 300;}
 
-.sans{font-family: 'BentonSans Bold', Fallback, sans-serif;}
+.sans{font-family: 'Open Sans', sans-serif;}
 
 /* End Workframe */
 
@@ -103,7 +45,7 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 .navbar{
     background-color: #fafafa;
     position: absolute;
-    min-height: 80px
+    min-height: 80px    
 }
 
 .navbar .navbar-header .navbar-brand{
@@ -130,15 +72,16 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 
 .navbar .collapse ul li a{
     font-size: 16px;
+    font-weight: 400;
     letter-spacing: .5px ;
     background:none;
-    -webkit-transition: color .1s cubic-bezier(.55,.09,.68,.53);
-    -moz-transition: color .1s cubic-bezier(.55,.09,.68,.53);
-    -o-transition: color .1s cubic-bezier(.55,.09,.68,.53);
-    transition: color .1s cubic-bezier(.55,.09,.68,.53);
+    -webkit-transition: color .1s cubic-bezier(.55,.09,.68,.53);    
+    -moz-transition: color .1s cubic-bezier(.55,.09,.68,.53);    
+    -o-transition: color .1s cubic-bezier(.55,.09,.68,.53);    
+    transition: color .1s cubic-bezier(.55,.09,.68,.53);    
 }
 
-.navbar .collapse ul li a:hover{color: #A52A2A;background: none}
+.navbar .collapse ul li a:hover{color: #B77E66;background: none}
 
 .navbar .collapse ul .dropdown-menu
 {
@@ -151,19 +94,65 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 .navbar .collapse ul .dropdown-menu li:not(:last-child) a{margin: 0 0 10px}
 
 .navbar .collapse ul .btn{
-    margin-top: 4px;
+    margin-top: 6px;
     border: 0;
     border-radius: 50px;
-    padding: 11px 30px;
+    padding: 10px 27.6px;
 }
 
-.navbar .collapse ul .btn:hover{background-color:#A52A2A;}
+.navbar .collapse ul .btn:hover{background-color:#a5725d;}
 
 .navbar .collapse ul .btn a{padding: 0;color: #FFF;}
 
 .navbar .collapse ul .btn a:hover{color: #FFF;}
 
 /* End Navbar */
+
+/* Start Text Section */
+
+.text{padding-top: 60px;text-align: left;color: #4a4a4a}
+
+.text .container{padding-bottom: 40px!important;}
+
+.text h1{font-size: 42px;line-height: 48px;font-weight: bold;margin: 0}
+
+.text p{font-size: 16px;}
+
+.text a{color: #4a4a4a; border-bottom: 1px solid #b77d64;text-decoration: none}
+
+.text a:hover{text-decoration: none}
+
+.text h3
+{
+    font-size: 21px;
+    line-height: 28px;
+}
+
+.text ul
+{
+    list-style-type: circle;
+    font-size: 16px;
+    padding-left: 20px
+}
+
+.text h4{font-size: 18px;}
+
+
+/* End Text Section */
+
+/* Start nesting */
+
+.text h3, .text h4{font-weight: 400}
+
+.text p, .text h3, .text ul, .text h4
+{
+    font-weight: 300;
+    margin: 1em 0;
+}
+
+.text p, .text ul, .text h4{ line-height: 24px;}
+
+/* End nesting */
 
 /* Start Ultimate Footer Section */
 
@@ -176,7 +165,11 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 
 .footer a:hover{color: #FFF}
 
-.footer li{font-size: 17px}
+.footer h3{font-size: 29px;line-height: 38px;; margin: 30px 0 20px}
+
+.footer li{margin-bottom: 10px}
+
+.footer li a{font-size: 16px;line-height: 1;letter-spacing: .5px;color: #FFF}
 
 .footer .contact-info .media {margin-top: 18px;}
 
@@ -201,6 +194,8 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
     border-top: 1px solid #fafafa
 }
 
+.footer .copyright .social span {font-size: 17px}
+
 .footer .copyright .social .social-icons{display: inline-block}
 
 
@@ -213,11 +208,7 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
     height: 35px;
     line-height: 35px;
     display: inline-block
-
-}
-
-.main {
-    flex: 1;
+    
 }
 
 .footer .copyright .terms{display: inline-block;line-height: 40px}
@@ -230,9 +221,9 @@ body{font-family: 'BentonSans Book', Fallback, sans-serif;}
 }
 
 @media(max-width:992px){
-
+    
     .footer .contact{margin-top: 30px;float: left}
-
+    
 }
 
 /* End Ultimate Footer Section */

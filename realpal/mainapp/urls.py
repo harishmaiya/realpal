@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(
         r'^$',
-        TemplateView.as_view(template_name='pages/home.html'),
+        TemplateView.as_view(template_name='home/home.html'),
         name='home'
     ),
     url(
@@ -25,12 +25,12 @@ urlpatterns = [
     ),
     url(
         r'^aboutus$',
-        TemplateView.as_view(template_name='mainapp/aboutus.html'),
+        TemplateView.as_view(template_name='mainapp/about-us.html'),
         name='aboutus'
     ),
     url(
         r'^prepare$',
-        TemplateView.as_view(template_name='pages/how-it-works.html'),
+        TemplateView.as_view(template_name='home/how-it-works.html'),
         name='prepare'
     ),
     url(

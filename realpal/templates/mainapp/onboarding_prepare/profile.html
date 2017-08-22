@@ -1,0 +1,57 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+        <link href="{% static 'css/onboarding_list_options.scss' %}" rel="stylesheet"/>
+
+        <!-- Start Categories section -->
+
+        <section class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">Your Profile</h1>
+                    <h3 class="droid">Helps us understand and serve you better</h3>
+                </div>
+                <div class="button-select">
+                    <button class="btn center-block" data-val="SI">
+                    <a href="{% url 'mainapp:prepare-firsttime' %}" >
+                        <p class="status droid">Single</p>
+                        <p class="description domine">Steady income</p>
+                    </a>
+                    </button>
+                    <button class="btn center-block" data-val="MNK">
+                    <a href="{% url 'mainapp:prepare-firsttime' %}">
+                        <p class="status droid">Married</p>
+                        <p class="description domine">No kid(s) in school</p>
+                    </a>
+                    </button>
+                    <button class="btn center-block" data-val="MNSK">
+                    <a href="{% url 'mainapp:prepare-firsttime' %}">
+                        <p class="status droid">Married</p>
+                        <p class="description domine">School going kid(s)</p>
+                    </a>
+                    </button>
+                    <button class="btn center-block" data-val="MSK">
+                    <a href="{% url 'mainapp:prepare-firsttime' %}">
+                        <p class="status droid">Investing</p>
+                        <p class="description domine">For cashflow</p>
+                    </a>
+                    </button>
+                </div>
+                <a href="{% url 'mainapp:prepare-firsttime' %}">
+                <button class="skip">Skip this step</button>
+                </a>
+            </div>
+        </section>
+
+        <!-- End Categories section -->
+
+        <script>
+        $(".btn").on("click", function(){
+            localStorage.status = $(this).attr('data-val');
+        });
+
+        $(".skip").on("click", function(){
+            localStorage.status = "";
+        });
+        </script>
+{% endblock %}
