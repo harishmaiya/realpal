@@ -106,7 +106,7 @@ class RegistrationTest(TestCase):
         # test to see if the activation link will work
         activation_url = reverse('register:activate-account', kwargs={'uuid': instance.uuid})
         self.assertEqual(self.client.get(activation_url).status_code, 200)
-        self.assertTemplateUsed('register/activation-success.html')
+        self.assertTemplateUsed('register/activation_success.html')
 
         # now lets see if the user actually is active
         user = User.objects.get(id=user.id)
