@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     # Your stuff: custom urls includes go here
     url(r'^', include('realpal.mainapp.urls', namespace='mainapp')),
-
+    url(r'^chat/', include('realpal.apps.chat.urls', namespace='chat')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -11,7 +11,11 @@
         <div class="collapse navbar-collapse" id="our-navbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="navy sans" href="#">Locations</a></li>
-                <li><a class="navy sans" href="{% url 'users:messenger' %}">Sign In</a></li>
+                {% if user.is_anonymous %}
+                <li><a class="navy sans" href="{% url 'chat:login' %}">Sign In</a></li>
+                {% else %}
+                <li><a class="text-danger sans" href="{% url 'chat:logout' %}">Sign Out</a></li>
+                {% endif %}
                 <li class="btn back-brown sans"><a href="onboarding">Get Started</a></li>
             </ul>
         </div>
