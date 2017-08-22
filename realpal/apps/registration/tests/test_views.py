@@ -83,6 +83,9 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.email, data['personal_profile']['email'])
         self.assertEqual(user.zipcode, data['personal_profile']['zipcode'])
 
+        # let make sure this user was saved as is_active =  False
+        self.assertEqual(user.is_active, False)
+
         # now lets test with incorrect data to make sure all these give us 400 status codes,
         # these are the mandatory fields that cannot be skipped
         data = {
