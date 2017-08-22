@@ -62,7 +62,7 @@ html,body{overflow-x: hidden}
 
 }
 
-.h1{font-size: 48px;font-family: 'BentonSans Book', Fallback, sans-serif; letter-spacing: .5}
+.h1{letter-spacing: .5}
 
 .overlay{
   position: absolute;
@@ -78,9 +78,8 @@ html,body{overflow-x: hidden}
   display: none
 }
 
-.textSerif{font-family:'BentonSans Book', Fallback, sans-serif;font-weight: 300;}
+.textSerif{font-weight: 300;}
 
-.sans{font-family: 'BentonSans Bold', Fallback, sans-serif;}
 
 /* End Workframe */
 
