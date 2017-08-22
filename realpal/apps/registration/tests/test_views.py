@@ -61,6 +61,9 @@ class RegistrationTest(TestCase):
         # lets get the number of users before saving another
         users_count = User.objects.count()
 
+        # test to see if there are no messages in the outbox before we start saving the new user
+        self.assertEqual(len(mail.outbox), 1)
+
         # test to see that all views will post correctly
         for url_name in self.keys:
             data_to_pass = dict(data[url_name])  # use dict to explicitly convert string to dictionary
@@ -85,11 +88,8 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.email, data['personal_profile']['email'])
         self.assertEqual(user.zipcode, data['personal_profile']['zipcode'])
 
-        # lets get the length of the outbox first
-        outbox_length = len(mail.outbox)
-
         # test to see if there is now a new message in the outbox
-        self.assertEqual(len(mail.outbox), outbox_length+1)
+        self.assertEqual(len(mail.outbox), 1)
 
         # Verify that the subject of the first message is correct.
         self.assertEqual(mail.outbox[0].subject, settings.ACTIVATION_EMAIL_SUBJECT)

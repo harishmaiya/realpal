@@ -227,7 +227,7 @@ class PersonalProfileView(View):
         return render(request, self.template_name, {'form': form}, status=400)
 
 
-class ActivateAccout(View):
+class ActivateAccount(View):
     def get(self, request, *args, **kwargs):
         uuid = kwargs.get('uuid', '')
         instance = PasswordReset.objects.filter(uuid=uuid)
