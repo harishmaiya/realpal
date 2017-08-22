@@ -62,7 +62,7 @@ class RegistrationTest(TestCase):
         users_count = User.objects.count()
 
         # test to see if there are no messages in the outbox before we start saving the new user
-        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(len(mail.outbox), 0)
 
         # test to see that all views will post correctly
         for url_name in self.keys:
