@@ -82,19 +82,19 @@
     <!-- End Benefits  Section -->
 
     <!-- Start Learn About Section -->
-
-    <section class="learn back-brown text-center">
+    <section class="learn back-brown">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h2 class="h1 textSerif">Learn more about how<br> Real Pal works</h2>
-                </div>
-                <div class="col-md-3">
-                    <button class="btn back-brown sans"><a href="{% url 'mainapp:onboarding' %}">Get Started</a>
-                    </button>
+            <div class="box row ">
+                <div class="col-md-12">
+                    <div class="box col-md-8">
+                        <h2 class="textSerif">Learn more about how Real Pal works</h2>
+                    </div>
+                    <div class="box col-md-4">
+                        <button class="btn back-brown sans"><a href="{% url 'register:purchase-step' %}">Get Started</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
 {% endblock %}
