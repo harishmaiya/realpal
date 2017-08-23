@@ -42,9 +42,12 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         'personal_profile_form': PersonalProfileForm,
     }
 
+    def get_initial(self):
+        return model_to_dict(self.get_object())
+
     def get_context_data(self, **kwargs):
         for form in self.forms:
-            self.forms[form].initial = model_to_dict(self.get_object())
+            self.forms[form](initial=model_to_dict(self.get_object()))
         self.form_class.initial = model_to_dict(self.get_object())
         context = super(UserUpdateView, self).get_context_data(**kwargs)
         context.update(self.forms)
