@@ -30,11 +30,12 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     form_class = PurchaseStepForm  # this will be the default form that is submitted by default
     forms = {
+        'purchase_step_form': PurchaseStepForm,
         'marital_status_form': MaritalStatusForm,
         'first_home_form': FirstHomeForm,
         'house_type_form': HouseTypeForm,
         'house_age_form': HouseAgeForm,
-        'House_condition_form': HouseConditionForm,
+        'house_condition_form': HouseConditionForm,
         'city_form': CityForm,
         'max_budget_form': MaxBudgetForm,
         'current_rent_form': CurrentRentForm,
@@ -44,8 +45,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserUpdateView, self).get_context_data(**kwargs)
-        for form in self.forms:
-            context[form] = self.forms[form]
+        context.update(self.forms)
         return context
 
     def get_object(self):
@@ -57,11 +57,11 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     def post(self, request, *args, **kwargs):
         for form in self.forms:
             if form in request.POST:
-                form_class = self.get_form_class()
+                form_class = self.forms[form]
                 form_name = form
                 break
 
-        form = self.get_form(form_class)
+        form = self.forms[form](request.POST)
 
         if form.is_valid():
             form.save()
