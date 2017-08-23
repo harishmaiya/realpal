@@ -8,5 +8,5 @@ from .views import UserUpdateView
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home/home.html'), name='home'),
     url(r'^messenger$', TemplateView.as_view(template_name='users/messenger.html'), name='messenger'),
-    url(r'^edit$', view=UserUpdateView.as_view(), name='edit-purchase-step'),
+    url(r'^edit$', view=UserUpdateView.as_view(), name='edit'),
 ]

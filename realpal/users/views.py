@@ -27,8 +27,8 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
-
     form_class = PurchaseStepForm  # this will be the default form that is submitted by default
+    success_url = '/'
     forms = {
         'purchase_step_form': PurchaseStepForm,
         'marital_status_form': MaritalStatusForm,
@@ -51,26 +51,14 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     def get_object(self):
         return self.request.user
 
-    def form_invalid(self, **kwargs):
-        return self.render_to_response(self.get_context_data(**kwargs))
-
     def post(self, request, *args, **kwargs):
+
         for form in self.forms:
             if form in request.POST:
-                form_class = self.forms[form]
-                form_name = form
+                self.form_class = self.forms[form]
                 break
+        return super(UserUpdateView, self).post(self, request, *args, **kwargs)
 
-        form = self.forms[form](request.POST)
-
-        if form.is_valid():
-            form.save()
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(**{form_name: form})
-
-    def get_success_url(self):
-        return HttpResponse('Profile Updated successfully')
 
 
 class UserListView(LoginRequiredMixin, ListView):
