@@ -1,5 +1,6 @@
-from django.shortcuts import HttpResponse, reverse, get_object_or_404
+from django.shortcuts import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from django.forms.models import model_to_dict
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -28,7 +29,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
     form_class = PurchaseStepForm  # this will be the default form that is submitted by default
-    success_url = '/'
+    success_url = '/users/edit'
     forms = {
         'purchase_step_form': PurchaseStepForm,
         'marital_status_form': MaritalStatusForm,
@@ -42,6 +43,9 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     }
 
     def get_context_data(self, **kwargs):
+        for form in self.forms:
+            self.forms[form].initial = model_to_dict(self.get_object())
+        self.form_class.initial = model_to_dict(self.get_object())
         context = super(UserUpdateView, self).get_context_data(**kwargs)
         context.update(self.forms)
         return context
@@ -50,13 +54,11 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         return self.request.user
 
     def post(self, request, *args, **kwargs):
-
         for form in self.forms:
             if form in request.POST:
                 self.form_class = self.forms[form]
                 break
         return super(UserUpdateView, self).post(self, request, *args, **kwargs)
-
 
 
 class UserListView(LoginRequiredMixin, ListView):
