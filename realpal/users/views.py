@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import User
 
 from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
-    HouseAgeForm, HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
+    CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):

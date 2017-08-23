@@ -26,22 +26,12 @@ class FirstHomeForm(forms.ModelForm):
 class HouseTypeForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['house_type']
-        widgets = {'house_type': forms.RadioSelect}
-
-
-class HouseAgeForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['house_age']
-        widgets = {'house_age': forms.RadioSelect}
-
-
-class HouseConditionForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['house_cond']
-        widgets = {'house_cond': forms.RadioSelect}
+        fields = ['house_type', 'house_age', 'house_cond']
+        widgets = {
+            'house_type': forms.RadioSelect,
+            'house_age': forms.RadioSelect,
+            'house_cond': forms.RadioSelect
+        }
 
 
 class CityForm(forms.ModelForm):

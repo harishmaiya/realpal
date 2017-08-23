@@ -23,27 +23,6 @@
                         {{ house_type_form.as_p }}
                     </div>
                 </div>
-
-                <div class="question row">
-                    <h2 class="domine text-center">Age of house</h2>
-                    <div class="col-sm-6">
-                        <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
-                    </div>
-                    <div class="col-sm-6">
-                        {{ house_age_form.as_p }}
-                    </div>
-                </div>
-
-                <div class="question row">
-                    <h2 class="domine text-center">Condition of house</h2>
-                    <div class="col-sm-6">
-                        <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
-                    </div>
-                    <div class="col-sm-6 condition">
-                        {{ house_condition_form.as_p }}
-                    </div>
-                </div>
-
                 <button class="next center-block droid" type="submit">Next</button>
                 <a href="{% url 'register:city' %}">
                     <button class="skip" type="button">Skip this step</button>

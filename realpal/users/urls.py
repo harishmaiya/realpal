@@ -1,8 +1,5 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
-from .models import User
-from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
-    HouseAgeForm, HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 from .views import UserUpdateView
 
 urlpatterns = [
