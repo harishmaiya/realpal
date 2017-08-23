@@ -64,8 +64,6 @@ LOCAL_APPS = [
 
     'realpal.apps.chat.apps.ChatConfig'
 
-    # this app deals with updating and deleting user profile
-    'realpal.apps.usermanager.apps.UsermanagerConfig',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
