@@ -27,17 +27,32 @@
 
 <body>
 
-<!-- Start Navbar -->
-{% include "home/partials/nav.html" %}
-<!-- End Navbar -->
+<!-- Start section banner -->
 
-<main class="main">
-    {% block content %}{% endblock %}
-</main>
+<section class="banner back-darkBlue text-center">
+    <div class="container">
+        <div class="row">
+            <h4 class="sans">REAL PAL</h4>
+        </div>
+    </div>
+</section>
 
-<!-- Start Ultimate Footer Section-->
-{% include "home/partials/footer.html" %}
-<!-- End Ultimate Footer Section-->
+<!-- End section banner -->
+
+{% block content %}
+
+{% endblock content %}
+
+<!-- Start Footer section -->
+
+<section id="onboading-footer" class="footer sans">
+    <div class="container">
+        <div class="row">
+            <a class="lead pull-left" href="/">Real Pal</a>
+            <a class="pull-right">PRIVACY</a>
+        </div>
+    </div>
+</section>
 
 {% block modal %}{% endblock modal %}
 
