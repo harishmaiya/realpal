@@ -1,8 +1,64 @@
 {% extends 'base.html' %}
-
-{% block title %}Room{% endblock %}
+{% block title %}Chat Room{% endblock %}
 
 {% block content %}
-  <h2>Chat Room</h2>
+    <!-- Start section -->
+
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+                    <p>USERS LIST</p>
+
+                </div>
+                <div class="col-xs-6">
+
+              <table id="chat">
+                  <tr>
+                  </tr>
+              </table>
+
+
+                </div>
+                <div class="col-xs-3">
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+                    <p>USER SHORT BIO</p>
+
+                </div>
+            </div>
+            <form role="form" class="form-inline" id="chatform">
+                <div class="row">
+                    <textarea type="text" class="pull-left col-xs-11" name="message" id="message"
+                              placeholder="Type your message"></textarea>
+                    <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- End section -->
 
 {% endblock %}
