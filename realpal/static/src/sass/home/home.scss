@@ -47,7 +47,7 @@
 .header .overlay {
   height: 100%;
 }
-.header div a {
+.header div .link-btn {
   height: 100%;
 }
 
@@ -247,4 +247,4 @@
 
 }
 
-/* Start Learn About Section */
+@import "how-it-works";
