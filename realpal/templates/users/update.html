@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>none</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
             <h3>Menu 1</h3>
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ marital_status_form.as_p }}
                 <input type="submit" value="Update"/>
             </form>
         </div>
@@ -40,7 +40,7 @@
             <h3>Menu 2</h3>
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ first_home_form.as_p }}
                 <input type="submit" value="Update"/>
             </form>
         </div>
@@ -48,7 +48,7 @@
             <h3>Menu 3</h3>
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ house_type_form.as_p }}
                 <input type="submit" value="Update"/>
             </form>
         </div>
