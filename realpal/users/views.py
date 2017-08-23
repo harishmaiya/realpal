@@ -47,13 +47,12 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         for form in self.forms:
-            self.forms[form](initial=model_to_dict(self.get_object()))
-        self.form_class.initial = model_to_dict(self.get_object())
+            self.forms[form].initial = self.initial
         context = super(UserUpdateView, self).get_context_data(**kwargs)
         context.update(self.forms)
         return context
 
-    def get_object(self):
+    def get_object(self, *args, **kwargs):
         return self.request.user
 
     def post(self, request, *args, **kwargs):
