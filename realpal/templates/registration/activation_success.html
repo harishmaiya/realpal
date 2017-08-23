@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h1>Account Activation Successful</h1>
+        <h2>Well done</h2>
+        <p>
+            You have successfully activated your RealPal Account, you can go straight to login using
+            this url
+        </p>
+        <button><a href="{% url 'mainapp:home' %}">Login</a></button>
+
+    </section>
+{% endblock content %}
