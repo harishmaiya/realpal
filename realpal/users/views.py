@@ -34,8 +34,6 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         'marital_status_form': MaritalStatusForm,
         'first_home_form': FirstHomeForm,
         'house_type_form': HouseTypeForm,
-        'house_age_form': HouseAgeForm,
-        'house_condition_form': HouseConditionForm,
         'city_form': CityForm,
         'max_budget_form': MaxBudgetForm,
         'current_rent_form': CurrentRentForm,
