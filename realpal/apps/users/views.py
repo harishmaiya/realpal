@@ -69,7 +69,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         return super(UserUpdateView, self).post(self, request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('users:edit')
+        return reverse('users:update')
 
 
 class UserListView(LoginRequiredMixin, ListView):
