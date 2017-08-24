@@ -56,7 +56,7 @@ THIRD_PARTY_APPS = [
 # Apps specific for this project go here.
 LOCAL_APPS = [
     # custom users app
-    'realpal.users.apps.UsersConfig',
+    'realpal.apps.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'realpal.mainapp.apps.MainappConfig',
     # the app that deals with registration
