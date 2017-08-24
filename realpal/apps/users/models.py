@@ -120,7 +120,7 @@ class User(AbstractUser):
             None
 
     def __str__(self):
-        return self.email
+        return self.username
 
 
 class PasswordReset(models.Model):

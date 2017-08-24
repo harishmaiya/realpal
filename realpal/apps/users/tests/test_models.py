@@ -1,7 +1,5 @@
 from test_plus.test import TestCase
 
-from realpal.apps.chat.models import Room
-
 
 class TestUser(TestCase):
 
