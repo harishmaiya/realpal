@@ -1,6 +1,6 @@
 from django.db import models
 
-from realpal.apps.users import User
+from realpal.apps.users.models import User
 
 
 def message_attachment(instance, filename):
