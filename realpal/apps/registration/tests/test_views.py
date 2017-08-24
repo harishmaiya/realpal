@@ -2,8 +2,8 @@ from django.conf import settings
 from django.core import mail
 from django.test import Client, TestCase
 from django.urls import reverse
-
-from realpal.apps.users import User, PasswordReset
+from realpal.apps.users.constants import *
+from realpal.apps.users.models import User, PasswordReset
 
 
 class RegistrationTest(TestCase):

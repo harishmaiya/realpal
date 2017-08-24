@@ -47,11 +47,11 @@ class User(AbstractUser):
 
     firsthome = models.BooleanField(default=True)
 
-    house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, null=True)
+    house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
-    house_age = models.SmallIntegerField(choices=HOUSE_AGE_CHOICES, null=True)
+    house_age = models.SmallIntegerField(choices=HOUSE_AGE_CHOICES,  blank=True, null=True)
 
-    house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, null=True)
+    house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, blank=True, null=True)
 
     preferred_city = models.ForeignKey(City, blank=True, null=True)
 
