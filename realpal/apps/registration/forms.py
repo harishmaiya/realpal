@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from realpal.apps.users import User
+from realpal.apps.users.models import User
 
 
 class PurchaseStepForm(forms.ModelForm):

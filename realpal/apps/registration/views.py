@@ -3,7 +3,7 @@ from django.views import View
 
 from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
     CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
-from realpal.apps.users import User, City, PasswordReset
+from realpal.apps.users.models import User, City, PasswordReset
 
 
 class PurchaseStepView(View):
