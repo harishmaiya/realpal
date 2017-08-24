@@ -44,9 +44,18 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserUpdateView, self).get_context_data(**kwargs)
-        context.update(self.forms)
-        for form in self.forms:
-            context[form].initial = model_to_dict(self.get_object())
+        forms = {
+            'purchase_step_form': PurchaseStepForm(initial=model_to_dict(self.get_object())),
+            'marital_status_form': MaritalStatusForm(initial=model_to_dict(self.get_object())),
+            'first_home_form': FirstHomeForm(initial=model_to_dict(self.get_object())),
+            'house_type_form': HouseTypeForm(initial=model_to_dict(self.get_object())),
+            'city_form': CityForm(initial=model_to_dict(self.get_object())),
+            'max_budget_form': MaxBudgetForm(initial=model_to_dict(self.get_object())),
+            'current_rent_form': CurrentRentForm(initial=model_to_dict(self.get_object())),
+            'how_soon_form': HowSoonForm(initial=model_to_dict(self.get_object())),
+            'personal_profile_form': PersonalProfileForm(initial=model_to_dict(self.get_object())),
+        }
+        context.update(forms)
         return context
 
     def get_object(self, *args, **kwargs):
