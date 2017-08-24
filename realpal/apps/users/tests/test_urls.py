@@ -44,8 +44,8 @@ class TestUserURLs(TestCase):
         self.assertEqual(reverse('users:update'), '/users/~update/')
 
     def test_update_resolve(self):
-        """/users/edit/ should resolve to users:update."""
+        """/users/~update/ should resolve to users:update."""
         self.assertEqual(
-            resolve('/users/~update').view_name,
+            resolve('/users/~update/').view_name,
             'users:update'
         )
