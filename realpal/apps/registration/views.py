@@ -2,8 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from django.views import View
 
 from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
-    HouseAgeForm, \
-    HouseConditionForm, CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
+    CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 from realpal.users.models import User, City, PasswordReset
 
 
@@ -66,40 +65,35 @@ class HouseTypeView(View):
     template_name = 'registration/house_type.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'house_type': request.session.get('house_type', None)}
+        registration_data = {
+            'house_type': request.session.get('house_type', None),
+            'house_age': request.session.get('house_age', None),
+            'house_condition': request.session.get('house_condition', None)
+        }
         house_type_form = HouseTypeForm(initial=registration_data)
-
-        registration_data = {'house_age': request.session.get('house_age', None)}
-        house_age_form = HouseAgeForm(initial=registration_data)
-
-        registration_data = {'house_condition': request.session.get('house_condition', None)}
-        house_condition_form = HouseConditionForm(initial=registration_data)
 
         return render(
             request,
             self.template_name,
             {
                 'house_type_form': house_type_form,
-                'house_age_form': house_age_form,
-                'house_condition_form': house_condition_form
+
             },
             status=200
         )
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'house_type': request.session.get('house_type', None)}
+        registration_data = {
+            'house_type': request.session.get('house_type', None),
+            'house_age': request.session.get('house_age', None),
+            'house_condition': request.session.get('house_condition', None)
+        }
         house_type_form = HouseTypeForm(request.POST or None, initial=registration_data)
 
-        registration_data = {'house_age': request.session.get('house_age', None)}
-        house_age_form = HouseAgeForm(request.POST or None, initial=registration_data)
-
-        registration_data = {'house_condition': request.session.get('house_condition', None)}
-        house_condition_form = HouseConditionForm(request.POST or None, initial=registration_data)
-
-        if house_type_form.is_valid() and house_age_form.is_valid() and house_condition_form.is_valid():
+        if house_type_form.is_valid():
             request.session['house_type'] = house_type_form.cleaned_data['house_type']
-            request.session['house_age'] = house_age_form.cleaned_data['house_age']
-            request.session['house_condition'] = house_condition_form.cleaned_data['house_cond']
+            request.session['house_age'] = house_type_form.cleaned_data['house_age']
+            request.session['house_condition'] = house_type_form.cleaned_data['house_cond']
             return HttpResponseRedirect(reverse('register:city'))
 
         return render(
@@ -107,8 +101,6 @@ class HouseTypeView(View):
             self.template_name,
             {
                 'house_type_form': house_type_form,
-                'house_age_form': house_age_form,
-                'house_condition_form': house_condition_form
             }, status=400
         )
 

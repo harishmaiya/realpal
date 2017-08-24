@@ -63,6 +63,7 @@ LOCAL_APPS = [
     'realpal.apps.registration.apps.RegistrationConfig',
 
     'realpal.apps.chat.apps.ChatConfig'
+
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -291,7 +292,6 @@ CHANNEL_LAYERS = {
     }
 }
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'realpal.users.forms.SignupForm'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
