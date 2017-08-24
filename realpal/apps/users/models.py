@@ -14,6 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 from realpal.apps.users.constants import *
 
 
+@python_2_unicode_compatible
 class City(models.Model):
     name = models.CharField(max_length=60)
     state = models.CharField(max_length=40)
@@ -117,6 +118,9 @@ class User(AbstractUser):
             msg.send(fail_silently=False)
         except Exception as er:
             None
+
+    def __str__(self):
+        return self.email
 
 
 class PasswordReset(models.Model):
