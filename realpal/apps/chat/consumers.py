@@ -3,12 +3,46 @@ import logging
 
 from channels.auth import channel_session_user_from_http, channel_session_user
 from channels import Group
-from django.utils import timezone
 
 from realpal.apps.chat.models import Room, Message
 from realpal.users.constants import AGENT_USER, CLIENT_USER
 
+from django.utils import timezone
+
 logger = logging.getLogger(__name__)
+
+USER_ONLINE = 1
+USER_OFFLINE = 2
+
+
+def get_user_chat_status_message(username, status):
+    if status == USER_ONLINE:
+        message = 'User: {} has joined the chat-room'.format(username)
+    else:
+        message = 'User: {} has left the chat-room'.format(username)
+    user_status_message = {
+        'timestamp': timezone.now().strftime('%c'),
+        'handle': 'Chat Room Bot',
+        'message': message
+    }
+    return user_status_message
+
+
+def send_user_chat_status(group, username, status):
+    user_status_message = get_user_chat_status_message(username, status)
+    Group(group).send(
+        {
+            "text": json.dumps(user_status_message)
+        }
+    )
+
+
+def channel_added_logger(reply_channel, group):
+    logger.debug(
+        'Added reply channel: [{}] to group: {}'.format(
+            reply_channel, group
+        )
+    )
 
 
 @channel_session_user_from_http
@@ -27,51 +61,66 @@ def ws_connect(message, room_id):
                     room.agent = user
                     room.save()
                     Group(group_name).add(message.reply_channel)
-                elif room.agent == user:
-                    Group(group_name).add(message.reply_channel)
+                    send_user_chat_status(group_name, user.username, USER_ONLINE)
+                    channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
                 else:
-                    logger.debug('Access denied for user {} on room {}'.format(user, room))
-                    return
+                    Group(group_name).add(message.reply_channel)
+                    send_user_chat_status(group_name, user.username, USER_ONLINE)
+                    channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
             elif user.user_type == CLIENT_USER:
                 if room.client == user:
                     Group(group_name).add(message.reply_channel)
+                    send_user_chat_status(group_name, user.username, USER_ONLINE)
+                    channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
                 else:
                     logger.debug('Access denied for user {} on room {}'.format(user, room))
-                    return
+                    message.reply_channel.send(
+                        {
+                            'close': True,
+                            'text': 'Access denied for user {} on room {}'.format(user, room),
+                        }
+                    )
         except Room.DoesNotExist:
-            print('Requested room not found')
             logger.debug('Requested room not found')
-            return
+            message.reply_channel.send(
+                {
+                    'close': True,
+                    'text': 'Requested room {} not found'.format(room_id),
+                }
+            )
     else:
-        print('Unauthenticated user')
         logger.debug('Unauthenticated user')
-        return
+        message.reply_channel.send(
+            {
+                'close': True,
+                'text': 'Unauthenticated user',
+            }
+        )
 
 
 @channel_session_user
 def ws_receive(message):
     incoming = json.loads(message['text'])
-    handle = message.channel_session["username"]
+    handle = message.channel_session.get('username')
     msg = incoming.get('message', 'Error Getting Message')
-
-    logger.debug('Incoming message: ', handle, 'msg:', msg)
-
     data = {
         'timestamp': timezone.now().strftime('%c'),
         'handle': handle if handle else 'Anonymous',
         'message': msg
     }
 
-    Group(message.channel_session["group_name"]).send({
-        "text": json.dumps({
-            "text": data
-        }),
-    })
+    Group(message.channel_session['group_name']).send({'text': json.dumps(data)})
 
 
 @channel_session_user
 def ws_disconnect(message):
-    try:
-        Group(message.channel_session["group_name"]).discard(message.reply_channel)
-    except KeyError:
-        pass
+    user = message.channel_session.get('username')
+    send_user_chat_status(message.channel_session['group_name'], user, USER_OFFLINE)
+
+    Group(message.channel_session['group_name']).discard(message.reply_channel)
+    logger.debug(
+        'Removed reply channel: [{}] from group: {}'.format(
+            message.reply_channel,
+            message.channel_session['group_name']
+        )
+    )

@@ -25,10 +25,12 @@
                 </div>
                 <div class="col-xs-6">
 
-              <table id="chat">
-                  <tr>
-                  </tr>
-              </table>
+                    <table id="chat">
+                        <tbody>
+                        <tr>
+                        </tr>
+                        </tbody>
+                    </table>
 
 
                 </div>
@@ -58,7 +60,35 @@
             </form>
         </div>
     </section>
-
     <!-- End section -->
+    <script type="text/javascript" src='{% static "chat/js/jquery-1.12.1.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "chat/js/reconnecting-websocket.min.js" %}'></script>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            // When we're using HTTPS, use WSS too.
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + '/chat/' + 2);
+            chatsock.debug = true;
+            chatsock.timeoutInterval = 3600;
+            chatsock.onmessage = function (message) {
+                var data = JSON.parse(message.data);
+                var chat = $('#chat  > tbody:last-child');
+                var ele = '<tr>' +
+                        '<td>' + data.timestamp + '</td>' +
+                        '<td>' + data.handle + '</td>' +
+                        '<td>' + data.message + '</td>' +
+                        '</tr>';
+                chat.append(ele)
+            };
 
+            $("#chatform").on("submit", function (event) {
+                var message = {
+                    message: $('#message').val(),
+                }
+                chatsock.send(JSON.stringify(message));
+                $("#message").val('').focus();
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
