@@ -29,7 +29,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
     form_class = PurchaseStepForm  # this will be the default form that is submitted by default
-    success_url = '/users/edit'
+
     forms = {
         'purchase_step_form': PurchaseStepForm,
         'marital_status_form': MaritalStatusForm,
@@ -67,6 +67,9 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
                 self.form_class = self.forms[form]
                 break
         return super(UserUpdateView, self).post(self, request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('users:edit')
 
 
 class UserListView(LoginRequiredMixin, ListView):
