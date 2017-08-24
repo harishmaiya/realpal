@@ -13,7 +13,10 @@
 
 body, html {
   font-family: 'BentonSans Book', Fallback, sans-serif;
+  overflow-x: hidden
 }
+.header{margin-top: 60px}
+.footer-space{margin-top: 60px}
 
 /* style.scss */
 @import "base/base";
