@@ -4,7 +4,7 @@ from .consumers import (
 from channels import route
 
 channel_routing = [
-    route('websocket.connect', ws_connect),
+    route('websocket.connect', ws_connect, path=r'^/chat/(?P<room_id>[\d]+)$'),
     route('websocket.receive', ws_receive),
     route('websocket.disconnect', ws_disconnect),
 ]
