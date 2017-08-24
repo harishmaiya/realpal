@@ -19,7 +19,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
               integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
               crossorigin="anonymous">
-        <link href="{% static 'app/css/main.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/main.min.css' %}" rel="stylesheet">
     {% endblock %}
 
 
@@ -44,17 +44,19 @@
 {% endblock content %}
 
 <!-- Start Footer section -->
-
-<section class="footer sans">
-    <div class="container">
-        <div class="row">
-            <a class="lead pull-left" href="/">Real Pal</a>
-            <a class="pull-right">PRIVACY</a>
+<div class="onboarding-footer">
+    <section class="footer sans">
+        <div class="container">
+            <div class="row">
+                <a class="lead pull-left" href="/">Real Pal</a>
+                <a class="pull-right">PRIVACY</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- End Footer section -->
+</div>
+
+{% block modal %}{% endblock modal %}
 
 {% block javascript %}
 

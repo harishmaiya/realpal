@@ -1,7 +1,9 @@
 from django.test import Client, TestCase
 from django.urls import reverse
-from realpal.users.models import User, City
+from django.core import mail
+from realpal.users.models import User, PasswordReset
 from realpal.users.constants import *
+from django.conf import settings
 
 
 class RegistrationTest(TestCase):
@@ -59,6 +61,9 @@ class RegistrationTest(TestCase):
         # lets get the number of users before saving another
         users_count = User.objects.count()
 
+        # test to see if there are no messages in the outbox before we start saving the new user
+        self.assertEqual(len(mail.outbox), 0)
+
         # test to see that all views will post correctly
         for url_name in self.keys:
             data_to_pass = dict(data[url_name])  # use dict to explicitly convert string to dictionary
@@ -82,6 +87,34 @@ class RegistrationTest(TestCase):
 
         self.assertEqual(user.email, data['personal_profile']['email'])
         self.assertEqual(user.zipcode, data['personal_profile']['zipcode'])
+
+        # test to see if there is now a new message in the outbox
+        self.assertEqual(len(mail.outbox), 1)
+
+        # Verify that the subject of the first message is correct.
+        self.assertEqual(mail.outbox[0].subject, settings.EMAIL_SUBJECT_PREFIX)
+
+        # test to see if a password reset object for the new user was created
+        instances = PasswordReset.objects.filter(user=user)
+        self.assertEqual(instances.count(), 1)
+
+        # now lets see if we created an inactive user
+        instance = instances[:1].get()
+        user = instance.user
+        self.assertEqual(user.is_active, False)
+
+        # test to see if the activation link will work
+        activation_url = reverse('register:activate-account', kwargs={'uuid': instance.uuid})
+        self.assertEqual(self.client.get(activation_url).status_code, 200)
+        self.assertTemplateUsed('register/activation_success.html')
+
+        # now lets see if the user actually is active
+        user = User.objects.get(id=user.id)
+        self.assertEqual(user.is_active, True)
+
+        # ok, so lets see that the PasswordReset Object was deleted
+        instances = PasswordReset.objects.filter(user=user)
+        self.assertEqual(instances.count(), 0)
 
         # now lets test with incorrect data to make sure all these give us 400 status codes,
         # these are the mandatory fields that cannot be skipped
