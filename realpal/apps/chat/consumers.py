@@ -6,7 +6,7 @@ from channels.auth import channel_session_user_from_http, channel_session_user
 from django.utils import timezone
 
 from realpal.apps.chat.models import Room
-from realpal.apps.users import AGENT_USER, CLIENT_USER
+from realpal.apps.users.constants import AGENT_USER, CLIENT_USER
 
 logger = logging.getLogger(__name__)
 

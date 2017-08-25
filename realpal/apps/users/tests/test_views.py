@@ -89,6 +89,7 @@ class TestUserUpdateView(BaseUserTestCase):
         for form in data:
             response = self.client.post(update_url, data[form].update({form: ''}))
             self.assertEqual(response.status_code, 302)
+            self.assertTemplateUsed('users/update.html')
 
         user = self.view.get_object()
         self.assertEqual(user.purchase_step, data['purchase_step_form']['purchase_step'])
