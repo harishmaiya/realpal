@@ -86,12 +86,21 @@ class TestUserUpdateView(BaseUserTestCase):
             },
         }
 
+        # let's login first since this view is only reachable after login
+        self.client.login(username='testuser', password='password')
+
+        # test to see if we reached the user update profile page
+        self.assertTemplateUsed('users/update.html')
+
         for form in data:
-            response = self.client.post(update_url, data[form].update({form: ''}))
+            data_to_pass = data[form]
+            data[form][form] = 'Update'
+            response = self.client.post(update_url, data_to_pass)
             self.assertEqual(response.status_code, 302)
             self.assertTemplateUsed('users/update.html')
 
         user = self.view.get_object()
+
         self.assertEqual(user.purchase_step, data['purchase_step_form']['purchase_step'])
         self.assertEqual(user.status, data['marital_status_form']['status'])
         self.assertEqual(user.firsthome, data['first_home_form']['firsthome'])
