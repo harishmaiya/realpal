@@ -7,7 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import User
 
 from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
-    CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
+    CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm
+from realpal.apps.users.forms import PersonalProfileForm
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -69,7 +70,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         return super(UserUpdateView, self).post(self, request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('users:edit')
+        return '{}{}'.format(reverse('users:update'), '#success')
 
 
 class UserListView(LoginRequiredMixin, ListView):
