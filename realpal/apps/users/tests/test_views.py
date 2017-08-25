@@ -54,7 +54,7 @@ class TestUserUpdateView(BaseUserTestCase):
         #   self.make_user()
         self.assertEqual(
             self.view.get_success_url(),
-            '/users/~update/'
+            '/users/~update/#success'
         )
 
     def test_get_object(self):
@@ -81,8 +81,6 @@ class TestUserUpdateView(BaseUserTestCase):
                 'zipcode': '10118',
                 'phone_number': '+263771819478',
                 'email': 'test_email@gmail.com',
-                'password1': 'test_password',
-                'password2': 'test_password',
             },
         }
 
@@ -99,17 +97,28 @@ class TestUserUpdateView(BaseUserTestCase):
             self.assertEqual(response.status_code, 302)
             self.assertTemplateUsed('users/update.html')
 
-        user = self.view.get_object()
+        # test to see that trying to update with incorrect data will return us to
+        # update page without the success redirect
+        incorrect_data = {
+            'purchase_step_form': {'purchase_step': 8},  # 8 is not a valid option
+            'marital_status_form': {'status': 8},
+            'house_type_form': {'house_type': 8, 'house_age': 8, 'house_cond': 8},
+            'max_budget_form': {'budget': 'TEXT'},
+            'current_rent_form': {'current_rent': 'TEXT'},  # TEXT is not a valid number
+            'how_soon_form': {'how_soon': 8},
+            'personal_profile_form': {
+                'first_name': 'TestFirstName',
+                'last_name': 'TestLastName',
+                'zipcode': '10118',
+                'phone_number': '+26334465657456774567',  # number too long
+                'email': 'test_email@gmail.com',
+            },
+        }
 
-        self.assertEqual(user.purchase_step, data['purchase_step_form']['purchase_step'])
-        self.assertEqual(user.status, data['marital_status_form']['status'])
-        self.assertEqual(user.firsthome, data['first_home_form']['firsthome'])
-        self.assertEqual(user.house_type, data['house_type_form']['house_type'])
-        self.assertEqual(user.house_age, data['house_type_form']['house_age'])
-        self.assertEqual(user.house_cond, data['house_type_form']['house_cond'])
-        self.assertEqual(user.budget, data['max_budget_form']['budget'])
-        self.assertEqual(user.current_rent, data['current_rent_form']['current_rent'])
-        self.assertEqual(user.how_soon, data['how_soon_form']['how_soon'])
+        for form in incorrect_data:
+            data_to_pass = incorrect_data[form]
+            incorrect_data[form][form] = 'Update'
+            response = self.client.post(update_url, data_to_pass)
+            self.assertEqual(response.status_code, 200)
+            self.assertTemplateUsed('users/update.html')
 
-        self.assertEqual(user.email, data['personal_profile_form']['email'])
-        self.assertEqual(user.zipcode, data['personal_profile_form']['zipcode'])
