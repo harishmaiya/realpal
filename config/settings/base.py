@@ -264,8 +264,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-ACCOUNT_ADAPTER = 'realpal.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'realpal.users.adapters.SocialAccountAdapter'
+ACCOUNT_ADAPTER = 'realpal.apps.users.adapters.AccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'realpal.apps.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
 # Select the correct user model
