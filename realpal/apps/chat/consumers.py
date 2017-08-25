@@ -2,15 +2,11 @@ import json
 import logging
 
 from channels import Group
-
-from realpal.apps.chat.models import Room, Message
-from realpal.users.constants import AGENT_USER, CLIENT_USER
-from realpal.users.models import User
-
 from channels.auth import channel_session_user_from_http, channel_session_user
 from django.utils import timezone
 
-from realpal.apps.chat.models import Room
+from realpal.apps.chat.models import Room, Message
+from realpal.apps.users.models import User
 from realpal.apps.users.constants import AGENT_USER, CLIENT_USER
 
 logger = logging.getLogger(__name__)

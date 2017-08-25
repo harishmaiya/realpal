@@ -4,8 +4,7 @@ from django.shortcuts import render
 from django.views import View
 
 from realpal.apps.chat.models import Room, Message
-from realpal.users.constants import AGENT_USER, CLIENT_USER
-from realpal.users.models import User
+from realpal.apps.users.constants import CLIENT_USER
 
 
 @method_decorator(login_required, name='get')

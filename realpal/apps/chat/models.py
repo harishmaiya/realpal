@@ -23,7 +23,7 @@ class Message(models.Model):
     attachment = models.FileField(upload_to=message_attachment, blank=True, null=True)
 
     class Meta:
-        ordering = ['-timestamp']
+        ordering = ['timestamp']
 
     def __str__(self):
         return 'sender: {sender}'.format(
