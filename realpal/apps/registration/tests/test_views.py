@@ -1,9 +1,9 @@
+from django.conf import settings
+from django.core import mail
 from django.test import Client, TestCase
 from django.urls import reverse
-from django.core import mail
-from realpal.users.models import User, PasswordReset
-from realpal.users.constants import *
-from django.conf import settings
+from realpal.apps.users.constants import *
+from realpal.apps.users.models import User, PasswordReset
 
 
 class RegistrationTest(TestCase):

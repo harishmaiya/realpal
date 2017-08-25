@@ -1,20 +1,26 @@
-from django.contrib.auth.models import AbstractUser
-from django.core.urlresolvers import reverse
-from django.db import models
-from django.conf import settings
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext_lazy as _
-from django.core.validators import RegexValidator
-from realpal.users.constants import *
-from django.core.mail import EmailMultiAlternatives
 import uuid
+
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+from django.core.mail import EmailMultiAlternatives
+from django.core.urlresolvers import reverse
+from django.core.validators import RegexValidator
+from django.db import models
 from django.template import loader
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.html import strip_tags
+from django.utils.translation import ugettext_lazy as _
+
+from realpal.apps.users.constants import *
 
 
+@python_2_unicode_compatible
 class City(models.Model):
     name = models.CharField(max_length=60)
     state = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.name
 
 
 @python_2_unicode_compatible
@@ -41,11 +47,11 @@ class User(AbstractUser):
 
     firsthome = models.BooleanField(default=True)
 
-    house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, null=True)
+    house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
-    house_age = models.SmallIntegerField(choices=HOUSE_AGE_CHOICES, null=True)
+    house_age = models.SmallIntegerField(choices=HOUSE_AGE_CHOICES,  blank=True, null=True)
 
-    house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, null=True)
+    house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, blank=True, null=True)
 
     preferred_city = models.ForeignKey(City, blank=True, null=True)
 
@@ -112,6 +118,9 @@ class User(AbstractUser):
             msg.send(fail_silently=False)
         except Exception as er:
             None
+
+    def __str__(self):
+        return self.username
 
 
 class PasswordReset(models.Model):

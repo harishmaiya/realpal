@@ -56,7 +56,7 @@ THIRD_PARTY_APPS = [
 # Apps specific for this project go here.
 LOCAL_APPS = [
     # custom users app
-    'realpal.users.apps.UsersConfig',
+    'realpal.apps.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'realpal.mainapp.apps.MainappConfig',
     # the app that deals with registration
@@ -264,8 +264,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-ACCOUNT_ADAPTER = 'realpal.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'realpal.users.adapters.SocialAccountAdapter'
+ACCOUNT_ADAPTER = 'realpal.apps.users.adapters.AccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'realpal.apps.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
 # Select the correct user model

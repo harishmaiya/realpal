@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from realpal.apps.chat.models import Room
-from realpal.users.models import User
+from realpal.apps.users import User
 
 logger = logging.getLogger(__name__)
 

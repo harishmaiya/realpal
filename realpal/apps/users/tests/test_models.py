@@ -1,7 +1,5 @@
 from test_plus.test import TestCase
 
-from realpal.apps.chat.models import Room
-
 
 class TestUser(TestCase):
 
@@ -19,6 +17,3 @@ class TestUser(TestCase):
             self.user.get_absolute_url(),
             '/users/testuser/'
         )
-
-    def test_user_room_creation(self):
-        self.assertEqual(1, Room.objects.filter(client=self.user).count())

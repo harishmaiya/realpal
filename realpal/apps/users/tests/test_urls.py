@@ -25,7 +25,7 @@ class TestUserURLs(TestCase):
         """/users/~redirect/ should resolve to users:redirect."""
         self.assertEqual(
             resolve('/users/~redirect/').view_name,
-            'users:redirect'
+            'users:detail'
         )
 
     def test_detail_reverse(self):
