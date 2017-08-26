@@ -23,9 +23,8 @@ class ChatRoomView(View):
         else:
             selected_client_room = self.kwargs.get('room_id')
             messages = Message.objects.filter(room_id=selected_client_room) if selected_client_room else []
-            client_rooms = Room.objects.all()
-            my_clients = [client_room for client_room in client_rooms if client_room.agent == user]
-            unassigned_clients = [client_room for client_room in client_rooms if client_room.agent is None]
+            my_clients = Room.objects.filter(agent=user)
+            unassigned_clients = Room.objects.filter(agent__isnull=True)
             context = {
                 'my_clients': my_clients,
                 'unassigned_clients': unassigned_clients,
