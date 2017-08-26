@@ -18,8 +18,12 @@ class Room(models.Model):
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name='room', db_index=True)
     sent_by = models.ForeignKey(User, related_name='sender')
+    timestamp = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
     attachment = models.FileField(upload_to=message_attachment, blank=True, null=True)
+
+    class Meta:
+        ordering = ['timestamp']
 
     def __str__(self):
         return 'sender: {sender}'.format(

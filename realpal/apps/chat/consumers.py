@@ -5,7 +5,8 @@ from channels import Group
 from channels.auth import channel_session_user_from_http, channel_session_user
 from django.utils import timezone
 
-from realpal.apps.chat.models import Room
+from realpal.apps.chat.models import Room, Message
+from realpal.apps.users.models import User
 from realpal.apps.users.constants import AGENT_USER, CLIENT_USER
 
 logger = logging.getLogger(__name__)
@@ -50,6 +51,7 @@ def ws_connect(message, room_id):
     user = message.user
     if user.is_authenticated:
         message.channel_session["username"] = user.username
+        message.channel_session["user_id"] = user.id
         try:
             room = Room.objects.get(pk=room_id)
             group_name = "Room_{}".format(room.id)
@@ -107,7 +109,13 @@ def ws_receive(message):
         'handle': handle if handle else 'Anonymous',
         'message': msg
     }
-
+    room = Room.objects.get(pk=message.channel_session.get('room_id'))
+    user = User.objects.get(pk=message.channel_session.get('user_id'))
+    Message.objects.create(
+        room=room,
+        sent_by=user,
+        text=msg
+    )
     Group(message.channel_session['group_name']).send({'text': json.dumps(data)})
 
 
