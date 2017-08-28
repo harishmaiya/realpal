@@ -85,7 +85,7 @@ class UserListView(LoginRequiredMixin, ListView):
 
 class Login(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'home/login.html', {'form': LoginForm})
+        return render(request, 'users/login.html', {'form': LoginForm})
 
     def post(self, request, *args, **kwargs):
         email = request.POST.get('email')
@@ -111,7 +111,7 @@ class Login(View):
         else:
             return render(
                 request,
-                'home/login.html',
+                'users/login.html',
                 {
                     'form': LoginForm,
                     'error': 'Make sure username and password are correct'
