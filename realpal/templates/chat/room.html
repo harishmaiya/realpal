@@ -5,13 +5,15 @@
 {% block content %}
     <!-- Start section -->
 
-    <section class="chat-container">
+    <section class="chat-container ">
         <div class="benefits text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
+            <div class="container panel panel-default">
+                <div class="row ">
+                    <div class=" col-md-2">
                         <div class="box-chat">
-                            <strong class="chat-titre">MY CLIENTS</strong>
+                            <div class="chat-titre">
+                                <strong>MY CLIENTS</strong>
+                            </div>
                             {% if my_clients %}
                                 <ul>
                                     {% for client_room in my_clients %}
@@ -23,7 +25,10 @@
                             {% else %}
                                 <p> No clients available</p>
                             {% endif %}
-                            <strong class="chat-titre">UNASSIGNED CLIENTS</strong>
+                            <div class="chat-titre">
+                                <strong>UNASSIGNED CLIENTS</strong>
+                            </div>
+
                             {% if unassigned_clients %}
                                 <ul>
                                     {% for client_room in unassigned_clients %}
@@ -37,12 +42,39 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="chat-box col-md-8">
-                    <div class="box-chat">
-                        {% if my_clients %}
-                            <strong class="client-name">You are chatting to {{ client.name }}</strong>
-                            <hr class="style-two">
-                            <div class="chat-messages">
+                    <div class="col-md-10">
+                        <div class="col-md-8">
+                            <div class="box-chat">
+                                <strong class="client-name">You are chatting to {{ client.name }}</strong>
+                                <hr class="style-two">
+                                <div class="chat-messages">
+                                    {% if not selected_client_room %}
+                                        <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
+                                        <p class="center">Please select a client to start chatting</p>
+                                    {% endif %}
+                                    <table id="chat">
+                                        <tbody>
+                                        {% if messages %}
+                                            {% for msg in messages %}
+                                                <tr>
+                                                    <td>{{ msg.timestamp|date:"r" }}</td>
+                                                    <td>{{ msg.sent_by }}</td>
+                                                    <td>{{ msg.text }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% else %}
+                                            <div class="no-client">
+                                                <p> No client selected</p>
+                                                <hr class="style-two">
+                                            </div>
+                                        {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-chat">
                                 {% if not selected_client_room %}
                                     <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
                                     <p class="center">Please select a client to start chatting</p>
@@ -63,45 +95,16 @@
                                     </tbody>
                                 </table>
                             </div>
-                        {% else %}
-                            <div class="no-message">
-                                <p> No client selected</p>
-                                <hr class="style-two">
-                            </div>
-                        {% endif %}
-                    </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="box-chat">
-                            {% if not selected_client_room %}
-                                <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
-                                <p class="center">Please select a client to start chatting</p>
-                            {% endif %}
-                            <table id="chat">
-                                <tbody>
-                                {% if messages %}
-                                    {% for msg in messages %}
-                                        <tr>
-                                            <td>{{ msg.timestamp|date:"r" }}</td>
-                                            <td>{{ msg.sent_by }}</td>
-                                            <td>{{ msg.text }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                {% else %}
-                                    <tr></tr>
-                                {% endif %}
-                                </tbody>
-                            </table>
                         </div>
+                        <form role="form" class="form-inline chat-form" id="chatform">
+                            <div class="row">
+                    <textarea type="text" class="col-xs-11" name="message" id="message"
+                              placeholder="Type your message"></textarea>
+                                <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <form role="form" class="form-inline" id="chatform">
-                    <div class="row">
-                    <textarea type="text" class="pull-left col-xs-11" name="message" id="message"
-                              placeholder="Type your message"></textarea>
-                        <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
-                    </div>
-                </form>
             </div>
         </div>
 
