@@ -11,7 +11,7 @@ from django.template import loader
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
-
+from .managers import UserManager
 from realpal.apps.users.constants import *
 
 logger = logging.getLogger(__name__)
@@ -28,6 +28,10 @@ class City(models.Model):
 
 @python_2_unicode_compatible
 class User(AbstractUser):
+    email = models.EmailField(unique=True, null=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    objects = UserManager()
 
     # First Name and Last Name do not cover name patterns
     # around the globe.
@@ -48,7 +52,7 @@ class User(AbstractUser):
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
-    firsthome = models.BooleanField()
+    firsthome = models.BooleanField(default=True)
 
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
