@@ -13,7 +13,6 @@ urlpatterns = [
 
     # User management
     url(r'^users/', include('realpal.apps.users.urls', namespace='users')),
-    url(r'^accounts/', include('allauth.urls')),
     url(r'^onboarding/', include('realpal.apps.onboarding.urls', namespace='onboarding')),
     # Your stuff: custom urls includes go here
     url(r'^', include('realpal.mainapp.urls', namespace='mainapp')),

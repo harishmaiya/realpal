@@ -1,6 +1,9 @@
-from django.shortcuts import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from django.shortcuts import reverse, render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.views.generic import DetailView, ListView, RedirectView, UpdateView, View
 from django.forms.models import model_to_dict
+from django.conf import settings
+from .forms import LoginForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -78,3 +81,46 @@ class UserListView(LoginRequiredMixin, ListView):
     # These next two lines tell the view to index lookups by username
     slug_field = 'username'
     slug_url_kwarg = 'username'
+
+
+class Login(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'users/login.html', {'form': LoginForm})
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(email=email, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                request.session.set_expiry(60 * 60 * 24)
+                return redirect('mainapp:home')
+            else:
+                user.send_verification_email(user.email)
+                return render(
+                    request,
+                    'users/login.html',
+                    {
+                        'form': LoginForm,
+                        'error': 'You still have not verified your email address. The verification link has been '
+                                 'resent to you email address'
+                    },
+                    status=401
+                )
+        else:
+            return render(
+                request,
+                'users/login.html',
+                {
+                    'form': LoginForm,
+                    'error': 'Make sure username and password are correct'
+                },
+                status=401
+            )
+
+
+class Logout(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect(settings.LOGIN_URL)
