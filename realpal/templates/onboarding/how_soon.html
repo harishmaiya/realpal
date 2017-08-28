@@ -14,7 +14,7 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="skip" type="submit">Next</button>
-                <a href="{% url 'register:personal-profile' %}">
+                <a href="{% url 'onboarding:personal-profile' %}">
                     <button class="skip" type="button">Skip this step</button>
                 </a>
             </form>

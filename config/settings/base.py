@@ -47,9 +47,9 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'channels',
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
+    'allauth',  # onboarding
+    'allauth.account',  # onboarding
+    'allauth.socialaccount',  # onboarding
     'widget_tweaks'
 ]
 
@@ -59,8 +59,8 @@ LOCAL_APPS = [
     'realpal.apps.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'realpal.mainapp.apps.MainappConfig',
-    # the app that deals with registration
-    'realpal.apps.registration.apps.RegistrationConfig',
+    # the app that deals with onboarding
+    'realpal.apps.onboarding.apps.RegistrationConfig',
 
     'realpal.apps.chat.apps.ChatConfig'
 

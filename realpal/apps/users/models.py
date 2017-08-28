@@ -73,7 +73,7 @@ class User(AbstractUser):
 
     def send_confirmation_email(self):
         token = PasswordReset.objects.create(user=self)
-        link = '{}{}'.format(settings.BASE_URL, reverse('register:activate-account', kwargs={'uuid': token.uuid}))
+        link = '{}{}'.format(settings.BASE_URL, reverse('onboarding:activate-account', kwargs={'uuid': token.uuid}))
 
         context = {
             'activation_link': link,
@@ -82,7 +82,7 @@ class User(AbstractUser):
             'subject': settings.EMAIL_SUBJECT_PREFIX,
         }
 
-        template = 'registration/activation_email.html'
+        template = 'onboarding/activation_email.html'
 
         msg = EmailMultiAlternatives(
             subject=settings.EMAIL_SUBJECT_PREFIX,
@@ -99,7 +99,7 @@ class User(AbstractUser):
             'last_name': self.last_name,
             'subject': settings.EMAIL_SUBJECT_PREFIX,
         }
-        template = 'registration/welcome_email.html'
+        template = 'onboarding/welcome_email.html'
 
         msg = EmailMultiAlternatives(
             subject=settings.EMAIL_SUBJECT_PREFIX,

@@ -1,14 +1,14 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from django.views import View
 
-from realpal.apps.registration.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
+from realpal.apps.onboarding.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
     CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 from realpal.apps.users.models import User, City, PasswordReset
 
 
 class PurchaseStepView(View):
 
-    template_name = 'registration/purchase_step.html'
+    template_name = 'onboarding/purchase_step.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'purchase_step': request.session.get('purchase_step', None)}
@@ -20,13 +20,13 @@ class PurchaseStepView(View):
         form = PurchaseStepForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['purchase_step'] = form.cleaned_data['purchase_step']
-            return HttpResponseRedirect(reverse('register:marital-status'))
+            return HttpResponseRedirect(reverse('onboarding:marital-status'))
         return render(request, self.template_name, {'form': form}, status=400)
 
 
 class MaritalStatusView(View):
 
-    template_name = 'registration/marital_status.html'
+    template_name = 'onboarding/marital_status.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
@@ -38,13 +38,13 @@ class MaritalStatusView(View):
         form = MaritalStatusForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['marital_status'] = form.cleaned_data['status']
-            return HttpResponseRedirect(reverse('register:first-home'))
+            return HttpResponseRedirect(reverse('onboarding:first-home'))
         return render(request, self.template_name, {'form': form}, status=400)
 
 
 class FirstHomeView(View):
 
-    template_name = 'registration/first_home.html'
+    template_name = 'onboarding/first_home.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
@@ -56,13 +56,13 @@ class FirstHomeView(View):
         form = FirstHomeForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['first_home'] = form.cleaned_data['firsthome']
-            return HttpResponseRedirect(reverse('register:house-type'))
+            return HttpResponseRedirect(reverse('onboarding:house-type'))
         return render(request, self.template_name, {'form': form}, status=400)
 
 
 class HouseTypeView(View):
 
-    template_name = 'registration/house_type.html'
+    template_name = 'onboarding/house_type.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {
@@ -94,7 +94,7 @@ class HouseTypeView(View):
             request.session['house_type'] = house_type_form.cleaned_data['house_type']
             request.session['house_age'] = house_type_form.cleaned_data['house_age']
             request.session['house_condition'] = house_type_form.cleaned_data['house_cond']
-            return HttpResponseRedirect(reverse('register:city'))
+            return HttpResponseRedirect(reverse('onboarding:city'))
 
         return render(
             request,
@@ -107,7 +107,7 @@ class HouseTypeView(View):
 
 class CityView(View):
 
-    template_name = 'registration/city.html'
+    template_name = 'onboarding/city.html'
 
     def get(self, request, *args, **kwargs):
         form = CityForm()
@@ -117,12 +117,12 @@ class CityView(View):
         form = CityForm(request.POST)
         if form.data['preferred_city']:
             request.session['city'] = form.data['preferred_city']
-        return HttpResponseRedirect(reverse('register:max-budget'))
+        return HttpResponseRedirect(reverse('onboarding:max-budget'))
 
 
 class MaxBudgetView(View):
 
-    template_name = 'registration/max_budget.html'
+    template_name = 'onboarding/max_budget.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'max_budget': request.session.get('max_budget', None)}
@@ -134,13 +134,13 @@ class MaxBudgetView(View):
         form = MaxBudgetForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['max_budget'] = form.cleaned_data['budget']
-            return HttpResponseRedirect(reverse('register:current-rent'))
+            return HttpResponseRedirect(reverse('onboarding:current-rent'))
         return render(request, self.template_name, {'form': form}, status=400)
 
 
 class CurrentRentView(View):
 
-    template_name = 'registration/current_rent.html'
+    template_name = 'onboarding/current_rent.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'current_rent': request.session.get('current_rent', None)}
@@ -152,13 +152,13 @@ class CurrentRentView(View):
         form = CurrentRentForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['current_rent'] = form.cleaned_data['current_rent']
-            return HttpResponseRedirect(reverse('register:how-soon'))
+            return HttpResponseRedirect(reverse('onboarding:how-soon'))
         return render(request, self.template_name, {'form': form}, status=400)
 
 
 class HowSoonView(View):
 
-    template_name = 'registration/how_soon.html'
+    template_name = 'onboarding/how_soon.html'
 
     def get(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', None)}
@@ -170,13 +170,13 @@ class HowSoonView(View):
         form = HowSoonForm(request.POST or None, initial=registration_data)
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
-            return HttpResponseRedirect(reverse('register:personal-profile'))
+            return HttpResponseRedirect(reverse('onboarding:personal-profile'))
         return render(request, self.template_name, {'form': form}, status=400)
 
 
 class PersonalProfileView(View):
 
-    template_name = 'registration/personal_profile.html'
+    template_name = 'onboarding/personal_profile.html'
 
     def get(self, request, *args, **kwargs):
         form = PersonalProfileForm()
@@ -215,7 +215,7 @@ class PersonalProfileView(View):
             user.save()
             user.send_confirmation_email()
 
-            return HttpResponse('Well Done on finishing registration', status=302)
+            return HttpResponse('Well Done on finishing onboarding', status=302)
         return render(request, self.template_name, {'form': form}, status=400)
 
 
@@ -224,7 +224,7 @@ class ActivateAccount(View):
         uuid = kwargs.get('uuid', '')
         instance = PasswordReset.objects.filter(uuid=uuid)
         if not instance.count() == 1:
-            return HttpResponseRedirect('register:activation-error')
+            return HttpResponseRedirect('onboarding:activation-error')
         user = instance[:1].get().user
         user.is_active = True
         user.save()
@@ -232,7 +232,7 @@ class ActivateAccount(View):
         user.send_welcome_email()
         return render(
             request,
-            'registration/activation_success.html',
+            'onboarding/activation_success.html',
             {
                 'success': 'Congratulations, you have registered successfully'
             },

@@ -15,15 +15,15 @@ class RegistrationTest(TestCase):
             'how_soon', 'personal_profile')
 
     urls = {
-        'purchase_step': reverse('register:purchase-step'),
-        'marital_status': reverse('register:marital-status'),
-        'first_home': reverse('register:first-home'),
-        'house_type': reverse('register:house-type'),
-        'city': reverse('register:city'),
-        'max_budget': reverse('register:max-budget'),
-        'current_rent': reverse('register:current-rent'),
-        'how_soon': reverse('register:how-soon'),
-        'personal_profile': reverse('register:personal-profile'),
+        'purchase_step': reverse('onboarding:purchase-step'),
+        'marital_status': reverse('onboarding:marital-status'),
+        'first_home': reverse('onboarding:first-home'),
+        'house_type': reverse('onboarding:house-type'),
+        'city': reverse('onboarding:city'),
+        'max_budget': reverse('onboarding:max-budget'),
+        'current_rent': reverse('onboarding:current-rent'),
+        'how_soon': reverse('onboarding:how-soon'),
+        'personal_profile': reverse('onboarding:personal-profile'),
     }
 
     def test_get(self):
@@ -104,7 +104,7 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.is_active, False)
 
         # test to see if the activation link will work
-        activation_url = reverse('register:activate-account', kwargs={'uuid': instance.uuid})
+        activation_url = reverse('onboarding:activate-account', kwargs={'uuid': instance.uuid})
         self.assertEqual(self.client.get(activation_url).status_code, 200)
         self.assertTemplateUsed('register/activation_success.html')
 
