@@ -5,15 +5,14 @@
 {% block content %}
     <!-- Start section -->
 
-    <section class="main">
-        <div class="container">
-            <div class="row">
-                {% if agent_user %}
-                    <div class="col-xs-3">
-                        <div class="row"><h2>CLIENTS</h2></div>
-                        {% if my_clients %}
-                            <div class="row">
-                                <p>MY CLIENTS</p>
+    <section class="chat-container">
+        <div class="benefits text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="box-chat">
+                            <strong class="chat-titre">MY CLIENTS</strong>
+                            {% if my_clients %}
                                 <ul>
                                     {% for client_room in my_clients %}
                                         <li>
@@ -21,12 +20,11 @@
                                         </li>
                                     {% endfor %}
                                 </ul>
-
-                            </div>
-                        {% endif %}
-                        {% if unassigned_clients %}
-                            <div class="row">
-                                <p>UNASSIGNED CLIENTS</p>
+                            {% else %}
+                                <p> No clients available</p>
+                            {% endif %}
+                            <strong class="chat-titre">UNASSIGNED CLIENTS</strong>
+                            {% if unassigned_clients %}
                                 <ul>
                                     {% for client_room in unassigned_clients %}
                                         <li>
@@ -34,98 +32,117 @@
                                         </li>
                                     {% endfor %}
                                 </ul>
+                            {% else %}
+                                <p> No unassigned clients available</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="chat-box col-md-8">
+                    <div class="box-chat">
+                        {% if my_clients %}
+                            <strong class="client-name">You are chatting to {{ client.name }}</strong>
+                            <hr class="style-two">
+                            <div class="chat-messages">
+                                {% if not selected_client_room %}
+                                    <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
+                                    <p class="center">Please select a client to start chatting</p>
+                                {% endif %}
+                                <table id="chat">
+                                    <tbody>
+                                    {% if messages %}
+                                        {% for msg in messages %}
+                                            <tr>
+                                                <td>{{ msg.timestamp|date:"r" }}</td>
+                                                <td>{{ msg.sent_by }}</td>
+                                                <td>{{ msg.text }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <tr></tr>
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="no-message">
+                                <p> No client selected</p>
+                                <hr class="style-two">
                             </div>
                         {% endif %}
                     </div>
-                {% endif %}
-                <div class="col-xs-6">
-                    <div class="chat-messages">
-                    {% if not selected_client_room %}
-                        <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
-                        <p class="center">Please select a client to start chatting</p>
-                    {% endif %}
-                        <table id="chat">
-                            <tbody>
-                            {% if messages %}
-                                {% for msg in messages %}
-                                    <tr>
-                                        <td>{{ msg.timestamp|date:"r" }}</td>
-                                        <td>{{ msg.sent_by }}</td>
-                                        <td>{{ msg.text }}</td>
-                                    </tr>
-                                {% endfor %}
-                            {% else %}
-                                <tr></tr>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="box-chat">
+                            {% if not selected_client_room %}
+                                <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
+                                <p class="center">Please select a client to start chatting</p>
                             {% endif %}
-                            </tbody>
-                        </table>
+                            <table id="chat">
+                                <tbody>
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <tr>
+                                            <td>{{ msg.timestamp|date:"r" }}</td>
+                                            <td>{{ msg.sent_by }}</td>
+                                            <td>{{ msg.text }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr></tr>
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                {% if agent_user %}
-                    <div class="col-xs-3">
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-                        <p>USER SHORT BIO</p>
-
-                    </div>
-                {% endif %}
-            </div>
-            <form role="form" class="form-inline" id="chatform">
-                <div class="row">
+                <form role="form" class="form-inline" id="chatform">
+                    <div class="row">
                     <textarea type="text" class="pull-left col-xs-11" name="message" id="message"
                               placeholder="Type your message"></textarea>
-                    <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
-                </div>
-            </form>
+                        <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
+                    </div>
+                </form>
+            </div>
         </div>
+
     </section>
     <!-- End section -->
     <script type="text/javascript" src='{% static "chat/js/jquery-1.12.1.min.js" %}'></script>
     <script type="text/javascript" src='{% static "chat/js/reconnecting-websocket.min.js" %}'></script>
     {% if selected_client_room %}
         <script type='text/javascript'>
-            $(document).ready(function () {
-                // When we're using HTTPS, use WSS too.
-                var room = {{ selected_client_room }};
-                var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-                var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + '/chat/' + room);
-                chatsock.timeoutInterval = 3600;
-                chatsock.onmessage = function (message) {
-                    var data = JSON.parse(message.data);
-                    var chat = $('#chat  > tbody:last-child');
-                    var ele = '<tr>' +
-                            '<td>' + data.timestamp + '</td>' +
-                            '<td>' + data.handle + '</td>' +
-                            '<td>' + data.message + '</td>' +
-                            '</tr>';
-                    chat.append(ele)
-                };
+          $(document).ready(function () {
+            // When we're using HTTPS, use WSS too.
+            var room = {{ selected_client_room }};
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + '/chat/' + room);
+            chatsock.timeoutInterval = 3600;
+            chatsock.onmessage = function (message) {
+              var data = JSON.parse(message.data);
+              var chat = $('#chat  > tbody:last-child');
+              var ele = '<tr>' +
+                '<td>' + data.timestamp + '</td>' +
+                '<td>' + data.handle + '</td>' +
+                '<td>' + data.message + '</td>' +
+                '</tr>';
+              chat.append(ele)
+            };
 
-                $("#chatform").on("submit", function (event) {
-                    var message = {
-                        message: $('#message').val(),
-                    };
-                    chatsock.send(JSON.stringify(message));
-                    $("#message").val('').focus();
-                    return false;
-                });
+            $("#chatform").on("submit", function (event) {
+              var message = {
+                message: $('#message').val(),
+              };
+              chatsock.send(JSON.stringify(message));
+              $("#message").val('').focus();
+              return false;
             });
+          });
         </script>
     {% else %}
         <script type='text/javascript'>
-            $(document).ready(function () {
-                $('input[type=submit]', this).attr('disabled', 'disabled');
-            });
+          $(document).ready(function () {
+            $('input[type=submit]', this).attr('disabled', 'disabled');
+          });
         </script>
     {% endif %}
 {% endblock %}
