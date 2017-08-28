@@ -73,7 +73,7 @@ class User(AbstractUser):
     credit_score = models.SmallIntegerField(choices=CREDIT_SCORE_CHOICES, null=True)
 
     def __str__(self):
-        return self.email
+        return self.username
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
