@@ -1,19 +1,39 @@
-{% extends "base_onboarding.html" %}
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
 {% block content %}
-        <!-- Start Categories section -->
-
-        <section class="categories text-center">
+    <section class="registration-container">
+        <div class="categories text-center">
             <div class="container">
-                <h1 class="textSerif">What step are you in?</h1>
+                <div class="header">
+                    <h1>{% trans "What step are you in?" %}</h1>
+                </div>
 
-                <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Next</button>
-                </form>
+                <div class="row">
 
-
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="list-container">
+                            <ul>
+                                {% for value, display_name in form.fields.purchase_step.choices %}
+                                    <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                                    <label class="btn active">
+                                        <input type="radio" name='purchase_step' checked><i
+                                            class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i>
+                                        <span>{{ display_name }}</span>
+                                    </label>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <button type="submit">Next</button>
+                    </form>
+                </div>
             </div>
-        </section>
-        <!-- End Categories section -->
+        </div>
+    </section>
+
 {% endblock %}

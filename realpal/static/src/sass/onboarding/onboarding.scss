@@ -47,9 +47,73 @@
   cursor: pointer;
   margin-top: 15px
 }
-.categories button:hover{
-  background-color:#a5725d;
+
+.categories button:hover {
+  background-color: #a5725d;
   color: white;
 }
 
 /* End Categories Section */
+
+/* Radio Button Styles */
+label.btn span {
+  font-size: 1.5em;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o {
+  color: #c8c8c8;
+  display: inline;
+}
+
+label input[type="radio"] ~ i.fa.fa-dot-circle-o {
+  display: none;
+}
+
+label input[type="radio"]:checked ~ i.fa.fa-circle-o {
+  display: none;
+}
+
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o {
+  color: #A5725D;
+  display: inline;
+}
+
+label:hover input[type="radio"] ~ i.fa {
+  color: #A5725D;
+}
+
+label:hover input[type="checkbox"] ~ i.fa {
+  color: #A5725D;
+}
+
+div[data-toggle="buttons"] label.active {
+  color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 2em;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  border: 0px solid #c8c8c8;
+  border-radius: 3px;
+  color: #c8c8c8;
+  user-select: none;
+  outline: none !important;
+}
+
+div[data-toggle="buttons"] label:hover {
+  color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+  box-shadow: none;
+}
+
+/* End Radio Button Styles */
