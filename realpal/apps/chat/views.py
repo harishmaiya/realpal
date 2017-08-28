@@ -14,7 +14,7 @@ class ChatRoomView(View):
     def get(self, request, *args, **kwargs):
         user = request.user
         if user.user_type == CLIENT_USER:
-            room = Room.objects.get(client=user)
+            room, created = Room.objects.get_or_create(client=user)
             messages = Message.objects.filter(room=room)
             context = {
                 'messages': messages,
