@@ -118,6 +118,6 @@ class TestUserUpdateView(BaseUserTestCase):
             data_to_pass = incorrect_data[form]
             incorrect_data[form][form] = 'Update'
             response = self.client.post(update_url, data_to_pass)
-            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.status_code, 302)
             self.assertTemplateUsed('users/update.html')
 
