@@ -1,4 +1,5 @@
 import uuid
+import logging
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
@@ -12,6 +13,8 @@ from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 
 from realpal.apps.users.constants import *
+
+logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
@@ -43,9 +46,9 @@ class User(AbstractUser):
 
     purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP)
 
-    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=SC_SI)
+    status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
-    firsthome = models.BooleanField(default=True)
+    firsthome = models.BooleanField()
 
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
@@ -59,7 +62,7 @@ class User(AbstractUser):
 
     current_rent = models.FloatField(blank=True, null=True)
 
-    how_soon = models.SmallIntegerField(choices=HOW_SOON_CHOICES, null=True)
+    how_soon = models.SmallIntegerField(choices=HOW_SOON_CHOICES, null=True, blank=True)
 
     language = models.SmallIntegerField(choices=LANGUAGE_CHOICES, default=LC_EN)
 
@@ -117,10 +120,7 @@ class User(AbstractUser):
         try:
             msg.send(fail_silently=False)
         except Exception as er:
-            None
-
-    def __str__(self):
-        return self.username
+            logger.error('failed sending email for {}'.format(self.get_full_name()))
 
 
 class PasswordReset(models.Model):

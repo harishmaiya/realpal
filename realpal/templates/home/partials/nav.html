@@ -1,7 +1,8 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container">
         <div class="navbar-header ">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#our-navbar" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#our-navbar"
+                    aria-expanded="false">
                 <i class="fa fa-bars fa-2x"></i>
             </button>
             <a class="navbar-brand sans navy text-center bold" href="/">
@@ -12,12 +13,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="navy sans" href="#">Locations</a></li>
                 {% if user.is_anonymous %}
-                <li><a class="navy sans" href="{% url 'chat:login' %}">Sign In</a></li>
+                    <li><a class="navy sans" href="{% url 'chat:login' %}">Sign In</a></li>
                 {% else %}
                     <li><a class="navy sans" href="{% url 'chat:chat-room' %}">Chat</a></li>
-                <li><a class="text-danger sans" href="{% url 'chat:logout' %}">Sign Out</a></li>
+                    <li><a class="text-danger sans" href="{% url 'chat:logout' %}">Sign Out</a></li>
                 {% endif %}
-                <li class="btn back-brown sans"><a href="{%   url 'register:purchase-step' %}">Get Started</a></li>
+                {% if not user.is_authenticated %}
+                    <li class="btn back-brown sans"><a href="{% url 'register:purchase-step' %}">Get Started</a></li>
+                {% endif %}
             </ul>
         </div>
     </div><!-- /.container-fluid -->
