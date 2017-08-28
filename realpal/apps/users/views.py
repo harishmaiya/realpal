@@ -95,12 +95,12 @@ class Login(View):
             if user.is_active:
                 login(request, user)
                 request.session.set_expiry(60 * 60 * 24)
-                return redirect('dashboard')
+                return redirect('mainapp:home')
             else:
                 user.send_verification_email(user.email)
                 return render(
                     request,
-                    'home/login.html',
+                    'users/login.html',
                     {
                         'form': LoginForm,
                         'error': 'You still have not verified your email address. The verification link has been '
