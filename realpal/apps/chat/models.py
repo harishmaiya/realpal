@@ -8,7 +8,7 @@ def message_attachment(instance, filename):
 
 
 class Room(models.Model):
-    client = models.ForeignKey(User, related_name='Client',  on_delete=models.CASCADE)
+    client = models.OneToOneField(User, related_name='Client',  on_delete=models.CASCADE)
     agent = models.ForeignKey(User, related_name='Agent', blank=True, null=True)
 
     def __str__(self):
