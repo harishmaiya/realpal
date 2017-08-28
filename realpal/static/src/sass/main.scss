@@ -1,0 +1,27 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'BentonSans Bold';
+  font-weight: bold;
+  src: url("../assets/fonts/bentonsans-bold-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'BentonSans Book';
+  src: url("../assets/fonts/bentonsans-light-webfont.woff") format("woff");
+}
+
+body, html {
+  font-family: 'BentonSans Book', Fallback, sans-serif;
+  overflow-x: hidden;
+}
+.header{margin-top: 60px}
+.footer-space{margin-top: 60px}
+
+/* style.scss */
+@import "base/base";
+@import "base/base_onboarding";
+@import "base/base_profile";
+@import "base/project";
+@import "home/home";
+@import "account/registration";

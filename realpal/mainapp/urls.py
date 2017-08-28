@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(
         r'^$',
-        TemplateView.as_view(template_name='pages/home.html'),
+        TemplateView.as_view(template_name='home/home.html'),
         name='home'
     ),
     url(
@@ -25,12 +25,12 @@ urlpatterns = [
     ),
     url(
         r'^aboutus$',
-        TemplateView.as_view(template_name='mainapp/aboutus.html'),
+        TemplateView.as_view(template_name='mainapp/about-us.html'),
         name='aboutus'
     ),
     url(
         r'^prepare$',
-        TemplateView.as_view(template_name='pages/how-it-works.html'),
+        TemplateView.as_view(template_name='home/how-it-works.html'),
         name='prepare'
     ),
     url(
@@ -43,49 +43,4 @@ urlpatterns = [
         TemplateView.as_view(template_name='mainapp/own.html'),
         name='own'
     ),
-    url(
-        r'^onboarding$',
-        TemplateView.as_view(template_name='mainapp/onboarding.html'),
-        name='onboarding'
-    ),
-    url(
-        r'^onboarding/prepare/profile$',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/profile.html'),
-        name='prepare-profile'
-    ),
-    url(
-        r'^onboarding/prepare/first-time$',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/is_first_home.html'),
-        name='prepare-firsttime'
-    ),
-    url(
-        r'^onboarding/prepare/home-type$',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/home_type.html'),
-        name='prepare-hometype'
-    ),
-    url(
-        r'^onboarding/prepare/max-budget',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/max_budget.html'),
-        name='prepare-maxbudget'
-    ),
-    url(
-        r'^onboarding/prepare/rent',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/rent.html'),
-        name='prepare-rent'
-    ),
-    url(
-        r'^onboarding/prepare/timeline',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/timeline.html'),
-        name='prepare-timeline'
-    ),
-    url(
-        r'^onboarding/prepare/house-choice',
-        TemplateView.as_view(template_name='mainapp/onboarding_prepare/house_choices.html'),
-        name='prepare-housechoice'
-    ),
-    url(
-        r'^onboarding/prepare/areas-choice',
-        views.serve_cities,
-        name='prepare-areas'
-    )
 ]

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Start Intro -->
+    <section class="home-container">
+        <div class="header text-center textSerif">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-4 prepare">
+                        <div class="overlay"></div>
+                        <a href="{% url 'mainapp:prepare' %}" class="link-btn">
+                            <span class="textSerif">Prepare</span>
+                            <span class="works sans">How Real Pal can help you -></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-4 purchase">
+                        <div class="overlay"></div>
+                        <a href="{% url 'mainapp:purchase' %}" class="link-btn">
+                            <span class="textSerif">Purchase</span>
+                            <span class="works sans">How Real Pal can help you -></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-4 own">
+                        <div class="overlay"></div>
+                        <a href="{% url 'mainapp:own' %}" class="link-btn">
+                            <span class="textSerif">Own</span>
+                            <span class="works sans">How Real Pal can help you -></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Intro -->
+
+        <!-- Start Text section -->
+
+        <div class="text">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h2 class="text-center brown textSerif">
+                            Buying your biggest asset is a well advised journey with right deals at every step. Being
+                            your
+                            trusted pal we like to help you have happy home.
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Text section -->
+
+        <!-- Start Benefits Section -->
+
+        <div id="why" class="benefits text-center  navy">
+            <div class="container">
+                <div class="row">
+                    <h2 class="h1 textSerif">The benefits of Real Pal</h2>
+                    <div class="box col-md-4">
+                        <i class="fa fa-check fa-5x back-navy"></i>
+                        <p class="lead sans">Honest and knowledgeable</p>
+                        <p class="textSerif">Lorem ipsum dolor sit amet, quis impedit albucius sed ne. Vim animal
+                            legimus
+                            cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum cu vim. No has eros
+                            gloriatur, sea ei nullam debitis senserit.</p>
+                    </div>
+                    <div class="box col-md-4">
+                        <i class="fa fa-wifi fa-5x back-navy"></i>
+                        <p class="lead sans">Guide who listens</p>
+                        <p class="textSerif">Chat with a real person—in real time—about everything from fit to budget to
+                            outfitting advice.</p>
+                    </div>
+                    <div class="box col-md-4">
+                        <i class="fa fa-refresh fa-5x back-navy"></i>
+                        <p class="lead sans">Comfortable experience</p>
+                        <p class="textSerif">Lorem ipsum dolor sit amet, quis impedit albucius sed ne. Vim animal
+                            legimus
+                            cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum cu vim. No has eros
+                            gloriatur, sea ei nullam debitis senserit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Benefits  Section -->
+
+        <!-- Start Learn About Section -->
+        <div class="learn back-brown">
+            <div class="container">
+                <div class="box row ">
+                    <div class="col-md-12">
+                        <div class="box col-md-8">
+                            <h2 class="textSerif">Learn more about how Real Pal works</h2>
+                        </div>
+                        <div class="box col-md-4">
+                            <button class="btn"><a href="{% url 'register:purchase-step' %}">Get Started</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

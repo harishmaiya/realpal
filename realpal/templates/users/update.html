@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>none</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit your profile</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="pill" href="#purchase-step">Purchase Step</a></li>
+        <li><a data-toggle="pill" href="#marital-status">Marital Status</a></li>
+        <li><a data-toggle="pill" href="#first-home">First Home</a></li>
+        <li><a data-toggle="pill" href="#house-type">House Type</a></li>
+        <li><a data-toggle="pill" href="#city">Preferred City</a></li>
+        <li><a data-toggle="pill" href="#max-budget">Max Budget</a></li>
+        <li><a data-toggle="pill" href="#current-rent">Current Rent</a></li>
+        <li><a data-toggle="pill" href="#how-soon">How Soon</a></li>
+        <li><a data-toggle="pill" href="#personal-profile">Personal Profile</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="purchase-step" class="tab-pane fade in active">
+            <h3>Purchase Step</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="purchase_step_form" value="Update"/>
+            </form>
+        </div>
+        <div id="marital-status" class="tab-pane fade">
+            <h3>Marital Status</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ marital_status_form.as_p }}
+                <input type="submit" name="marital_status_form" value="Update"/>
+            </form>
+        </div>
+        <div id="first-home" class="tab-pane fade">
+            <h3>First Home</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ first_home_form.as_p }}
+                <input type="submit" name="first_home_form" value="Update"/>
+            </form>
+        </div>
+        <div id="house-type" class="tab-pane fade">
+            <h3>House Type</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ house_type_form.as_p }}
+                <input type="submit" name="house_type_form" value="Update"/>
+            </form>
+        </div>
+        <div id="city" class="tab-pane fade">
+            <h3>City</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ city_form.as_p }}
+                <input type="submit" name="city_form" value="Update"/>
+            </form>
+        </div>
+        <div id="max-budget" class="tab-pane fade">
+            <h3>Max Budget</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ max_budget_form.as_p }}
+                <input type="submit" name="max_budget_form" value="Update"/>
+            </form>
+        </div>
+        <div id="current-rent" class="tab-pane fade">
+            <h3>Current Rent</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ current_rent_form.as_p }}
+                <input type="submit" name="current_rent_form" value="Update"/>
+            </form>
+        </div>
+        <div id="how-soon" class="tab-pane fade">
+            <h3>How soon would you like to buy</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ how_soon_form.as_p }}
+                <input type="submit" name="how_soon_form" value="Update"/>
+            </form>
+        </div>
+        <div id="personal-profile" class="tab-pane fade">
+            <h3>Personal Profile</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ personal_profile_form.as_p }}
+                <input type="submit" name="personal_profile_form" value="Update"/>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
