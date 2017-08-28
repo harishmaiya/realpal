@@ -4,7 +4,6 @@ from test_plus.test import TestCase
 from django.test import Client
 from realpal.apps.users.constants import *
 from realpal.apps.users.views import UserRedirectView, UserUpdateView
-from realpal.apps.users.models import User
 
 
 class BaseUserTestCase(TestCase):
