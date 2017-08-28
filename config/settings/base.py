@@ -47,9 +47,6 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'channels',
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
     'widget_tweaks'
 ]
 
@@ -255,7 +252,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 # Some really nice defaults
