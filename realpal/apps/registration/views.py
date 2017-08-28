@@ -66,9 +66,9 @@ class HouseTypeView(View):
 
     def get(self, request, *args, **kwargs):
         registration_data = {
-            'house_type': request.session.get('house_type', None),
-            'house_age': request.session.get('house_age', None),
-            'house_condition': request.session.get('house_condition', None)
+            'house_type': request.session.get('house_type', ''),
+            'house_age': request.session.get('house_age', ''),
+            'house_condition': request.session.get('house_condition', '')
         }
         house_type_form = HouseTypeForm(initial=registration_data)
 
@@ -88,7 +88,7 @@ class HouseTypeView(View):
             'house_age': request.session.get('house_age', ''),
             'house_condition': request.session.get('house_condition', '')
         }
-        house_type_form = HouseTypeForm(request.POST or '', initial=registration_data)
+        house_type_form = HouseTypeForm(request.POST or None, initial=registration_data)
 
         if house_type_form.is_valid():
             request.session['house_type'] = house_type_form.cleaned_data['house_type']
@@ -197,16 +197,16 @@ class PersonalProfileView(View):
                 email=form.cleaned_data['email'],
                 username=form.cleaned_data['email'],
 
-                purchase_step=request.session.get('purchase_step', None),
-                status=request.session.get('marital_status', None),
-                firsthome=request.session.get('first_home', None),
-                house_type=request.session.get('house_type', None),
-                house_age=request.session.get('house_age', None),
-                house_cond=request.session.get('house_condition', None),
+                purchase_step=request.session.get('purchase_step', ''),
+                status=request.session.get('marital_status', ''),
+                firsthome=request.session.get('first_home', ''),
+                house_type=request.session.get('house_type', ''),
+                house_age=request.session.get('house_age', ''),
+                house_cond=request.session.get('house_condition', ''),
                 preferred_city=city,
-                budget=request.session.get('max_budget', None),
-                current_rent=request.session.get('current_rent', None),
-                how_soon=request.session.get('how_soon', None),
+                budget=request.session.get('max_budget', ''),
+                current_rent=request.session.get('current_rent', ''),
+                how_soon=request.session.get('how_soon', ''),
 
                 is_active=False
 
