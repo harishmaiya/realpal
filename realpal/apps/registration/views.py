@@ -66,9 +66,9 @@ class HouseTypeView(View):
 
     def get(self, request, *args, **kwargs):
         registration_data = {
-            'house_type': request.session.get('house_type', None),
-            'house_age': request.session.get('house_age', None),
-            'house_condition': request.session.get('house_condition', None)
+            'house_type': request.session.get('house_type', ''),
+            'house_age': request.session.get('house_age', ''),
+            'house_condition': request.session.get('house_condition', '')
         }
         house_type_form = HouseTypeForm(initial=registration_data)
 
@@ -84,9 +84,9 @@ class HouseTypeView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {
-            'house_type': request.session.get('house_type', None),
-            'house_age': request.session.get('house_age', None),
-            'house_condition': request.session.get('house_condition', None)
+            'house_type': request.session.get('house_type', ''),
+            'house_age': request.session.get('house_age', ''),
+            'house_condition': request.session.get('house_condition', '')
         }
         house_type_form = HouseTypeForm(request.POST or None, initial=registration_data)
 
@@ -125,13 +125,13 @@ class MaxBudgetView(View):
     template_name = 'registration/max_budget.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'max_budget': request.session.get('max_budget', None)}
+        registration_data = {'max_budget': request.session.get('max_budget', '')}
         form = MaxBudgetForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'max_budget': request.session.get('max_budget', None)}
-        form = MaxBudgetForm(request.POST or None, initial=registration_data)
+        registration_data = {'max_budget': request.session.get('max_budget', '')}
+        form = MaxBudgetForm(request.POST or '', initial=registration_data)
         if form.is_valid():
             request.session['max_budget'] = form.cleaned_data['budget']
             return HttpResponseRedirect(reverse('register:current-rent'))
@@ -143,13 +143,13 @@ class CurrentRentView(View):
     template_name = 'registration/current_rent.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'current_rent': request.session.get('current_rent', None)}
+        registration_data = {'current_rent': request.session.get('current_rent', '')}
         form = CurrentRentForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'current_rent': request.session.get('current_rent', None)}
-        form = CurrentRentForm(request.POST or None, initial=registration_data)
+        registration_data = {'current_rent': request.session.get('current_rent', '')}
+        form = CurrentRentForm(request.POST or '', initial=registration_data)
         if form.is_valid():
             request.session['current_rent'] = form.cleaned_data['current_rent']
             return HttpResponseRedirect(reverse('register:how-soon'))
@@ -161,13 +161,13 @@ class HowSoonView(View):
     template_name = 'registration/how_soon.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'how_soon': request.session.get('how_soon', None)}
+        registration_data = {'how_soon': request.session.get('how_soon', '')}
         form = HowSoonForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'how_soon': request.session.get('how_soon', None)}
-        form = HowSoonForm(request.POST or None, initial=registration_data)
+        registration_data = {'how_soon': request.session.get('how_soon', '')}
+        form = HowSoonForm(request.POST or '', initial=registration_data)
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
             return HttpResponseRedirect(reverse('register:personal-profile'))
