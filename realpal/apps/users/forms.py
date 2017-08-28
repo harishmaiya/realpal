@@ -9,7 +9,7 @@ class PersonalProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'zipcode', 'phone_number', 'email']
 
 
-class LoginForm(AuthenticationForm):
+class LoginForm(forms.Form):
     email = forms.CharField(
         label='Email address',
         max_length=255,
@@ -22,3 +22,4 @@ class LoginForm(AuthenticationForm):
         required=True,
         widget=forms.PasswordInput(attrs={'id': 'password', 'class': 'input'})
     )
+    field_order = ('email', 'password')

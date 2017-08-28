@@ -29,12 +29,6 @@ class City(models.Model):
 @python_2_unicode_compatible
 class User(AbstractUser):
     email = models.EmailField(unique=True, null=True)
-    is_staff = models.BooleanField(
-        _('staff status'),
-        default=False,
-        help_text=_('Designates whether the user can log into this site.'),
-    )
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
@@ -79,7 +73,7 @@ class User(AbstractUser):
     credit_score = models.SmallIntegerField(choices=CREDIT_SCORE_CHOICES, null=True)
 
     def __str__(self):
-        return self.username
+        return self.email
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})

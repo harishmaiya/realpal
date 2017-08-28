@@ -1,4 +1,4 @@
-from django.shortcuts import reverse, render, redirect, HttpResponseRedirect
+from django.shortcuts import reverse, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, View
 from django.forms.models import model_to_dict
@@ -123,4 +123,4 @@ class Login(View):
 class Logout(View):
     def get(self, request, *args, **kwargs):
         logout(request)
-        return HttpResponseRedirect(settings.LOGIN_URL)
+        return redirect(settings.LOGIN_URL)
