@@ -281,7 +281,7 @@ class RegistrationTest(TestCase):
         self.assertTemplateUsed('registration/max_budget.html')
 
         # test to make sure we can skip the max budget form
-        data = {'max_budget': None}
+        data = {'budget': ''}
         response = self.client.post(self.urls['max_budget'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template current rent
