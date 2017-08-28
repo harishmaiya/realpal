@@ -46,9 +46,9 @@ class User(AbstractUser):
 
     purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP)
 
-    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=SC_SI)
+    status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
-    firsthome = models.BooleanField(default=True)
+    firsthome = models.BooleanField()
 
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
@@ -62,7 +62,7 @@ class User(AbstractUser):
 
     current_rent = models.FloatField(blank=True, null=True)
 
-    how_soon = models.SmallIntegerField(choices=HOW_SOON_CHOICES, null=True)
+    how_soon = models.SmallIntegerField(choices=HOW_SOON_CHOICES, null=True, blank=True)
 
     language = models.SmallIntegerField(choices=LANGUAGE_CHOICES, default=LC_EN)
 
