@@ -1,4 +1,5 @@
 import uuid
+import logging
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
@@ -12,6 +13,8 @@ from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 
 from realpal.apps.users.constants import *
+
+logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
@@ -117,10 +120,7 @@ class User(AbstractUser):
         try:
             msg.send(fail_silently=False)
         except Exception as er:
-            None
-
-    def __str__(self):
-        return self.username
+            logger.error('failed sending email for {}'.format(self.get_full_name()))
 
 
 class PasswordReset(models.Model):
