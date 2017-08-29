@@ -9,15 +9,16 @@
                 <div class="header">
                     <h1 class="domine">When do you plan to buy your house?</h1>
                 </div>
-                <form action="" method="post" class="button-select text-center">
+                <form action="" method="post">
                     {% csrf_token %}
-                    {{ form|crispy}}
+                    <div class="row">
+                        {{ form|crispy }}
+                    </div>
                     <button class="btn" type="submit">Next</button>
-                    <a href="{% url 'register:personal-profile' %}">
-                        <button class="skip" type="button">Skip this step</button>
-                    </a>
                 </form>
-
+                <a href="{% url 'register:personal-profile' %}">
+                    <button class="skip" type="button">Skip this step</button>
+                </a>
             </div>
         </div>
     </section>

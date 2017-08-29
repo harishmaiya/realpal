@@ -15,12 +15,11 @@
                     <div class="row">
                         {{ form|crispy}}
                     </div>
-
                     <button class="btn" type="submit">Continue</button>
-                    <a href="{% url 'register:max-budget' %}">
-                        <button class="btn" type="button">Anywhere in Silicon Valley</button>
-                    </a>
                 </form>
+                <a href="{% url 'register:max-budget' %}">
+                    <button class="skip" type="button">Anywhere in Silicon Valley</button>
+                </a>
             </div>
         </div>
     </section>

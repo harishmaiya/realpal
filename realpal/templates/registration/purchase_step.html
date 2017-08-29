@@ -11,13 +11,14 @@
                     <div class="button-select">
                         {% csrf_token %}
                         {% for choice in form.purchase_step %}
-                            <div class="btn">{{ choice }}</div>
+                            <div class="btn center-block">{{ choice }}</div>
                         {% endfor %}
                     </div>
                     <button type="submit">Next</button>
                 </form>
-
-
+                <a href="{% url 'register:marital-status' %}">
+                    <button class="skip" type="button">Skip this step</button>
+                </a>
             </div>
         </div>
     </section>
