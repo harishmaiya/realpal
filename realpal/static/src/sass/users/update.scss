@@ -72,72 +72,116 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
 }
 
 .btn-brown {
-    width: 295px;
-    padding: 12px 20px;
-    background: #bc8067;
-    color: #fff;
-    border: 1px solid transparent;
-    border-radius: 22px;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin-top: 15px;
+  width: 295px;
+  padding: 12px 20px;
+  background: #bc8067;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
-
-
-
-
-.radio-group{
-  margin:25px ;
+.radio-group {
+  margin: 25px;
 }
-.inline{
+
+.inline {
   display: inline-block;
 }
-.inline + .inline{
-  margin-left:10px;
-}
-.radio{
-  font-size: 1.2em;
-  position:relative;
-  text-align: left;
-  margin: 20px;
-}
-.radio span{
-  position:relative;
-   padding-left:20px;
-}
-.radio span:after{
-  content:'';
-  width:15px;
-  height:15px;
-  border:3px solid;
-  position:absolute;
-  left:0;
-  top:1px;
-  border-radius:100%;
-  box-sizing:border-box;
 
+.inline + .inline {
+  margin-left: 10px;
 }
-.radio input[type="radio"]{
-   cursor: pointer;
-  position:absolute;
-  width:100%;
-  height:100%;
+
+.radio {
+font-size: 1.2em;
+    position: relative;
+    /* margin: auto !important; */
+    text-align: left;
+    width: 100%;
+    /* display: block; */
+    max-width: 300px;
+    margin: 40px 20px;
+    font-weight: 500;
+    margin: auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.radio p {
+  position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.radio p:after {
+  content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  position: absolute;
+  left: 5px;
+  top: -15px;
+  background: #B77D64;
   z-index: 1;
+  opacity: 0.1;
+    border-radius: 3px;
+}
+
+.radio input[type="radio"] {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  z-index: 1000;
   opacity: 0;
   filter: alpha(opacity=0);
+    top: -15px;
+    left: 5px;
+    margin: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
 }
-.radio input[type="radio"]:checked + span{
+
+.radio input[type="radio"]:checked + p {
   color: #B77D64;
+  & span {
+    z-index: 100;
+    color: white;
+    position: relative;
+  }
 }
-.radio input[type="radio"]:checked + span:before{
-    content:'';
-  width:5px;
-  height:5px;
-  position:absolute;
+
+.radio input[type="radio"]:checked + p:before {
+  content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  position: absolute;
   background: #B77D64;
-  left:5px;
-  top:6px;
-  border-radius:100%;
+  left: 5px;
+  top: -15px;
+  z-index: 10;
+  border-radius: 3px;
+}
+
+.styled select {
+  background: transparent;
+  width: 150px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 34px;
+}
+.styled {
+  margin: 50px;
+  width: 120px;
+  height: 34px;
+  border: 1px solid #111;
+  border-radius: 3px;
+  overflow: hidden;
 }

@@ -59,7 +59,23 @@
                         <h3>Purchase Step</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ form.as_p }}
+                            {% for value, name in purchase_step_form.fields.purchase_step.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="purchase_step" value="{{ value }}"
+                                                {% if value == purchase_step_form.initial.purchase_step %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0%}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
                             <input class="btn btn-brown" type="submit" name="purchase_step_form" value="Update"/>
                         </form>
                     </div>
@@ -68,14 +84,25 @@
                         <h3>Marital Status</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                        <div class="radio-group">
-                            {% for value, name in marital_status_form.fields.status.choices %}
-                                <label class="radio">
-                                    <input type="radio" name="status" value="{{ value }}" {% if value == marital_status_form.initial.status %} checked {% endif %}>
-                                    <span> {{ name }} </span>
-                                </label>
-                            {% endfor %}
-                        </div>
+                            <div class="radio-group">
+                                {% for value, name in marital_status_form.fields.status.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="status" value="{{ value }}"
+                                                {% if value == marital_status_form.initial.status %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0%}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                            </div>
                             <input class="btn btn-brown" type="submit" name="marital_status_form" value="Update"/>
                         </form>
                     </div>
@@ -93,7 +120,60 @@
                         <h3>House Type</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ house_type_form.as_p }}
+
+                            {% for value, name in house_type_form.fields.house_type.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="house_type" value="{{ value }}"
+                                                {% if value == house_type_form.initial.house_type %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0%}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                        <h3>House Age</h3>
+                        {% for value, name in house_type_form.fields.house_age.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="house_type" value="{{ value }}"
+                                                {% if value == house_type_form.initial.house_age %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0%}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                        <h3>House Condition</h3>
+                        {% for value, name in house_type_form.fields.house_cond.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="house_type" value="{{ value }}"
+                                                {% if value == house_type_form.initial.house_cond %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0%}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
                             <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
                         </form>
                     </div>
