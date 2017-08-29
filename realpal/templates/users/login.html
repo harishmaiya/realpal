@@ -1,6 +1,7 @@
-{% extends "base.html" %}
+{% extends "base_onboarding.html" %}
 
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
@@ -10,15 +11,21 @@
             <div class="container">
                 <div class="header">
                     <h1>{% trans "Sign In" %}</h1>
+                    <h3 class="droid">
+                    {% trans 'If you have not created an account yet, then please' %}
+                    <a href="{% url 'register:purchase-step' %}">{% trans 'sign up' %}</a> {% trans 'first.' %}
+                </h3>
                 </div>
+
 
                 <div class="row">
                     <form role="form" class="signup" id="signup_form" method="POST" action="">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <a class="button secondaryAction"
-                           href="">{% trans "Forgot Password?" %}
-                        </a>
+                        <div>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <a class="button secondaryAction"
+                               href="#">{% trans "Forgot Password?" %}</a>
+                        </div>
                         <button class="btn" type="submit">{% trans "Sign In" %}</button>
                     </form>
                 </div>
@@ -27,4 +34,3 @@
     </section>
 
 {% endblock %}
-
