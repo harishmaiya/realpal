@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1>{% trans "Sign In" %}</h1>
+                </div>
+
+                <div class="row">
+                    <form role="form" class="signup" id="signup_form" method="POST" action="">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <a class="button secondaryAction"
+                           href="">{% trans "Forgot Password?" %}
+                        </a>
+                        <button class="btn" type="submit">{% trans "Sign In" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+

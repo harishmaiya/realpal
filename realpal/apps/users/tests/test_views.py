@@ -4,18 +4,15 @@ from test_plus.test import TestCase
 from django.test import Client
 from realpal.apps.users.constants import *
 from realpal.apps.users.views import UserRedirectView, UserUpdateView
-from realpal.apps.users.models import User
 
 
 class BaseUserTestCase(TestCase):
-
     def setUp(self):
         self.user = self.make_user()
         self.factory = RequestFactory()
 
 
 class TestUserRedirectView(BaseUserTestCase):
-
     client = Client()
 
     def test_get_redirect_url(self):
@@ -36,7 +33,6 @@ class TestUserRedirectView(BaseUserTestCase):
 
 
 class TestUserUpdateView(BaseUserTestCase):
-
     def setUp(self):
         # call BaseUserTestCase.setUp()
         super(TestUserUpdateView, self).setUp()
@@ -97,28 +93,47 @@ class TestUserUpdateView(BaseUserTestCase):
             self.assertEqual(response.status_code, 302)
             self.assertTemplateUsed('users/update.html')
 
-        # test to see that trying to update with incorrect data will return us to
-        # update page without the success redirect
-        incorrect_data = {
-            'purchase_step_form': {'purchase_step': 8},  # 8 is not a valid option
-            'marital_status_form': {'status': 8},
-            'house_type_form': {'house_type': 8, 'house_age': 8, 'house_cond': 8},
-            'max_budget_form': {'budget': 'TEXT'},
-            'current_rent_form': {'current_rent': 'TEXT'},  # TEXT is not a valid number
-            'how_soon_form': {'how_soon': 8},
-            'personal_profile_form': {
-                'first_name': 'TestFirstName',
-                'last_name': 'TestLastName',
-                'zipcode': '10118',
-                'phone_number': '+26334465657456774567',  # number too long
-                'email': 'test_email@gmail.com',
-            },
-        }
+        # test to see that trying to update with incorrect data will never save the new data
+        data = {'purchase_step': 8}  # 8 is not a valid option
+        self.client.post(update_url, data)
+        self.assertEqual(self.view.get_object().purchase_step, PS_DAP)  # the default
 
-        for form in incorrect_data:
-            data_to_pass = incorrect_data[form]
-            incorrect_data[form][form] = 'Update'
-            response = self.client.post(update_url, data_to_pass)
-            self.assertEqual(response.status_code, 200)
-            self.assertTemplateUsed('users/update.html')
+        # testing marital status update
+        data = {'status': 8}  # 8 is not a valid option
+        self.client.post(update_url, data)
+        self.assertEqual(self.view.get_object().status, None)
 
+        # testing house type update
+        data = {'house_type': 8, 'house_age': 8, 'house_cond': 8}  # 8 is not a valid option
+        self.client.post(update_url, data)
+        self.assertEqual(self.view.get_object().house_type, None)
+        self.assertEqual(self.view.get_object().house_age, None)
+        self.assertEqual(self.view.get_object().house_cond, None)
+
+        # testing budget update
+        data = {'budget': 'TEXT'}  # 8 is not a valid option
+        self.client.post(update_url, data)
+        self.assertEqual(self.view.get_object().budget, None)
+
+        # testing current rent update
+        data = {'current_rent': 'TEXT'}  # TEXT is not a valid number
+        self.client.post(update_url, data)
+        self.assertEqual(self.view.get_object().current_rent, None)
+
+        # testing how soon update
+        data = {'how_soon': 8}  # 8 is not a valid option
+        self.client.post(update_url, data)
+        self.assertEqual(self.view.get_object().how_soon, None)
+
+        # testing profile update
+        data = {
+                   'first_name': 'TestFirstName',
+                   'last_name': 'TestLastName',
+                   'zipcode': '10118',
+                   'phone_number': '+26334465657456774567',  # number too long
+                   'email': 'test_email@gmail.com',
+               }
+        self.client.post(update_url, data)
+        self.assertEqual(self.view.get_object().first_name, '')
+        self.assertEqual(self.view.get_object().zipcode, None)
+        self.assertEqual(self.view.get_object().email, 'testuser')
