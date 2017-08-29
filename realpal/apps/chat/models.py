@@ -4,7 +4,7 @@ from realpal.apps.users.models import User
 
 
 def message_attachment(instance, filename):
-    return '{room}/message/files/{user}/{file}'.format(room=instance.room_id, user=instance.sent_by.id, file=filename)
+    return '{room}/files/{user}/{file}'.format(room=instance.room_id, user=instance.sent_by.id, file=filename)
 
 
 class Room(models.Model):

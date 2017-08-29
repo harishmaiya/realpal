@@ -47,12 +47,9 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'channels',
-    'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
-    'rest_framework',
     'corsheaders',
+    'crispy_forms',  # Form layouts
+    'rest_framework',
     'widget_tweaks'
 ]
 
