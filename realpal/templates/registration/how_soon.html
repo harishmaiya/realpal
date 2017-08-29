@@ -1,4 +1,5 @@
 {% extends "base_onboarding.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
     <!-- Start Categories section -->
@@ -10,7 +11,7 @@
                 </div>
                 <form action="" method="post" class="button-select text-center">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {{ form|crispy}}
                     <button class="skip" type="submit">Next</button>
                     <a href="{% url 'register:personal-profile' %}">
                         <button class="skip" type="button">Skip this step</button>

@@ -12,8 +12,12 @@
 
                 <form class="form-inline" action="" method="post">
                     {% csrf_token %}
+                    {% for field in form %}
+                        <input class="form-control input-lg" type="number" name="{{ field.name }}"
+                               id="id_{{ field.name }}"
+                               value="{{ field.value }}" >
+                    {% endfor %}
                     <div class="dollar-sign">$</div>
-                    {{ form.as_p }}
                     <button class="continue center-block" type="submit">Continue</button>
 
                     <a href="{% url 'register:how-soon' %}">

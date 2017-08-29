@@ -1,4 +1,5 @@
 {% extends "base_onboarding.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
     <!-- Start Categories section -->
@@ -9,13 +10,13 @@
                     <h1 class="domine">Neighborhood your are interested in</h1>
                     <h3 class="droid">Get local trends and street level info</h3>
                 </div>
-                <form class="button-select" method="post" action="">
+                <form class="" method="post" action="">
                     {% csrf_token %}
                     <div class="row">
-                        {{ form.as_p }}
+                        {{ form|crispy}}
                     </div>
 
-                    <button class="continue center-block droid" type="submit">Continue</button>
+                    <button class="skip" type="submit">Continue</button>
                     <a href="{% url 'register:max-budget' %}">
                         <button class="skip" type="button">Anywhere in Silicon Valley</button>
                     </a>

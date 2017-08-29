@@ -12,13 +12,19 @@
                 </div>
                 <form class="form-inline" method="post" action="">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% for field in form %}
+                        <input class="form-control input-lg" type="number" name="{{ field.name }}"
+                               id="id_{{ field.name }}"
+                               value="{{ field.value }}">
+                    {% endfor %}
                     <div class="dollar-sign">$</div>
-                    <button class="next center-block droid" type="submit">Continue</button>
-                    <a href="{% url 'register:current-rent' %}">
-                        <button class="skip center-block droid" type="button">Skip this step</button>
-                    </a>
+                    <div class="button-container">
+                        <button class="next center-block droid" type="submit">Continue</button>
+                    </div>
                 </form>
+                <a href="{% url 'register:current-rent' %}">
+                    <button class="btn center-block droid" type="button">Skip this step</button>
+                </a>
             </div>
         </div>
     </section>

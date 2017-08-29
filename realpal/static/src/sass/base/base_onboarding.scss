@@ -55,21 +55,34 @@ html, body {
 .body #main {
   overflow: auto;
   padding-top: 45px;
-  padding-bottom: 65px;
-  position: relative;
-  margin: 0;
-  min-height: 100%;
+  padding-bottom: 65px
+}
+
+.switch-field  {
+
+  ul {
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    margin-right: 15px;
+  }
+  //input {
+  //  visibility:hidden;
+  //}
+  label {
+    cursor: pointer;
+  }
+  label ~  input:checked {
+    color: yellow;
+  }
 }
 
 /* End Body Section */
-.onboarding-footer{
+.onboarding-footer {
   .footer {
     background-color: #022d46;
     height: 65px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
   }
 
   .footer a {
@@ -89,7 +102,6 @@ html, body {
     margin-bottom: 0
   }
 }
-
 
 @import "../onboarding/onboarding";
 @import "../onboarding/onboarding_combo_options";
