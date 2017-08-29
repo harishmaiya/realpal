@@ -4,7 +4,7 @@ from realpal.apps.users.models import User
 
 
 def message_attachment(instance, filename):
-    return '{id}/messages/attachments/{filename}'.format(id=instance.sent_by.id, filename=filename)
+    return '{room}/message/files/{user}/{file}'.format(room=instance.room_id, user=instance.sent_by.id, file=filename)
 
 
 class Room(models.Model):
@@ -19,7 +19,7 @@ class Message(models.Model):
     room = models.ForeignKey(Room, related_name='room', db_index=True)
     sent_by = models.ForeignKey(User, related_name='sender')
     timestamp = models.DateTimeField(auto_now_add=True)
-    text = models.TextField()
+    text = models.TextField(blank=True)
     attachment = models.FileField(upload_to=message_attachment, blank=True, null=True)
 
     class Meta:

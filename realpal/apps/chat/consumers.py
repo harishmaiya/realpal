@@ -45,6 +45,10 @@ def channel_added_logger(reply_channel, group):
     )
 
 
+def get_room_group_channel(room_id):
+    return "Room_{}".format(room_id)
+
+
 @channel_session_user_from_http
 def ws_connect(message, room_id):
     message.reply_channel.send({"accept": True})
@@ -54,7 +58,7 @@ def ws_connect(message, room_id):
         message.channel_session["user_id"] = user.id
         try:
             room = Room.objects.get(pk=room_id)
-            group_name = "Room_{}".format(room.id)
+            group_name = get_room_group_channel(room.id)
             message.channel_session["room_id"] = room.id
             message.channel_session["group_name"] = group_name
             if user.user_type == AGENT_USER:

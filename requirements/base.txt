@@ -49,3 +49,8 @@ asgi-redis==1.4.2
 # Your custom requirements go here
 channels==1.1.6
 django-widget-tweaks
+djangorestframework
+django-cors-headers
+
+# Model mommy used for tests
+-e git+https://github.com/vandersonmota/model_mommy@development#egg=model_mommy

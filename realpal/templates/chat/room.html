@@ -102,6 +102,7 @@
                 chatsock.timeoutInterval = 3600;
                 chatsock.onmessage = function (message) {
                     var data = JSON.parse(message.data);
+                    console.dir(data);
                     var chat = $('#chat  > tbody:last-child');
                     var ele = '<tr>' +
                             '<td>' + data.timestamp + '</td>' +
