@@ -38,8 +38,9 @@ div.bhoechie-tab-menu div.list-group > a.active {
   border: none;
 }
 
-div.bhoechie-tab-menu div.list-group > a:hover span {
+list-group-item:hover > span {
   transform: translateX(20px);
+  color: red;
 }
 
 div.bhoechie-tab-menu div.list-group > a.active:after {
@@ -96,27 +97,27 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
 }
 
 .radio {
-font-size: 1.2em;
-    position: relative;
-    /* margin: auto !important; */
-    text-align: left;
-    width: 100%;
-    /* display: block; */
-    max-width: 300px;
-    margin: 40px 20px;
-    font-weight: 500;
-    margin: auto;
-    margin-bottom: 40px;
-    margin-top: 40px;
+  font-size: 1.2em;
+  position: relative;
+  /* margin: auto !important; */
+  text-align: left;
+  width: 100%;
+  /* display: block; */
+  max-width: 300px;
+  margin: 40px 20px;
+  font-weight: 500;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 .radio p {
   position: relative;
-    display: inline-block;
-    width: 100%;
-    max-width: 300px;
-    margin: 0;
-    padding-left: 20px;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0;
+  padding-left: 20px;
 }
 
 .radio p:after {
@@ -130,7 +131,7 @@ font-size: 1.2em;
   background: #B77D64;
   z-index: 1;
   opacity: 0.1;
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
 .radio input[type="radio"] {
@@ -142,9 +143,9 @@ font-size: 1.2em;
   z-index: 1000;
   opacity: 0;
   filter: alpha(opacity=0);
-    top: -15px;
-    left: 5px;
-    margin: 0;
+  top: -15px;
+  left: 5px;
+  margin: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
 }
 
@@ -170,18 +171,32 @@ font-size: 1.2em;
   border-radius: 3px;
 }
 
-select.styled  {
-  background: transparent;
-  width: 150px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  height: 34px;
+/* checkbox styles */
+
+#ck-button label {
+  width: 100%;
+  display: block;
+  margin: auto;
+  max-width: 300px;
 }
-.styled {
-  margin: 50px;
-  width: 120px;
-  height: 34px;
-  border: 1px solid #111;
-  border-radius: 3px;
-  overflow: hidden;
+
+#ck-button label span {
+  text-align: center;
+  padding: 3px 0px;
+  display: block;
+  background: rgba(183, 125, 100, 0.1);
+  height: 50px;
+  color: black;
+  border-radius: 5px;
+  line-height: 40px;
+  font-weight: 500;
+}
+
+#ck-button label input {
+  display: none;
+}
+
+#ck-button input:checked + span {
+  background-color: #B77D64;
+  color: #fff;
 }

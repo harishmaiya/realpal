@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 {% block content %}
     <section class="update-container">
@@ -61,21 +62,21 @@
                             {% csrf_token %}
                             {% for value, name in purchase_step_form.fields.purchase_step.choices %}
 
-                                    <label class="radio">
-                                        <input type="radio" name="purchase_step" value="{{ value }}"
-                                                {% if value == purchase_step_form.initial.purchase_step %}
-                                               checked {% endif %}>
-                                        <p>
+                                <label class="radio">
+                                    <input type="radio" name="purchase_step" value="{{ value }}"
+                                            {% if value == purchase_step_form.initial.purchase_step %}
+                                           checked {% endif %}>
+                                    <p>
                                         <span>
-                                            {% if not value and not value == 0%}
+                                            {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
                                                 {{ name }}
                                             {% endif %}
                                         </span>
-                                        </p>
-                                    </label>
-                                {% endfor %}
+                                    </p>
+                                </label>
+                            {% endfor %}
                             <input class="btn btn-brown" type="submit" name="purchase_step_form" value="Update"/>
                         </form>
                     </div>
@@ -93,7 +94,7 @@
                                                checked {% endif %}>
                                         <p>
                                         <span>
-                                            {% if not value and not value == 0%}
+                                            {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
                                                 {{ name }}
@@ -108,10 +109,18 @@
                     </div>
 
                     <div class="bhoechie-tab-content">
-                        <h3>First Home</h3>
+                        <h3>Is this your first home?</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ first_home_form.as_p }}
+                            <div id="ck-button">
+                                <label>
+                                    <input type="checkbox" name="firsthome" value="1"
+                                            {% if first_home_form.initial.firsthome %}
+                                               checked
+                                            {% endif %}
+                                    ><span>First Home...</span>
+                                </label>
+                            </div>
                             <input class="btn btn-brown" type="submit" name="first_home_form" value="Update"/>
                         </form>
                     </div>
@@ -120,8 +129,8 @@
                         <h3>House Type</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                        <fieldset>
-                            {% for value, name in house_type_form.fields.house_type.choices %}
+                            <fieldset>
+                                {% for value, name in house_type_form.fields.house_type.choices %}
 
                                     <label class="radio">
                                         <input type="radio" name="house_type" value="{{ value }}"
@@ -129,7 +138,7 @@
                                                checked {% endif %}>
                                         <p>
                                         <span>
-                                            {% if not value and not value == 0%}
+                                            {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
                                                 {{ name }}
@@ -138,10 +147,10 @@
                                         </p>
                                     </label>
                                 {% endfor %}
-                        </fieldset>
-                        <h3>House Age</h3>
-                        <fieldset>
-                        {% for value, name in house_type_form.fields.house_age.choices %}
+                            </fieldset>
+                            <h3>House Age</h3>
+                            <fieldset>
+                                {% for value, name in house_type_form.fields.house_age.choices %}
 
                                     <label class="radio">
                                         <input type="radio" name="house_age" value="{{ value }}"
@@ -149,7 +158,7 @@
                                                checked {% endif %}>
                                         <p>
                                         <span>
-                                            {% if not value and not value == 0%}
+                                            {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
                                                 {{ name }}
@@ -158,10 +167,10 @@
                                         </p>
                                     </label>
                                 {% endfor %}
-                        </fieldset>
-                        <h3>House Condition</h3>
-                        <fieldset>
-                        {% for value, name in house_type_form.fields.house_cond.choices %}
+                            </fieldset>
+                            <h3>House Condition</h3>
+                            <fieldset>
+                                {% for value, name in house_type_form.fields.house_cond.choices %}
 
                                     <label class="radio">
                                         <input type="radio" name="house_cond" value="{{ value }}"
@@ -169,7 +178,7 @@
                                                checked {% endif %}>
                                         <p>
                                         <span>
-                                            {% if not value and not value == 0%}
+                                            {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
                                                 {{ name }}
@@ -178,7 +187,7 @@
                                         </p>
                                     </label>
                                 {% endfor %}
-                        </fieldset>
+                            </fieldset>
                             <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
                         </form>
                     </div>
@@ -187,7 +196,7 @@
                         <h3>City</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ city_form.as_p }}
+                            {{ city_form|crispy }}
                             <input class="btn btn-brown" type="submit" name="city_form" value="Update"/>
                         </form>
                     </div>
@@ -196,7 +205,7 @@
                         <h3>Max Budget</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ max_budget_form.as_p }}
+                            {{ max_budget_form|crispy }}
                             <input class="btn btn-brown" type="submit" name="max_budget_form" value="Update"/>
                         </form>
                     </div>
@@ -206,7 +215,7 @@
                         <h3>Current Rent</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ current_rent_form.as_p }}
+                            {{ current_rent_form|crispy }}
                             <input class="btn btn-brown" type="submit" name="current_rent_form" value="Update"/>
                         </form>
                     </div>
@@ -214,15 +223,15 @@
                         <h3>How soon would you like to buy</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ how_soon_form.as_p }}
+                            {{ how_soon_form|crispy }}
                             <input class="btn btn-brown" type="submit" name="how_soon_form" value="Update"/>
                         </form>
                     </div>
                     <div class="bhoechie-tab-content">
                         <h3>Personal Profile</h3>
-                        <form action="" method="post">
+                        <form action="" method="post" class="signup">
                             {% csrf_token %}
-                            {{ personal_profile_form.as_p }}
+                            {{ personal_profile_form|crispy }}
                             <input class="btn btn-brown" type="submit" name="personal_profile_form" value="Update"/>
                         </form>
                     </div>
