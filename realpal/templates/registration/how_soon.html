@@ -12,7 +12,7 @@
                 <form action="" method="post" class="button-select text-center">
                     {% csrf_token %}
                     {{ form|crispy}}
-                    <button class="skip" type="submit">Next</button>
+                    <button class="btn" type="submit">Next</button>
                     <a href="{% url 'register:personal-profile' %}">
                         <button class="skip" type="button">Skip this step</button>
                     </a>

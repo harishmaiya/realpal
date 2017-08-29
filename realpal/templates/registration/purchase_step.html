@@ -9,8 +9,12 @@
                 <h1 class="textSerif">What step are you in?</h1>
 
                 <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="button-select">
+                        {% csrf_token %}
+                        {% for choice in form.purchase_step %}
+                           <button class="btn">{{ choice }}</button>
+                        {% endfor %}
+                    </div>
                     <button type="submit">Next</button>
                 </form>
 
