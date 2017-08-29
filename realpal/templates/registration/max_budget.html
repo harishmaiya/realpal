@@ -4,21 +4,23 @@
     <link href="{% static 'css/onboarding_inputbox.css' %}" rel="stylesheet"/>
 
     <!-- Start Categories section -->
-
-    <section class="categories text-center">
-        <div class="container">
-            <div class="header">
-                <h1 class="domine">Do you have maximum budget?</h1>
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">Do you have maximum budget?</h1>
+                </div>
+                <form class="form-inline" method="post" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="dollar-sign">$</div>
+                    <button class="next center-block droid" type="submit">Continue</button>
+                    <a href="{% url 'register:current-rent' %}">
+                        <button class="skip center-block droid" type="button">Skip this step</button>
+                    </a>
+                </form>
             </div>
-            <form class="form-inline" method="post" action="">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="dollar-sign">$</div>
-                <button class="next center-block droid" type="submit">Continue</button>
-                <a href="{% url 'register:current-rent' %}">
-                    <button class="skip center-block droid" type="button">Skip this step</button>
-                </a>
-            </form>
         </div>
     </section>
+
 {% endblock %}

@@ -1,24 +1,24 @@
 {% extends "base_onboarding.html" %}
 {% block content %}
 
-    <link href="{% static 'css/onboarding_timeline.css' %}" rel="stylesheet"/>
-
     <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">When do you plan to buy your house?</h1>
+                </div>
+                <form action="" method="post" class="button-select text-center">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="skip" type="submit">Next</button>
+                    <a href="{% url 'register:personal-profile' %}">
+                        <button class="skip" type="button">Skip this step</button>
+                    </a>
+                </form>
 
-    <section class="categories text-center">
-        <div class="container">
-            <div class="header">
-                <h1 class="domine">When do you plan to buy your house?</h1>
             </div>
-            <form action="" method="post" class="button-select text-center">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="skip" type="submit">Next</button>
-                <a href="{% url 'register:personal-profile' %}">
-                    <button class="skip" type="button">Skip this step</button>
-                </a>
-            </form>
-
         </div>
     </section>
+
 {% endblock %}
