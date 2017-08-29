@@ -58,7 +58,7 @@ html, body {
   padding-bottom: 65px
 }
 
-.switch-field  {
+.switch-field {
 
   ul {
     list-style: none;
@@ -73,7 +73,7 @@ html, body {
   label {
     cursor: pointer;
   }
-  label ~  input:checked {
+  label ~ input:checked {
     color: yellow;
   }
 }
@@ -101,6 +101,16 @@ html, body {
     padding-top: 17px;
     margin-bottom: 0
   }
+}
+
+@media(max-width: 1024px) {
+  .onboarding-footer {
+    .mobile-container {
+      width: 98%;
+      margin-left: 10px;
+    }
+  }
+
 }
 
 @import "../onboarding/onboarding";
