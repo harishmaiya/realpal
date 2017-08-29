@@ -120,7 +120,7 @@
                         <h3>House Type</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-
+                        <fieldset>
                             {% for value, name in house_type_form.fields.house_type.choices %}
 
                                     <label class="radio">
@@ -138,11 +138,13 @@
                                         </p>
                                     </label>
                                 {% endfor %}
+                        </fieldset>
                         <h3>House Age</h3>
+                        <fieldset>
                         {% for value, name in house_type_form.fields.house_age.choices %}
 
                                     <label class="radio">
-                                        <input type="radio" name="house_type" value="{{ value }}"
+                                        <input type="radio" name="house_age" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_age %}
                                                checked {% endif %}>
                                         <p>
@@ -156,11 +158,13 @@
                                         </p>
                                     </label>
                                 {% endfor %}
+                        </fieldset>
                         <h3>House Condition</h3>
+                        <fieldset>
                         {% for value, name in house_type_form.fields.house_cond.choices %}
 
                                     <label class="radio">
-                                        <input type="radio" name="house_type" value="{{ value }}"
+                                        <input type="radio" name="house_cond" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_cond %}
                                                checked {% endif %}>
                                         <p>
@@ -174,6 +178,7 @@
                                         </p>
                                     </label>
                                 {% endfor %}
+                        </fieldset>
                             <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
                         </form>
                     </div>
