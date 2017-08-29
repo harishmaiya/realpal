@@ -97,9 +97,10 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
   margin-left:10px;
 }
 .radio{
-  color:#999;
-  font-size:15px;
+  font-size: 1.2em;
   position:relative;
+  text-align: left;
+  margin: 20px;
 }
 .radio span{
   position:relative;
@@ -128,14 +129,14 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
 }
 .radio input[type="radio"]:checked + span{
-  color:#0B8;
+  color: #B77D64;
 }
 .radio input[type="radio"]:checked + span:before{
     content:'';
   width:5px;
   height:5px;
   position:absolute;
-  background:#0B8;
+  background: #B77D64;
   left:5px;
   top:6px;
   border-radius:100%;
