@@ -11,11 +11,9 @@
                     <div class="list-group">
                         <a href="#" class="list-group-item active text-center">
                             <span>Purchase Step</span>
-
                         </a>
                         <a href="#" class="list-group-item text-center">
                             <span>Marital Status</span>
-
 
                         </a>
                         <a href="#" class="list-group-item text-center">
@@ -62,7 +60,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <input type="submit" name="purchase_step_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="purchase_step_form" value="Update"/>
                         </form>
                     </div>
                     <!-- train section -->
@@ -70,8 +68,15 @@
                         <h3>Marital Status</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ marital_status_form.as_p }}
-                            <input type="submit" name="marital_status_form" value="Update"/>
+                        <div class="radio-group">
+                            {% for value, name in marital_status_form.fields.status.choices %}
+                                <label class="radio">
+                                    <input type="radio" name="status" value="{{ value }}" {% if value == marital_status_form.initial.status %} checked {% endif %}>
+                                    <span> {{ name }} </span>
+                                </label>
+                            {% endfor %}
+                        </div>
+                            <input class="btn btn-brown" type="submit" name="marital_status_form" value="Update"/>
                         </form>
                     </div>
 
@@ -80,7 +85,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ first_home_form.as_p }}
-                            <input type="submit" name="first_home_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="first_home_form" value="Update"/>
                         </form>
                     </div>
 
@@ -89,7 +94,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ house_type_form.as_p }}
-                            <input type="submit" name="house_type_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
                         </form>
                     </div>
 
@@ -98,7 +103,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ city_form.as_p }}
-                            <input type="submit" name="city_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="city_form" value="Update"/>
                         </form>
                     </div>
 
@@ -107,7 +112,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ max_budget_form.as_p }}
-                            <input type="submit" name="max_budget_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="max_budget_form" value="Update"/>
                         </form>
                     </div>
 
@@ -117,7 +122,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ current_rent_form.as_p }}
-                            <input type="submit" name="current_rent_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="current_rent_form" value="Update"/>
                         </form>
                     </div>
                     <div class="bhoechie-tab-content">
@@ -125,7 +130,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ how_soon_form.as_p }}
-                            <input type="submit" name="how_soon_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="how_soon_form" value="Update"/>
                         </form>
                     </div>
                     <div class="bhoechie-tab-content">
@@ -133,7 +138,7 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ personal_profile_form.as_p }}
-                            <input type="submit" name="personal_profile_form" value="Update"/>
+                            <input class="btn btn-brown" type="submit" name="personal_profile_form" value="Update"/>
                         </form>
                     </div>
                 </div>

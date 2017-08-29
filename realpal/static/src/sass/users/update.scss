@@ -70,3 +70,73 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
   height: 1em;
   display: inline-block;
 }
+
+.btn-brown {
+    width: 295px;
+    padding: 12px 20px;
+    background: #bc8067;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+
+
+
+.radio-group{
+  margin:25px ;
+}
+.inline{
+  display: inline-block;
+}
+.inline + .inline{
+  margin-left:10px;
+}
+.radio{
+  color:#999;
+  font-size:15px;
+  position:relative;
+}
+.radio span{
+  position:relative;
+   padding-left:20px;
+}
+.radio span:after{
+  content:'';
+  width:15px;
+  height:15px;
+  border:3px solid;
+  position:absolute;
+  left:0;
+  top:1px;
+  border-radius:100%;
+  box-sizing:border-box;
+
+}
+.radio input[type="radio"]{
+   cursor: pointer;
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+}
+.radio input[type="radio"]:checked + span{
+  color:#0B8;
+}
+.radio input[type="radio"]:checked + span:before{
+    content:'';
+  width:5px;
+  height:5px;
+  position:absolute;
+  background:#0B8;
+  left:5px;
+  top:6px;
+  border-radius:100%;
+}
