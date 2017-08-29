@@ -7,12 +7,11 @@
         <div class="categories text-center">
             <div class="container">
                 <h1 class="textSerif">What step are you in?</h1>
-
                 <form action="" method="post">
                     <div class="button-select">
                         {% csrf_token %}
                         {% for choice in form.purchase_step %}
-                           <button class="btn">{{ choice }}</button>
+                            <div class="btn">{{ choice }}</div>
                         {% endfor %}
                     </div>
                     <button type="submit">Next</button>

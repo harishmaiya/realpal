@@ -10,7 +10,11 @@
                 </div>
                 <form method="post" action="">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="button-select">
+                        {% for choice in form.status %}
+                            <div class="btn">{{ choice }}</div>
+                        {% endfor %}
+                    </div>
                     <button type="submit">Next</button>
                     <a href="{% url 'register:first-home' %}">
                         <button class="skip" type="button">Skip this step</button>
