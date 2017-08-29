@@ -11,14 +11,39 @@
                 </div>
                 <form action="" method="post" class="options">
                     {% csrf_token %}
-
                     <div class="question row">
-                        <h2 class="domine text-center">Type of house</h2>
+                        <h2 class="domine text-center">      {{ house_type_form.house_type.label }}</h2>
                         <div class="col-sm-6">
                             <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
                         </div>
                         <div class="col-sm-6">
-                            {{ house_type_form.as_p }}
+                            {% for choice in house_type_form.house_type %}
+                                <div class="btn center-block status">{{ choice }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="question row">
+                        <h2 class="domine text-center"> {{ house_type_form.house_age.label }}</h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
+                        </div>
+                        <div class="col-sm-6">
+                            {% for choice in house_type_form.house_age %}
+                                <div class="btn center-block status">{{ choice }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="question row">
+                        <h2 class="domine text-center"> {{ house_type_form.house_cond.label }}</h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
+                        </div>
+                        <div class="col-sm-6">
+
+                            {% for choice in house_type_form.house_cond %}
+                                <div class="btn center-block status">{{ choice }}</div>
+                            {% endfor %}
                         </div>
                     </div>
                     <button class="next center-block droid" type="submit">Next</button>
