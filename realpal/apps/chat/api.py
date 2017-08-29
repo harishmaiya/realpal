@@ -36,16 +36,33 @@ class MessageCreateAPIView(CreateAPIView):
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated, ]
 
-    def post(self, request, *args, **kwargs):
+
+    def create(self, request, *args, **kwargs):
+        self.request.data['sent_by'] = self.request.user.id
+        serializer = self.get_serializer(data=request.data)
+        self.perform_create(serializer)
+
+    def perform_create(self, serializer):
         room_id = self.request.data.get('room')
         try:
             room = Room.objects.get(pk=room_id)
-            self.request.data['room'] = room_id
-            self.request.data['sent_by'] = self.request.user.id
-            return super().post(request, *args, **kwargs)
+            serializer.is_valid(self)
+            instance = serializer.save(sent_by=self.request.user, room=room)
+            data = {
+                'id': instance.id.__str__(),
+                'timestamp': instance.timestamp,
+                'handle': self.request.user.username,
+                'message': instance.text,
+                'file_name': os.path.basename(urlparse(instance.attachment.path).path) if instance.attachment else None,
+                'file_link': instance.attachment.url if instance.attachment else None,
+            }
+            group_channel = get_room_group_channel(room_id)
+            # self.push_socket_update(group_channel, data)
+            return Response(status=status.HTTP_201_CREATED)
+
         except Room.DoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     @staticmethod
     def push_socket_update(group_channel, data):
-        Group(group_channel).send({"text": json.dumps(data),})
+        Group(group_channel).send({"text": json.dumps(data)})
