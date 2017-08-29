@@ -12,9 +12,9 @@
                 <div class="header">
                     <h1>{% trans "Sign In" %}</h1>
                     <h3 class="droid">
-                    {% trans 'If you have not created an account yet, then please' %}
-                    <a href="{% url 'register:purchase-step' %}">{% trans 'sign up' %}</a> {% trans 'first.' %}
-                </h3>
+                        {% trans 'If you have not created an account yet, then please' %}
+                        <a href="{% url 'register:purchase-step' %}">{% trans 'sign up' %}</a> {% trans 'first.' %}
+                    </h3>
                 </div>
 
 
@@ -23,11 +23,15 @@
                         <div>
                             {% csrf_token %}
                             {{ form|crispy }}
+                            {% if error %}
+                                <p class="red-text"><strong>{{ error }}</strong></p>
+                            {% endif %}
                             <a class="button secondaryAction"
                                href="#">{% trans "Forgot Password?" %}</a>
                         </div>
                         <button class="btn" type="submit">{% trans "Sign In" %}</button>
                     </form>
+
                 </div>
             </div>
         </div>
