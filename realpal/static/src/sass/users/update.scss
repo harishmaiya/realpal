@@ -1,49 +1,48 @@
-.update-container{
+.update-container {
   margin-top: 100px;
 }
+
 /*  bhoechie tab */
-div.bhoechie-tab-container{
+div.bhoechie-tab-container {
   z-index: 10;
   background-color: #ffffff;
-  padding: 0 !important;
-  border-radius: 4px;
-  border:1px solid #ddd;
-  box-shadow: 0 6px 12px rgba(0,0,0,.175);
-  background-clip: padding-box;
-  opacity: 0.97;
-  filter: alpha(opacity=97);
+  padding: 0;
 }
-div.bhoechie-tab-menu{
+
+div.bhoechie-tab-menu {
   padding-right: 0;
   padding-left: 0;
   padding-bottom: 0;
+  border-right: 3px solid #EDEDED;
 }
-div.bhoechie-tab-menu div.list-group{
+
+div.bhoechie-tab-menu div.list-group {
   margin-bottom: 0;
 }
-div.bhoechie-tab-menu div.list-group>a{
+
+div.bhoechie-tab-menu div.list-group > a {
   margin-bottom: 0;
+  padding: 20px;
+  border: none;
+  text-align: left;
+  border-radius: 0;
 }
-div.bhoechie-tab-menu div.list-group>a .glyphicon,
-div.bhoechie-tab-menu div.list-group>a .fa {
-  color: #5A55A3;
+
+div.bhoechie-tab-menu div.list-group > a > span {
+  transition: all .5s ease;
 }
-div.bhoechie-tab-menu div.list-group>a:first-child{
-  border-top-right-radius: 0;
-  -moz-border-top-right-radius: 0;
+
+div.bhoechie-tab-menu div.list-group > a.active {
+  background: #B77D64;
+  font-weight: bold;
+  border: none;
 }
-div.bhoechie-tab-menu div.list-group>a:last-child{
-  border-bottom-right-radius: 0;
-  -moz-border-bottom-right-radius: 0;
+
+div.bhoechie-tab-menu div.list-group > a:hover span {
+  transform: translateX(20px);
 }
-div.bhoechie-tab-menu div.list-group>a.active,
-div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
-div.bhoechie-tab-menu div.list-group>a.active .fa{
-  background-color: #5A55A3;
-  background-image: #5A55A3;
-  color: #ffffff;
-}
-div.bhoechie-tab-menu div.list-group>a.active:after{
+
+div.bhoechie-tab-menu div.list-group > a.active:after {
   content: '';
   position: absolute;
   left: 100%;
@@ -52,16 +51,22 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
   border-left: 0;
   border-bottom: 13px solid transparent;
   border-top: 13px solid transparent;
-  border-left: 10px solid #5A55A3;
+  border-left: 10px solid #B77D64;
 }
 
-div.bhoechie-tab-content{
+div.bhoechie-tab-content {
   background-color: #ffffff;
   /* border: 1px solid #eeeeee; */
   padding-left: 20px;
   padding-top: 10px;
 }
 
-div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
   display: none;
+}
+
+.svg-icon {
+  transform: rotateZ(180deg);
+  height: 1em;
+  display: inline-block;
 }
