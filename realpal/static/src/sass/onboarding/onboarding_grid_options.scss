@@ -154,6 +154,8 @@ html, body {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  max-width: 400px;
+  margin: auto;
 }
 
 .grid-item {
@@ -176,6 +178,8 @@ html, body {
 .circle-container {
   display: flex;
   justify-content: space-between;
+  max-width: 500px;
+  margin: auto;
 }
 
 .circle-item {
