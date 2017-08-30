@@ -97,10 +97,10 @@ html, body {
 
 .oval-button {
   padding: 10px 5px;
-    width: calc(100% / 2 - 10px);
-    border: 1px solid black;
-    color: black;
-    border-radius: 22px;
+  width: calc(100% / 2 - 10px);
+  border: 1px solid black;
+  color: black;
+  border-radius: 22px;
   font-weight: bold;
   &:hover {
     background: #f2f2f2;
@@ -110,13 +110,46 @@ html, body {
 }
 
 .oval-button-container {
-      display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    margin: 15px auto 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 15px auto 0;
+}
+
+.btn-smaller {
+  width: 260px !important;
+  padding: 0;
+  font-size: 16px !important;
+  height: 42px !important;
+  line-height: 42px !important;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+  &:active,
+  &:hover {
+    box-shadow: none;
+    background-color: #dad4c8 !important;
+    border: 1px solid #dad4c8 !important;
+  }
+
+  & input[type="radio"]:checked < label:after {
+    content: '';
+    height: 42px;
+    border-radius: 4px;
+    position: relative;
+    width: 260px;
+    background: #dad4c8;
+  }
+
+}
+
+.bordered-block {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 /* End Categories Section */

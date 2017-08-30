@@ -9,33 +9,34 @@
                     <h1 class="domine">House Choices</h1>
                     <h3 class="droid">Tax rebates, mortgage rates vary upon this</h3>
                 </div>
-                <form action="" method="post" class="options">
+                <form action="" method="post" class="options button-select">
                     {% csrf_token %}
-                    <div class="question row">
                         <h2 class="domine text-center">{{ house_type_form.house_type.label }}</h2>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 bordered-block">
                             {% for choice in house_type_form.house_type %}
-                                <div class="btn center-block status">{{ choice }}</div>
+                                {% if not forloop.first %}
+                                    <div class="btn center-block status btn-smaller">{{ choice }}</div>
+                                {% endif %}
                             {% endfor %}
                         </div>
-                    </div>
 
-                    <div class="question row">
                         <h2 class="domine text-center"> {{ house_type_form.house_age.label }}</h2>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 bordered-block">
                             {% for choice in house_type_form.house_age %}
-                                <div class="btn center-block status">{{ choice }}</div>
+                                {% if not forloop.first %}
+                                    <div class="btn center-block status btn-smaller">{{ choice }}</div>
+                                {% endif %}
                             {% endfor %}
                         </div>
-                    </div>
-                    <div class="question row">
+
                         <h2 class="domine text-center"> {{ house_type_form.house_cond.label }}</h2>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 bordered-block">
                             {% for choice in house_type_form.house_cond %}
-                                <div class="btn center-block status">{{ choice }}</div>
+                                {% if not forloop.first %}
+                                    <div class="btn center-block status btn-smaller">{{ choice }}</div>
+                                {% endif %}
                             {% endfor %}
                         </div>
-                    </div>
                     <button class="next center-block droid" type="submit">Next</button>
                     <a href="{% url 'onboarding:city' %}">
                         <button class="skip" type="button">Skip this step</button>
@@ -45,5 +46,16 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+    $('.btn-smaller').on('click', function () {
+        if($(this).find('input[type="radio"]').is(':checked')) {
+            $(this).find('input[type="radio"]').attr("checked", false);
+        } else {
+            $(this).find('input[type="radio"]').attr("checked", true);
+            $(this).siblings().find('input[type="radio"]').attr("checked", false);
+        }
+
+    });
+    </script>
 
 {% endblock %}
