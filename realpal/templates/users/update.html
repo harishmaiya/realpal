@@ -7,8 +7,8 @@
         <div class="text-center">
 
             <h2>Edit your profile</h2>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-container">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vertical-tab-container">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-tab-menu">
                     <div>
                         <div class="profile-form invisible">
                             <form action="" method="post" class="signup">
@@ -21,7 +21,7 @@
                         <div class="profile-static">
                             <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
                             <p>{{ user.email }}</p>
-                            <p>{{ user.phone }}</p>
+                            <p>{{ user.phone_number }}</p>
                             <p><a class="brown-link" href="#">Edit</a></p>
                         </div>
                     </div>
@@ -66,9 +66,9 @@
 
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 vertical-tab">
                     <!-- flight section -->
-                    <div class="bhoechie-tab-content active">
+                    <div class="vertical-tab-content active">
                         <h3>Purchase Step</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -93,7 +93,7 @@
                         </form>
                     </div>
                     <!-- train section -->
-                    <div class="bhoechie-tab-content">
+                    <div class="vertical-tab-content">
                         <h3>Marital Status</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -120,7 +120,7 @@
                         </form>
                     </div>
 
-                    <div class="bhoechie-tab-content">
+                    <div class="vertical-tab-content">
                         <h3>Is this your first home?</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -137,7 +137,7 @@
                         </form>
                     </div>
 
-                    <div class="bhoechie-tab-content">
+                    <div class="vertical-tab-content">
                         <h3>House Type</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -204,7 +204,7 @@
                         </form>
                     </div>
 
-                    <div class="bhoechie-tab-content">
+                    <div class="vertical-tab-content">
                         <h3>City</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -213,7 +213,7 @@
                         </form>
                     </div>
 
-                    <div class="bhoechie-tab-content">
+                    <div class="vertical-tab-content">
                         <h3>Max Budget</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -223,7 +223,7 @@
                     </div>
 
                     <!-- hotel search -->
-                    <div class="bhoechie-tab-content">
+                    <div class="vertical-tab-content">
                         <h3>Current Rent</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -231,7 +231,7 @@
                             <input class="btn btn-brown" type="submit" name="current_rent_form" value="Update"/>
                         </form>
                     </div>
-                    <div class="bhoechie-tab-content">
+                    <div class="vertical-tab-content">
                         <h3>How soon would you like to buy</h3>
                         <form action="" method="post">
                             {% csrf_token %}
@@ -247,13 +247,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+            $("div.vertical-tab-menu>div.list-group>a").click(function (e) {
                 e.preventDefault();
                 $(this).siblings('a.active').removeClass("active");
                 $(this).addClass("active");
                 var index = $(this).index();
-                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+                $("div.vertical-tab>div.vertical-tab-content").removeClass("active");
+                $("div.vertical-tab>div.vertical-tab-content").eq(index).addClass("active");
             });
         });
 

@@ -2,25 +2,25 @@
   margin-top: 100px;
 }
 
-/*  bhoechie tab */
-div.bhoechie-tab-container {
+/*  vertical tab */
+div.vertical-tab-container {
   z-index: 10;
   background-color: #ffffff;
   padding: 0;
 }
 
-div.bhoechie-tab-menu {
+div.vertical-tab-menu {
   padding-right: 0;
   padding-left: 0;
   padding-bottom: 0;
   border-right: 3px solid #EDEDED;
 }
 
-div.bhoechie-tab-menu div.list-group {
+div.vertical-tab-menu div.list-group {
   margin-bottom: 0;
 }
 
-div.bhoechie-tab-menu div.list-group > a {
+div.vertical-tab-menu div.list-group > a {
   margin-bottom: 0;
   padding: 20px;
   border: none;
@@ -28,11 +28,11 @@ div.bhoechie-tab-menu div.list-group > a {
   border-radius: 0;
 }
 
-div.bhoechie-tab-menu div.list-group > a > span {
+div.vertical-tab-menu div.list-group > a > span {
   transition: all .5s ease;
 }
 
-div.bhoechie-tab-menu div.list-group > a.active {
+div.vertical-tab-menu div.list-group > a.active {
   background: #B77D64;
   font-weight: bold;
   border: none;
@@ -43,7 +43,7 @@ list-group-item:hover > span {
   color: red;
 }
 
-div.bhoechie-tab-menu div.list-group > a.active:after {
+div.vertical-tab-menu div.list-group > a.active:after {
   content: '';
   position: absolute;
   left: 100%;
@@ -55,14 +55,14 @@ div.bhoechie-tab-menu div.list-group > a.active:after {
   border-left: 10px solid #B77D64;
 }
 
-div.bhoechie-tab-content {
+div.vertical-tab-content {
   background-color: #ffffff;
   /* border: 1px solid #eeeeee; */
   padding-left: 20px;
   padding-top: 10px;
 }
 
-div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
+div.vertical-tab div.vertical-tab-content:not(.active) {
   display: none;
 }
 
@@ -240,4 +240,10 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
   &:hover {
     background-color: rgba(183, 125, 100, 0.1);
   }
+}
+
+.vertical-tab-content select,
+.vertical-tab-content input[type="number"] {
+  max-width: 300px;
+  margin: auto;
 }
