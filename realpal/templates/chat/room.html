@@ -96,6 +96,15 @@
                                 </table>
                             </div>
                         </div>
+                        <form class="form-inline chat-form" id="uploadimage" action="" method="post"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div id="selectImage">
+                                <label>Attach File</label>
+                                <input type="file" name="file" id="file" required/>
+                                <input type="submit" value="Upload" class="submit"/>
+                            </div>
+                        </form>
                         <form role="form" class="form-inline chat-form" id="chatform">
                             <div class="row">
                     <textarea type="text" class="col-xs-11" name="message" id="message"
@@ -112,40 +121,67 @@
     <!-- End section -->
     <script type="text/javascript" src='{% static "chat/js/jquery-1.12.1.min.js" %}'></script>
     <script type="text/javascript" src='{% static "chat/js/reconnecting-websocket.min.js" %}'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     {% if selected_client_room %}
         <script type='text/javascript'>
-          $(document).ready(function () {
-            // When we're using HTTPS, use WSS too.
-            var room = {{ selected_client_room }};
-            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-            var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + '/chat/' + room);
-            chatsock.timeoutInterval = 3600;
-            chatsock.onmessage = function (message) {
-              var data = JSON.parse(message.data);
-              var chat = $('#chat  > tbody:last-child');
-              var ele = '<tr>' +
-                '<td>' + data.timestamp + '</td>' +
-                '<td>' + data.handle + '</td>' +
-                '<td>' + data.message + '</td>' +
-                '</tr>';
-              chat.append(ele)
-            };
+            $(document).ready(function () {
+                // When we're using HTTPS, use WSS too.
+                var room = {{ selected_client_room }};
+                var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+                var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + '/chat/' + room);
+                chatsock.timeoutInterval = 3600;
+                chatsock.onmessage = function (message) {
+                    var data = JSON.parse(message.data);
+                    console.dir(data);
+                    var chat = $('#chat  > tbody:last-child');
+                    var ele = '<tr>' +
+                            '<td>' + data.timestamp + '</td>' +
+                            '<td>' + data.handle + '</td>' +
+                            '<td>' + data.message + '</td>' +
+                            '</tr>';
+                    chat.append(ele)
+                };
 
-            $("#chatform").on("submit", function (event) {
-              var message = {
-                message: $('#message').val(),
-              };
-              chatsock.send(JSON.stringify(message));
-              $("#message").val('').focus();
-              return false;
+                $("#chatform").on("submit", function (event) {
+                    var message = {
+                        message: $('#message').val(),
+                    };
+                    chatsock.send(JSON.stringify(message));
+                    $("#message").val('').focus();
+                    return false;
+                });
+
+                //File upload
+                $("#uploadimage").on('submit', (function (e) {
+                    e.preventDefault();
+                    var formdata = new FormData(this);
+                    formdata.append("room", room);
+                    console.log(window.location.protocol);
+                    var url = window.location.protocol.toString()+'//' + window.location.host + '/chat/file/';
+                    console.log('Uploading data to' + url);
+                    console.dir(formdata);
+                    $.ajax({
+                        url: url,
+                        type: "POST",             // Type of request to be send, called as method
+                        data: formdata, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                        mimeTypes: "multipart/form-data",
+                        contentType: false,       // The content type used when sending data to the server.
+                        cache: false,             // To unable request pages to be cached
+                        processData: false,        // To send DOMDocument or non processed data file it is set to false
+                        success: function (data)   // A function to be called if request succeeds
+                        {
+                            console.log('File sent');
+                            console.log(data);
+                        }
+                    });
+                }));
             });
-          });
         </script>
     {% else %}
         <script type='text/javascript'>
-          $(document).ready(function () {
-            $('input[type=submit]', this).attr('disabled', 'disabled');
-          });
+            $(document).ready(function () {
+                $('input[type=submit]', this).attr('disabled', 'disabled');
+            });
         </script>
     {% endif %}
 {% endblock %}

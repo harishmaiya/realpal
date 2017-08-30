@@ -36,7 +36,6 @@ class MessageCreateAPIView(CreateAPIView):
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated, ]
 
-
     def create(self, request, *args, **kwargs):
         self.request.data['sent_by'] = self.request.user.id
         serializer = self.get_serializer(data=request.data)
@@ -54,11 +53,11 @@ class MessageCreateAPIView(CreateAPIView):
                 'handle': self.request.user.username,
                 'message': instance.text,
                 'file_name': os.path.basename(urlparse(instance.attachment.path).path) if instance.attachment else None,
-                'file_link': instance.attachment.url if instance.attachment else None,
+                'file_link': instance.attachment.path if instance.attachment else None,
             }
             group_channel = get_room_group_channel(room_id)
-            # self.push_socket_update(group_channel, data)
-            return Response(status=status.HTTP_201_CREATED)
+            self.push_socket_update(group_channel, data)
+            return Response(instance.data, status=status.HTTP_201_CREATED)
 
         except Room.DoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST)
