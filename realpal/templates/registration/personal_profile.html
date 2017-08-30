@@ -7,23 +7,64 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<link href="{% static 'css/sign-up.css' %}" rel="stylesheet"/>
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">You're almost done</h1>
+                    <h3 class="droid">Complete your profile to get started with Real Pal.</h3>
+                </div>
+            </div>
+            <div class="row">
 
-<section class="categories text-center">
-    <div class="container">
-        <div class="header">
-        <h1 class="domine">You're almost done</h1>
-        <h3 class="droid">Complete your profile to get started with Real Pal.</h3>
+                <form role="form" class="signup" id="signup_form" method="post" action="">
+                    {% csrf_token %}
+                    {{ form.status.as_hidden }}
+                    {{ form.firsthome.as_hidden }}
+                    {{ form.home_type.as_hidden }}
+                    {{ form.howsoon.as_hidden }}
+                    {{ form.max_budget.as_hidden }}
+                    {{ form.rent.as_hidden }}
+                    {{ form.cities.as_hidden }}
+                    {{ form.house_condition.as_hidden }}
+                    {{ form.house_age.as_hidden }}
+                    {{ form.house_type.as_hidden }}
+
+                    <div class="form-group domine">
+                        {% render_field form.first_name type="text" class="form-control input-lg center-block" placeholder="First name" %}
+                    </div>
+
+                    <div class="form-group domine">
+                        {% render_field form.last_name type="text" class="form-control input-lg" placeholder="Last name" %}
+                    </div>
+                    <div class="form-group domine">
+                        {% render_field form.zipcode type="text" class="form-control input-lg" placeholder="Zip" %}
+                    </div>
+                    <div class="form-group domine">
+                        {% render_field form.phone type="text" class="form-control input-lg" placeholder="Phone" %}
+                    </div>
+                    <div class="form-group domine">
+                        {% render_field form.email type="text" class="form-control input-lg" placeholder="Email" %}
+                    </div>
+                    <div class="form-group domine">
+                        {% render_field form.password1 class="form-control input-lg" placeholder="Enter Password" %}
+                    </div>
+                    <div class="form-group domine">
+                        {% render_field form.password2 class="form-control input-lg" placeholder="Enter Password Again" %}
+                    </div>
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="error">
+                                    <p>{{ error|escape }}</p>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                    <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="row">
-
-    <form role="form" class="signup" id="signup_form" method="post" action="">
-      {% csrf_token %}
-        {{ form.as_p }}
-      <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
-    </form>
-  </div>
-</section>
+    </section>
 
 {% endblock %}
