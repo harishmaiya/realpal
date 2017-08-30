@@ -16,12 +16,14 @@
                     </div>
                     <button type="submit">Next</button>
                 </form>
-                <a href="{% url 'onboarding:marital-status' %}">
-                    <button class="skip" type="button">Skip this step</button>
-                </a>
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+    $('.button-select .btn').on('click', function () {
+        $('form').submit();
+    });
+    </script>
 
     <!-- End Categories section -->
 {% endblock %}
