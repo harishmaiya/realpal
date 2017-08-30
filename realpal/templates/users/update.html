@@ -9,6 +9,23 @@
             <h2>Edit your profile</h2>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-container">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+                    <div>
+                        <div class="profile-form invisible">
+                            <h3>Personal Profile</h3>
+                            <form action="" method="post" class="signup">
+                                {% csrf_token %}
+                                {{ personal_profile_form|crispy }}
+                                <input class="btn btn-brown" type="button" name="personal_profile_form" value="Cancel"/>
+                                <input class="btn btn-brown" type="submit" name="personal_profile_form" value="Update"/>
+                            </form>
+                        </div>
+                        <div class="profile-static">
+                            <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
+                            <p>{{ user.email }}</p>
+                            <p>{{ user.phone }}</p>
+                            <p><a class="brown-link" href="#">Edit</a></p>
+                        </div>
+                    </div>
                     <div class="list-group">
                         <a href="#" class="list-group-item active text-center">
                             <span>Purchase Step</span>
@@ -47,11 +64,7 @@
 
 
                         </a>
-                        <a href="#" class="list-group-item text-center">
-                            <span>Personal Profile</span>
 
-
-                        </a>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
@@ -116,9 +129,9 @@
                                 <label>
                                     <input type="checkbox" name="firsthome" value="1"
                                             {% if first_home_form.initial.firsthome %}
-                                               checked
+                                           checked
                                             {% endif %}
-                                    ><span>First Home...</span>
+                                    ><span>YES</span>
                                 </label>
                             </div>
                             <input class="btn btn-brown" type="submit" name="first_home_form" value="Update"/>
@@ -227,14 +240,7 @@
                             <input class="btn btn-brown" type="submit" name="how_soon_form" value="Update"/>
                         </form>
                     </div>
-                    <div class="bhoechie-tab-content">
-                        <h3>Personal Profile</h3>
-                        <form action="" method="post" class="signup">
-                            {% csrf_token %}
-                            {{ personal_profile_form|crispy }}
-                            <input class="btn btn-brown" type="submit" name="personal_profile_form" value="Update"/>
-                        </form>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -251,6 +257,11 @@
                 $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
             });
         });
+
+        $('.brown-link').on('click', (function () {
+            $('.profile-form').removeClass('invisible');
+            $('.profile-static').addClass('invisble');
+        }));
     </script>
 {% endblock %}
 
