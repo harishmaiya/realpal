@@ -44,68 +44,74 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="col-md-10">
+                    {% if agent_user %}
+                        <div class="col-md-10">
                         <div class="col-md-8">
-                            <div class="box-chat">
-                                {% if agent_user %}
-                                    <strong class="client-name">You are chatting
-                                        to {{ selected_client_profile.username }}</strong>
-                                {% endif %}
-                                <hr class="style-two">
-                                <div class="chat-messages">
-                                    {% if not selected_client_room %}
-                                        <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
-                                        <p class="center">Please select a client to start chatting</p>
-                                    {% endif %}
-                                    <table id="chat">
-                                        <tbody>
-                                        {% if messages %}
-                                            {% for msg in messages %}
-                                                <tr>
-                                                    <td>{{ msg.timestamp|date:"r" }}</td>
-                                                    <td>{{ msg.sent_by }}</td>
-                                                    <td>{{ msg.text }}</td>
-                                                    {% if msg.attachment %}
-                                                        <td><a href="{{ msg.attachment }}"> {{ msg.filename }}</a>
-                                                        </td>
-                                                    {% endif %}
-                                                </tr>
-                                            {% endfor %}
-                                        {% else %}
-                                            <div class="no-client">
-                                                <p> No client selected</p>
-                                                <hr class="style-two">
-                                            </div>
-                                        {% endif %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                    {% else %}
+                        <div class="col-md-12">
+                        <div class="col-md-12">
+                    {% endif %}
+                    <div class="box-chat">
                         {% if agent_user %}
-                            <div class="col-md-4">
-                                <p>USER SHORT BIO</p>
-                            </div>
+                            <strong class="client-name">You are chatting
+                                to {{ selected_client_profile.username }}</strong>
                         {% endif %}
+                        <hr class="style-two">
+                        <div class="chat-messages">
+                            {% if not selected_client_room %}
+                                <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
+                                <p class="center">Please select a client to start chatting</p>
+                            {% endif %}
+                            <table id="chat">
+                                <tbody>
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <tr>
+                                            <td>{{ msg.timestamp|date:"r" }}</td>
+                                            <td>{{ msg.sent_by }}</td>
+                                            <td>{{ msg.text }}</td>
+                                            {% if msg.attachment %}
+                                                <td><a href="{{ msg.attachment }}"> {{ msg.filename }}</a>
+                                                </td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="no-client">
+                                        <p> No client selected</p>
+                                        <hr class="style-two">
+                                    </div>
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <form class="form-inline chat-form" id="uploadimage" action="" method="post"
-                          enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input type="file" name="attachment" id="attachment" required/>
-                        <input type="submit" value="Upload" class="submit"/>
-                    </form>
-                    <form role="form" class="form-inline chat-form" id="chatform">
-                        <div class="row">
+                    </div>
+                    {% if agent_user %}
+                        <div class="col-md-4">
+                            <p>USER SHORT BIO</p>
+                        </div>
+                    {% endif %}
+                    </div>
+                    </div>
+                <hr class="style-two">
+                    <div class="row">
+                        <form class="form-inline chat-form" id="uploadimage" action="" method="post"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="file" name="attachment" id="attachment" required/>
+                            <input type="submit" value="Upload" class="submit"/>
+                        </form>
+                        <form role="form" class="form-inline chat-form" id="chatform">
+                            <div class="row">
                     <textarea type="text" class="col-xs-11" name="message" id="message"
                               placeholder="Type your message"></textarea>
-                            <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
-                        </div>
-                    </form>
+                                <input type="submit" class="btn btn-lg bold col-xs-1" value="Send"/>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
     </section>
     <!-- End section -->
