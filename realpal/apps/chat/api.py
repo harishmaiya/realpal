@@ -9,6 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
+from django.conf import settings
 from realpal.apps.chat.models import Message
 from realpal.apps.chat.serializers import MessageSerializer
 from realpal.apps.chat.consumers import get_room_group_channel
@@ -35,32 +36,34 @@ class MessageCreateAPIView(CreateAPIView):
     model = Message
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated, ]
+    room = []
 
     def create(self, request, *args, **kwargs):
-        self.request.data['sent_by'] = self.request.user.id
-        serializer = self.get_serializer(data=request.data)
-        self.perform_create(serializer)
-
-    def perform_create(self, serializer):
         room_id = self.request.data.get('room')
         try:
-            room = Room.objects.get(pk=room_id)
-            serializer.is_valid(self)
-            instance = serializer.save(sent_by=self.request.user, room=room)
-            data = {
-                'id': instance.id.__str__(),
-                'timestamp': instance.timestamp,
-                'handle': self.request.user.username,
-                'message': instance.text,
-                'file_name': os.path.basename(urlparse(instance.attachment.path).path) if instance.attachment else None,
-                'file_link': instance.attachment.path if instance.attachment else None,
-            }
-            group_channel = get_room_group_channel(room_id)
-            self.push_socket_update(group_channel, data)
-            return Response(instance.data, status=status.HTTP_201_CREATED)
-
+            self.room = Room.objects.get(pk=room_id)
+            self.request.data['sent_by'] = self.request.user.id
+            self.request.data['room'] = self.room.id
+            serializer = self.get_serializer(data=request.data)
+            self.perform_create(serializer)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Room.DoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def perform_create(self, serializer):
+        serializer.is_valid(self)
+        instance = serializer.save(sent_by=self.request.user, room=self.room)
+        if not settings.IS_TESTING:
+            data = {
+                'id': instance.id.__str__(),
+                'timestamp': instance.timestamp.__str__(),
+                'user_handle': self.request.user.username,
+                'message': instance.text,
+                'file_name': os.path.basename(urlparse(instance.attachment.path).path) if instance.attachment else None,
+                'file_link': instance.attachment.url if instance.attachment else None,
+            }
+            group_channel = get_room_group_channel(instance.room.id)
+            self.push_socket_update(group_channel, data)
 
     @staticmethod
     def push_socket_update(group_channel, data):

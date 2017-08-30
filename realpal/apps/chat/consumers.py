@@ -22,7 +22,7 @@ def get_user_chat_status_message(username, status):
         message = 'User: {} has left the chat-room'.format(username)
     user_status_message = {
         'timestamp': timezone.now().strftime('%c'),
-        'handle': 'Chat Room Bot',
+        'user_handle': 'Chat Room Bot',
         'message': message
     }
     return user_status_message
@@ -110,7 +110,7 @@ def ws_receive(message):
     msg = incoming.get('message', 'Error Getting Message')
     data = {
         'timestamp': timezone.now().strftime('%c'),
-        'handle': handle if handle else 'Anonymous',
+        'user_handle': handle if handle else 'Anonymous',
         'message': msg
     }
     room = Room.objects.get(pk=message.channel_session.get('room_id'))

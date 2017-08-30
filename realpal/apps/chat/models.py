@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 
 from realpal.apps.users.models import User
@@ -29,3 +31,6 @@ class Message(models.Model):
         return 'sender: {sender}'.format(
             sender=self.sent_by.name,
         )
+
+    def filename(self):
+        return os.path.basename(self.attachment.name)
