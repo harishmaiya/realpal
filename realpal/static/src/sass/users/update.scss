@@ -227,7 +227,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
     width: 100% !important;
   }
   & input {
-    margin-bottom: 5px !important;
+    margin-bottom: 8px !important;
   }
 }
 
@@ -238,6 +238,6 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
   font-weight: bold;
 
   &:hover {
-    background-color: lightgrey;
+    background-color: rgba(183, 125, 100, 0.1);
   }
 }

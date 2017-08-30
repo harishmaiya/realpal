@@ -261,6 +261,11 @@
             $('.profile-form').removeClass('invisible');
             $('.profile-static').addClass('invisible');
         }));
+
+        $('.btn-hollow').on('click', (function () {
+            $('.profile-form').addClass('invisible');
+            $('.profile-static').removeClass('invisible');
+        }));
     </script>
 {% endblock %}
 
