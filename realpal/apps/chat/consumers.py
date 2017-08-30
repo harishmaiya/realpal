@@ -22,7 +22,7 @@ def get_user_chat_status_message(username, status):
         message = 'User: {} has left the chat-room'.format(username)
     user_status_message = {
         'timestamp': timezone.now().strftime('%c'),
-        'handle': 'Chat Room Bot',
+        'user_handle': 'Chat Room Bot',
         'message': message
     }
     return user_status_message
@@ -45,6 +45,10 @@ def channel_added_logger(reply_channel, group):
     )
 
 
+def get_room_group_channel(room_id):
+    return "Room_{}".format(room_id)
+
+
 @channel_session_user_from_http
 def ws_connect(message, room_id):
     message.reply_channel.send({"accept": True})
@@ -54,7 +58,7 @@ def ws_connect(message, room_id):
         message.channel_session["user_id"] = user.id
         try:
             room = Room.objects.get(pk=room_id)
-            group_name = "Room_{}".format(room.id)
+            group_name = get_room_group_channel(room.id)
             message.channel_session["room_id"] = room.id
             message.channel_session["group_name"] = group_name
             if user.user_type == AGENT_USER:
@@ -106,7 +110,7 @@ def ws_receive(message):
     msg = incoming.get('message', 'Error Getting Message')
     data = {
         'timestamp': timezone.now().strftime('%c'),
-        'handle': handle if handle else 'Anonymous',
+        'user_handle': handle if handle else 'Anonymous',
         'message': msg
     }
     room = Room.objects.get(pk=message.channel_session.get('room_id'))
