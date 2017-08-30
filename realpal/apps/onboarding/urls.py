@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^activate/(?P<uuid>.*)/$', ActivateAccount.as_view(), name='activate-account'),
     url(
         r'^activation-error$',
-        TemplateView.as_view(template_name='registration/activation_error.html'),
+        TemplateView.as_view(template_name='onboarding/activation_error.html'),
         name='activation-error'
     ),
 ]

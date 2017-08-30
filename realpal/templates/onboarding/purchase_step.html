@@ -1,23 +1,22 @@
 {% extends "base_onboarding.html" %}
 {% block content %}
     <!-- Start Categories section -->
+
+
     <section class="registration-container">
         <div class="categories text-center">
             <div class="container">
-                <div class="header">
-                    <h1 class="domine">Your Profile</h1>
-                    <h3 class="droid">Helps us understand and serve you better</h3>
-                </div>
-                <form method="post" action="">
-                    {% csrf_token %}
+                <h1 class="textSerif">What step are you in?</h1>
+                <form action="" method="post">
                     <div class="button-select">
-                        {% for choice in form.status %}
-                            <div class="btn sans center-block">{{ choice }}</div>
+                        {% csrf_token %}
+                        {% for choice in form.purchase_step %}
+                            <div class="btn center-block">{{ choice }}</div>
                         {% endfor %}
                     </div>
                     <button type="submit">Next</button>
                 </form>
-                <a href="{% url 'register:first-home' %}">
+                <a href="{% url 'onboarding:marital-status' %}">
                     <button class="skip" type="button">Skip this step</button>
                 </a>
             </div>
