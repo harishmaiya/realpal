@@ -201,22 +201,43 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
   color: #fff;
 }
 
-.profile-form {
-  display: none;
-}
-
 .brown-link:visited,
 .brown-link {
   text-decoration: underline;
-    font-weight: bold;
-    color: #B77D64;
+  font-weight: bold;
+  color: #B77D64;
 }
 
 .profile-static {
   text-align: left;
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 .invisible {
   display: none;
+}
+
+.profile-form {
+  padding: 5px;
+  text-align: left;
+  font-size: 0.8em;
+
+  & * {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  & input {
+    margin-bottom: 5px !important;
+  }
+}
+
+.btn-hollow {
+  background: none;
+  border: 2px solid #B77D64;
+  color: #B77D64;
+  font-weight: bold;
+
+  &:hover {
+    background-color: lightgrey;
+  }
 }
