@@ -1,0 +1,249 @@
+.update-container {
+  margin-top: 100px;
+}
+
+/*  vertical tab */
+div.vertical-tab-container {
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+div.vertical-tab-menu {
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+  border-right: 3px solid #EDEDED;
+}
+
+div.vertical-tab-menu div.list-group {
+  margin-bottom: 0;
+}
+
+div.vertical-tab-menu div.list-group > a {
+  margin-bottom: 0;
+  padding: 20px;
+  border: none;
+  text-align: left;
+  border-radius: 0;
+}
+
+div.vertical-tab-menu div.list-group > a > span {
+  transition: all .5s ease;
+}
+
+div.vertical-tab-menu div.list-group > a.active {
+  background: #B77D64;
+  font-weight: bold;
+  border: none;
+}
+
+list-group-item:hover > span {
+  transform: translateX(20px);
+  color: red;
+}
+
+div.vertical-tab-menu div.list-group > a.active:after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-left: 0;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-left: 10px solid #B77D64;
+}
+
+div.vertical-tab-content {
+  background-color: #ffffff;
+  /* border: 1px solid #eeeeee; */
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+div.vertical-tab div.vertical-tab-content:not(.active) {
+  display: none;
+}
+
+.svg-icon {
+  transform: rotateZ(180deg);
+  height: 1em;
+  display: inline-block;
+}
+
+.btn-brown {
+  width: 295px;
+  padding: 12px 20px;
+  background: #bc8067;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.radio-group {
+  margin: 25px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.inline + .inline {
+  margin-left: 10px;
+}
+
+.radio {
+  font-size: 1.2em;
+  position: relative;
+  /* margin: auto !important; */
+  text-align: left;
+  width: 100%;
+  /* display: block; */
+  max-width: 300px;
+  margin: 40px 20px;
+  font-weight: 500;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.radio p {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.radio p:after {
+  content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  position: absolute;
+  left: 5px;
+  top: -15px;
+  background: #B77D64;
+  z-index: 1;
+  opacity: 0.1;
+  border-radius: 3px;
+}
+
+.radio input[type="radio"] {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  z-index: 1000;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  top: -15px;
+  left: 5px;
+  margin: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+}
+
+.radio input[type="radio"]:checked + p {
+  color: #B77D64;
+  & span {
+    z-index: 100;
+    color: white;
+    position: relative;
+  }
+}
+
+.radio input[type="radio"]:checked + p:before {
+  content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  position: absolute;
+  background: #B77D64;
+  left: 5px;
+  top: -15px;
+  z-index: 10;
+  border-radius: 3px;
+}
+
+/* checkbox styles */
+
+#ck-button label {
+  width: 100%;
+  display: block;
+  margin: auto;
+  max-width: 300px;
+}
+
+#ck-button label span {
+  text-align: center;
+  padding: 3px 0px;
+  display: block;
+  background: rgba(183, 125, 100, 0.1);
+  height: 50px;
+  color: black;
+  border-radius: 5px;
+  line-height: 40px;
+  font-weight: 500;
+}
+
+#ck-button label input {
+  display: none;
+}
+
+#ck-button input:checked + span {
+  background-color: #B77D64;
+  color: #fff;
+}
+
+.brown-link:visited,
+.brown-link {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #B77D64;
+}
+
+.profile-static {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.invisible {
+  display: none;
+}
+
+.profile-form {
+  padding: 5px;
+  text-align: left;
+  font-size: 0.8em;
+
+  & * {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  & input {
+    margin-bottom: 8px !important;
+  }
+}
+
+.btn-hollow {
+  background: none;
+  border: 2px solid #B77D64;
+  color: #B77D64;
+  font-weight: bold;
+
+  &:hover {
+    background-color: rgba(183, 125, 100, 0.1);
+  }
+}
+
+.vertical-tab-content select,
+.vertical-tab-content input[type="number"] {
+  max-width: 300px;
+  margin: auto;
+}
