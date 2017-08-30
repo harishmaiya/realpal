@@ -1,103 +1,275 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>none</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block content %}
+    <section class="update-container">
+        <div class="text-center">
 
-<div class="container">
-    <h2>Edit your profile</h2>
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="pill" href="#purchase-step">Purchase Step</a></li>
-        <li><a data-toggle="pill" href="#marital-status">Marital Status</a></li>
-        <li><a data-toggle="pill" href="#first-home">First Home</a></li>
-        <li><a data-toggle="pill" href="#house-type">House Type</a></li>
-        <li><a data-toggle="pill" href="#city">Preferred City</a></li>
-        <li><a data-toggle="pill" href="#max-budget">Max Budget</a></li>
-        <li><a data-toggle="pill" href="#current-rent">Current Rent</a></li>
-        <li><a data-toggle="pill" href="#how-soon">How Soon</a></li>
-        <li><a data-toggle="pill" href="#personal-profile">Personal Profile</a></li>
-    </ul>
+            <h2>Edit your profile</h2>
+            {% if error %}
+                <p class="red-text">{{ error }}</p>
+            {% endif %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vertical-tab-container">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-tab-menu">
+                    <div>
+                        <div class="profile-form invisible">
+                            <form action="" method="post" class="signup">
+                                {% csrf_token %}
+                                {{ personal_profile_form|crispy }}
+                                <input class="btn btn-brown btn-hollow" type="button" name="personal_profile_form"
+                                       value="Cancel"/>
+                                <input class="btn btn-brown" type="submit" name="personal_profile_form" value="Update"/>
+                            </form>
+                        </div>
+                        <div class="profile-static">
+                            <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
+                            <p>{{ user.email }}</p>
+                            <p>{{ user.phone_number }}</p>
+                            <p><a class="brown-link" href="#">Edit</a></p>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active text-center">
+                            <span>Purchase Step</span>
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <span>Marital Status</span>
 
-    <div class="tab-content">
-        <div id="purchase-step" class="tab-pane fade in active">
-            <h3>Purchase Step</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" name="purchase_step_form" value="Update"/>
-            </form>
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <span>First home</span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <span>House Type</span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <span>Preferred City</span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <span>Maximum Budget</span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <span>Current Rent</span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <span>How Soon</span>
+
+
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 vertical-tab">
+                    <!-- flight section -->
+                    <div class="vertical-tab-content active">
+                        <h3>Purchase Step</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {% for value, name in purchase_step_form.fields.purchase_step.choices %}
+
+                                <label class="radio">
+                                    <input type="radio" name="purchase_step" value="{{ value }}"
+                                            {% if value == purchase_step_form.initial.purchase_step %}
+                                           checked {% endif %}>
+                                    <p>
+                                        <span>
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                    </p>
+                                </label>
+                            {% endfor %}
+                            <input class="btn btn-brown" type="submit" name="purchase_step_form" value="Update"/>
+                        </form>
+                    </div>
+                    <!-- train section -->
+                    <div class="vertical-tab-content">
+                        <h3>Marital Status</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="radio-group">
+                                {% for value, name in marital_status_form.fields.status.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="status" value="{{ value }}"
+                                                {% if value == marital_status_form.initial.status %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                            <input class="btn btn-brown" type="submit" name="marital_status_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>Is this your first home?</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div id="ck-button">
+                                <label>
+                                    <input type="checkbox" name="firsthome" value="1"
+                                            {% if first_home_form.initial.firsthome %}
+                                           checked
+                                            {% endif %}
+                                    ><span>YES</span>
+                                </label>
+                            </div>
+                            <input class="btn btn-brown" type="submit" name="first_home_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>House Type</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <fieldset>
+                                {% for value, name in house_type_form.fields.house_type.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="house_type" value="{{ value }}"
+                                                {% if value == house_type_form.initial.house_type %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                            </fieldset>
+                            <h3>House Age</h3>
+                            <fieldset>
+                                {% for value, name in house_type_form.fields.house_age.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="house_age" value="{{ value }}"
+                                                {% if value == house_type_form.initial.house_age %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                            </fieldset>
+                            <h3>House Condition</h3>
+                            <fieldset>
+                                {% for value, name in house_type_form.fields.house_cond.choices %}
+
+                                    <label class="radio">
+                                        <input type="radio" name="house_cond" value="{{ value }}"
+                                                {% if value == house_type_form.initial.house_cond %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span>
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                            </fieldset>
+                            <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>City</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ city_form|crispy }}
+                            <input class="btn btn-brown" type="submit" name="city_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>Max Budget</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ max_budget_form|crispy }}
+                            <input class="btn btn-brown" type="submit" name="max_budget_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <!-- hotel search -->
+                    <div class="vertical-tab-content">
+                        <h3>Current Rent</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ current_rent_form|crispy }}
+                            <input class="btn btn-brown" type="submit" name="current_rent_form" value="Update"/>
+                        </form>
+                    </div>
+                    <div class="vertical-tab-content">
+                        <h3>How soon would you like to buy</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ how_soon_form|crispy }}
+                            <input class="btn btn-brown" type="submit" name="how_soon_form" value="Update"/>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div id="marital-status" class="tab-pane fade">
-            <h3>Marital Status</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ marital_status_form.as_p }}
-                <input type="submit" name="marital_status_form" value="Update"/>
-            </form>
-        </div>
-        <div id="first-home" class="tab-pane fade">
-            <h3>First Home</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ first_home_form.as_p }}
-                <input type="submit" name="first_home_form" value="Update"/>
-            </form>
-        </div>
-        <div id="house-type" class="tab-pane fade">
-            <h3>House Type</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ house_type_form.as_p }}
-                <input type="submit" name="house_type_form" value="Update"/>
-            </form>
-        </div>
-        <div id="city" class="tab-pane fade">
-            <h3>City</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ city_form.as_p }}
-                <input type="submit" name="city_form" value="Update"/>
-            </form>
-        </div>
-        <div id="max-budget" class="tab-pane fade">
-            <h3>Max Budget</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ max_budget_form.as_p }}
-                <input type="submit" name="max_budget_form" value="Update"/>
-            </form>
-        </div>
-        <div id="current-rent" class="tab-pane fade">
-            <h3>Current Rent</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ current_rent_form.as_p }}
-                <input type="submit" name="current_rent_form" value="Update"/>
-            </form>
-        </div>
-        <div id="how-soon" class="tab-pane fade">
-            <h3>How soon would you like to buy</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ how_soon_form.as_p }}
-                <input type="submit" name="how_soon_form" value="Update"/>
-            </form>
-        </div>
-        <div id="personal-profile" class="tab-pane fade">
-            <h3>Personal Profile</h3>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ personal_profile_form.as_p }}
-                <input type="submit" name="personal_profile_form" value="Update"/>
-            </form>
-        </div>
-    </div>
-</div>
-</body>
-</html>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div.vertical-tab-menu>div.list-group>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.vertical-tab>div.vertical-tab-content").removeClass("active");
+                $("div.vertical-tab>div.vertical-tab-content").eq(index).addClass("active");
+            });
+        });
+
+        $('.brown-link').on('click', (function () {
+            $('.profile-form').removeClass('invisible');
+            $('.profile-static').addClass('invisible');
+        }));
+
+        $('.btn-hollow').on('click', (function () {
+            $('.profile-form').addClass('invisible');
+            $('.profile-static').removeClass('invisible');
+        }));
+    </script>
+{% endblock %}
+
