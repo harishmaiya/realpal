@@ -15,15 +15,15 @@ class RegistrationTest(TestCase):
             'how_soon', 'personal_profile')
 
     urls = {
-        'purchase_step': reverse('register:purchase-step'),
-        'marital_status': reverse('register:marital-status'),
-        'first_home': reverse('register:first-home'),
-        'house_type': reverse('register:house-type'),
-        'city': reverse('register:city'),
-        'max_budget': reverse('register:max-budget'),
-        'current_rent': reverse('register:current-rent'),
-        'how_soon': reverse('register:how-soon'),
-        'personal_profile': reverse('register:personal-profile'),
+        'purchase_step': reverse('onboarding:purchase-step'),
+        'marital_status': reverse('onboarding:marital-status'),
+        'first_home': reverse('onboarding:first-home'),
+        'house_type': reverse('onboarding:house-type'),
+        'city': reverse('onboarding:city'),
+        'max_budget': reverse('onboarding:max-budget'),
+        'current_rent': reverse('onboarding:current-rent'),
+        'how_soon': reverse('onboarding:how-soon'),
+        'personal_profile': reverse('onboarding:personal-profile'),
     }
 
     def test_get(self):
@@ -104,7 +104,7 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.is_active, False)
 
         # test to see if the activation link will work
-        activation_url = reverse('register:activate-account', kwargs={'uuid': instance.uuid})
+        activation_url = reverse('onboarding:activate-account', kwargs={'uuid': instance.uuid})
         self.assertEqual(self.client.get(activation_url).status_code, 200)
         self.assertTemplateUsed('register/activation_success.html')
 
@@ -236,70 +236,70 @@ class RegistrationTest(TestCase):
         response = self.client.post(self.urls['purchase_step'], data=data)
         self.assertEqual(response.status_code, 400)
         # lets see if we are returned to the same template
-        self.assertTemplateUsed('registration/purchase_step.html')
+        self.assertTemplateUsed('onboarding/purchase_step.html')
 
         # test to make sure that we can supply a correct value for purchase step
         data = {'purchase_step': PS_EAO}
         response = self.client.post(self.urls['purchase_step'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template marital status
-        self.assertTemplateUsed('registration/marital_status.html')
+        self.assertTemplateUsed('onboarding/marital_status.html')
 
         # test to make sure we can skip marital status
         data = {'marital_status': None}
         response = self.client.post(self.urls['marital_status'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template first home
-        self.assertTemplateUsed('registration/first_home.html')
+        self.assertTemplateUsed('onboarding/first_home.html')
 
         # test to make sure we are unable to skip first home stage
         data = {}
         response = self.client.post(self.urls['first_home'], data=data)
         self.assertEqual(response.status_code, 400)
         # lets see if we remain on the same template
-        self.assertTemplateUsed('registration/first_home.html')
+        self.assertTemplateUsed('onboarding/first_home.html')
 
         # test to make sure that we can supply a correct value for first home
         data = {'first_home': False}
         response = self.client.post(self.urls['first_home'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template house choices
-        self.assertTemplateUsed('registration/marital_status.html')
+        self.assertTemplateUsed('onboarding/marital_status.html')
 
         # test to make sure we can skip the house type form
         data = {'house_type': '', 'house_age': '', 'house_cond': ''}
         response = self.client.post(self.urls['house_type'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template city
-        self.assertTemplateUsed('registration/city.html')
+        self.assertTemplateUsed('onboarding/city.html')
 
         # test to make sure we can skip the city form by choosing the `anywhere in silicon valley` option
         data = {'preferred_city': None}
         response = self.client.post(self.urls['city'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template city
-        self.assertTemplateUsed('registration/max_budget.html')
+        self.assertTemplateUsed('onboarding/max_budget.html')
 
         # test to make sure we can skip the max budget form
         data = {'budget': ''}
         response = self.client.post(self.urls['max_budget'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template current rent
-        self.assertTemplateUsed('registration/current_rent.html')
+        self.assertTemplateUsed('onboarding/current_rent.html')
 
         # test to make sure we can skip the current rent form
         data = {'current_rent': ''}
         response = self.client.post(self.urls['current_rent'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template how soon
-        self.assertTemplateUsed('registration/how_soon.html')
+        self.assertTemplateUsed('onboarding/how_soon.html')
 
         # test to make sure we can skip the how soon form
         data = {'how_soon': ''}
         response = self.client.post(self.urls['how_soon'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template personal profile
-        self.assertTemplateUsed('registration/personal_profile.html')
+        self.assertTemplateUsed('onboarding/personal_profile.html')
 
         # test to make sure we are unable to skip the personal profile form
         data = {
@@ -314,7 +314,7 @@ class RegistrationTest(TestCase):
         response = self.client.post(self.urls['personal_profile'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we remain on the same template
-        self.assertTemplateUsed('registration/personal_profile.html')
+        self.assertTemplateUsed('onboarding/personal_profile.html')
 
         user = User.objects.latest('id')
         self.assertEqual(user.purchase_step, PS_EAO)
