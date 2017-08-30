@@ -27,6 +27,12 @@
 
 .categories {
   padding-bottom: 110px;
+  li {
+    list-style-type: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .categories h1 {
@@ -47,9 +53,27 @@
   cursor: pointer;
   margin-top: 15px
 }
-.categories button:hover{
-  background-color:#a5725d;
+
+.categories button:hover {
+  background-color: #a5725d;
   color: white;
+}
+
+.categories .skip {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  margin-top: 10px;
+  padding: 12px 20px;
+}
+.categories .skip:hover {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  margin-top: 10px;
+  padding: 12px 20px;
 }
 
 /* End Categories Section */

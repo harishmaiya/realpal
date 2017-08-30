@@ -37,7 +37,7 @@ input[type="text"]:focus
     margin: 35px auto -5px
 }
 
-.categories .form-inline input[type="text"]
+.categories .form-inline input[type="number"]
 {
     width: 150px;
     padding-left: 25px;
@@ -52,15 +52,6 @@ input[type="text"]:focus
     left: 10px;
     color: #999;
     font-size: 20px;
-}
-
-.categories .skip
-{
-    background-color: transparent;
-    border: none;
-    font-size: 16px;
-    color: #000;
-    margin-bottom: 40px;
 }
 
 .categories .continue,
