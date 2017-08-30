@@ -91,4 +91,32 @@ html, body {
   margin-bottom: 25px
 }
 
+.invisible {
+  display: block;
+}
+
+.oval-button {
+  padding: 10px 5px;
+    width: calc(100% / 2 - 10px);
+    border: 1px solid black;
+    color: black;
+    border-radius: 22px;
+  font-weight: bold;
+  &:hover {
+    background: #f2f2f2;
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+.oval-button-container {
+      display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 15px auto 0;
+}
+
 /* End Categories Section */

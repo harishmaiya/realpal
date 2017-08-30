@@ -2,19 +2,33 @@
 {% block content %}
     <!-- Start Categories section -->
     <section class="registration-container">
-        <div class="categories text-center">
+        <div class="text-center">
             <div class="container">
                 <div class="header">
                     <h1>Is this your first home buy?</h1>
                     <h3>So you can know about tax advantages, house choosing criteria</h3>
                 </div>
-                <form action="" method="post">
+                <form method="post" action="">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Next</button>
+                    <div class="button-select invisible">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="oval-button-container">
+                        <button class="oval-button" type="button" id="yes">Yes</button>
+                        <button class="oval-button" type="button" id="no">No</button>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
-
+    <script type="text/javascript">
+        $('#yes').on('click', function () {
+            $('input[type="checkbox"]').attr('checked', true);
+            $('form').submit();
+        });
+        $('#no').on('click', function () {
+            $('input[type="checkbox"]').attr('checked', false);
+            $('form').submit();
+        });
+    </script>
 {% endblock %}
