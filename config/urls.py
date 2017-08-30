@@ -11,6 +11,9 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
 
+    # Django resyt
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
     # User management
     url(r'^users/', include('realpal.apps.users.urls', namespace='users')),
     url(r'^register/', include('realpal.apps.registration.urls', namespace='register')),
