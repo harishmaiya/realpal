@@ -58,12 +58,12 @@ html, body {
 
 .categories .button-select .btn label {
   vertical-align: middle;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    top: -3px;
-    width: 100%;
-    margin-bottom: 0;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  top: -3px;
+  width: 100%;
+  margin-bottom: 0;
 }
 
 .categories .button-select input {
@@ -96,7 +96,7 @@ html, body {
 }
 
 .invisible {
-  display: block;
+  display: none;
 }
 
 .oval-button {
@@ -146,7 +146,6 @@ html, body {
   }
 }
 
-
 .bordered-block {
   border-bottom: 1px solid #ddd;
   padding-bottom: 20px;
@@ -155,26 +154,50 @@ html, body {
 
 .grid-view {
   display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .grid-item {
-    width: 30%;
-    padding: 30px 0;
-    margin: 10px 1.3%;
-    font-weight: bold;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1.2em;
+  width: 30%;
+  padding: 30px 0;
+  margin: 10px 1.3%;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.2em;
 
   &.selected,
-  &:hover{
+  &:hover {
     border-color: #ddd;
     background: #ddd;
     cursor: pointer;
   }
 }
 
+.circle-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.circle-item {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 100px;
+  line-height: 100px;
+  width: 100px;
+  font-weight: bold;
+  font-size: 1em;
+  margin: 5px;
+
+  &.selected,
+  &:hover {
+    border-color: #ddd;
+    background: #ddd;
+    cursor: pointer;
+  }
+}
 
 /* End Categories Section */
