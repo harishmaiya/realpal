@@ -1,24 +1,26 @@
 {% extends "base_onboarding.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
-    <link href="{% static 'css/onboarding_timeline.css' %}" rel="stylesheet"/>
-
     <!-- Start Categories section -->
-
-    <section class="categories text-center">
-        <div class="container">
-            <div class="header">
-                <h1 class="domine">When do you plan to buy your house?</h1>
-            </div>
-            <form action="" method="post" class="button-select text-center">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="skip" type="submit">Next</button>
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">When do you plan to buy your house?</h1>
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        {{ form|crispy }}
+                    </div>
+                    <button class="btn" type="submit">Next</button>
+                </form>
                 <a href="{% url 'register:personal-profile' %}">
                     <button class="skip" type="button">Skip this step</button>
                 </a>
-            </form>
-
+            </div>
         </div>
     </section>
+
 {% endblock %}

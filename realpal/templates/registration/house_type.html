@@ -1,34 +1,49 @@
 {% extends "base_onboarding.html" %}
 {% block content %}
 
-    <link href="{% static 'css/onboarding_combo_options.css' %}" rel="stylesheet"/>
-
     <!-- Start Categories section -->
-
-    <section class="categories text-center">
-        <div class="container">
-            <div class="header">
-                <h1 class="domine">House Choices</h1>
-                <h3 class="droid">Tax rebates, mortgage rates vary upon this</h3>
-            </div>
-            <form action="" method="post" class="options">
-                {% csrf_token %}
-
-                <div class="question row">
-                    <h2 class="domine text-center">Type of house</h2>
-                    <div class="col-sm-6">
-                        <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
-                    </div>
-                    <div class="col-sm-6">
-                        {{ house_type_form.as_p }}
-                    </div>
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">House Choices</h1>
+                    <h3 class="droid">Tax rebates, mortgage rates vary upon this</h3>
                 </div>
-                <button class="next center-block droid" type="submit">Next</button>
-                <a href="{% url 'register:city' %}">
-                    <button class="skip" type="button">Skip this step</button>
-                </a>
-            </form>
+                <form action="" method="post" class="options">
+                    {% csrf_token %}
+                    <div class="question row">
+                        <h2 class="domine text-center">{{ house_type_form.house_type.label }}</h2>
+                        <div class="col-sm-12">
+                            {% for choice in house_type_form.house_type %}
+                                <div class="btn center-block status">{{ choice }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
 
+                    <div class="question row">
+                        <h2 class="domine text-center"> {{ house_type_form.house_age.label }}</h2>
+                        <div class="col-sm-12">
+                            {% for choice in house_type_form.house_age %}
+                                <div class="btn center-block status">{{ choice }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="question row">
+                        <h2 class="domine text-center"> {{ house_type_form.house_cond.label }}</h2>
+                        <div class="col-sm-12">
+                            {% for choice in house_type_form.house_cond %}
+                                <div class="btn center-block status">{{ choice }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <button class="next center-block droid" type="submit">Next</button>
+                    <a href="{% url 'register:city' %}">
+                        <button class="skip" type="button">Skip this step</button>
+                    </a>
+                </form>
+
+            </div>
         </div>
     </section>
+
 {% endblock %}
