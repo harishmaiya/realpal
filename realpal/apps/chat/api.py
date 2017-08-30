@@ -36,7 +36,6 @@ class MessageCreateAPIView(CreateAPIView):
     model = Message
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated, ]
-    room = []
 
     def create(self, request, *args, **kwargs):
         room_id = self.request.data.get('room')
