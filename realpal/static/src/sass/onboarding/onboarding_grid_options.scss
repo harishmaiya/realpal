@@ -58,8 +58,12 @@ html, body {
 
 .categories .button-select .btn label {
   vertical-align: middle;
-  font-weight: bold;
-  cursor: pointer;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    top: -3px;
+    width: 100%;
+    margin-bottom: 0;
 }
 
 .categories .button-select input {
@@ -135,16 +139,13 @@ html, body {
     border: 1px solid #dad4c8 !important;
   }
 
-  & input[type="radio"]:checked < label:after {
-    content: '';
-    height: 42px;
-    border-radius: 4px;
-    position: relative;
-    width: 260px;
-    background: #dad4c8;
+  &.checked {
+    box-shadow: none;
+    background-color: #dad4c8 !important;
+    border: 1px solid #dad4c8 !important;
   }
-
 }
+
 
 .bordered-block {
   border-bottom: 1px solid #ddd;
