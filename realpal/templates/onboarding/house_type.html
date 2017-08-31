@@ -17,7 +17,7 @@
                         <div class="col-sm-6">
                             <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
                         </div>
-                        <div class="col-sm-6 bordered-block">
+                        <div class="col-sm-6">
                             {% for choice in house_type_form.house_type %}
                                 {% if not forloop.first %}
                                     <div class="btn center-block status btn-smaller">{{ choice }}</div>
@@ -31,7 +31,7 @@
                         <div class="col-sm-6">
                             <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
                         </div>
-                        <div class="col-sm-6 bordered-block">
+                        <div class="col-sm-6">
                             {% for choice in house_type_form.house_age %}
                                 {% if not forloop.first %}
                                     <div class="btn center-block status btn-smaller">{{ choice }}</div>
@@ -46,7 +46,7 @@
                             <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
                         </div>
 
-                        <div class="col-sm-6 bordered-block">
+                        <div class="col-sm-6">
                             {% for choice in house_type_form.house_cond %}
                                 {% if not forloop.first %}
                                     <div class="btn center-block status btn-smaller">{{ choice }}</div>
