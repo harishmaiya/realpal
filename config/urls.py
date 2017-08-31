@@ -6,23 +6,26 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
 urlpatterns = [
-    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+    url(r'^about/$', TemplateView.as_view(template_name='home/about.html'), name='about'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
 
+    # Django resyt
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
     # User management
-    url(r'^users/', include('realpal.users.urls', namespace='users')),
-    url(r'^accounts/', include('allauth.urls')),
+    url(r'^users/', include('realpal.apps.users.urls', namespace='users')),
+    url(r'^onboarding/', include('realpal.apps.onboarding.urls', namespace='onboarding')),
     # Your stuff: custom urls includes go here
     url(r'^', include('realpal.mainapp.urls', namespace='mainapp')),
-
+    url(r'^chat/', include('realpal.apps.chat.urls', namespace='chat')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
-    # This allows the error pages to be debugged during development, just visit
-    # these url in browser to see how these error pages look like.
+    # This allows the error home to be debugged during development, just visit
+    # these url in browser to see how these error home look like.
     urlpatterns += [
         url(r'^400/$', default_views.bad_request, kwargs={'exception': Exception('Bad Request!')}),
         url(r'^403/$', default_views.permission_denied, kwargs={'exception': Exception('Permission Denied')}),

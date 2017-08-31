@@ -1,0 +1,53 @@
+/* Start Body Section */
+
+.body #main {padding-bottom:50px;}
+
+/* End Body Section */
+
+/* Start Chat Box Section */
+
+.chat-box {max-height: 50px; margin-top: -50px ;overflow: hidden;border-top: 1px solid #ededed;}
+
+.chat-box .container{width: 100%}
+
+.chat-box textarea
+{
+    height: 50px;
+    border-radius: 0;
+    border:none;
+    box-shadow: none;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 12px 15px;
+    resize: none;
+}
+
+.chat-box .btn
+{
+    font-size: 12px;
+    text-transform: uppercase;
+    height: 50px;
+    color: #ddd;
+    border:none;
+    background-color: transparent;
+    padding-left: 12px;
+    border-radius: 0;
+}
+
+.chat-box form hr {
+        width: 1%;
+        bottom: 3px;
+        right:98px;
+        position: absolute;
+        background-color: #ddd;
+        height: 1px;
+        width: 32px;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+
+/* End Chat Box Section */

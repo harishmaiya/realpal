@@ -1,0 +1,79 @@
+@media (min-width: 1200px) {
+
+  .container {
+    width: 1249px;
+  }
+
+}
+
+/* Star Banner Section */
+
+.banner {
+  height: 45px;
+  color: #FFF;
+}
+
+.banner h4 {
+  letter-spacing: 1.3px;
+  font-size: 19px;
+  transform: scale(1.2, 1);
+  margin-top: 13px;
+  font-weight: 600;
+}
+
+/* End Banner Section */
+
+/* Start Categories Section */
+
+.categories {
+  padding-bottom: 110px;
+  li {
+    list-style-type: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.categories h1 {
+  color: #4a4a4a;
+  margin-top: 44px;
+  margin-bottom: 60px;
+  font-size: 31px;
+}
+
+.categories button {
+  width: 295px;
+  padding: 12px 20px;
+  background: #bc8067;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 15px
+}
+
+.categories button:hover {
+  background-color: #a5725d;
+  color: white;
+}
+
+.categories .skip {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  margin-top: 10px;
+  padding: 12px 20px;
+}
+.categories .skip:hover {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  margin-top: 10px;
+  padding: 12px 20px;
+}
+
+/* End Categories Section */
