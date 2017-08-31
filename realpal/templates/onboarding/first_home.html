@@ -27,7 +27,7 @@
             $('form').submit();
         });
         $('#no').on('click', function () {
-            $('input[type="checkbox"]').attr('checked', false);
+            $('input[type="checkbox"]').removeAttr('checked');
             $('form').submit();
         });
     </script>
