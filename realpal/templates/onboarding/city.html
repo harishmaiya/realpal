@@ -12,8 +12,15 @@
                 </div>
                 <form class="" method="post" action="">
                     {% csrf_token %}
-                    <div class="row">
-                        {{ form|crispy}}
+                    <div class="invisible">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="grid-view">
+                        {% for city in form.fields.preferred_city.queryset %}
+                            <div class="grid-item" data-id="{{ city.id }}">
+                                {{ city.name }}
+                            </div>
+                        {% endfor %}
                     </div>
                     <button class="btn" type="submit">Continue</button>
                 </form>
@@ -23,5 +30,18 @@
             </div>
         </div>
     </section>
-
+    <script type="text/javascript">
+        $('.grid-item').on('click', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            $("select").val(null).change();
+            } else {
+                $(this).addClass('selected');
+                $(this).siblings().removeClass('selected');
+                var value = $(this).attr('data-id');
+                $("select").val(value).change();
+                console.log(value);
+            }
+        });
+    </script>
 {% endblock %}

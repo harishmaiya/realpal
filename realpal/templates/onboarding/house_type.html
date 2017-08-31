@@ -9,30 +9,48 @@
                     <h1 class="domine">House Choices</h1>
                     <h3 class="droid">Tax rebates, mortgage rates vary upon this</h3>
                 </div>
-                <form action="" method="post" class="options">
+                <form action="" method="post" class="options button-select">
                     {% csrf_token %}
-                    <div class="question row">
-                        <h2 class="domine text-center">{{ house_type_form.house_type.label }}</h2>
-                        <div class="col-sm-12">
+
+                    <div class="bordered-block col-sm-12">
+                    <h2 class="domine text-center"> House Type </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
+                        </div>
+                        <div class="col-sm-6 bordered-block">
                             {% for choice in house_type_form.house_type %}
-                                <div class="btn center-block status">{{ choice }}</div>
+                                {% if not forloop.first %}
+                                    <div class="btn center-block status btn-smaller">{{ choice }}</div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
 
-                    <div class="question row">
-                        <h2 class="domine text-center"> {{ house_type_form.house_age.label }}</h2>
-                        <div class="col-sm-12">
+                    <div class="bordered-block col-sm-12">
+                    <h2 class="domine text-center"> House Age </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
+                        </div>
+                        <div class="col-sm-6 bordered-block">
                             {% for choice in house_type_form.house_age %}
-                                <div class="btn center-block status">{{ choice }}</div>
+                                {% if not forloop.first %}
+                                    <div class="btn center-block status btn-smaller">{{ choice }}</div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="question row">
-                        <h2 class="domine text-center"> {{ house_type_form.house_cond.label }}</h2>
-                        <div class="col-sm-12">
+
+                    <div class="bordered-block col-sm-12">
+                    <h2 class="domine text-center"> House Condition </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
+                        </div>
+
+                        <div class="col-sm-6 bordered-block">
                             {% for choice in house_type_form.house_cond %}
-                                <div class="btn center-block status">{{ choice }}</div>
+                                {% if not forloop.first %}
+                                    <div class="btn center-block status btn-smaller">{{ choice }}</div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
@@ -45,5 +63,22 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+        $('.bordered-block').on('click', '.btn-smaller', function (evt) {
+            evt.stopImmediatePropagation();
+            evt.preventDefault();
+            evt.stopPropagation();
+            if ($(this).hasClass('checked')) {
+                $(this).find('input[type="radio"]').removeAttr('checked');
+                $(this).removeClass('checked');
+            } else {
+                $(this).find('input[type="radio"]').attr("checked", true);
+                $(this).siblings().find('input[type="radio"]').removeAttr("checked");
+                $(this).addClass('checked');
+                $(this).siblings().removeClass('checked');
+            }
+
+        });
+    </script>
 
 {% endblock %}
