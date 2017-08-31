@@ -219,7 +219,8 @@ class PersonalProfileView(View):
                 request,
                 'onboarding/onboarding_complete.html',
                 {
-                    'success': 'Congratulations, you have completed the onboarding process successfully'
+                    'success': 'Congratulations, you have completed the onboarding process successfully',
+                    'user': user,
                 },
                 status=302
             )
@@ -228,7 +229,12 @@ class PersonalProfileView(View):
 
 class ResendActivationEmail(View):
     def post(self, request, *args, **kwargs):
-        request.user.send_confirmation_email()
+        user_id = request.POST.get('user_id', '')
+        try:
+            user = User.objects.get(id=user_id)
+            user.send_confirmation_email()
+        except(User.DoesNotExist, ValueError):
+            pass
         return render(
             request,
             'onboarding/onboarding_complete.html',
