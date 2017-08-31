@@ -160,7 +160,7 @@
                             <fieldset>
                                 {% for value, name in house_type_form.fields.house_type.choices %}
 
-                                    <label class="radio bottom-space">
+                                    <label class="radio shrink">
                                         <input type="radio" name="house_type" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_type %}
                                                checked {% endif %}>
@@ -180,7 +180,7 @@
                             <fieldset>
                                 {% for value, name in house_type_form.fields.house_age.choices %}
 
-                                    <label class="radio bottom-space">
+                                    <label class="radio shrink">
                                         <input type="radio" name="house_age" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_age %}
                                                checked {% endif %}>
@@ -200,7 +200,7 @@
                             <fieldset>
                                 {% for value, name in house_type_form.fields.house_cond.choices %}
 
-                                    <label class="radio bottom-space">
+                                    <label class="radio shrink">
                                         <input type="radio" name="house_cond" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_cond %}
                                                checked{% endif %}>

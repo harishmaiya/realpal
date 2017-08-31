@@ -139,6 +139,28 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
     border-radius: 4px;
 }
 
+.radio.shrink {
+  text-align: center;
+}
+
+.radio.shrink p:after {
+    content: '';
+    width: 100%;
+    max-width: 300px;
+    height: 42px;
+    border: 1px solid #4a4a4a;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.radio.shrink input[type="radio"] {
+  height: 42px;
+  text-align: center;
+}
+
 .radio input[type="radio"] {
   cursor: pointer;
   position: absolute;
@@ -163,11 +185,25 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
   }
 }
 
+.radio.shrink input[type="radio"]:checked + p:before {
+content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 42px;
+  opacity: 0.1;
+  position: absolute;
+  background: #B77D64;
+  left: 5px;
+  top: 10px;
+  z-index: 10;
+  border-radius: 3px;
+}
+
 .radio input[type="radio"]:checked + p:before {
   content: '';
   width: 100%;
   max-width: 300px;
-  height: 93px;
+  height: 92px;
   opacity: 0.1;
   position: absolute;
   background: #B77D64;
