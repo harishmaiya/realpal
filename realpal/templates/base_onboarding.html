@@ -49,25 +49,13 @@
 {% endblock content %}
 
 <!-- Start Footer section -->
-<section class="onboarding-footer">
-    <div class="footer">
-        <div class="container">
-            <div class="mobile-container row">
-                <a class="lead pull-left" href="/">Real Pal</a>
-                <a class="pull-right">PRIVACY</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+{% include "home/partials/onboarding_footer.html" %}
 <!-- End Footer section -->
 
 {% block modal %}{% endblock modal %}
 
 {% block javascript %}
 
-    <script src="{% static 'app/js/main.js' %}"></script>
     <script src="{% static 'app/js/vendor/vendor.js' %}"></script>
 
 {% endblock javascript %}
