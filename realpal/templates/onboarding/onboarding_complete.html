@@ -5,12 +5,15 @@
         <div class="categories text-center">
             <div class="container">
                 <div class="header">
-                    <h1>Congratulation {{ user.first_name }} {{ user.last_name }}</h1>
+                    <h1>Congratulations</h1>
                     <h3>{{ success }}</h3>
+                    <br>
+                    <p>Check your email inbox for the activation email so you can confirm your email address</p>
                 </div>
                 <form action="{% url 'onboarding:resend' %}" method="post">
                     {% csrf_token %}
-                    <p>Did not receive the confirmation email? <button type="submit">Resend</button> </p>
+                    <p>Did not receive the confirmation email?</p>
+                    <button type="submit">Resend</button>
                 </form>
             </div>
         </div>
