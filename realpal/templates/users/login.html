@@ -27,7 +27,7 @@
                                 <p class="red-text"><strong>{{ error }}</strong></p>
                             {% endif %}
                             <a class="button secondaryAction"
-                               href="#">{% trans "Forgot Password?" %}</a>
+                               href="{% url 'password_reset' %}">{% trans "Forgot Password?" %}</a>
                         </div>
                         <button class="btn" type="submit">{% trans "Sign In" %}</button>
                     </form>
