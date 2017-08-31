@@ -67,9 +67,6 @@ html, body {
     display: inline-block;
     margin-right: 15px;
   }
-  //input {
-  //  visibility:hidden;
-  //}
   label {
     cursor: pointer;
   }
@@ -83,6 +80,7 @@ html, body {
   .footer {
     background-color: #022d46;
     height: 65px;
+    margin-top: 300px;
   }
 
   .footer a {
@@ -101,16 +99,19 @@ html, body {
     padding-top: 17px;
     margin-bottom: 0
   }
-}
-
-@media(max-width: 1024px) {
-  .onboarding-footer {
-    .mobile-container {
-      width: 98%;
-      margin-left: 10px;
-    }
+  .main {
+    flex: 1;
   }
 
+  @media(max-width: 1024px) {
+    .onboarding-footer {
+      .mobile-container {
+        width: 98%;
+        margin-left: 10px;
+      }
+    }
+
+  }
 }
 
 @import "../onboarding/onboarding";
