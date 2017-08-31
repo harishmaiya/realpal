@@ -51,7 +51,6 @@ list-group-item:hover > span {
   color: red;
 }
 
-
 div.vertical-tab-content {
   background-color: #ffffff;
   /* border: 1px solid #eeeeee; */
@@ -128,15 +127,15 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
 
 .radio p:after {
   content: '';
-    width: 100%;
-    max-width: 300px;
-    height: 93px;
-    border: 1px solid #4a4a4a;
-    position: absolute;
-    left: 5px;
-    top: -15px;
-    z-index: 1;
-    border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+  height: 93px;
+  border: 1px solid #4a4a4a;
+  position: absolute;
+  left: 5px;
+  top: -15px;
+  z-index: 1;
+  border-radius: 4px;
 }
 
 .radio.shrink {
@@ -144,16 +143,16 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
 }
 
 .radio.shrink p:after {
-    content: '';
-    width: 100%;
-    max-width: 300px;
-    height: 42px;
-    border: 1px solid #4a4a4a;
-    position: absolute;
-    left: 5px;
-    top: 10px;
-    z-index: 1;
-    border-radius: 4px;
+  content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 42px;
+  border: 1px solid #4a4a4a;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  z-index: 1;
+  border-radius: 4px;
 }
 
 .radio.shrink input[type="radio"] {
@@ -186,7 +185,7 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
 }
 
 .radio.shrink input[type="radio"]:checked + p:before {
-content: '';
+  content: '';
   width: 100%;
   max-width: 300px;
   height: 42px;
@@ -216,7 +215,7 @@ content: '';
 /* checkbox styles */
 
 .oval-button.selected {
- background-color: rgba(74, 74, 74, 0.1)
+  background-color: rgba(74, 74, 74, 0.1)
 }
 
 #ck-button label {
@@ -292,4 +291,13 @@ content: '';
 .vertical-tab-content input[type="number"] {
   max-width: 300px;
   margin: auto;
+}
+
+.img-responsive.moved {
+  margin-top: 20%;
+}
+
+fieldset.moved:not(:last-of-type) {
+  padding-bottom: 30px;
+  border-bottom: 2px solid lightgray;
 }

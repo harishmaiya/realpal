@@ -79,7 +79,8 @@
                             {% for value, name in purchase_step_form.fields.purchase_step.choices %}
 
                                 <label class="radio bottom-space">
-                                    <input type="radio" name="purchase_step" value="{{ value }}" {% if value == purchase_step_form.initial.purchase_step %}checked{% endif %}>
+                                    <input type="radio" name="purchase_step" value="{{ value }}"
+                                           {% if value == purchase_step_form.initial.purchase_step %}checked{% endif %}>
                                     <p>
                                         <span class="lower">
                                             {% if not value and not value == 0 %}
@@ -157,14 +158,18 @@
                         <h3>House Type</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            <fieldset>
-                                {% for value, name in house_type_form.fields.house_type.choices %}
+                            <fieldset class="moved">
+                                <div class="col-sm-6">
+                                    <img class="img-responsive moved" src="{% static 'images/type.jpg' %}" alt="house">
+                                </div>
+                                <div class="col-sm-6">
+                                    {% for value, name in house_type_form.fields.house_type.choices %}
 
-                                    <label class="radio shrink">
-                                        <input type="radio" name="house_type" value="{{ value }}"
-                                                {% if value == house_type_form.initial.house_type %}
-                                               checked {% endif %}>
-                                        <p>
+                                        <label class="radio shrink">
+                                            <input type="radio" name="house_type" value="{{ value }}"
+                                                    {% if value == house_type_form.initial.house_type %}
+                                                   checked {% endif %}>
+                                            <p>
                                         <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
@@ -172,19 +177,24 @@
                                                 {{ name }}
                                             {% endif %}
                                         </span>
-                                        </p>
-                                    </label>
-                                {% endfor %}
+                                            </p>
+                                        </label>
+                                    {% endfor %}
+                                </div>
                             </fieldset>
                             <h3>House Age</h3>
-                            <fieldset>
-                                {% for value, name in house_type_form.fields.house_age.choices %}
+                            <fieldset class="moved">
+                                <div class="col-sm-6">
+                                    <img class="img-responsive moved age" src="{% static 'images/age.jpg' %}" alt="house"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    {% for value, name in house_type_form.fields.house_age.choices %}
 
-                                    <label class="radio shrink">
-                                        <input type="radio" name="house_age" value="{{ value }}"
-                                                {% if value == house_type_form.initial.house_age %}
-                                               checked {% endif %}>
-                                        <p>
+                                        <label class="radio shrink">
+                                            <input type="radio" name="house_age" value="{{ value }}"
+                                                    {% if value == house_type_form.initial.house_age %}
+                                                   checked {% endif %}>
+                                            <p>
                                         <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
@@ -192,19 +202,25 @@
                                                 {{ name }}
                                             {% endif %}
                                         </span>
-                                        </p>
-                                    </label>
-                                {% endfor %}
+                                            </p>
+                                        </label>
+                                    {% endfor %}
+                                </div>
                             </fieldset>
                             <h3>House Condition</h3>
-                            <fieldset>
-                                {% for value, name in house_type_form.fields.house_cond.choices %}
+                            <fieldset class="moved">
+                                <div class="col-sm-6">
+                                    <img class="img-responsive moved" src="{% static 'images/condition.jpg' %}" alt="house">
+                                </div>
 
-                                    <label class="radio shrink">
-                                        <input type="radio" name="house_cond" value="{{ value }}"
-                                                {% if value == house_type_form.initial.house_cond %}
-                                               checked{% endif %}>
-                                        <p>
+                                <div class="col-sm-6">
+                                    {% for value, name in house_type_form.fields.house_cond.choices %}
+
+                                        <label class="radio shrink">
+                                            <input type="radio" name="house_cond" value="{{ value }}"
+                                                    {% if value == house_type_form.initial.house_cond %}
+                                                   checked{% endif %}>
+                                            <p>
                                         <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
@@ -212,9 +228,10 @@
                                                 {{ name }}
                                             {% endif %}
                                         </span>
-                                        </p>
-                                    </label>
-                                {% endfor %}
+                                            </p>
+                                        </label>
+                                    {% endfor %}
+                                </div>
                             </fieldset>
                             <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
                         </form>
@@ -229,7 +246,8 @@
                             </div>
                             <div class="grid-view">
                                 {% for city in city_form.fields.preferred_city.queryset %}
-                                    <div class="grid-item {% if city_form.initial.preferred_city == city.id %}selected{% endif %}" data-id="{{ city.id }}">
+                                    <div class="grid-item {% if city_form.initial.preferred_city == city.id %}selected{% endif %}"
+                                         data-id="{{ city.id }}">
                                         {{ city.name }}
                                     </div>
                                 {% endfor %}
@@ -279,7 +297,8 @@
                             <div class="circle-container">
                                 {% for value, time in how_soon_form.fields.how_soon.choices %}
                                     {% if not forloop.first and not forloop.last %}
-                                        <div class="circle-item {% if how_soon_form.initial.howsoon == value %}selected{% endif %}" data-id="{{ value }}">
+                                        <div class="circle-item {% if how_soon_form.initial.howsoon == value %}selected{% endif %}"
+                                             data-id="{{ value }}">
                                             {{ time }}
                                         </div>
                                     {% endif %}
