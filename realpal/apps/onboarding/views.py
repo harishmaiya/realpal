@@ -239,7 +239,8 @@ class ResendActivationEmail(View):
             request,
             'onboarding/onboarding_complete.html',
             {
-                'success': 'Your Activation Email has been resent'
+                'success': 'Your Activation Email has been resent',
+                'user': user,
             },
             status=302
         )
