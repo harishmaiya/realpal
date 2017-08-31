@@ -78,12 +78,10 @@
                             {% csrf_token %}
                             {% for value, name in purchase_step_form.fields.purchase_step.choices %}
 
-                                <label class="radio">
-                                    <input type="radio" name="purchase_step" value="{{ value }}"
-                                            {% if value == purchase_step_form.initial.purchase_step %}
-                                           checked {% endif %}>
+                                <label class="radio bottom-space">
+                                    <input type="radio" name="purchase_step" value="{{ value }}" {% if value == purchase_step_form.initial.purchase_step %}checked{% endif %}>
                                     <p>
-                                        <span>
+                                        <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
@@ -104,12 +102,12 @@
                             <div class="radio-group">
                                 {% for value, name in marital_status_form.fields.status.choices %}
 
-                                    <label class="radio">
+                                    <label class="radio bottom-space">
                                         <input type="radio" name="status" value="{{ value }}"
                                                 {% if value == marital_status_form.initial.status %}
                                                checked {% endif %}>
                                         <p>
-                                        <span>
+                                        <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
@@ -128,17 +126,31 @@
                         <h3>Is this your first home?</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            <div id="ck-button">
-                                <label>
-                                    <input type="checkbox" name="firsthome" value="1"
-                                            {% if first_home_form.initial.firsthome %}
-                                           checked
-                                            {% endif %}
-                                    ><span>YES</span>
-                                </label>
+                            <div class="button-select invisible">
+                                {{ first_home_form.as_p }}
+                            </div>
+                            <div class="oval-button-container">
+                                <button class="oval-button {% if first_home_form.initial.firsthome %}selected{% endif %}"
+                                        type="button" id="yes">Yes
+                                </button>
+                                <button class="oval-button {% if not first_home_form.initial.firsthome %}selected{% endif %}"
+                                        type="button" id="no">No
+                                </button>
                             </div>
                             <input class="btn btn-brown" type="submit" name="first_home_form" value="Update"/>
                         </form>
+                        <script type="text/javascript">
+                            $('#yes').on('click', function () {
+                                $('input[type="checkbox"]').attr('checked', true);
+                                $(this).addClass('selected');
+                                $('#no').removeClass('selected')
+                            });
+                            $('#no').on('click', function () {
+                                $('input[type="checkbox"]').removeAttr('checked');
+                                $(this).addClass('selected');
+                                $('#yes').removeClass('selected')
+                            });
+                        </script>
                     </div>
 
                     <div class="vertical-tab-content">
@@ -148,12 +160,12 @@
                             <fieldset>
                                 {% for value, name in house_type_form.fields.house_type.choices %}
 
-                                    <label class="radio">
+                                    <label class="radio bottom-space">
                                         <input type="radio" name="house_type" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_type %}
                                                checked {% endif %}>
                                         <p>
-                                        <span>
+                                        <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
@@ -168,12 +180,12 @@
                             <fieldset>
                                 {% for value, name in house_type_form.fields.house_age.choices %}
 
-                                    <label class="radio">
+                                    <label class="radio bottom-space">
                                         <input type="radio" name="house_age" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_age %}
                                                checked {% endif %}>
                                         <p>
-                                        <span>
+                                        <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
@@ -188,12 +200,12 @@
                             <fieldset>
                                 {% for value, name in house_type_form.fields.house_cond.choices %}
 
-                                    <label class="radio">
+                                    <label class="radio bottom-space">
                                         <input type="radio" name="house_cond" value="{{ value }}"
                                                 {% if value == house_type_form.initial.house_cond %}
-                                               checked {% endif %}>
+                                               checked{% endif %}>
                                         <p>
-                                        <span>
+                                        <span class="lower">
                                             {% if not value and not value == 0 %}
                                                 I'd rather not say
                                             {% else %}
@@ -212,9 +224,31 @@
                         <h3>City</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ city_form|crispy }}
+                            <div class="invisible pc">
+                                {{ city_form.as_p }}
+                            </div>
+                            <div class="grid-view">
+                                {% for city in city_form.fields.preferred_city.queryset %}
+                                    <div class="grid-item {% if city_form.initial.preferred_city == city.id %}selected{% endif %}" data-id="{{ city.id }}">
+                                        {{ city.name }}
+                                    </div>
+                                {% endfor %}
+                            </div>
                             <input class="btn btn-brown" type="submit" name="city_form" value="Update"/>
                         </form>
+                        <script type="text/javascript">
+                            $('.grid-item').on('click', function () {
+                                if ($(this).hasClass('selected')) {
+                                    $(this).removeClass('selected');
+                                    $(".pc select").val(null).change();
+                                } else {
+                                    $(this).addClass('selected');
+                                    $(this).siblings().removeClass('selected');
+                                    var value = $(this).attr('data-id');
+                                    $(".pc select").val(value).change();
+                                }
+                            });
+                        </script>
                     </div>
 
                     <div class="vertical-tab-content">
@@ -239,9 +273,33 @@
                         <h3>How soon would you like to buy</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ how_soon_form|crispy }}
+                            <div class="invisible hsf">
+                                {{ how_soon_form.as_p }}
+                            </div>
+                            <div class="circle-container">
+                                {% for value, time in how_soon_form.fields.how_soon.choices %}
+                                    {% if not forloop.first and not forloop.last %}
+                                        <div class="circle-item {% if how_soon_form.initial.howsoon == value %}selected{% endif %}" data-id="{{ value }}">
+                                            {{ time }}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                             <input class="btn btn-brown" type="submit" name="how_soon_form" value="Update"/>
                         </form>
+                        <script type="text/javascript">
+                            $('.circle-item').on('click', function () {
+                                if ($(this).hasClass('selected')) {
+                                    $(this).removeClass('selected');
+                                    $(".hsf select").val(null).change();
+                                } else {
+                                    $(this).addClass('selected');
+                                    $(this).siblings().removeClass('selected');
+                                    var value = $(this).attr('data-id');
+                                    $(".hsf select").val(value).change();
+                                }
+                            });
+                        </script>
                     </div>
 
                 </div>
