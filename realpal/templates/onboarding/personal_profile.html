@@ -16,6 +16,9 @@
                 </div>
             </div>
             <div class="row">
+            {% if form.errors %}
+                <p class="red-text">{{ form.errors }}</p>
+            {% endif %}
 
                 <form role="form" class="signup" id="signup_form" method="post" action="">
                     {% csrf_token %}
