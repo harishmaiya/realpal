@@ -215,8 +215,28 @@ class PersonalProfileView(View):
             user.save()
             user.send_confirmation_email()
 
-            return HttpResponse('Well Done on finishing onboarding', status=302)
+            return render(
+                request,
+                'onboarding/onboarding_complete.html',
+                {
+                    'success': 'Congratulations, you have completed the onboarding process successfully'
+                },
+                status=302
+            )
         return render(request, self.template_name, {'form': form}, status=400)
+
+
+class ResendActivationEmail(View):
+    def post(self, request, *args, **kwargs):
+        request.user.send_confirmation_email()
+        return render(
+            request,
+            'onboarding/onboarding_complete.html',
+            {
+                'success': 'Your Activation Email has been resent'
+            },
+            status=302
+        )
 
 
 class ActivateAccount(View):

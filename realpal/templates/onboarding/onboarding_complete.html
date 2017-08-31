@@ -1,0 +1,19 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1>Congratulation {{ user.first_name }} {{ user.last_name }}</h1>
+                    <h3>{{ success }}</h3>
+                </div>
+                <form action="{% url 'onboarding:resend' %}" method="post">
+                    {% csrf_token %}
+                    <p>Did not receive the confirmation email? <button type="submit">Resend</button> </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
