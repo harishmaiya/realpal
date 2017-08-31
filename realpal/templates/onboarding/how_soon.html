@@ -11,8 +11,17 @@
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
-                    <div class="row">
+                    <div class="invisible">
                         {{ form|crispy }}
+                    </div>
+                    <div class="circle-container">
+                        {% for value, time in form.fields.how_soon.choices %}
+                            {% if not forloop.first and not forloop.last %}
+                                <div class="circle-item" data-id="{{ value }}">
+                                    {{ time }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                     <button class="btn" type="submit">Next</button>
                 </form>
@@ -22,5 +31,19 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+        $('.circle-item').on('click', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            $("select").val(null).change();
+            } else {
+                $(this).addClass('selected');
+                $(this).siblings().removeClass('selected');
+                var value = $(this).attr('data-id');
+                $("select").val(value).change();
+                console.log(value);
+            }
+        });
+    </script>
 
 {% endblock %}
