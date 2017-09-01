@@ -1,27 +1,26 @@
 {% extends "base_onboarding.html" %}
 {% block content %}
     <!-- Start Categories section -->
-
-
     <section class="registration-container">
         <div class="categories text-center">
             <div class="container">
                 <h1 class="textSerif">What step are you in?</h1>
                 <form action="" method="post">
+                {% csrf_token %}
                     <div class="button-select">
-                        {% csrf_token %}
                         {% for choice in form.purchase_step %}
                             <div class="btn center-block">{{ choice }}</div>
                         {% endfor %}
                     </div>
-                    <button type="submit">Next</button>
                 </form>
-                <a href="{% url 'register:marital-status' %}">
-                    <button class="skip" type="button">Skip this step</button>
-                </a>
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+    $('.button-select .btn').on('click', function () {
+        $('form').submit();
+    });
+    </script>
 
     <!-- End Categories section -->
 {% endblock %}

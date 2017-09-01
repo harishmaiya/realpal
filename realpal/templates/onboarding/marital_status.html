@@ -12,17 +12,23 @@
                     {% csrf_token %}
                     <div class="button-select">
                         {% for choice in form.status %}
-                            <div class="btn sans center-block">{{ choice }}</div>
+                            {% if not forloop.first %}
+                                <div class="btn sans center-block">{{ choice }}</div>
+                            {% endif %}
                         {% endfor %}
                     </div>
-                    <button type="submit">Next</button>
                 </form>
-                <a href="{% url 'register:first-home' %}">
+                <a href="{% url 'onboarding:first-home' %}">
                     <button class="skip" type="button">Skip this step</button>
                 </a>
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+    $('.button-select .btn').on('click', function () {
+        $('form').submit();
+    });
+    </script>
 
     <!-- End Categories section -->
 {% endblock %}

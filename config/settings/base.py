@@ -50,7 +50,8 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'crispy_forms',  # Form layouts
     'rest_framework',
-    'widget_tweaks'
+    'widget_tweaks',
+    'debug_toolbar',
 ]
 
 # Apps specific for this project go here.
@@ -59,8 +60,8 @@ LOCAL_APPS = [
     'realpal.apps.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'realpal.mainapp.apps.MainappConfig',
-    # the app that deals with registration
-    'realpal.apps.registration.apps.RegistrationConfig',
+    # the app that deals with onboarding
+    'realpal.apps.onboarding.apps.RegistrationConfig',
 
     'realpal.apps.chat.apps.ChatConfig'
 
@@ -81,6 +82,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 # MIGRATIONS CONFIGURATION

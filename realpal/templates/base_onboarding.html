@@ -10,7 +10,9 @@
     <title>{% block title %}Real Pal - Personal guide for house buying{% endblock title %}</title>
 
     <!--[if lt IE 9]>
-        <![endif]-->
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     {% block css %}
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
@@ -20,6 +22,9 @@
               integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
               crossorigin="anonymous">
         <link href="{% static 'app/css/main.min.css' %}" rel="stylesheet">
+        <!-- Google font-->
+        <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+
     {% endblock %}
 
 
@@ -44,25 +49,13 @@
 {% endblock content %}
 
 <!-- Start Footer section -->
-<section class="onboarding-footer">
-    <div class="footer">
-        <div class="container">
-            <div class="mobile-container row">
-                <a class="lead pull-left" href="/">Real Pal</a>
-                <a class="pull-right">PRIVACY</a>
-            </div>
-        </div>
-        </div>
-</section>
-
-
+{% include "home/partials/onboarding_footer.html" %}
 <!-- End Footer section -->
 
 {% block modal %}{% endblock modal %}
 
 {% block javascript %}
 
-    <script src="{% static 'app/js/main.js' %}"></script>
     <script src="{% static 'app/js/vendor/vendor.js' %}"></script>
 
 {% endblock javascript %}

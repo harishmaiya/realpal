@@ -41,10 +41,6 @@ CACHES = {
     }
 }
 
-# django-debug-toolbar
-# ------------------------------------------------------------------------------
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
-INSTALLED_APPS += ['debug_toolbar', ]
 
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
 
@@ -67,4 +63,4 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # ------------------------------------------------------------------------------
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
-BASE_URL = 'localhost:8000'
+BASE_URL = 'http://localhost:8000'
