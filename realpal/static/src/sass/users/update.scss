@@ -301,3 +301,11 @@ fieldset.moved:not(:last-of-type) {
   padding-bottom: 30px;
   border-bottom: 2px solid lightgray;
 }
+
+.bottom-padded {
+  padding-bottom: 20px;
+
+  & input {
+    margin-top: 0;
+  }
+}

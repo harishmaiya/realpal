@@ -98,7 +98,7 @@
                     <!-- train section -->
                     <div class="vertical-tab-content">
                         <h3>Marital Status</h3>
-                        <form action="" method="post">
+                        <form action="" method="post" class="bottom-padded">
                             {% csrf_token %}
                             <div class="radio-group">
                                 {% for value, name in marital_status_form.fields.status.choices %}
@@ -156,7 +156,7 @@
 
                     <div class="vertical-tab-content">
                         <h3>House Type</h3>
-                        <form action="" method="post">
+                        <form action="" method="post" class="bottom-padded">
                             {% csrf_token %}
                             <fieldset class="moved">
                                 <div class="col-sm-6">
