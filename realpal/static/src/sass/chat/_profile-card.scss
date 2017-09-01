@@ -1,0 +1,55 @@
+$profile-card-height: 80px;
+
+.ProfileCard {
+  @include BaseCard;
+  height: $profile-card-height;
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  };
+}
+
+.ProfileCard-contents {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.ProfileCard-icon {
+  flex:0 0 50px;
+  height: auto;
+  margin: 0 20px;
+  font-size: 38px;
+  color: $color-black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProfileCard-body {
+  flex:1 1;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 16px 0 0;
+  @include Font(sans, m, normal);
+}
+
+.ProfileCard-title {
+  @include Font(sans, 16px, normal);
+  @include Text--truncate;
+  flex:0 0 auto;
+  color: $color-black;
+}
+
+.ProfileCard-subtitle {
+  @include Text(xs, normal, xs);
+  flex:0 0 auto;
+  color:$color-medium-grey;
+}
+

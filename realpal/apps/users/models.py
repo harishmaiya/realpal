@@ -78,6 +78,22 @@ class User(AbstractUser):
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
 
+    @property
+    def full_name(self):
+        return self.get_full_name()
+
+    def get_full_name(self):
+        """
+        Return first name and last name combined as the full name
+        """
+        full_name = "%s %s" % (self.first_name, self.last_name)
+        if not len(full_name.strip()):
+            full_name = self.username
+        return full_name
+
+    def get_short_name(self):
+        return self.email
+
     def send_confirmation_email(self):
         token = PasswordReset.objects.create(user=self)
         link = '{}{}'.format(settings.BASE_URL, reverse('register:activate-account', kwargs={'uuid': token.uuid}))

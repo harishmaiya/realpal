@@ -1,0 +1,101 @@
+.Message {
+  display:flex;
+  width:100%;
+  margin-top: 6px;
+  background-color:$color-white;
+  transition:background 3000ms;
+  &.is-employee-unread {
+    background:$color-white;
+  }
+}
+
+.Message-icon {
+  flex:0 0 60px;
+  vertical-align: top;
+}
+
+.Message-iconImage {
+  margin-top:35px;
+  width:40px;
+  height:40px;
+  background:$color-light-grey;
+  border-radius:50%;
+  display:inline-block;
+  position:relative;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  background-color:rgba(0,0,0,0.05);
+}
+
+.Message-part {
+  width: 100%;
+  span {
+    line-height:1.3;
+    //white-space: pre-wrap;
+  }
+}
+
+.Message-parts {
+  @include Font(sans, m, light);
+  line-height:24px;
+  flex: calc(100% - 68px);
+  width: calc(100% - 68px);
+  vertical-align: top;
+  text-align: left;
+  word-break: break-word;
+  padding-right:20px;
+}
+
+.Message-partHeader {
+  margin-top:35px;
+  strong {
+    @include Font(sans, m, bold);
+  }
+  small {
+    @include Font(sans, xs, light);
+    margin-left:$space-mini-px;
+    color:$color-light-blue-grey;
+  }
+}
+
+.Message-partFooter {
+  @include Font(sans, xs,normal);
+  text-transform:capitalize;
+  color:$color-dark-grey;
+  margin-top:$space-mini-px;
+}
+
+.Message-unsupported {
+  @include Font(sans, xs, normal, xs);
+  color:$color-medium-grey;
+  margin:$space-small-px 0;
+}
+
+.Message-system {
+  color:$color-dark-grey;
+  text-align:center;
+  margin:$space-large-px 0;
+  width: calc(100%);
+}
+
+.Message-systemTitle {
+  @include Font(sans, 13px, normal, xs);
+  margin:$space-micro-px 0;
+}
+
+.Message-systemBody {
+  @include Font(sans, 13px, light, xs);
+  margin:0 auto;
+}
+
+.Message-memberReassignmentArrow {
+  margin:0 $space-small-px;
+  position: relative;
+  top:-$space-mini-px;
+}
+
+.Message-memberReassignmentMessage {
+  margin-top:$space-mini-px;
+}
+
