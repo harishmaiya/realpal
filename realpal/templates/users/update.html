@@ -5,15 +5,14 @@
 {% block content %}
     <section class="update-container">
         <div class="text-center">
-
-            <h2>Edit your profile</h2>
             {% if error %}
                 <p class="red-text">{{ error }}</p>
             {% endif %}
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vertical-tab-container">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-tab-menu">
+                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6 vertical-tab-menu">
                     <div>
                         <div class="profile-form invisible">
+                            <img class="img-rounded shrunk" height="30" width="30" src="{% static 'src/images/default_avatar.png' %}">
                             <form action="" method="post" class="signup">
                                 {% csrf_token %}
                                 {{ personal_profile_form|crispy }}
@@ -23,10 +22,15 @@
                             </form>
                         </div>
                         <div class="profile-static">
-                            <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
-                            <p>{{ user.email }}</p>
-                            <p>{{ user.phone_number }}</p>
-                            <p><a class="brown-link" href="#">Edit</a></p>
+                            <div class="inline profile-image-container">
+                                <img class="img-rounded" src="{% static 'src/images/default_avatar.png' %}">
+                            </div>
+                            <div class="inline profile-details-container">
+                                <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
+                                <p>{{ user.email }}</p>
+                                <p>{{ user.phone_number }}</p>
+                                <p><a class="brown-link" href="#">Edit</a></p>
+                            </div>
                         </div>
                     </div>
                     <div class="list-group">
@@ -70,7 +74,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 vertical-tab">
+                <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6 vertical-tab">
                     <!-- flight section -->
                     <div class="vertical-tab-content active">
                         <h3>Purchase Step</h3>
@@ -185,7 +189,8 @@
                             <h3>House Age</h3>
                             <fieldset class="moved">
                                 <div class="col-sm-6">
-                                    <img class="img-responsive moved age" src="{% static 'images/age.jpg' %}" alt="house"/>
+                                    <img class="img-responsive moved age" src="{% static 'images/age.jpg' %}"
+                                         alt="house"/>
                                 </div>
                                 <div class="col-sm-6">
                                     {% for value, name in house_type_form.fields.house_age.choices %}
@@ -210,7 +215,8 @@
                             <h3>House Condition</h3>
                             <fieldset class="moved">
                                 <div class="col-sm-6">
-                                    <img class="img-responsive moved" src="{% static 'images/condition.jpg' %}" alt="house">
+                                    <img class="img-responsive moved" src="{% static 'images/condition.jpg' %}"
+                                         alt="house">
                                 </div>
 
                                 <div class="col-sm-6">

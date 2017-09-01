@@ -251,11 +251,13 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
   text-decoration: underline;
   font-weight: bold;
   color: #B77D64;
+  letter-spacing: 2px;
 }
 
 .profile-static {
   text-align: left;
   padding-left: 30px;
+  display: flex;
 }
 
 .invisible {
@@ -299,7 +301,7 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
 
 fieldset.moved {
   padding-bottom: 30px;
-  &:not(:last-of-type){
+  &:not(:last-of-type) {
     border-bottom: 2px solid lightgray;
   }
 }
@@ -310,4 +312,33 @@ fieldset.moved {
   & input {
     margin-top: 0;
   }
+}
+
+.profile-image-container {
+  width: 30%;
+  display: flex;
+  padding: 10px 0;
+  margin: 0 10px;
+  align-items: center;
+  & img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.profile-details-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  & p {
+    margin: 0;
+  }
+}
+
+.profile-form img.shrunk {
+  height: 85px;
+  width: auto !important;
+  display: block;
+  margin: auto !important;
 }
