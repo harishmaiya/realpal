@@ -213,8 +213,25 @@ html, body {
   }
 }
 
-.full-height {
-      margin-bottom: calc(45% + 2px) !important;
+.registration-container {
+  &.extended {
+    margin-bottom: 300px;
+  }
+  &.ext {
+    margin-bottom: calc(100% + 70px);
+  }
+  &.ex {
+    margin-bottom: 200px;
+  }
+}
+
+.currencyinput {
+    border: 1px inset #ccc;
+    color: #999;
+    font-size: 20px;
+}
+.currencyinput input {
+    border: 0;
 }
 
 /* End Categories Section */

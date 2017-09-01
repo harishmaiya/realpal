@@ -7,7 +7,7 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-    <section class="registration-container">
+    <section class="registration-container ex">
         <div class="categories text-center">
             <div class="container">
                 <div class="header">
@@ -16,10 +16,6 @@
                 </div>
             </div>
             <div class="row">
-            {% if form.errors %}
-                <p class="red-text">{{ form.errors }}</p>
-            {% endif %}
-
                 <form role="form" class="signup" id="signup_form" method="post" action="">
                     {% csrf_token %}
                     {{ form.status.as_hidden }}
