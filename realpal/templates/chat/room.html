@@ -158,6 +158,11 @@
     {% if selected_client_room %}
         <script type='text/javascript'>
             $(document).ready(function () {
+                $('input[type="file"]').change(function (e) {
+                    var fileName = e.target.files[0].name;
+                    $('.MessageBar-attachments').html('<span>' + fileName + '</span>')
+                });
+
                 // When we're using HTTPS, use WSS too.
                 var room = {{ selected_client_room }};
                 var site_url = window.location.host;
@@ -207,7 +212,7 @@
                                     '</div>' +
                                     '<div class="Message-part">';
                             if (data.message) {
-                                ele = ele + '<span>' + data.message + '</span></br>'+
+                                ele = ele + '<span>' + data.message + '</span></br>' +
                                         '<span><a href="' + site_url + data.file_link + '">' +
                                         data.file_name +
                                         '</a></span>';
