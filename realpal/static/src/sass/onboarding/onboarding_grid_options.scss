@@ -54,6 +54,12 @@ html, body {
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
+
+  &:hover,
+  &:active {
+    box-shadow: none;
+    background-color: rgba(74, 74, 74, 0.1);
+  }
 }
 
 .categories .button-select .btn label {
@@ -62,6 +68,7 @@ html, body {
   position: relative;
   width: 100%;
   margin-bottom: 0;
+  font-weight: 100;
 }
 
 .categories .button-select input {
@@ -204,6 +211,27 @@ html, body {
     background: #ddd;
     cursor: pointer;
   }
+}
+
+.registration-container {
+  &.extended {
+    margin-bottom: 300px;
+  }
+  &.ext {
+    margin-bottom: calc(100% + 70px);
+  }
+  &.ex {
+    margin-bottom: 200px;
+  }
+}
+
+.currencyinput {
+    border: 1px inset #ccc;
+    color: #999;
+    font-size: 20px;
+}
+.currencyinput input {
+    border: 0;
 }
 
 /* End Categories Section */
