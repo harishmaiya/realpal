@@ -297,9 +297,11 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
   margin-top: 20%;
 }
 
-fieldset.moved:not(:last-of-type) {
+fieldset.moved {
   padding-bottom: 30px;
-  border-bottom: 2px solid lightgray;
+  &:not(:last-of-type){
+    border-bottom: 2px solid lightgray;
+  }
 }
 
 .bottom-padded {
