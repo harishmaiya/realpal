@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from django.contrib.auth import views as auth_views
+import debug_toolbar
 
 urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name='home/about.html'), name='about'),
@@ -40,8 +41,7 @@ url(r'^403/$', default_views.permission_denied, kwargs={'exception': Exception('
 url(r'^404/$', default_views.page_not_found, kwargs={'exception': Exception('Page not Found')}),
 url(r'^500/$', default_views.server_error),
 ]
-if 'debug_toolbar' in settings.INSTALLED_APPS:
-    import debug_toolbar
+
 urlpatterns = [
-url(r'^__debug__/', include(debug_toolbar.urls)),
+    url(r'^__debug__/', include(debug_toolbar.urls)),
 ] + urlpatterns

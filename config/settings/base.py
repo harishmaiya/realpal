@@ -50,7 +50,8 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'crispy_forms',  # Form layouts
     'rest_framework',
-    'widget_tweaks'
+    'widget_tweaks',
+    'debug_toolbar',
 ]
 
 # Apps specific for this project go here.
@@ -81,6 +82,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 # MIGRATIONS CONFIGURATION
