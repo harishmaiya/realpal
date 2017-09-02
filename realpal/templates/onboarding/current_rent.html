@@ -15,10 +15,13 @@
                     {% for field in form %}
                         <input class="form-control input-lg" type="number" name="{{ field.name }}"
                                id="id_{{ field.name }}"
-                               value="{{ field.value }}">
+                                     value="{{ field.value }}">
                     {% endfor %}
                     <div class="dollar-sign">$</div>
                     <button class="continue center-block" type="submit">Continue</button>
+                <a href="{% url 'onboarding:how-soon' %}">
+                        <button class="skip" type="button">Skip this step</button>
+                    </a>
                 </form>
             </div>
         </div>
