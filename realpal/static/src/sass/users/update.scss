@@ -1,5 +1,5 @@
 .update-container {
-  margin-top: 100px;
+  //margin-top: 100px;
 }
 
 /*  vertical tab */
@@ -10,10 +10,9 @@ div.vertical-tab-container {
 }
 
 div.vertical-tab-menu {
-  padding-right: 0;
-  padding-left: 0;
-  padding-bottom: 0;
   border-right: 3px solid #EDEDED;
+  padding: 100px 0 0;
+  height: 100%;
 }
 
 div.vertical-tab-menu div.list-group {
@@ -46,14 +45,11 @@ div.vertical-tab-menu div.list-group > a:hover {
   padding-left: 40px;
 }
 
-list-group-item:hover > span {
-  transform: translateX(20px);
-  color: red;
+.vertical-tab {
+padding-top: 80px;
 }
-
 div.vertical-tab-content {
   background-color: #ffffff;
-  /* border: 1px solid #eeeeee; */
   padding-left: 20px;
   padding-top: 10px;
 }
@@ -341,4 +337,13 @@ fieldset.moved {
   width: auto !important;
   display: block;
   margin: auto !important;
+}
+
+.update-icon {
+  font-size: 12px;
+}
+
+.update-form {
+  display: flex;
+  justify-content: space-between;
 }
