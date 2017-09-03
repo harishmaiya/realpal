@@ -51,17 +51,22 @@ input[type="text"]:focus {
 }
 
 .categories .form-inline input[type="number"] {
-  padding-left: 25px;
+  padding-left: 45px;
   margin-right: 5px;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .categories .form-inline .dollar-sign {
-  position: absolute;
-  z-index: 3;
-  top: 8px;
-  left: 10px;
-  color: #999;
-  font-size: 20px;
+    position: absolute;
+    z-index: 3;
+    top: 4%;
+    left: 5%;
+    color: #999;
+    font-size: 20px;
 }
 
 .categories .continue,

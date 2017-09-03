@@ -51,7 +51,6 @@ list-group-item:hover > span {
   color: red;
 }
 
-
 div.vertical-tab-content {
   background-color: #ffffff;
   /* border: 1px solid #eeeeee; */
@@ -128,15 +127,37 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
 
 .radio p:after {
   content: '';
-    width: 100%;
-    max-width: 300px;
-    height: 93px;
-    border: 1px solid #4a4a4a;
-    position: absolute;
-    left: 5px;
-    top: -15px;
-    z-index: 1;
-    border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+  height: 93px;
+  border: 1px solid #4a4a4a;
+  position: absolute;
+  left: 5px;
+  top: -15px;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.radio.shrink {
+  text-align: center;
+}
+
+.radio.shrink p:after {
+  content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 42px;
+  border: 1px solid #4a4a4a;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.radio.shrink input[type="radio"] {
+  height: 42px;
+  text-align: center;
 }
 
 .radio input[type="radio"] {
@@ -163,11 +184,25 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
   }
 }
 
+.radio.shrink input[type="radio"]:checked + p:before {
+  content: '';
+  width: 100%;
+  max-width: 300px;
+  height: 42px;
+  opacity: 0.1;
+  position: absolute;
+  background: #B77D64;
+  left: 5px;
+  top: 10px;
+  z-index: 10;
+  border-radius: 3px;
+}
+
 .radio input[type="radio"]:checked + p:before {
   content: '';
   width: 100%;
   max-width: 300px;
-  height: 93px;
+  height: 92px;
   opacity: 0.1;
   position: absolute;
   background: #B77D64;
@@ -180,7 +215,7 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
 /* checkbox styles */
 
 .oval-button.selected {
- background-color: rgba(74, 74, 74, 0.1)
+  background-color: rgba(74, 74, 74, 0.1)
 }
 
 #ck-button label {
@@ -216,11 +251,13 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
   text-decoration: underline;
   font-weight: bold;
   color: #B77D64;
+  letter-spacing: 2px;
 }
 
 .profile-static {
   text-align: left;
   padding-left: 30px;
+  display: flex;
 }
 
 .invisible {
@@ -256,4 +293,52 @@ div.vertical-tab div.vertical-tab-content:not(.active) {
 .vertical-tab-content input[type="number"] {
   max-width: 300px;
   margin: auto;
+}
+
+.img-responsive.moved {
+  margin-top: 20%;
+}
+
+fieldset.moved {
+  padding-bottom: 30px;
+  &:not(:last-of-type) {
+    border-bottom: 2px solid lightgray;
+  }
+}
+
+.bottom-padded {
+  padding-bottom: 20px;
+
+  & input {
+    margin-top: 0;
+  }
+}
+
+.profile-image-container {
+  width: 30%;
+  display: flex;
+  padding: 10px 0;
+  margin: 0 10px;
+  align-items: center;
+  & img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.profile-details-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  & p {
+    margin: 0;
+  }
+}
+
+.profile-form img.shrunk {
+  height: 85px;
+  width: auto !important;
+  display: block;
+  margin: auto !important;
 }
