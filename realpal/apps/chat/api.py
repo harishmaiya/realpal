@@ -61,7 +61,7 @@ class MessageCreateAPIView(CreateAPIView):
                 'user_type': self.request.user.user_type,
                 'message': instance.text,
                 'file_name': os.path.basename(urlparse(instance.attachment.path).path) if instance.attachment else None,
-                'file_link': instance.attachment.url if instance.attachment else None,
+                'file_link': instance.file_download_link if instance.attachment else None,
             }
             group_channel = get_room_group_channel(instance.room.id)
             self.push_socket_update(group_channel, data)

@@ -86,7 +86,7 @@
                                                                 <span>{{ msg.text }}</span>
                                                             {% endif %}
                                                             <span>
-                                                                <a href="{{ msg.attachment }}"> {{ msg.filename }}</a>
+                                                                <a href="{{ msg.file_download_link }}"> {{ msg.filename }}</a>
                                                             </span>
                                                         {% else %}
                                                             <span>
@@ -309,13 +309,11 @@
 
                 // When we're using HTTPS, use WSS too.
                 var room = {{ selected_client_room }};
-                var site_url = window.location.host;
                 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
                 var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + '/chat/' + room);
                 chatsock.timeoutInterval = 3600;
                 chatsock.onmessage = function (message) {
                     var data = JSON.parse(message.data);
-                    console.dir(data);
                     if (data.user_type === client_user_type) {
                         var message_icon_class = 'member-icon';
                     } else {
@@ -357,11 +355,11 @@
                                 '<div class="Message-part">';
                         if (data.message) {
                             ele = ele + '<span>' + data.message + '</span></br>' +
-                                    '<span><a href="' + site_url + data.file_link + '">' +
+                                    '<span><a href="' + data.file_link + '">' +
                                     data.file_name +
                                     '</a></span>';
                         } else {
-                            ele = ele + '<span><a href="' + site_url + data.file_link + '">' + data.file_name +
+                            ele = ele + '<span><a href="' + data.file_link + '">' + data.file_name +
                                     '</a></span>' +
                                     '</div>' +
                                     '</div>' +
