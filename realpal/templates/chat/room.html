@@ -52,8 +52,6 @@
                             {% if agent_user %}
                                 <strong class="client-name">You are chatting
                                     to {{ selected_client_profile.full_name }}</strong>
-                            {% else %}
-                                <span id="agent-name" class="client-name"></span>
                             {% endif %}
                             <div class="chat-messages">
                                 {% if not selected_client_room %}
@@ -66,15 +64,20 @@
                                             <div class="Message employee">
                                                 <div class="Message-icon">
                                                     <div class="Message-icon">
-                                                        <div class="Message-iconImage"
-                                                             src="{% static 'chat/images/client.png' %}"
-                                                             style="background-image: url({% static 'chat/images/client.png' %});">
-                                                        </div>
+                                                        {% if msg.sent_by.user_type == user_types.client_user %}
+                                                            <div class="Message-iconImage"
+                                                                 style="background-image: url({% static 'chat/images/client.png' %});">
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="Message-iconImage"
+                                                                 style="background-image: url({% static 'chat/images/support.png' %});">
+                                                            </div>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                                 <div class="Message-parts">
                                                     <div class="Message-partHeader">
-                                                        <strong>{{ msg.sent_by }}</strong>
+                                                        <strong>{{ msg.sent_by.full_name }}</strong>
                                                         <small title="Thu, Aug 31, 2017 5:47 PM">{{ msg.timestamp }}</small>
                                                     </div>
                                                     <div class="Message-part">
@@ -175,7 +178,6 @@
     {% if selected_client_room %}
         <script type='text/javascript'>
             $(document).ready(function () {
-
                 $('input[type=submit]').prop('disabled', true);
                 $('.attachmentBarContainer').hide();
 
@@ -223,8 +225,7 @@
                             contentType: false,       // The content type used when sending data to the server.
                             cache: false,             // To unable request pages to be cached
                             processData: false,        // To send DOMDocument or non processed data file it is set to false
-                            success: function (data)
-                            {
+                            success: function (data) {
                                 clearFileInput();
                                 clearMessageBox();
                                 $('input[type=submit]').prop('disabled', true);
@@ -246,21 +247,53 @@
                     }
                 });
 
+                function isDisallowedFile(fileName) {
+                    var disallowedExtensions = /(\.exe|\.bat|\.so)$/i;
+                    return disallowedExtensions.test(fileName);
+                }
+
+                function isImageFile(fileName) {
+                    var imageFileExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+                    return imageFileExtensions.test(fileName);
+                }
+
                 $('input[type="file"]').change(function (e) {
                     if (this.files && this.files[0]) {
-                        $('.attachmentBarContainer').show();
-                        $('input[type=submit]').prop('disabled', false);
                         var fileName = e.target.files[0].name;
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            var attachment = '<div class="attachment-image"' +
-                                    'style="background-image: url(' +
-                                    e.target.result +
-                                    ');">' +
+                        if (isDisallowedFile(fileName)) {
+                            var invalidFileType = '<div class="error rejected attachment-image"' +
+                                    'style="background-image: none;">' +
+                                    '<div>Invalid File Type</div>' +
                                     '</div>';
-                            $('#attachment-preview').html(attachment)
-                        };
-                        reader.readAsDataURL(this.files[0]);
+                            clearFileInput();
+                            $('input[type=submit]').prop('disabled', true);
+                            $('.attachmentBarContainer').show();
+                            $('#attachment-preview').html(invalidFileType);
+                        }
+                        else {
+                            if (isImageFile(fileName)) {
+                                $('.attachmentBarContainer').show();
+                                $('input[type=submit]').prop('disabled', false);
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    var attachment = '<div class="attachment-image"' +
+                                            'style="background-image: url(' +
+                                            e.target.result +
+                                            ');">' +
+                                            '</div>';
+                                    $('#attachment-preview').html(attachment)
+                                };
+                                reader.readAsDataURL(this.files[0]);
+                            } else {
+                                var attachment = '<div class="attachment-image" style="background-image: none;">' +
+                                        '<i class="fa fa-sticky-note fa-5x"></i>' +
+                                        '</div>';
+                                $('.attachmentBarContainer').show();
+                                $('#attachment-preview').html(attachment)
+                                $('input[type=submit]').prop('disabled', false);
+                            }
+
+                        }
                     }
                 });
 
@@ -271,6 +304,8 @@
                         return false;
                     }
                 });
+                const client_user_type = {{ user_types.client_user }};
+                const agent_user_type = {{ user_types.agent_user }};
 
                 // When we're using HTTPS, use WSS too.
                 var room = {{ selected_client_room }};
@@ -280,61 +315,60 @@
                 chatsock.timeoutInterval = 3600;
                 chatsock.onmessage = function (message) {
                     var data = JSON.parse(message.data);
-                    if (data.agent_name) {
-                        $('#agent-name').text('You are chatting to: ' + data.agent_name);
+                    console.dir(data);
+                    if (data.user_type === client_user_type) {
+                        var message_icon_class = 'member-icon';
+                    } else {
+                        var message_icon_class = 'employee-icon';
+                    }
+                    var chat = $('#chat');
+                    if (data.file_name == null) {
+                        var ele = '<div class="Message employee">' +
+                                '<div class="Message-icon">' +
+                                '<div class="Message-icon">' +
+                                '<div class="Message-iconImage ' + message_icon_class + '">' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="Message-parts">' +
+                                '<div class="Message-partHeader">' +
+                                '<strong>' + data.user_handle + '</strong>' +
+                                '<small title="' + data.timestamp + '">' + data.timestamp + '</small>' +
+                                '</div>' +
+                                '<div class="Message-part">' +
+                                '<span>' + data.message + '</span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
                     }
                     else {
-                        var chat = $('#chat');
-                        if (data.file_name == null) {
-                            var ele = '<div class="Message employee">' +
-                                    '<div class="Message-icon">' +
-                                    '<div class="Message-icon">' +
-                                    '<div class="Message-iconImage" src="https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_031c0f8a81a8d53fcddd2dce27f1d0a9.jpg"' +
-                                    'style="background-image: url(&quot;https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_031c0f8a81a8d53fcddd2dce27f1d0a9.jpg&quot;);">' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '<div class="Message-parts">' +
-                                    '<div class="Message-partHeader">' +
-                                    '<strong>' + data.user_handle + '</strong>' +
-                                    '<small title="' + data.timestamp + '">' + data.timestamp + '</small>' +
-                                    '</div>' +
-                                    '<div class="Message-part">' +
-                                    '<span>' + data.message + '</span>' +
+                        var ele = '<div class="Message employee">' +
+                                '<div class="Message-icon">' +
+                                '<div class="Message-icon">' +
+                                '<div class="Message-iconImage ' + message_icon_class + '">' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="Message-parts">' +
+                                '<div class="Message-partHeader">' +
+                                '<strong>' + data.user_handle + '</strong>' +
+                                '<small title="' + data.timestamp + '">' + data.timestamp + '</small>' +
+                                '</div>' +
+                                '<div class="Message-part">';
+                        if (data.message) {
+                            ele = ele + '<span>' + data.message + '</span></br>' +
+                                    '<span><a href="' + site_url + data.file_link + '">' +
+                                    data.file_name +
+                                    '</a></span>';
+                        } else {
+                            ele = ele + '<span><a href="' + site_url + data.file_link + '">' + data.file_name +
+                                    '</a></span>' +
                                     '</div>' +
                                     '</div>' +
                                     '</div>';
                         }
-                        else {
-                            var ele = '<div class="Message employee">' +
-                                    '<div class="Message-icon">' +
-                                    '<div class="Message-icon">' +
-                                    '<div class="Message-iconImage" src="https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_031c0f8a81a8d53fcddd2dce27f1d0a9.jpg"' +
-                                    'style="background-image: url(&quot;https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_031c0f8a81a8d53fcddd2dce27f1d0a9.jpg&quot;);">' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '<div class="Message-parts">' +
-                                    '<div class="Message-partHeader">' +
-                                    '<strong>' + data.user_handle + '</strong>' +
-                                    '<small title="' + data.timestamp + '">' + data.timestamp + '</small>' +
-                                    '</div>' +
-                                    '<div class="Message-part">';
-                            if (data.message) {
-                                ele = ele + '<span>' + data.message + '</span></br>' +
-                                        '<span><a href="' + site_url + data.file_link + '">' +
-                                        data.file_name +
-                                        '</a></span>';
-                            } else {
-                                ele = ele + '<span><a href="' + site_url + data.file_link + '">' + data.file_name +
-                                        '</a></span>' +
-                                        '</div>' +
-                                        '</div>' +
-                                        '</div>';
-                            }
-                        }
-                        chat.append(ele);
                     }
+                    chat.append(ele);
                 };
 
                 $("#chatform").on("submit", function (event) {

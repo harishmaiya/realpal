@@ -57,7 +57,8 @@ class MessageCreateAPIView(CreateAPIView):
             data = {
                 'id': instance.id.__str__(),
                 'timestamp': instance.timestamp.__str__(),
-                'user_handle': self.request.user.username,
+                'user_handle': self.request.user.full_name,
+                'user_type': self.request.user.user_type,
                 'message': instance.text,
                 'file_name': os.path.basename(urlparse(instance.attachment.path).path) if instance.attachment else None,
                 'file_link': instance.attachment.url if instance.attachment else None,

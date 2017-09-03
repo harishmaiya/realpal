@@ -64,7 +64,7 @@ def ws_connect(message, room_id):
     message.reply_channel.send({"accept": True})
     user = message.user
     if user.is_authenticated:
-        message.channel_session["username"] = user.username
+        message.channel_session["username"] = user.full_name
         message.channel_session["user_id"] = user.id
         try:
             room = Room.objects.get(pk=room_id)
@@ -120,11 +120,6 @@ def ws_receive(message):
     incoming = json.loads(message['text'])
     handle = message.channel_session.get('username')
     msg = incoming.get('message', 'Error Getting Message')
-    data = {
-        'timestamp': timezone.now().strftime('%c'),
-        'user_handle': handle if handle else 'Anonymous',
-        'message': msg
-    }
     room = Room.objects.get(pk=message.channel_session.get('room_id'))
     user = User.objects.get(pk=message.channel_session.get('user_id'))
     Message.objects.create(
@@ -132,6 +127,13 @@ def ws_receive(message):
         sent_by=user,
         text=msg
     )
+    data = {
+        'timestamp': timezone.now().strftime('%c'),
+        'user_handle': handle if handle else 'Anonymous',
+        'user_type':user.user_type,
+        'message': msg
+    }
+
     Group(message.channel_session['group_name']).send({'text': json.dumps(data)})
 
 
