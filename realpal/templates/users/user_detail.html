@@ -149,7 +149,8 @@
                                     {% for value, name in house_type_form.fields.house_type.choices %}
 
                                         <label class="radio shrink">
-                                            <input type="radio" onclick="return false;" name="house_type" value="{{ value }}"
+                                            <input type="radio" onclick="return false;" name="house_type"
+                                                   value="{{ value }}"
                                                     {% if value == house_type_form.initial.house_type %}
                                                    checked {% endif %}>
                                             <p>
@@ -175,7 +176,8 @@
                                     {% for value, name in house_type_form.fields.house_age.choices %}
 
                                         <label class="radio shrink">
-                                            <input type="radio" onclick="return false;" name="house_age" value="{{ value }}"
+                                            <input type="radio" onclick="return false;" name="house_age"
+                                                   value="{{ value }}"
                                                     {% if value == house_type_form.initial.house_age %}
                                                    checked {% endif %}>
                                             <p>
@@ -202,7 +204,8 @@
                                     {% for value, name in house_type_form.fields.house_cond.choices %}
 
                                         <label class="radio shrink">
-                                            <input type="radio" onclick="return false;" name="house_cond" value="{{ value }}"
+                                            <input type="radio" onclick="return false;" name="house_cond"
+                                                   value="{{ value }}"
                                                     {% if value == house_type_form.initial.house_cond %}
                                                    checked{% endif %}>
                                             <p>
@@ -243,7 +246,9 @@
                         <h3>Max Budget</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ max_budget_form|crispy }}
+                            <fieldset disabled="disabled">
+                                {{ max_budget_form|crispy }}
+                            </fieldset>
                         </form>
                     </div>
 
@@ -252,7 +257,9 @@
                         <h3>Current Rent</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ current_rent_form|crispy }}
+                            <fieldset disabled="disabled">
+                                {{ current_rent_form|crispy }}
+                            </fieldset>
                         </form>
                     </div>
                     <div class="vertical-tab-content">
