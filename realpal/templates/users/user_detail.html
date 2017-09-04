@@ -77,7 +77,7 @@
                             {% for value, name in purchase_step_form.fields.purchase_step.choices %}
 
                                 <label class="radio bottom-space">
-                                    <input type="radio" readonly name="purchase_step" value="{{ value }}"
+                                    <input type="radio" onclick="return false;" name="purchase_step" value="{{ value }}"
                                            {% if value == purchase_step_form.initial.purchase_step %}checked{% endif %}>
                                     <p>
                                         <span class="lower">
@@ -101,7 +101,7 @@
                                 {% for value, name in marital_status_form.fields.status.choices %}
 
                                     <label class="radio bottom-space">
-                                        <input type="radio" readonly name="status" value="{{ value }}"
+                                        <input type="radio" onclick="return false;" name="status" value="{{ value }}"
                                                 {% if value == marital_status_form.initial.status %}
                                                checked {% endif %}>
                                         <p>
@@ -149,7 +149,7 @@
                                     {% for value, name in house_type_form.fields.house_type.choices %}
 
                                         <label class="radio shrink">
-                                            <input type="radio" readonly name="house_type" value="{{ value }}"
+                                            <input type="radio" onclick="return false;" name="house_type" value="{{ value }}"
                                                     {% if value == house_type_form.initial.house_type %}
                                                    checked {% endif %}>
                                             <p>
@@ -175,7 +175,7 @@
                                     {% for value, name in house_type_form.fields.house_age.choices %}
 
                                         <label class="radio shrink">
-                                            <input type="radio" readonly name="house_age" value="{{ value }}"
+                                            <input type="radio" onclick="return false;" name="house_age" value="{{ value }}"
                                                     {% if value == house_type_form.initial.house_age %}
                                                    checked {% endif %}>
                                             <p>
@@ -202,7 +202,7 @@
                                     {% for value, name in house_type_form.fields.house_cond.choices %}
 
                                         <label class="radio shrink">
-                                            <input type="radio" readonly name="house_cond" value="{{ value }}"
+                                            <input type="radio" onclick="return false;" name="house_cond" value="{{ value }}"
                                                     {% if value == house_type_form.initial.house_cond %}
                                                    checked{% endif %}>
                                             <p>
