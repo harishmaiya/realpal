@@ -1,26 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load crispy_forms_tags %}
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block head_title %}User: {{ object.username }}{% endblock %}
 {% block content %}
     <section class="update-container ">
         <div class="text-center">
-            {% if error %}
-                <p class="red-text">{{ error }}</p>
-            {% endif %}
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vertical-tab-container">
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 vertical-tab-menu">
                     <div>
-                        <div class="profile-form invisible">
-                            <img class="img-rounded shrunk" height="30" width="30" src="{% static 'src/images/default_avatar.png' %}">
-                            <form action="" method="post" class="signup">
-                                {% csrf_token %}
-                                {{ personal_profile_form|crispy }}
-                                <input class="btn btn-brown btn-hollow" type="button" name="personal_profile_form"
-                                       value="Cancel"/>
-                                <input class="btn btn-brown" type="submit" name="personal_profile_form" value="Update"/>
-                            </form>
-                        </div>
                         <div class="profile-static">
                             <div class="inline profile-image-container">
                                 <img class="img-rounded" src="{% static 'src/images/default_avatar.png' %}">
@@ -29,7 +16,6 @@
                                 <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
                                 <p>{{ user.email }}</p>
                                 <p>{{ user.phone_number }}</p>
-                                <p><a class="brown-link" href="#">Edit</a></p>
                             </div>
                         </div>
                     </div>
@@ -104,7 +90,6 @@
                                     </p>
                                 </label>
                             {% endfor %}
-                            <input class="btn btn-brown" type="submit" name="purchase_step_form" value="Update"/>
                         </form>
                     </div>
                     <!-- train section -->
@@ -131,12 +116,11 @@
                                     </label>
                                 {% endfor %}
                             </div>
-                            <input class="btn btn-brown" type="submit" name="marital_status_form" value="Update"/>
                         </form>
                     </div>
 
                     <div class="vertical-tab-content">
-                        <h3>Is this your first home?</h3>
+                        <h3>First home?</h3>
                         <form action="" method="post">
                             {% csrf_token %}
                             <div class="button-select invisible">
@@ -150,20 +134,7 @@
                                         type="button" id="no">No
                                 </button>
                             </div>
-                            <input class="btn btn-brown" type="submit" name="first_home_form" value="Update"/>
                         </form>
-                        <script type="text/javascript">
-                            $('#yes').on('click', function () {
-                                $('input[type="checkbox"]').attr('checked', true);
-                                $(this).addClass('selected');
-                                $('#no').removeClass('selected')
-                            });
-                            $('#no').on('click', function () {
-                                $('input[type="checkbox"]').removeAttr('checked');
-                                $(this).addClass('selected');
-                                $('#yes').removeClass('selected')
-                            });
-                        </script>
                     </div>
 
                     <div class="vertical-tab-content">
@@ -247,7 +218,6 @@
                                     {% endfor %}
                                 </div>
                             </fieldset>
-                            <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
                         </form>
                     </div>
 
@@ -266,21 +236,7 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                            <input class="btn btn-brown" type="submit" name="city_form" value="Update"/>
                         </form>
-                        <script type="text/javascript">
-                            $('.grid-item').on('click', function () {
-                                if ($(this).hasClass('selected')) {
-                                    $(this).removeClass('selected');
-                                    $(".pc select").val(null).change();
-                                } else {
-                                    $(this).addClass('selected');
-                                    $(this).siblings().removeClass('selected');
-                                    var value = $(this).attr('data-id');
-                                    $(".pc select").val(value).change();
-                                }
-                            });
-                        </script>
                     </div>
 
                     <div class="vertical-tab-content">
@@ -288,7 +244,6 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ max_budget_form|crispy }}
-                            <input class="btn btn-brown" type="submit" name="max_budget_form" value="Update"/>
                         </form>
                     </div>
 
@@ -298,7 +253,6 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ current_rent_form|crispy }}
-                            <input class="btn btn-brown" type="submit" name="current_rent_form" value="Update"/>
                         </form>
                     </div>
                     <div class="vertical-tab-content">
@@ -318,21 +272,7 @@
                                     {% endif %}
                                 {% endfor %}
                             </div>
-                            <input class="btn btn-brown" type="submit" name="how_soon_form" value="Update"/>
                         </form>
-                        <script type="text/javascript">
-                            $('.circle-item').on('click', function () {
-                                if ($(this).hasClass('selected')) {
-                                    $(this).removeClass('selected');
-                                    $(".hsf select").val(null).change();
-                                } else {
-                                    $(this).addClass('selected');
-                                    $(this).siblings().removeClass('selected');
-                                    var value = $(this).attr('data-id');
-                                    $(".hsf select").val(value).change();
-                                }
-                            });
-                        </script>
                     </div>
 
                 </div>
@@ -351,16 +291,6 @@
                 $("div.vertical-tab>div.vertical-tab-content").eq(index).addClass("active");
             });
         });
-
-        $('.brown-link').on('click', (function () {
-            $('.profile-form').removeClass('invisible');
-            $('.profile-static').addClass('invisible');
-        }));
-
-        $('.btn-hollow').on('click', (function () {
-            $('.profile-form').addClass('invisible');
-            $('.profile-static').removeClass('invisible');
-        }));
     </script>
 {% endblock %}
 
