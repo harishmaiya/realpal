@@ -1,0 +1,39 @@
+@mixin Text ($size:false, $weight:false, $spacing:false) {
+  font: $font-family-proxima-nova;
+  // font:400 normal 16px/1.25 $font-sans;
+
+  @if $size {
+    font-size: map-get($font-sizes, $size)
+  }
+  @if $weight {
+    font-weight: map-get($font-weights, $weight)
+  }
+  @if $spacing {
+    letter-spacing: map-get($letter-spaces, $spacing)
+  }
+
+}
+
+@mixin Text-lineHeight($size) {
+  line-height: map-get($font-sizes, $size);
+}
+
+@mixin Text-fontSize($size) {
+  font-size: map-get($font-sizes, $size);
+}
+
+@mixin Text--title {
+  letter-spacing: $letter-space-medium;
+  text-transform: uppercase
+}
+
+@mixin Text-truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+}
+
+@mixin Text--truncate {
+  @include Text-truncate;
+}

@@ -1,0 +1,23 @@
+
+@mixin Flex-row($wrap:nowrap) {
+  display:flex;
+  flex-flow:row $wrap;
+}
+
+@mixin Flex-column($wrap:nowrap) {
+  display:flex;
+  flex-flow:column $wrap;
+}
+
+@mixin Flex-fixed($width:auto) {
+  flex:0 0 $width;
+}
+
+@mixin Flex-expand() {
+  flex:1 1;
+}
+
+@mixin Flex-align($major:flex-start, $minor:flex-start) {
+  justify-content: $major;
+  align-items: $minor;
+}
