@@ -7,12 +7,17 @@ div.vertical-tab-container {
   z-index: 10;
   background-color: #ffffff;
   padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 div.vertical-tab-menu {
   border-right: 3px solid #EDEDED;
   padding: 100px 0 80px;
-  height: 100%;
+  min-height: 95vh;
+  overflow: auto;
 }
 
 div.vertical-tab-menu div.list-group {
