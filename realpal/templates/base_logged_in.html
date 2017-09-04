@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="GlobalNav-mobileNavItem" data-key="messaging">
-                        <a class="GlobalNav-iconLink is-active" type="button" role="button" href="#">
+                        <a class="GlobalNav-iconLink is-active" type="button" role="button" href="{% url 'chat:chat-room' %}">
                             <div class="GlobalNav-iconContent">
                                 <div class="GlobalNav-icon">
                                     <svg width="28" height="28" viewBox="0 0 28 28" role="img"
@@ -71,8 +71,8 @@
                         </div>
                     </li>
                     <li class="GlobalNav-mobileNavItem" data-key="account">
-                        <a class="GlobalNav-iconLink" type="button" role="button" href="#" aria-label="Profile"
-                           title="Profile">
+                        <a class="GlobalNav-iconLink" type="button" role="button"
+                           href="{% url 'users:update' %}" aria-label="Profile" title="Profile">
                             <div class="GlobalNav-iconContent">
                                 <div class="GlobalNav-icon">
                                     <svg width="21" height="21" viewBox="0 0 20 20" role="img"

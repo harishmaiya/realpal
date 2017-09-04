@@ -9,7 +9,7 @@ from realpal.apps.users.constants import CLIENT_USER, AGENT_USER, HOUSE_TYPE_CHO
 
 @method_decorator(login_required, name='get')
 class ChatRoomView(View):
-    template_name = 'chat/room.html'
+    template_name = 'chat/client.html'
 
     def get(self, request, *args, **kwargs):
         user = request.user
