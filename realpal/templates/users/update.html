@@ -311,7 +311,7 @@
                             <div class="circle-container">
                                 {% for value, time in how_soon_form.fields.how_soon.choices %}
                                     {% if not forloop.first and not forloop.last %}
-                                        <div class="circle-item {% if how_soon_form.initial.howsoon == value %}selected{% endif %}"
+                                        <div class="circle-item {% if how_soon_form.initial.how_soon == value %}selected{% endif %}"
                                              data-id="{{ value }}">
                                             {{ time }}
                                         </div>

@@ -20,6 +20,34 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     slug_field = 'username'
     slug_url_kwarg = 'username'
 
+    forms = {
+        'purchase_step_form': PurchaseStepForm,
+        'marital_status_form': MaritalStatusForm,
+        'first_home_form': FirstHomeForm,
+        'house_type_form': HouseTypeForm,
+        'city_form': CityForm,
+        'max_budget_form': MaxBudgetForm,
+        'current_rent_form': CurrentRentForm,
+        'how_soon_form': HowSoonForm,
+        'personal_profile_form': PersonalProfileForm,
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        forms = {
+            'purchase_step_form': PurchaseStepForm(initial=model_to_dict(self.get_object())),
+            'marital_status_form': MaritalStatusForm(initial=model_to_dict(self.get_object())),
+            'first_home_form': FirstHomeForm(initial=model_to_dict(self.get_object())),
+            'house_type_form': HouseTypeForm(initial=model_to_dict(self.get_object())),
+            'city_form': CityForm(initial=model_to_dict(self.get_object())),
+            'max_budget_form': MaxBudgetForm(initial=model_to_dict(self.get_object())),
+            'current_rent_form': CurrentRentForm(initial=model_to_dict(self.get_object())),
+            'how_soon_form': HowSoonForm(initial=model_to_dict(self.get_object())),
+            'personal_profile_form': PersonalProfileForm(initial=model_to_dict(self.get_object())),
+        }
+        context.update(forms)
+        return context
+
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
