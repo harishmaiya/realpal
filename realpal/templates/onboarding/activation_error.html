@@ -1,12 +1,21 @@
-{% extends 'base.html' %}
-
+{% extends "base_onboarding.html" %}
 {% block content %}
-    <h1>Confirm Registration</h1>
-    <h2>Please try again</h2>
-    <p>An error happened, this activation link seems to be invalid. </p>
-    <p>You can either </p>
-    <button class="button is-primary"><a href="{% url 'onboarding:purchase-step' %}">Register</a></button>
-    <p>or</p>
-    <button class="button is-primary"><a href="{% url 'mainapp:home' %}">Home</a></button>
-    <p>{{ error }}</p>
-{% endblock content %}
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1>Confirm Registration</h1>
+                    <h3>Please try again</h3>
+                    <br><br>
+                    <button class="button is-primary"><a href="{% url 'onboarding:purchase-step' %}">Register</a>
+                    </button>
+                    <p>or</p>
+                    <button class="button is-primary"><a href="{% url 'mainapp:home' %}">Home</a></button>
+                    <p>{{ error }}</p>
+                </div>
+            </div>
+    </section>
+
+{% endblock %}
+
