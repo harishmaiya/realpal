@@ -5,13 +5,11 @@
 {% block content %}
     <!-- Start section -->
 
-    <section>
-        <div class="benefits text-center">
-            <div>
+    <div class="chat-body">
+        <div class="MessageLog">
                 <div class="row">
                     <!--Start Clients List section -->
                     <div class="col-md-4">
-                        {% if agent_user %}
                             <div class="box-chat clients-list">
                                 <div class="chat-titre">
                                     <strong>MY CLIENTS</strong>
@@ -20,7 +18,9 @@
                                     <ul>
                                         {% for client_room in my_clients %}
                                             <li>
-                                                <a href="{% url 'chat:chat-room' client_room.id %}">{{ client_room.client }}</a>
+                                                <a href="{% url 'chat:chat-room' client_room.id %}">
+                                                    {{ client_room.client.full_name }}
+                                                </a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -35,7 +35,9 @@
                                     <ul>
                                         {% for client_room in unassigned_clients %}
                                             <li>
-                                                <a href="{% url 'chat:chat-room' client_room.id %}">{{ client_room.client }}</a>
+                                                <a href="{% url 'chat:chat-room' client_room.id %}">
+                                                    {{ client_room.client.full_name }}
+                                                </a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -43,16 +45,15 @@
                                     <p> No unassigned clients available</p>
                                 {% endif %}
                             </div>
-                        {% endif %}
                     </div>
                     <!-- end clients list -->
                     <!-- chat messages -->
                     <div class="col-md-4">
                         <div class="box-chat">
-                            {% if agent_user %}
+                        {% if selected_client_profile %}
                                 <strong class="client-name">You are chatting
                                     to {{ selected_client_profile.full_name }}</strong>
-                            {% endif %}
+                        {% endif %}
                             <div class="chat-messages">
                                 {% if not selected_client_room %}
                                     <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
@@ -96,39 +97,31 @@
                                                 </div>
                                             </div>
 
-
-
                                         {% endfor %}
-                                    {% else %}
-                                        <div class="no-client">
-                                            <p> No Message history</p>
-                                            <hr class="style-two">
-                                        </div>
                                     {% endif %}
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                     <!-- end chat messages -->
                     <!-- client short bio -->
                     <div class="col-md-4">
-                        {% if agent_user %}
+                        {% if selected_client_profile %}
                             <p>{{ selected_client_profile.full_name }}</p>
                             <a href="#">View Full Profile</a>
                             <p>Name: {{ selected_client_profile.first_name }}</p>
                             <p>Surname: {{ selected_client_profile.last_name }}</p>
+                            <p>House Type: {{ client_house_type_text }}</p>
+                            <p>Budget: {{ selected_client_profile.budget }}</p>
                         {% endif %}
                     </div>
                     <!-- end client short bio -->
                 </div>
-            </div>
         </div>
-    </section>
+    </div>
     <!-- End section -->
     <!--Message bar  section -->
-    <section class="chat-room-footer">
+    <section class="chat-footer">
         <div class="MessageBar online">
             <div class="MessageBar-attachments">
                 <div class="attachmentBarContainer">
@@ -383,6 +376,7 @@
     {% else %}
         <script type='text/javascript'>
             $(document).ready(function () {
+                $('.attachmentBarContainer').hide();
                 $('input[type=submit]').prop('disabled', true);
             });
         </script>

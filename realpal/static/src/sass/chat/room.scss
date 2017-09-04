@@ -39,6 +39,32 @@
   border-top: 1px solid #ededed;
 }
 
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.chat-header {
+  flex-grow: 0;
+}
+
+.chat-body {
+  flex-grow: 1;
+  overflow: hidden;
+  height: 0;
+  position: relative;
+}
+
+.chat-footer {
+  position: relative;
+  flex-grow: 0;
+  border-top: 1px solid $color-light-grey;
+}
+
+
 .ShareBar {
   height: 32px;
   padding: 4px 12px;
