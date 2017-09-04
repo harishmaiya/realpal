@@ -35,7 +35,7 @@
             <div class="GlobalNav-inner">
                 <ul class="GlobalNav-navList">
                     <li class="GlobalNav-mobileNavItem">
-                        <a class="GlobalNav-iconLink" type="button" role="button" href="#">
+                        <a class="GlobalNav-iconLink discover-tab" type="button" role="button" href="{% url 'discover:latest' %}">
                             <div class="GlobalNav-iconContent">
                                 <div class="GlobalNav-icon">
                                     <svg width="28" height="28" viewBox="0 0 28 18" role="img"
@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="GlobalNav-mobileNavItem" data-key="messaging">
-                        <a class="GlobalNav-iconLink is-active" type="button" role="button" href="{% url 'chat:chat-room' %}">
+                        <a class="GlobalNav-iconLink message-tab" type="button" role="button" href="{% url 'chat:chat-room' %}">
                             <div class="GlobalNav-iconContent">
                                 <div class="GlobalNav-icon">
                                     <svg width="28" height="28" viewBox="0 0 28 28" role="img"
@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <li class="GlobalNav-mobileNavItem" data-key="account">
-                        <a class="GlobalNav-iconLink" type="button" role="button"
+                        <a class="GlobalNav-iconLink account-tab" type="button" role="button"
                            href="{% url 'users:update' %}" aria-label="Profile" title="Profile">
                             <div class="GlobalNav-iconContent">
                                 <div class="GlobalNav-icon">

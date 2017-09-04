@@ -8,7 +8,6 @@
     <div class="chat-body">
         <div class="MessageLog">
                 <div class="MessageLog-Messages">
-
                     <!-- chat messages -->
                     <div>
                         <div class="box-chat">
@@ -113,6 +112,7 @@
     {% if selected_client_room %}
         <script type='text/javascript'>
             $(document).ready(function () {
+                $('.message-tab').addClass('is-active');
                 $('input[type=submit]').prop('disabled', true);
                 $('.attachmentBarContainer').hide();
 
