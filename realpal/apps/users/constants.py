@@ -13,7 +13,7 @@ PS_HOB = 2
 PURCHASE_STEP_CHOICES = (
     (PS_DAP, 'Decide and Prepare'),
     (PS_EAO, 'Evaluate and Offer'),
-    (PS_HOB, 'Home owner benefits'),
+    (PS_HOB, 'House owning'),
 )
 
 SC_SI = 0
@@ -23,11 +23,10 @@ SC_MSK = 3
 SC_INV = 4
 
 STATUS_CHOICES = (
-    (SC_SI, 'Single'),
-    (SC_MNK, 'Married with No Kids'),
-    (SC_MNSK, 'Married with No School Kids'),
-    (SC_MSK, 'Married with School Kids'),
-    (SC_INV, 'Investor')
+    (SC_SI, 'Good locality, schools doesn\'t matter'),
+    (SC_MNSK, 'School district upcoming'),
+    (SC_MSK, 'Need established schools'),
+    (SC_INV, 'Investment, rent')
 )
 
 HT_SF = 0
@@ -39,10 +38,8 @@ HT_FX = 5
 
 HOUSE_TYPE_CHOICES = (
     (HT_SF, 'Single Family'),
-    (HT_TH, 'Townhome'),
+    (HT_TH, 'Town home'),
     (HT_CN, 'Condominium'),
-    (HT_NC, 'New Construction'),
-    (HT_OT, 'Other Options'),
     (HT_FX, 'Flexible')
 )
 
@@ -63,7 +60,7 @@ HC_SL = 1
 HC_FU = 2
 
 HOUSE_CONDITION_CHOICES = (
-    (HC_UP, 'Updated'),
+    (HC_UP, 'Move-in ready'),
     (HC_SL, 'Slightly dated'),
     (HC_FU, 'Fixer Upper')
 )
