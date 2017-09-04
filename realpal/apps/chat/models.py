@@ -1,5 +1,6 @@
 import os
 
+from django.conf import settings
 from django.db import models
 
 from realpal.apps.users.models import User
@@ -34,3 +35,11 @@ class Message(models.Model):
 
     def filename(self):
         return os.path.basename(self.attachment.name)
+
+    @property
+    def file_download_link(self):
+        if self.attachment:
+            if settings.DEFAULT_FILE_STORAGE == 'django.core.files.storage.FileSystemStorage':
+                return settings.BASE_URL + settings.MEDIA_URL + self.attachment.name
+            return settings.MEDIA_URL + self.attachment.name
+        return None

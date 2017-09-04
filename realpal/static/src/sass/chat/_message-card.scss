@@ -1,0 +1,290 @@
+
+$minicard-thumb-h: 100px;
+$minicard-thumb-w: 100px;
+$minicard-height: 140px;
+
+@mixin BaseCard {
+  margin:6px 0;
+  background-color: $color-white;
+  border-radius:4px;
+  display:inline-block;
+  position: relative;
+  width: 100%;
+  height: $minicard-height;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2), 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.Card {
+  @include BaseCard;
+  max-width: none;
+}
+
+.ImageCard-container {
+  &:hover {
+    .ImageCard-btn {
+      visibility:visible;
+    }
+  }
+}
+
+.ImageCard {
+  @include BaseCard;
+  height: auto;
+  overflow:hidden;
+  background:$color-light-grey;
+}
+
+.ImageCard-img {
+  background-size:cover;
+}
+
+.ImageCard-btn {
+  display:inline-block;
+  height:20px;
+  vertical-align:top;
+  margin:15px 0 0 -25px;
+  font-size:$font-size-s;
+  overflow:hidden;
+  cursor:pointer;
+  color:$color-medium-grey;
+  background-color:rgba(255,255,255,.80);
+  padding:3px;
+  border-radius:2px;
+  visibility:hidden;
+  &:hover {
+    background:rgba(0,0,0,0.3);
+    cursor:pointer;
+  }
+}
+
+.MiniCard {
+  @include BaseCard;
+  background:white;
+  margin:6px 0 $space-mini-px 0;
+
+  .RemoveAttachment-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex:0 0 32px;
+    height: $minicard-height;
+    line-height: $minicard-height;
+    font-size:$font-size-s;
+    align-self:center;
+    overflow:hidden;
+    cursor:pointer;
+    text-align:center;
+    visibility:hidden;
+    color:$color-medium-grey;
+    &:hover {
+      background:rgba(0,0,0,0.05);
+      cursor:pointer;
+    }
+  }
+
+  &:hover {
+    .RemoveAttachment-btn {
+      visibility:visible;
+    }
+  }
+}
+
+.MiniCard-contents {
+  display:flex;
+  height: 100%;
+}
+
+.MiniCard-thumb {
+  padding: 0;
+  height: 100%;
+  flex: 0 0 40%;
+}
+
+.MiniCard-img {
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.MiniCard-body {
+  display: flex;
+  flex-flow: column;
+  flex: 60%;
+  width: 60%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.MiniCard-title {
+  margin-top:    10px;
+  margin-bottom: 10px;
+  @include Font(sans, 14px, bold);
+  overflow: auto !important;
+  text-overflow: initial !important;
+  white-space: initial !important;
+  word-wrap: initial !important;
+}
+
+.MiniCard-subtitle {
+  @include Font(mono, 14px, normal);
+  color:$color-dark-grey;
+}
+
+.MiniCard-description {
+  @include Font(mono, 14px, normal);
+  color: $color-medium-black;
+  margin-bottom:10px;
+
+}
+
+.ContentCard-title {
+  @include Font(sans, 14px, bold);
+  margin: 10px 0;
+  overflow: auto !important;
+  text-overflow: initial !important;
+  white-space: initial !important;
+  word-wrap: initial !important;
+}
+
+.ContentCard-subtitle {
+  @include Font(sans, 14px, light);
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  color: $color-medium-black;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.ContentCard-thumb {
+  padding: 0;
+  height: 100%;
+  flex: 0 0 106px;
+}
+
+.ContentCard-img {
+  height: 100%;
+  width: 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.LinkCard {
+  @include BaseCard;
+  height: auto;
+  background: white;
+  margin: 6px 0 $space-mini-px 0;
+  overflow: hidden;
+  &:hover {
+    .MiniCard-btn {
+      visibility:visible;
+    }
+  }
+
+  li { list-style-type: none; }
+
+  a { text-decoration: none; }
+}
+
+.LinkCard-title {
+  @include Font(sans, 14px, bold);
+  @include Text--truncate;
+  width: 89%;
+  text-align: left;
+  color:$color-medium-black;
+  margin-top:$space-micro-px;
+  margin-bottom:14px;
+  padding-left:14px;
+  white-space:pre-wrap;
+}
+
+.LinkCard-label {
+  @include Font(sans, s, light);
+
+  color: $color-dark-grey;
+  margin: $space-mini-px 0 $space-mini-px 0;
+  padding-left: 14px;
+}
+
+.LinkCard-labelIcon {
+  margin-right: $space-mini-px;
+  position: relative;
+  top:$space-micro-px;
+}
+
+.LinkCard-image {
+  background-size: cover;
+  background-position: center;
+  height: 50%;
+  width: 40%;
+
+  // One image
+  &:first-child:last-child {
+    height: 100%;
+    width: 100%;
+  }
+
+  // Two images
+  &:first-child:nth-last-child(2) {
+    height: 100%;
+    width: 60%;
+  }
+  &:first-child:nth-last-child(2) ~ li {
+    height: 100%;
+    width: 40%;
+  }
+
+  // Three images
+  &:first-child:nth-last-child(3),
+  &:first-child:nth-last-child(3) ~ li {
+    &:first-child {
+      height: 100%;
+      width: 60%;
+    }
+  }
+}
+
+.LinkCard-imageGroup {
+  @include Flex-column(wrap);
+  height: 180px;
+  width: 100%;
+}
+
+@media (min-width: $smViewport) {
+  .ContentCard-thumb {
+    flex: 0 0 180px;
+  }
+  .MiniCard {
+    height: 240px;
+  }
+  .MiniCard-title, .ContentCard-title{
+    @include Font(sans, 16px, bold);
+    padding-left: 10px;
+  }
+  .MiniCard-title{
+    margin-top: 20px;
+  }
+  .ContentCard-title{
+    margin: 14px 0 10px;
+  }
+  .MiniCard-subtitle, .MiniCard-description{
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  .ContentCard-subtitle {
+    font-size: 16px;
+    -webkit-line-clamp: 9;
+    padding-left: 10px;
+  }
+  .MiniCard-body {
+    padding-right: 20px;
+  }
+}

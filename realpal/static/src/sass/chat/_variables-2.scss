@@ -1,0 +1,104 @@
+$color-medium-black: #4d4d4d;
+// Colors
+//
+// ============================================================
+$colorDefault: #000;
+$colorGold: #9f8e78;
+$colorBlue: #33445f;
+$colorBlueDark: #151e28;
+$colorGray: #999;
+$colorGrayLight: #ededed;
+$colorGrayMedium: #e6e6e6;
+$colorGrayDark: #515151;
+$colorGrayTint: rgba($colorGrayDark, 0.5);
+$colorGrayDarkest: #262626;
+$colorStylist: #327a5f;
+$colorOrange: #fcaa49;
+$colorWhite: #fff;
+$colorBlack: #000;
+$colorOffWhite: #f5f5f5;
+$colorHeart: #c92929;
+$colorTintLight: rgba($colorWhite, 0.7);
+$colorTintDark: rgba($colorDefault, 0.7);
+
+// UI Color (Button, Alerts, etc.)
+$colorSuccess: #327a5f;
+$colorWarning: #c5ae79;
+$colorDanger: #c92929;
+
+$colorAccent: #85A6B3;
+
+$colorTransparent: rgba(0,0,0,0);
+$colorOpaqueDark: rgba(0,0,0,0.3);
+
+// Z index scale
+
+$zIndexBase: 0;
+$zIndexContent: 2;
+$zIndexOverlay: 10;
+$zIndexParent: 1;
+
+$zIndexDrawer: 1001;
+$zIndexDrawerOverlay: 1002;
+$zIndexDrawerInner: 1003;
+
+
+// Webfonts
+// ============================================================
+$fontSerif: "Sentinel A", "Sentinel B", serif;
+$fontSans: "LL Akkurat Web", sans-serif;
+$fontMono: "Akkuratmono-Regular", monospace;
+$fontHand: "FF Suomi Hand Script", sans-serif;
+
+
+// Breakpoints
+// ============================================================
+$smViewport: 500px;
+$mdViewport: 800px;
+$lgViewport: 960px;
+
+
+// Spacing / Padding
+// ============================================================
+$padBase:       10px;
+$padXSmall:     $padBase / 2;
+$padSmall:      $padBase * 2;
+$padMedium:     $padBase * 3;
+$padLarge:      $padBase * 4;
+$padXLarge:     $padBase * 5;
+$padXXLarge:    $padBase * 8;
+
+// Font Sizing
+// Currently based on base headline sizing of browser
+// Converted to rem
+// ============================================================
+$fontXSmall: .67rem;
+$fontSmall: .8125rem;
+$fontMedium: 1rem;
+$fontLarge: 1.125rem;
+$fontXLarge: 1.5rem;
+$fontXXLarge: 2rem;
+
+
+// IE Note - Gutter is currently set at 19.99px due to how IE handles
+// rounding its values for calc() functions and throwing a grid off
+// eg: Three items that should span a third of the page has the third
+// item overflow to an additional row.
+$Grid-font-size: 1rem;
+$Grid-gutter-size: 19.99px;
+$Arrange-gutter-size: $Grid-gutter-size;
+
+
+// Speed
+// ============================================================
+$speedBase: 100ms;
+
+// Easing
+// ============================================================
+$easeBase: cubic-bezier(0.250, 0.100, 0.250, 1.000);
+
+/**************************
+ APP VARIABLES
+***************************/
+
+$size-account-nav-image: 85px

@@ -1,0 +1,76 @@
+.attachmentBarContainer {
+  width: 100%;
+}
+
+.imageContainer {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  background: transparent;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.attachment-image {
+  border-radius: 10px;
+  max-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.attachment-preview{
+  height: 100%;
+}
+
+.loading {
+  opacity: 0.2;
+  background-color: $color-grey;
+}
+
+.spinner {
+  position: absolute;
+  top: 35px;
+  left: 35px;
+}
+
+.error {
+  background-color: $color-light-grey;
+  color: $color-black;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: bold;
+  background-image: none;
+}
+
+.retryUpload {
+  background-color: $color-light-grey;
+  border: none;
+  color: $color-copper;
+  text-decoration: underline;
+}
+
+.rejected {
+  background-color: $color-light-grey;
+  color: $color-red;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: bold;
+  background-image: none;
+}
+
+.remove {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  border: none;
+  background: none;
+  z-index: 1001;
+}

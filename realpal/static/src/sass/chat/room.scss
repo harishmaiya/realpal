@@ -6,22 +6,81 @@
     margin-bottom: 10px;
     margin-top: 10px;
   }
-  .box-chat{
-   margin-top: 20px;
+  .box-chat {
+    margin-top: 20px;
   }
   .chat-form {
     width: 95%;
     margin: auto;
   }
-  .chat-form  .textarea {
+  .chat-form .textarea {
     margin-left: 10px;
   }
   .no-client {
-   height: 100px;
+    height: 100px;
   }
   hr.style-two {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
   }
+  .clients-list ul {
+    list-style: none;
+  }
+
+}
+
+.chat-room-footer {
+  position: relative;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  border-top: 1px solid #ededed;
+}
+
+.ShareBar {
+  height: 32px;
+  padding: 4px 12px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+@media (min-width: $mediumViewport) {
+  .ShareBar {
+    position: absolute;
+    top: 8px;
+    right: 70px;
+    border-right: 1px solid $color-grey;
+  }
+}
+
+.ShareButton {
+  border: none;
+  background-color: $color-white;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.PinterestShareButton {
+  box-shadow: 0 1px 1px 1px $color-light-grey;
+  border-radius: 15px;
+  order: 2;
+  @media (min-width: $mediumViewport) {
+    order: 3;
+  }
+}
+
+.PhotoShareButton {
+  order: 3;
+  @media (min-width: $mediumViewport) {
+    order: 2;
+  }
+}
+.input-file + svg {
+	cursor: pointer;
+}
+.ShareButton svg:hover{
+  cursor: pointer;
 }
