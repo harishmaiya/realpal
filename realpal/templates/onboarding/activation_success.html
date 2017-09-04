@@ -1,14 +1,19 @@
-{% extends 'base.html' %}
-
+{% extends "base_onboarding.html" %}
 {% block content %}
-    <section>
-        <h1>Account Activation Successful</h1>
-        <h2>Well done</h2>
-        <p>
-            You have successfully activated your RealPal Account, you can go straight to login using
-            this url
-        </p>
-        <button><a href="{% url 'mainapp:home' %}">Login</a></button>
-
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1>Account Activation Successful</h1>
+                    <br><br>
+                    <p>You have successfully activated your RealPal Account, you can go straight to login using
+                        this url</p>
+                </div>
+                <button><a href="{% url 'mainapp:home' %}">Login</a></button>
+            </div>
+        </div>
     </section>
-{% endblock content %}
+
+{% endblock %}
+
