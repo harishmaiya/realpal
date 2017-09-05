@@ -1,4 +1,5 @@
 import os
+import arrow
 
 from django.conf import settings
 from django.db import models
@@ -43,3 +44,11 @@ class Message(models.Model):
                 return settings.BASE_URL + settings.MEDIA_URL + self.attachment.name
             return settings.MEDIA_URL + self.attachment.name
         return None
+
+    @property
+    def time_ago(self):
+        return arrow.get(self.timestamp).humanize()
+
+    @property
+    def timestamp_string(self):
+        return arrow.get(self.timestamp).format('YYYY-MM-DD HH:mm:ss ZZ')

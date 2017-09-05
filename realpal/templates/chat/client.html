@@ -32,7 +32,9 @@
                                                 <div class="Message-parts">
                                                     <div class="Message-partHeader">
                                                         <strong>{{ msg.sent_by.full_name }}</strong>
-                                                        <small title="Thu, Aug 31, 2017 5:47 PM">{{ msg.timestamp }}</small>
+                                                        <small title="{{ msg.timestamp_string }}">
+                                                        {{ msg.time_ago }}
+                                                    </small>
                                                     </div>
                                                     <div class="Message-part">
                                                         {% if msg.attachment %}
@@ -40,7 +42,9 @@
                                                                 <span>{{ msg.text }}</span>
                                                             {% endif %}
                                                             <span>
-                                                                <a href="{{ msg.file_download_link }}"> {{ msg.filename }}</a>
+                                                                <a href="{{ msg.file_download_link }}" target="_blank">
+                                                                    {{ msg.filename }}
+                                                                </a>
                                                             </span>
                                                         {% else %}
                                                             <span>
@@ -270,7 +274,7 @@
                                     '<div class="Message-parts">' +
                                     '<div class="Message-partHeader">' +
                                     '<strong>' + data.user_handle + '</strong>' +
-                                    '<small title="' + data.timestamp + '">' + data.timestamp + '</small>' +
+                                    '<small title="' + data.timestamp_string + '">' + data.timestamp + '</small>' +
                                     '</div>' +
                                     '<div class="Message-part">' +
                                     '<span>' + data.message + '</span>' +
@@ -289,16 +293,16 @@
                                     '<div class="Message-parts">' +
                                     '<div class="Message-partHeader">' +
                                     '<strong>' + data.user_handle + '</strong>' +
-                                    '<small title="' + data.timestamp + '">' + data.timestamp + '</small>' +
+                                    '<small title="' + data.timestamp_string + '">' + data.timestamp + '</small>' +
                                     '</div>' +
                                     '<div class="Message-part">';
                             if (data.message) {
                                 ele = ele + '<span>' + data.message + '</span></br>' +
-                                        '<span><a href="' + data.file_link + '">' +
+                                        '<span><a href="' + data.file_link + '" target="_blank">' +
                                         data.file_name +
                                         '</a></span>';
                             } else {
-                                ele = ele + '<span><a href="' + data.file_link + '">' + data.file_name +
+                                ele = ele + '<span><a href="' + data.file_link + '" target="_blank">' + data.file_name +
                                         '</a></span>' +
                                         '</div>' +
                                         '</div>' +

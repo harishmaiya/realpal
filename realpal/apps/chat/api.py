@@ -1,3 +1,4 @@
+import arrow
 import logging
 import json
 import os
@@ -56,7 +57,8 @@ class MessageCreateAPIView(CreateAPIView):
         if not settings.IS_TESTING:
             data = {
                 'id': instance.id.__str__(),
-                'timestamp': instance.timestamp.__str__(),
+                'timestamp': instance.time_ago(),
+                'timestamp_string': instance.timestamp_string(),
                 'user_handle': self.request.user.full_name,
                 'user_type': self.request.user.user_type,
                 'message': instance.text,
