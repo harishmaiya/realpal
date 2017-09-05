@@ -31,6 +31,8 @@ body, html {
 @import "chat/_mixins";
 @import "chat/_text-mixin";
 @import "chat/_flex-mixin";
+@import "chat/_grid-utils";
+@import "chat/_global-nav";
 @import "chat/room";
 @import "chat/_message-card";
 @import "chat/_message-bar";
