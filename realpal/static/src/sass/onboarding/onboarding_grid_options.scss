@@ -14,7 +14,7 @@ html, body {
 .categories {
   padding: 16px;
   box-sizing: inherit;
-  margin-bottom: -150px
+  //margin-bottom: -150px
 }
 
 .categories .row {
@@ -213,18 +213,6 @@ html, body {
   }
 }
 
-.registration-container {
-  &.extended {
-    margin-bottom: 300px;
-  }
-  &.ext {
-    //margin-bottom: calc(100% + 70px);
-  }
-  &.ex {
-    margin-bottom: 200px;
-  }
-}
-
 .currencyinput {
     border: 1px inset #ccc;
     color: #999;
@@ -232,6 +220,12 @@ html, body {
 }
 .currencyinput input {
     border: 0;
+}
+
+h3.subtitle {
+  font-size: 18px;
+  font-family: inherit;
+  margin-bottom: 30px;
 }
 
 /* End Categories Section */

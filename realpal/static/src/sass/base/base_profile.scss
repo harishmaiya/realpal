@@ -5,8 +5,8 @@ html,body{overflow-x: hidden;color:#4a4a4a;height: 100%}
 .bold{font-weight: bold}
 
 @media (min-width: 1200px){
-    
-    .container 
+
+    .container
     {
         width: 1249px;
     }
@@ -19,7 +19,11 @@ html,body{overflow-x: hidden;color:#4a4a4a;height: 100%}
 
 /* Star Banner Section */
 
-.banner{height: 61px; margin-bottom: -61px ; border-bottom: 1px solid #ccc}
+.banner{
+  height: 61px;
+  //margin-bottom: -61px ;
+  border-bottom: 1px solid #ccc
+}
 
 .banner .container{width: 100%;}
 
