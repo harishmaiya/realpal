@@ -34,6 +34,7 @@ awesome-slugify==1.6.5
 
 # Time zones support
 pytz==2017.2
+arrow
 
 # Redis support
 django-redis==4.8.0

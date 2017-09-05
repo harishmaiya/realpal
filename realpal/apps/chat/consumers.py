@@ -1,3 +1,4 @@
+import arrow
 import json
 import logging
 
@@ -77,17 +78,14 @@ def ws_connect(message, room_id):
                     room.save()
                     Group(group_name).add(message.reply_channel)
                     send_chat_room_agent_details(group_name, user.full_name)
-                    # send_user_chat_status(group_name, user.username, USER_ONLINE)
                     channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
                 else:
                     Group(group_name).add(message.reply_channel)
                     send_chat_room_agent_details(group_name, user.full_name)
-                    # send_user_chat_status(group_name, user.username, USER_ONLINE)
                     channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
             elif user.user_type == CLIENT_USER:
                 if room.client == user:
                     Group(group_name).add(message.reply_channel)
-                    # send_user_chat_status(group_name, user.username, USER_ONLINE)
                     channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
                 else:
                     logger.debug('Access denied for user {} on room {}'.format(user, room))
@@ -127,8 +125,10 @@ def ws_receive(message):
         sent_by=user,
         text=msg
     )
+    timestamp = arrow.now()
     data = {
-        'timestamp': timezone.now().strftime('%c'),
+        'timestamp': timestamp.humanize(),
+        'timestamp_string': timestamp.format('YYYY-MM-DD HH:mm:ss ZZ'),
         'user_handle': handle if handle else 'Anonymous',
         'user_type':user.user_type,
         'message': msg
