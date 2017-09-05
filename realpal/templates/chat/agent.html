@@ -190,6 +190,8 @@
                 $('input[type=submit]').prop('disabled', true);
                 $('.attachmentBarContainer').hide();
                 $('#message').attr("placeholder", 'Message ' + '{{ selected_client_profile.full_name }}');
+                $("#client-room-"+{{ selected_client_room }}).addClass('active');
+
                 function clearFileInput() {
                     var $el = $('#attachment');
                     $el.wrap('<form>').closest('form').get(0).reset();
@@ -330,7 +332,7 @@
                     }
                     if (data.new_client_room_id) {
                         var client_room_id = 'client-room-' + data.new_client_room_id;
-                        var client_link = '<a class="list-group-item text-center no-border" id="' + client_room_id +
+                        var client_link = '<a class="list-group-item active text-center no-border" id="' + client_room_id +
                                 '" href="' + data.new_client_room_link + '">' +
                                 data.new_client_details + '</a>';
                         $("#"+client_room_id).remove();
