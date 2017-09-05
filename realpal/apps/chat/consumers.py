@@ -78,7 +78,6 @@ def ws_connect(message, room_id):
                     room.agent = user
                     room.save()
                     Group(group_name).add(message.reply_channel)
-                    # send_chat_room_agent_details(group_name, user.full_name)
                     newly_added_channel = {
                         'new_client_room_id': room.id,
                         'new_client_room_link': reverse('chat:chat-room', args=(room.id,)),
