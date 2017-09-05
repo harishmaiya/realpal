@@ -123,7 +123,7 @@ class Login(View):
             if user.is_active:
                 login(request, user)
                 request.session.set_expiry(60 * 60 * 24)
-                return redirect('mainapp:home')
+                return redirect(settings.LOGIN_REDIRECT_URL)
             else:
                 user.send_verification_email(user.email)
                 return render(

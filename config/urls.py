@@ -17,11 +17,12 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     # User management
-    url(r'^users/', include('realpal.apps.users.urls', namespace='users')),
+    url(r'^account/', include('realpal.apps.users.urls', namespace='users')),
     url(r'^onboarding/', include('realpal.apps.onboarding.urls', namespace='onboarding')),
     # Your stuff: custom urls includes go here
     url(r'^', include('realpal.mainapp.urls', namespace='mainapp')),
     url(r'^chat/', include('realpal.apps.chat.urls', namespace='chat')),
+    url(r'^discover/', include('realpal.apps.discover.urls', namespace='discover')),
 
     # these view will deal with password resetting
     url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),

@@ -2,61 +2,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <!-- Internet Explorer meta -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- First mobile meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Real Pal - Personal guide for house buying{% endblock title %}</title>
+  <meta charset="UTF-8"/>
+  <!-- Internet Explorer meta -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- First mobile meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Real Pal - Personal guide for house buying{% endblock title %}</title>
 
-    <!--[if lt IE 9]>
-    <![endif]-->
+  <!--[if lt IE 9]>
+  <![endif]-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    {% block css %}
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-              crossorigin="anonymous">    <!-- Your stuff: Third-party CSS libraries go here -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-              crossorigin="anonymous">
-        <link href="{% static 'app/css/main.min.css' %}" rel="stylesheet">
-        <!-- Google font-->
-        <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+  {% block css %}
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">    <!-- Your stuff: Third-party CSS libraries go here -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+  <link href="{% static 'app/css/main.min.css' %}" rel="stylesheet">
+  <!-- Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
 
-    {% endblock %}
+  {% endblock %}
 
 
 </head>
 
 <body>
 
-<!-- Start section banner -->
+<div class="main">
 
-<section class="banner back-darkBlue text-center">
+  <!-- Start section banner -->
+
+  <section class="banner back-darkBlue text-center">
     <div class="container">
-        <div class="row">
-            <h4 class="sans">REAL PAL</h4>
-        </div>
+      <div class="row">
+        <h4 class="sans">REAL PAL</h4>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- End section banner -->
+  <!-- End section banner -->
 
-{% block content %}
+  {% block content %}
 
-{% endblock content %}
+  {% endblock content %}
+</div>
 
 <!-- Start Footer section -->
 {% include "home/partials/onboarding_footer.html" %}
 <!-- End Footer section -->
 
+
 {% block modal %}{% endblock modal %}
 
 {% block javascript %}
 
-    <script src="{% static 'app/js/vendor/vendor.js' %}"></script>
+<script src="{% static 'app/js/vendor/vendor.js' %}"></script>
 
 {% endblock javascript %}
 </body>
