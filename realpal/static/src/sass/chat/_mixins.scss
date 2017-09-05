@@ -1,0 +1,76 @@
+@function spacing($units) {
+  @return $units * $unit;
+}
+
+//usage
+//&.dead-center {
+//@include centerer;
+//}
+//
+//&.horizontal {
+//  @include centerer(true, false);
+//}
+//
+//&.vertical {
+//  @include centerer(false, true);
+//}
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute !important;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin overflowScroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin overflowScrollX {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin clearfix {
+  &::before,
+  &::after {
+    content: ' ';
+    display: table;
+    flex-basis: 0;
+    order: 1;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+//hover for only non touch devices ex:
+//@include hover {
+//  border: 1px solid $color-tm-yellow
+//}
+//hover will only happen on devices where it should, need to make sure modernizr with touchevents support is loaded
+@mixin hover() {
+  .no-touchevents &:hover {
+    @content;
+  }
+}
+
+// @include breakpoint($mediumViewport) {
+//   marging-bottom: 10px;
+//}
+@mixin breakpoint($screenwidth) {
+  @media (min-width: $screenwidth) { @content; }
+}
+
+@mixin breakpointMax($screenwidth) {
+  @media (max-width: $screenwidth) { @content; }
+}

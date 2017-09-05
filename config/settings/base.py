@@ -63,7 +63,8 @@ LOCAL_APPS = [
     # the app that deals with onboarding
     'realpal.apps.onboarding.apps.RegistrationConfig',
 
-    'realpal.apps.chat.apps.ChatConfig'
+    'realpal.apps.chat.apps.ChatConfig',
+    'realpal.apps.discover.apps.DiscoverConfig'
 
 ]
 
@@ -101,6 +102,7 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
 FIXTURE_DIRS = (
     str(APPS_DIR.path('fixtures')),
+    str(ROOT_DIR.path('fixtures')),
 )
 
 # EMAIL CONFIGURATION
@@ -263,7 +265,7 @@ AUTHENTICATION_BACKENDS = [
 # Custom user app defaults
 # Select the correct user model
 AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = 'users:redirect'
+LOGIN_REDIRECT_URL = 'chat:chat-room'
 LOGIN_URL = 'users:login'
 
 # SLUGLIFIER
@@ -284,7 +286,6 @@ CHANNEL_LAYERS = {
     }
 }
 
-LOGIN_REDIRECT_URL = '/'
 
 # ########## DJANGO REST FRAMEWORK CONFIGURATION
 REST_FRAMEWORK = {

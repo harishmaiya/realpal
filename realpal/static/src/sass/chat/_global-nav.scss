@@ -1,0 +1,353 @@
+$linkOpacity: 0.6;
+$globalNavHeight: 120px;
+$globalNavDesktopHeight: 61px;
+$zIndexGlobalNav: 1000;
+$mainNavBreakpoint: $smViewport;
+$contentWidth: $xxlargeViewport;
+
+.GlobalNav {
+  background-color: $color-white;
+  border-bottom: 1px solid $color-grey-grey;
+  margin: auto;
+  z-index: $zIndexGlobalNav;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 61px;
+}
+.GlobalNav {
+  $global-nav-height: 61px;
+
+  flex: 0 0 $global-nav-height;
+  height: $global-nav-height;
+  margin: 0;
+  position: static;
+
+  top: unset;
+  left: unset;
+}
+
+.GlobalNav-frame {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -50000px;
+  top: -50000px;
+}
+
+.GlobalNav-inner {
+  width: 100%;
+  max-width: $contentWidth;
+  margin: 0 auto;
+}
+
+.GlobalNav--desktop {
+  display: none !important;
+  @media (min-width: $smViewport) {
+    display: inline-block !important;
+  }
+}
+
+.GlobalNav--mobile {
+  @media (min-width: $smViewport) {
+    display: none !important;
+  }
+}
+
+.GlobalNav-container {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  height: $globalNavDesktopHeight;
+  padding: 10px;
+  max-width: $contentWidth;
+  margin: auto;
+
+  @media (min-width: $contentWidth) {
+    padding: 10px 0;
+  }
+
+  &.GlobalNav--mobile {
+    padding: 0;
+  }
+}
+
+.GlobalNav-mobileTop {
+  height: $globalNavDesktopHeight;
+  border-bottom: 1px solid $colorGrayLight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > .GlobalNav-logo {
+    margin-right: 0;
+  }
+}
+
+.GlobalNav-mobileBottom {
+  height: $globalNavHeight - $globalNavDesktopHeight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  .GlobalNav-navLink {
+    padding: 20px;
+  }
+}
+
+.GlobalNav-logo {
+  display: flex;
+  flex-flow: column;
+  width: 150px;
+  padding: 5px;
+  text-align: center;
+  margin-right: 20px;
+  justify-content: center;
+  align-items: flex-start;
+
+  > svg {
+    display: block;
+    width: 100%;
+  }
+}
+
+.GlobalNav-mainNav {
+  display: inline-block;
+  text-align: center;
+
+  @media (max-width: $mainNavBreakpoint) {
+    display: none;
+  }
+}
+
+.GlobalNav-left {
+  float: left;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  height: $globalNavHeight;
+  height: calc(100% - 20px);
+}
+
+.GlobalNav-right {
+  float: right;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: calc(100% - 20px);
+  display: flex;
+}
+
+.GlobalNav-navList {
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+  width: 100%;
+}
+
+.GlobalNav-navItem {
+  display: inline-block;
+  font-family: $fontSans;
+}
+
+.GlobalNav-navLink {
+  color: $colorGray;
+  opacity: $linkOpacity;
+  font-size: 10px;
+  padding: 8px 15px;
+  letter-spacing: 2px;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  margin-right: 10px;
+  display: inline-block;
+  line-height: 22px;
+  height: 100%;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: 1
+  }
+}
+
+.GlobalNav-navLink--dark {
+  background: #022d46;
+  border-radius: 4px;
+  border: 1px solid #022d46;
+  color: white;
+  opacity: 1;
+  &:hover {
+    background: #033d5f;
+  }
+}
+
+.GlobalNav-icon,
+.GlobalNav-iconText {
+  text-transform: uppercase;
+  font-family: $fontSans;
+  letter-spacing: 2.5px;
+  font-size: 13px;
+  font-weight: 800;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.GlobalNav-icon {
+  font-size: 0;
+  position: relative;
+}
+
+.GlobalNav-iconText {
+  margin-left: 14px;
+}
+
+.GlobalNav-mobileNavItem {
+  display: inline-block;
+  font-size: 0;
+  width: calc( 100% / 4 );
+  vertical-align: middle;
+}
+
+.GlobalNav-iconLink {
+  display: inline-block;
+  color: $color-black;
+  position: relative;
+  height: 61px;
+  cursor: pointer;
+  padding: 10px 0 11px 0;
+  margin: 0 0 -1px 0;
+  width: 100%;
+  appearance: none !important;
+  transition:
+    100ms border ease-in-out,
+    100ms background ease-in-out;
+  &.is-active::after {
+    border-bottom: 2px solid $color-black;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: ''
+  }
+}
+
+.GlobalNav-iconContent {
+  @include centerer(true, true);
+  width: 100%;
+}
+
+.GlobalNav-unread {
+  position: absolute;
+  border-radius: 50%;
+  background-color: $color-copper;
+  top: -8px;
+  left: -12px;
+  color: $color-white;
+  font-size: 11px;
+  line-height: 25px;
+  height: 25px;
+  min-width: 25px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1.1px;
+  transition:
+    200ms opacity ease-in-out,
+    200ms transform cubic-bezier(.16,1.25,.82,1.26);
+}
+
+.GlobalNav-bubbles {
+  position: absolute;
+  top: 65px;
+  width: 100%;
+  max-width: 375px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.GlobalNav-bubble {
+  cursor: pointer;
+  margin-bottom: 10px;
+  line-height:1.4;
+  text-align:left;
+  background-color:$colorWhite;
+  padding:8px 15px;
+  border-radius:4px;
+  color:$colorDefault;
+  word-wrap:break-word;
+  text-transform:none;
+  font-weight:300;
+  font-size:$fontMedium;
+  letter-spacing: 0;
+  text-align:center;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2), 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  position:relative;
+
+  &:first-child {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-style: solid;
+      border-width: 0 8px 15px 8px;
+    }
+    &:after {
+      top: -14px;
+      border-color: transparent transparent $colorWhite transparent;
+    }
+    &:before {
+      top: -15px;
+      border-color: transparent transparent darken($colorGrayLight, 10%) transparent;
+    }
+  }
+
+  transition:
+    150ms height ease-in-out,
+    150ms opacity ease-in-out,
+    150ms transform cubic-bezier(.16,1.25,.82,1.26);
+}
+
+.GlobalNav-bubbleTransition {
+  &-enter        { transform: scale(0.8);  opacity:0.01; height: 0; }
+  &-enter-active { transform: scale(1);    opacity:1; height: auto; }
+  &-leave        { transform: scale(1);    opacity:1; height: auto; }
+  &-leave-active { transform: scale(0.8);  opacity:0.01; height: 0; }
+}
+
+.GlobalNav-unreadTransition {
+  &-enter        { transform: scale(0.1);  opacity:0.01;  }
+  &-enter-active { transform: scale(1);    opacity:1;     }
+  &-leave        { transform: scale(1);    opacity:1;     }
+  &-leave-active { transform: scale(0.1);  opacity:0.01;  }
+}
+
+.GlobalNav-bubbleDismiss {
+  position: absolute;
+  right: 0px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 0 4px 0 0;
+  transition: 100ms background ease-in-out;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background: #ddd;
+  }
+}

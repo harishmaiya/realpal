@@ -1,0 +1,22 @@
+{% extends 'base_logged_in.html' %}
+{% load staticfiles %}
+{% block title %}Discover{% endblock %}
+
+{% block content %}
+    <!-- Start section -->
+
+    <div class="chat-body">
+    <div class="text-center"><h1>{{ display_text }}</h1></div>
+    </div>
+    <!-- End section -->
+    <!--Message bar  section -->
+    <section class="chat-footer">
+
+    </section>
+        <script type="text/javascript" src='{% static "chat/js/jquery-1.12.1.min.js" %}'></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.discover-tab').addClass('is-active');
+    });
+    </script>
+{% endblock %}

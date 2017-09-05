@@ -1,15 +1,15 @@
-{% extends "base.html" %}
+{% extends "base_logged_in.html" %}
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 {% block content %}
-    <section class="update-container">
+    <section class="update-container ">
         <div class="text-center">
             {% if error %}
                 <p class="red-text">{{ error }}</p>
             {% endif %}
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vertical-tab-container">
-                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6 vertical-tab-menu">
+                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 vertical-tab-menu">
                     <div>
                         <div class="profile-form invisible">
                             <img class="img-rounded shrunk" height="30" width="30" src="{% static 'src/images/default_avatar.png' %}">
@@ -34,45 +34,55 @@
                         </div>
                     </div>
                     <div class="list-group">
-                        <a href="#" class="list-group-item active text-center">
+                        <a href="#" class="list-group-item active text-center update-form">
                             <span>Purchase Step</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
                         </a>
-                        <a href="#" class="list-group-item text-center">
+                        <a href="#" class="list-group-item text-center update-form">
                             <span>Marital Status</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 
                         </a>
-                        <a href="#" class="list-group-item text-center">
+                        <a href="#" class="list-group-item text-center update-form">
                             <span>First home</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 
 
                         </a>
-                        <a href="#" class="list-group-item text-center">
+                        <a href="#" class="list-group-item text-center update-form">
                             <span>House Type</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 
 
                         </a>
-                        <a href="#" class="list-group-item text-center">
+                        <a href="#" class="list-group-item text-center update-form">
                             <span>Preferred City</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 
 
                         </a>
-                        <a href="#" class="list-group-item text-center">
+                        <a href="#" class="list-group-item text-center update-form">
                             <span>Maximum Budget</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 
 
                         </a>
-                        <a href="#" class="list-group-item text-center">
+                        <a href="#" class="list-group-item text-center update-form">
                             <span>Current Rent</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 
 
                         </a>
-                        <a href="#" class="list-group-item text-center">
+                        <a href="#" class="list-group-item text-center update-form">
                             <span>How Soon</span>
-
-
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
                         </a>
 
                     </div>
+                    <a href="{% url 'users:logout' %}" class="list-group-item text-center update-form sign-out-nav-item">
+                            <span>Sign out</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                        </a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6 vertical-tab">
                     <!-- flight section -->
@@ -303,7 +313,7 @@
                             <div class="circle-container">
                                 {% for value, time in how_soon_form.fields.how_soon.choices %}
                                     {% if not forloop.first and not forloop.last %}
-                                        <div class="circle-item {% if how_soon_form.initial.howsoon == value %}selected{% endif %}"
+                                        <div class="circle-item {% if how_soon_form.initial.how_soon == value %}selected{% endif %}"
                                              data-id="{{ value }}">
                                             {{ time }}
                                         </div>
@@ -334,6 +344,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('.account-tab').addClass('is-active');
             $("div.vertical-tab-menu>div.list-group>a").click(function (e) {
                 e.preventDefault();
                 $(this).siblings('a.active').removeClass("active");

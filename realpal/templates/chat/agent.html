@@ -1,0 +1,398 @@
+{% extends 'base_logged_in.html' %}
+{% load staticfiles %}
+{% block title %}Chat Room{% endblock %}
+
+{% block content %}
+    <!-- Start section -->
+
+    <div class="chat-body">
+        <div class="MessageLog">
+            <div class="row match-my-cols ">
+                <!--Start Clients List section -->
+                <div class="col-md-3 vertical-tab-menu">
+                    <div class="assigned-clients-list-header">
+                        <strong>MY CLIENTS</strong>
+                    </div>
+                    {% if my_clients %}
+                        <div class="list-group">
+                            {% for client_room in my_clients %}
+                                <a class="list-group-item text-center no-border"
+                                   href="{% url 'chat:chat-room' client_room.id %}">
+                                    {{ client_room.client.full_name }}
+                                </a>
+
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p> No clients available</p>
+                    {% endif %}
+                    <div class="unassigned-clients-list-header">
+                        <strong>UNASSIGNED CLIENTS</strong>
+                    </div>
+
+                    {% if unassigned_clients %}
+                        <div class="list-group">
+                            {% for client_room in unassigned_clients %}
+                                <a class="list-group-item text-center"
+                                   href="{% url 'chat:chat-room' client_room.id %}">
+                                    {{ client_room.client.full_name }}
+                                </a>
+
+                            {% endfor %}
+
+                        </div>
+                    {% else %}
+                        <p> No unassigned clients available</p>
+                    {% endif %}
+                </div>
+                <!-- end clients list -->
+                <!-- chat messages -->
+                <div class="col-md-6">
+                    <div class="box-chat">
+                        {% if selected_client_profile %}
+                            <strong class="client-name">You are chatting
+                                to {{ selected_client_profile.full_name }}</strong>
+                            <hr class="style-two">
+                        {% endif %}
+                        <div class="chat-messages">
+                            {% if not selected_client_room %}
+                                <div class="fake-padding">
+                                    <img class="center" src="{% static 'chat/images/zzz.png' %}"/>
+                                    <p class="center">Please select a client to start chatting</p>
+                                </div>
+                            {% endif %}
+                            <div id="chat">
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <div class="Message employee">
+                                            <div class="Message-icon">
+                                                <div class="Message-icon">
+                                                    {% if msg.sent_by.user_type == user_types.client_user %}
+                                                        <div class="Message-iconImage"
+                                                             style="background-image: url({% static 'chat/images/client.png' %});">
+                                                        </div>
+                                                    {% else %}
+                                                        <div class="Message-iconImage"
+                                                             style="background-image: url({% static 'chat/images/support.png' %});">
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="Message-parts">
+                                                <div class="Message-partHeader">
+                                                    <strong>{{ msg.sent_by.full_name }}</strong>
+                                                    <small title="{{ msg.timestamp_string }}">
+                                                        {{ msg.time_ago }}
+                                                    </small>
+                                                </div>
+                                                <div class="Message-part">
+                                                    {% if msg.attachment %}
+                                                        {% if msg.text %}
+                                                            <span>{{ msg.text }}</span>
+                                                        {% endif %}
+                                                        <span>
+                                                            <a href="{{ msg.file_download_link }}" target="_blank">
+                                                                    {{ msg.filename }}
+                                                            </a>
+                                                        </span>
+                                                    {% else %}
+                                                        <span>
+                                                        {{ msg.text }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end chat messages -->
+                <!-- client short bio -->
+                <div class="col-md-3 vertical-tab-menu client-short-profile">
+                    {% if selected_client_profile %}
+                        <div class="profile-line">
+                            <strong class="profile-line">{{ selected_client_profile.full_name }}</strong>
+                        </div>
+                        <p><a class="btn btn-round"
+                              href="{% url 'users:detail' selected_client_profile.username %}">
+                            View Full Profile
+                        </a></p>
+
+                        <div class="profile-line">
+                            <p>Name: {{ selected_client_profile.first_name }}</p>
+                            <p>Surname: {{ selected_client_profile.last_name }}</p>
+                        </div>
+                        <div class="profile-line">
+                            <p>House Type: {{ client_house_type_text }}</p>
+                            <p>Budget: {{ selected_client_profile.budget }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <!-- end client short bio -->
+            </div>
+        </div>
+    </div>
+    <!-- End section -->
+    <!--Message bar  section -->
+    <section class="chat-footer">
+        <div class="MessageBar online">
+            <div class="MessageBar-attachments">
+                <div class="attachmentBarContainer">
+                    <div class="imageContainer">
+                        <button type="button" class="remove">
+                            <svg width="22" height="20" viewBox="0 0 22 22" aria-label="Group"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <title>Group</title>
+                                <circle fill="#4A4A4A" cx="11" cy="11" r="11"></circle>
+                                <g fill="none" fill-rule="evenodd">
+                                    <path fill="#FFF" fill-rule="evenodd"
+                                          d="M11.435 11l3.475-3.474a.308.308 0 1 0-.436-.436L11 10.565 7.525 7.09a.308.308 0 0 0-.435.436L10.565 11 7.09 14.474a.309.309 0 0 0 .218.526c.079 0 .157-.03.217-.09L11 11.435l3.474 3.475a.309.309 0 0 0 .436 0 .308.308 0 0 0 0-.436L11.435 11z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </button>
+                        <div id="attachment-preview" class="attachment-preview"></div>
+                    </div>
+                </div>
+            </div>
+            <form id="chatform" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <textarea type="text" name="message" id="message" class="MessageBar-input"
+                          placeholder="Type your Message"></textarea>
+                <div class="ShareBar">
+                    <div class="ShareButton">
+                        <label for="attachment">
+                            <svg width="25" height="25" viewBox="0 0 25 20" aria-label="Camera"
+                                 xmlns="http://www.w3.org/2000/svg"><title>Camera</title>
+                                <g fill="none" fill-rule="evenodd">
+                                    <path fill="#999" fill-rule="evenodd"
+                                          d="M23.065 3.171h-4.207a1.115 1.115 0 0 1-.975-.548l-.82-1.442C16.65.452 15.843 0 14.958 0H9.761c-.884 0-1.69.452-2.106 1.182l-.816 1.44a1.121 1.121 0 0 1-.976.55H1.657C.742 3.171 0 3.863 0 4.715v12.876c0 .851.742 1.544 1.657 1.544h21.408c.913 0 1.657-.693 1.657-1.544V4.716c0-.852-.744-1.545-1.657-1.545zM8.78 1.737c.193-.339.57-.55.98-.55h5.197c.412 0 .787.211.979.55l.816 1.434H7.969l.812-1.434zm14.666 15.855c0 .196-.171.356-.382.356H1.657c-.211 0-.383-.16-.383-.356V4.716c0-.196.172-.357.383-.357h21.408c.211 0 .382.16.382.357v12.876zM12.361 5.808c-3.163 0-5.735 2.398-5.735 5.345 0 2.948 2.572 5.347 5.735 5.347 3.161 0 5.734-2.399 5.734-5.347 0-2.947-2.573-5.345-5.734-5.345zm0 9.504c-2.46 0-4.46-1.866-4.46-4.159 0-2.293 2-4.158 4.46-4.158 2.459 0 4.46 1.865 4.46 4.158s-2.001 4.159-4.46 4.159zm9.05-7.986c0 .591-.513 1.07-1.146 1.07-.635 0-1.147-.479-1.147-1.07 0-.59.512-1.069 1.147-1.069.633 0 1.146.479 1.146 1.07z"></path>
+                                </g>
+                            </svg>
+                        </label>
+                        <input style="display: none;" type="file" id="attachment"
+                               name="attachment" class="input-file">
+                    </div>
+                </div>
+                <input class="MessageBar-send" value="Send" type="submit">
+            </form>
+            <div class="GlobalNav-bubbles MessageBar-bubbles MessageBar-bubbles--ShareBar"></div>
+        </div>
+    </section>
+    <script type="text/javascript" src='{% static "chat/js/jquery-1.12.1.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "chat/js/reconnecting-websocket.min.js" %}'></script>
+
+    {% if selected_client_room %}
+        <script type='text/javascript'>
+            $(document).ready(function () {
+                $('input[type=submit]').prop('disabled', true);
+                $('.attachmentBarContainer').hide();
+                $('#message').attr("placeholder", 'Message ' + '{{ selected_client_profile.full_name }}');
+                function clearFileInput() {
+                    var $el = $('#attachment');
+                    $el.wrap('<form>').closest('form').get(0).reset();
+                    $el.unwrap();
+                    $('#attachment-preview').empty();
+                    $('.attachmentBarContainer').hide();
+                }
+
+                function clearMessageBox() {
+                    $('#message').val('');
+                }
+
+                $(".remove").click(function () {
+                    clearFileInput();
+                });
+
+                function sendChatMessage() {
+                    if ($('#attachment').get(0).files.length === 0) {
+                        var messageText = $('#message').val();
+                        if (messageText.length > 0) {
+                            var message = {
+                                message: $('#message').val()
+                            };
+                            chatsock.send(JSON.stringify(message));
+                            clearFileInput();
+                            clearMessageBox();
+                            return false;
+                        } else {
+                            return false;
+                        }
+
+                    } else {
+                        var form = $('form').get(0);
+                        var formdata = new FormData(form);
+                        formdata.append("room", room);
+                        var url = window.location.protocol.toString() + '//' + window.location.host + '/chat/file/';
+                        $.ajax({
+                            url: url,
+                            type: "POST",
+                            data: formdata, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                            mimeTypes: "multipart/form-data",
+                            contentType: false,       // The content type used when sending data to the server.
+                            cache: false,             // To unable request pages to be cached
+                            processData: false,        // To send DOMDocument or non processed data file it is set to false
+                            success: function (data) {
+                                clearFileInput();
+                                clearMessageBox();
+                                $('input[type=submit]').prop('disabled', true);
+
+                            }
+                        });
+
+                    }
+                }
+
+
+                $("#message").on('change keyup paste', function () {
+                    var messageText = $('#message').val();
+                    if (messageText.length > 0) {
+                        $('input[type=submit]').prop('disabled', false);
+                    }
+                    else {
+                        $('input[type=submit]').prop('disabled', true);
+                    }
+                });
+
+                function isDisallowedFile(fileName) {
+                    var disallowedExtensions = /(\.exe|\.bat|\.so)$/i;
+                    return disallowedExtensions.test(fileName);
+                }
+
+                function isImageFile(fileName) {
+                    var imageFileExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+                    return imageFileExtensions.test(fileName);
+                }
+
+                $('input[type="file"]').change(function (e) {
+                    if (this.files && this.files[0]) {
+                        var fileName = e.target.files[0].name;
+                        if (isDisallowedFile(fileName)) {
+                            var invalidFileType = '<div class="error rejected attachment-image"' +
+                                    'style="background-image: none;">' +
+                                    '<div>Invalid File Type</div>' +
+                                    '</div>';
+                            clearFileInput();
+                            $('input[type=submit]').prop('disabled', true);
+                            $('.attachmentBarContainer').show();
+                            $('#attachment-preview').html(invalidFileType);
+                        }
+                        else {
+                            if (isImageFile(fileName)) {
+                                $('.attachmentBarContainer').show();
+                                $('input[type=submit]').prop('disabled', false);
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    var attachment = '<div class="attachment-image"' +
+                                            'style="background-image: url(' +
+                                            e.target.result +
+                                            ');">' +
+                                            '</div>';
+                                    $('#attachment-preview').html(attachment)
+                                };
+                                reader.readAsDataURL(this.files[0]);
+                            } else {
+                                var attachment = '<div class="attachment-image" style="background-image: none;">' +
+                                        '<i class="fa fa-sticky-note fa-5x"></i>' +
+                                        '</div>';
+                                $('.attachmentBarContainer').show();
+                                $('#attachment-preview').html(attachment)
+                                $('input[type=submit]').prop('disabled', false);
+                            }
+
+                        }
+                    }
+                });
+
+                $('#message').keypress(function (e) {
+                    if (e.which == 13) {
+                        e.preventDefault();
+                        sendChatMessage();
+                        return false;
+                    }
+                });
+                const client_user_type = {{ user_types.client_user }};
+                const agent_user_type = {{ user_types.agent_user }};
+
+                // When we're using HTTPS, use WSS too.
+                var room = {{ selected_client_room }};
+                var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+                var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + '/chat/' + room);
+                chatsock.timeoutInterval = 3600;
+                chatsock.onmessage = function (message) {
+                    var data = JSON.parse(message.data);
+                    if (data.user_type === client_user_type) {
+                        var message_icon_class = 'member-icon';
+                    } else {
+                        var message_icon_class = 'employee-icon';
+                    }
+                    if (!data.agent_name) {
+                        var chat = $('#chat');
+                        if (data.file_name == null) {
+                            var ele = '<div class="Message employee">' +
+                                    '<div class="Message-icon">' +
+                                    '<div class="Message-icon">' +
+                                    '<div class="Message-iconImage ' + message_icon_class + '">' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="Message-parts">' +
+                                    '<div class="Message-partHeader">' +
+                                    '<strong>' + data.user_handle + '</strong>' +
+                                    '<small title="' + data.timestamp_string + '">' + data.timestamp + '</small>' +
+                                    '</div>' +
+                                    '<div class="Message-part">' +
+                                    '<span>' + data.message + '</span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>';
+                        }
+                        else {
+                            var ele = '<div class="Message employee">' +
+                                    '<div class="Message-icon">' +
+                                    '<div class="Message-icon">' +
+                                    '<div class="Message-iconImage ' + message_icon_class + '">' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="Message-parts">' +
+                                    '<div class="Message-partHeader">' +
+                                    '<strong>' + data.user_handle + '</strong>' +
+                                    '<small title="' + data.timestamp_string + '">' + data.timestamp + '</small>' +
+                                    '</div>' +
+                                    '<div class="Message-part">';
+                            if (data.message) {
+                                ele = ele + '<span>' + data.message + '</span></br>' +
+                                        '<span><a href="' + data.file_link + '" target="_blank">' +
+                                        data.file_name +
+                                        '</a></span>';
+                            } else {
+                                ele = ele + '<span><a href="' + data.file_link + '" target="_blank">' + data.file_name +
+                                        '</a></span>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>';
+                            }
+                        }
+                        chat.append(ele);
+                    }
+                };
+
+                $("#chatform").on("submit", function (event) {
+                    event.preventDefault();
+                    sendChatMessage();
+                });
+            });
+        </script>
+    {% else %}
+        <script type='text/javascript'>
+            $(document).ready(function () {
+                $('.attachmentBarContainer').hide();
+                $('input[type=submit]').prop('disabled', true);
+            });
+        </script>
+    {% endif %}
+{% endblock %}

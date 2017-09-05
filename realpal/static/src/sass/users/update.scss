@@ -1,19 +1,21 @@
-.update-container {
-  margin-top: 100px;
-}
-
 /*  vertical tab */
 div.vertical-tab-container {
   z-index: 10;
   background-color: #ffffff;
   padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 div.vertical-tab-menu {
-  padding-right: 0;
-  padding-left: 0;
-  padding-bottom: 0;
   border-right: 3px solid #EDEDED;
+  /*
+  padding: 100px 0 80px;
+  */
+  min-height: 95vh;
+  overflow: auto;
 }
 
 div.vertical-tab-menu div.list-group {
@@ -46,14 +48,12 @@ div.vertical-tab-menu div.list-group > a:hover {
   padding-left: 40px;
 }
 
-list-group-item:hover > span {
-  transform: translateX(20px);
-  color: red;
+.vertical-tab {
+  /*padding-top: 90px;*/
 }
 
 div.vertical-tab-content {
   background-color: #ffffff;
-  /* border: 1px solid #eeeeee; */
   padding-left: 20px;
   padding-top: 10px;
 }
@@ -307,7 +307,7 @@ fieldset.moved {
 }
 
 .bottom-padded {
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 
   & input {
     margin-top: 0;
@@ -341,4 +341,20 @@ fieldset.moved {
   width: auto !important;
   display: block;
   margin: auto !important;
+}
+
+.update-icon {
+  font-size: 12px;
+}
+
+.update-form {
+  display: flex;
+  justify-content: space-between;
+}
+.update-container {
+  overflow-y: scroll;
+}
+
+.sign-out-nav-item{
+  border: 0;
 }

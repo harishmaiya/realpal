@@ -1,3 +1,4 @@
+import arrow
 import json
 import logging
 
@@ -37,6 +38,16 @@ def send_user_chat_status(group, username, status):
     )
 
 
+def send_chat_room_agent_details(group_name, agent_name):
+    Group(group_name).send(
+        {
+            "text": json.dumps({
+                'agent_name': agent_name
+            })
+        }
+    )
+
+
 def channel_added_logger(reply_channel, group):
     logger.debug(
         'Added reply channel: [{}] to group: {}'.format(
@@ -54,7 +65,7 @@ def ws_connect(message, room_id):
     message.reply_channel.send({"accept": True})
     user = message.user
     if user.is_authenticated:
-        message.channel_session["username"] = user.username
+        message.channel_session["username"] = user.full_name
         message.channel_session["user_id"] = user.id
         try:
             room = Room.objects.get(pk=room_id)
@@ -66,16 +77,15 @@ def ws_connect(message, room_id):
                     room.agent = user
                     room.save()
                     Group(group_name).add(message.reply_channel)
-                    send_user_chat_status(group_name, user.username, USER_ONLINE)
+                    send_chat_room_agent_details(group_name, user.full_name)
                     channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
                 else:
                     Group(group_name).add(message.reply_channel)
-                    send_user_chat_status(group_name, user.username, USER_ONLINE)
+                    send_chat_room_agent_details(group_name, user.full_name)
                     channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
             elif user.user_type == CLIENT_USER:
                 if room.client == user:
                     Group(group_name).add(message.reply_channel)
-                    send_user_chat_status(group_name, user.username, USER_ONLINE)
                     channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
                 else:
                     logger.debug('Access denied for user {} on room {}'.format(user, room))
@@ -108,11 +118,6 @@ def ws_receive(message):
     incoming = json.loads(message['text'])
     handle = message.channel_session.get('username')
     msg = incoming.get('message', 'Error Getting Message')
-    data = {
-        'timestamp': timezone.now().strftime('%c'),
-        'user_handle': handle if handle else 'Anonymous',
-        'message': msg
-    }
     room = Room.objects.get(pk=message.channel_session.get('room_id'))
     user = User.objects.get(pk=message.channel_session.get('user_id'))
     Message.objects.create(
@@ -120,14 +125,20 @@ def ws_receive(message):
         sent_by=user,
         text=msg
     )
+    timestamp = arrow.now()
+    data = {
+        'timestamp': timestamp.humanize(),
+        'timestamp_string': timestamp.format('YYYY-MM-DD HH:mm:ss ZZ'),
+        'user_handle': handle if handle else 'Anonymous',
+        'user_type':user.user_type,
+        'message': msg
+    }
+
     Group(message.channel_session['group_name']).send({'text': json.dumps(data)})
 
 
 @channel_session_user
 def ws_disconnect(message):
-    user = message.channel_session.get('username')
-    send_user_chat_status(message.channel_session['group_name'], user, USER_OFFLINE)
-
     Group(message.channel_session['group_name']).discard(message.reply_channel)
     logger.debug(
         'Removed reply channel: [{}] from group: {}'.format(

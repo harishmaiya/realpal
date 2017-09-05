@@ -1,3 +1,4 @@
+import arrow
 import logging
 import json
 import os
@@ -43,6 +44,7 @@ class MessageCreateAPIView(CreateAPIView):
             self.room = Room.objects.get(pk=room_id)
             self.request.data['sent_by'] = self.request.user.id
             self.request.data['room'] = self.room.id
+            self.request.data['text'] = self.request.data.get('message')
             serializer = self.get_serializer(data=request.data)
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -55,11 +57,13 @@ class MessageCreateAPIView(CreateAPIView):
         if not settings.IS_TESTING:
             data = {
                 'id': instance.id.__str__(),
-                'timestamp': instance.timestamp.__str__(),
-                'user_handle': self.request.user.username,
+                'timestamp': instance.time_ago,
+                'timestamp_string': instance.timestamp_string,
+                'user_handle': self.request.user.full_name,
+                'user_type': self.request.user.user_type,
                 'message': instance.text,
                 'file_name': os.path.basename(urlparse(instance.attachment.path).path) if instance.attachment else None,
-                'file_link': instance.attachment.url if instance.attachment else None,
+                'file_link': instance.file_download_link if instance.attachment else None,
             }
             group_channel = get_room_group_channel(instance.room.id)
             self.push_socket_update(group_channel, data)

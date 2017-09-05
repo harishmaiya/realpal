@@ -12,7 +12,7 @@
 }
 
 body, html {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 }
 .header{margin-top: 60px}
@@ -25,5 +25,19 @@ body, html {
 @import "base/project";
 @import "home/home";
 @import "account/registration";
+@import "chat/variables";
+@import "chat/variables-2";
+@import "chat/_font-mixin";
+@import "chat/_mixins";
+@import "chat/_text-mixin";
+@import "chat/_flex-mixin";
+@import "chat/_grid-utils";
+@import "chat/_global-nav";
 @import "chat/room";
+@import "chat/_message-card";
+@import "chat/_message-bar";
+@import "chat/_message";
+@import "chat/_message-attachment";
+@import "chat/_message-log";
+@import "chat/_profile-card";
 @import "users/update";
