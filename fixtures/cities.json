@@ -1,0 +1,98 @@
+[
+  {
+    "model": "users.city",
+    "pk": 1,
+    "fields": {
+      "name": "Palo Alto",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 2,
+    "fields": {
+      "name": "Mountain View",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 3,
+    "fields": {
+      "name": "San Mateo",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 4,
+    "fields": {
+      "name": "Fremont",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 5,
+    "fields": {
+      "name": "San Jose",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 6,
+    "fields": {
+      "name": "Oakland",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 7,
+    "fields": {
+      "name": "South San Francisco",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 8,
+    "fields": {
+      "name": "San Francisco",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 9,
+    "fields": {
+      "name": "Pleasanton",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 10,
+    "fields": {
+      "name": "Livermore",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 11,
+    "fields": {
+      "name": "Milpitas",
+      "state": "CA"
+    }
+  },
+  {
+    "model": "users.city",
+    "pk": 12,
+    "fields": {
+      "name": "Hayward",
+      "state": "CA"
+    }
+  }
+]
