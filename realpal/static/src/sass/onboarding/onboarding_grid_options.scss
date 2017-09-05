@@ -14,7 +14,7 @@ html, body {
 .categories {
   padding: 16px;
   box-sizing: inherit;
-  margin-bottom: -150px
+  //margin-bottom: -150px
 }
 
 .categories .row {
@@ -214,9 +214,7 @@ html, body {
 }
 
 .registration-container {
-  &.extended {
-    margin-bottom: 300px;
-  }
+
   &.ext {
     //margin-bottom: calc(100% + 70px);
   }
