@@ -10,11 +10,11 @@
                             <div class="logo ">
                                 <span><i class="fa fa-home fa-3x brown"></i></span>
                             </div>
-                            <h2>Start your American dream</h2>
+                            <h2>Begin your American dream</h2>
                             <hr>
                             <p class="bold">Making sense of Real Estate</p>
-                            <p class="description">Thought of owing home should not make you feel overwhelmed of time and efforts it takes to get ready for purchase.
-                              With Real Pal we'll make your preparation seamless with all right deals on few clicks and calls.
+                            <p class="description">Owing home should not make you feel overwhelmed of time and efforts it takes to get ready for purchase.
+                              With Real Pal we'll make your preparation seamless with right deals and wise decisions on few clicks and calls.
                             </p>
                             <a class=" btn back-brown" href="{% url 'onboarding:purchase-step' %}">Get Started</a>
                         </div>
@@ -30,11 +30,11 @@
 
         <div class="sub-nav col-xs-12 back-beige">
             <ul class="list-unstyled pull-right">
-                <li><a href="#" class="navy active">Buying Journey</a></li>
+                <li><a href="#" class="navy active">Prepare</a></li>
                 <li><a href="#how" class="navy">How It Works</a></li>
-                <li><a href="#dream" class="navy">Dream House</a></li>
-                <li><a href="#why" class="navy">Why Us?</a></li>
-                <li><a href="#contact" class="navy">Contact Us</a></li>
+                <li><a href="#pricing" class="navy">Pricing</a></li>
+                <li><a href="#why" class="navy">Why Us</a></li>
+                <li><a href="#benefits" class="navy">Benefits</a></li>
             </ul>
         </div>
 
@@ -45,8 +45,8 @@
         <section id="how" class="how-works back-beige text-center navy">
             <div class="container">
                 <div class="row">
-                    <h2 class="h1">How Real Pal Works </h2>
-                    <p class="lead">Buying new house is easy when you do it our way</p>
+                    <h2 class="h1">How Real Pal Works</h2>
+                    <p class="lead">A guided journey from your initial thoughts to be able to make offer on your ideal house</p>
                     <div class="time-path row">
                         <div class="timeline col-sm-3 hidden-xs">
                             <div class="progress-bar"></div>
@@ -55,24 +55,48 @@
                             <li class="block l col-sm-6 no1">
                                 <img class="img-responsive" src="{% static 'images/decide.jpg' %}"/>
                                 <div class="caption">
-                                    <h3 class="bold">Decide & prepare for house purchase </h3>
-                                    <p>Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum</p>
+                                    <h3 class="bold">Create your profile</h3>
+                                    <p>Set your preferences, family and financial goals. You can provide as little or as much info you would like to.
+                                      <br>Get to know what works best for you and your needs.</p>
                                 </div>
                             </li>
                             <li class="block r col-sm-6 no2">
                                 <img class="img-responsive" src="{% static 'images/evaluate.jpeg' %}"/>
                                 <div class="caption">
-                                    <h3 class="bold">Evaluate & get right deals during buying</h3>
-                                    <p>Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum Vim animal legimus cu. Quaeque</p>
+                                    <h3 class="bold">Discuss with your pal</h3>
+                                    <p>You’ll talk to a real person in real time, either on phone or in our messenger app. Involve with your pal as much or less you need to
+                                      find right solution at every step <br> Create checkpoints and resolve them as you proceed</p>
                                 </div>
                             </li>
                             <li class="block l col-sm-6 no3">
                                 <img class="img-responsive" src="{% static 'images/signature.jpeg' %}"/>
                                 <div class="caption">
-                                    <h3 class="bold"> House owning & assistance during purchase</h3>
-                                    <p>Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu. Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum ea, dolorem indoctum</p>
+                                    <h3 class="bold">Evaluate</h3>
+                                    <p>Know all about Rent vs Buy, Tax savings, Property charges, Market trends, Time and efforts it takes,
+                                      Hidden costs (purchase, owning) and more<br>Get answers which are data driven and researched from unbiased sources</p>
                                 </div>
                             </li>
+                            <li class="block r col-sm-6 no4">
+                                <img class="img-responsive" src="{% static 'images/signature.jpeg' %}"/>
+                                <div class="caption">
+                                    <h3 class="bold">Select</h3>
+                                    <p>With plenty of choices available, you need trusted one who is by your side.
+                                      We'll help you interview and negotiate with Mortgage and Real estate agents, for cash backs or value adds<br>
+                                    Location - get info on local trends, lifestyle and street level safety<br>
+                                    House type - know about appreciation factors, condition aspects, insurances</p>
+                                </div>
+                            </li>
+                            <li class="block l col-sm-6 no5">
+                                <img class="img-responsive" src="{% static 'images/signature.jpeg' %}"/>
+                                <div class="caption">
+                                    <h3 class="bold">Begin</h3>
+                                    <p> Get advices and tips on
+                                      improving your credit worthiness, personal savings plan, paper works to gather, overall time line<br>Feel free to talk about
+                                      any concerns, pain points with your pal
+                                    </p>
+                                </div>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -83,35 +107,15 @@
 
         <!-- Start Cost Section -->
 
-        <section class="cost text-center">
+        <section id="pricing" class="cost text-center">
             <div class="container">
                 <h2 class="h1">What it costs?</h2>
-                <p class="description sans">Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu.
-                    Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum ea, dolorem indoctum</p>
-                <p class="setPrice center-block">Lorem ipsum dolor sit amet, quis impedit sed ne.</p>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                        <i class="fa fa-user-o fa-3x brown"></i>
-                        <p class="lead bold">Evaluate buy vs rent, income tax</p>
-                        <p class="price">$xxx</p>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <i class="fa fa-user-o fa-3x brown"></i>
-                        <p class="lead bold">Personal finances and readiness</p>
-                        <p class="price">$xxx</p>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <i class="fa fa-user-o fa-3x brown"></i>
-                        <p class="lead bold">Type of houses and property tax, appreciation</p>
-                        <p class="price">$xxx</p>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <i class="fa fa-user-o fa-3x brown"></i>
-                        <p class="lead bold">inding right Mortgage type, agent</p>
-                        <p class="price">$xxx</p>
-                    </div>
-                </div>
-                <a class=" btn back-brown" href="#">Get Started</a>
+                <p class="description sans">All of our research data and market analysis are free of cost<br>
+                Get all services (evaluation, selection, preparation) of in person real pal at flat fee of $9.99, with no time limit
+                  <br>We work until you are fully prepared and be able to make offer on your ideal home
+                </p>
+                <p class="setPrice center-block">We work truly for you and not for commission</p>
+                <a class=" btn back-brown" href="{% url 'onboarding:purchase-step' %}">Get Started</a>
             </div>
         </section>
 
@@ -119,31 +123,30 @@
 
         <!-- Start expect Section -->
 
-        <section class="expect">
+        <section id="why" class="expect">
             <div class="container">
                 <div class="row">
                     <div class="card text-center">
                         <h2 class="h1 textSerif">What else can I expect?</h2>
-                        <p class="textSerif">Lorem ipsum dolor sit amet, quis impedit sed ne. Vim animal legimus cu.
-                            Quaeque vocibus id nec, pro ipsum facilisi ea, dolorem indoctum ea, dolorem indoctum</p>
+                        <p class="textSerif">Every family and housing deal is different, but there are some things you can always count on:</p>
                         <ul class="list-unstyled">
                             <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp;Lorem ipsum dolor sit amet</span>
+                                <span class=" sans">&nbsp;&nbsp; Upto date realty feeds on local areas. School ratings, new projects, safety</span>
                             </li>
                             <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp;Lorem ipsum dolor sit amet</span>
+                                <span class=" sans">&nbsp;&nbsp; Option to put purchase offer on your own, without an agent (get back full commission)</span>
                             </li>
                             <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp;Lorem ipsum dolor sit amet</span>
+                                <span class=" sans">&nbsp;&nbsp; Artificial Intelligence (sentiment analysis, job, global) models applied to Silicon valley trends</span>
                             </li>
                             <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp;Lorem ipsum dolor sit amet</span>
+                                <span class=" sans">&nbsp;&nbsp; Full money back if you are not satisfied</span>
                             </li>
                             <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp;Lorem ipsum dolor sit amet</span>
+                                <span class=" sans">&nbsp;&nbsp; Continued housing advice whenever you need it</span>
                             </li>
                         </ul>
-                        <a class=" btn back-brown" href="#">Get Started</a>
+                        <a class=" btn back-brown" href="{% url 'onboarding:purchase-step' %}">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -198,7 +201,7 @@
 
         <!-- Start Benefits Section -->
 
-        <div id="why" class="benefits text-center  navy">
+        <div id="benefits" class="benefits text-center  navy">
             <div class="container">
                 <div class="row">
                     <h2 class="h1 textSerif">The benefits of Real Pal</h2>
