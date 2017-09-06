@@ -62,7 +62,7 @@ class User(AbstractUser):
 
     house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, blank=True, null=True)
 
-    preferred_city = models.ForeignKey(City, blank=True, null=True)
+    preferred_city = models.ManyToManyField(City)
 
     budget = models.FloatField(blank=True, null=True)
 
