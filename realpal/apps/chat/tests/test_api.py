@@ -10,6 +10,7 @@ from rest_framework.test import APITestCase
 
 from realpal.apps.chat.models import Room, Message
 from realpal.apps.users.models import User
+from realpal.apps.users.constants import AGENT_USER, CLIENT_USER
 
 
 class MessageFileUploadTest(APITestCase):
@@ -68,3 +69,38 @@ class MessageFileUploadTest(APITestCase):
         default_storage.delete(self.saved_attachment_path)
         default_storage.delete(self.temp_file_path)
         super().tearDown()
+
+
+class RoomTests(APITestCase):
+    api_url_name = 'chat:update-room'
+
+    def setUp(self):
+        self.client_user = User.objects.create(
+            email='client@test.com',
+            username='client',
+            user_type=CLIENT_USER
+        )
+        self.agent = User.objects.create(
+            email='agent@test.com',
+            username='agent',
+            user_type=AGENT_USER
+        )
+        self.room = Room.objects.get(client=self.client_user)
+        self.room.agent = self.agent
+        self.room.save()
+
+    def test_unassign_client(self):
+        self.url = reverse(self.api_url_name)
+
+        # test unauthenticated
+        response = self.client.patch(self.url, data=json.dumps({}), content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.client.force_login(user=self.agent)
+        data = {
+            'id': self.room.id,
+            'client': self.client_user.id,
+            'agent': self.agent.id
+        }
+        response = self.client.patch(self.url, data=json.dumps(data), content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

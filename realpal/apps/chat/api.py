@@ -1,20 +1,21 @@
-import arrow
 import logging
 import json
 import os
 from urllib.parse import urlparse
 
 from channels import Group
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
+
 from django.conf import settings
-from realpal.apps.chat.models import Message
-from realpal.apps.chat.serializers import MessageSerializer
+from django.core.urlresolvers import reverse
+
+from realpal.apps.chat.serializers import MessageSerializer, RoomSerializer
 from realpal.apps.chat.consumers import get_room_group_channel
-from realpal.apps.chat.models import Room
+from realpal.apps.chat.models import Message, Room
 
 logger = logging.getLogger(__name__)
 
@@ -71,3 +72,29 @@ class MessageCreateAPIView(CreateAPIView):
     @staticmethod
     def push_socket_update(group_channel, data):
         Group(group_channel).send({"text": json.dumps(data)})
+
+
+class RoomUpdateAPIView(UpdateAPIView):
+    model = Room
+    serializer_class = RoomSerializer
+    permission_classes = [IsAuthenticated, ]
+
+    def patch(self, request, *args, **kwargs):
+        room_id = self.request.data.get('id', 0)
+        try:
+            room = Room.objects.get(pk=room_id)
+            if room.agent == self.request.user:
+                room.agent = None
+                room.save()
+                data = {
+                    'client_room_id': room.id,
+                    'client_room_link': reverse('chat:chat-room', args=(room.id,)),
+                    'client_details': room.client.full_name,
+                }
+                return Response(data=data, status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+        except Room.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+

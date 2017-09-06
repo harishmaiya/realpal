@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from rest_framework.validators import ValidationError
 
-from .models import Message
+from .models import Message, Room
 
 
 class MessageSerializer(serializers.ModelSerializer):
@@ -12,3 +11,14 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = ('sent_by', 'room', 'text', 'attachment')
+
+
+class RoomSerializer(serializers.ModelSerializer):
+    """
+    Room Serializer class
+    """
+
+    class Meta:
+        model = Room
+        fields = ('id', 'client', 'agent')
+        read_only_fields = ('client',)
