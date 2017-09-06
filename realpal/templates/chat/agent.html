@@ -14,9 +14,9 @@
                         <strong>MY CLIENTS</strong>
                     </div>
                     {% if my_clients %}
-                        <div class="list-group">
+                        <div class="list-group assigned-clients">
                             {% for client_room in my_clients %}
-                                <a class="list-group-item text-center no-border"
+                                <a class="list-group-item text-center no-border" id="client-room-{{ client_room.id }}"
                                    href="{% url 'chat:chat-room' client_room.id %}">
                                     {{ client_room.client.full_name }}
                                 </a>
@@ -31,13 +31,12 @@
                     </div>
 
                     {% if unassigned_clients %}
-                        <div class="list-group">
+                        <div class="list-group unassigned-clients">
                             {% for client_room in unassigned_clients %}
-                                <a class="list-group-item text-center"
+                                <a class="list-group-item text-center" id="client-room-{{ client_room.id }}"
                                    href="{% url 'chat:chat-room' client_room.id %}">
                                     {{ client_room.client.full_name }}
                                 </a>
-
                             {% endfor %}
 
                         </div>
@@ -191,6 +190,8 @@
                 $('input[type=submit]').prop('disabled', true);
                 $('.attachmentBarContainer').hide();
                 $('#message').attr("placeholder", 'Message ' + '{{ selected_client_profile.full_name }}');
+                $("#client-room-"+{{ selected_client_room }}).addClass('active');
+
                 function clearFileInput() {
                     var $el = $('#attachment');
                     $el.wrap('<form>').closest('form').get(0).reset();
@@ -329,7 +330,15 @@
                     } else {
                         var message_icon_class = 'employee-icon';
                     }
-                    if (!data.agent_name) {
+                    if (data.new_client_room_id) {
+                        var client_room_id = 'client-room-' + data.new_client_room_id;
+                        var client_link = '<a class="list-group-item active text-center no-border" id="' + client_room_id +
+                                '" href="' + data.new_client_room_link + '">' +
+                                data.new_client_details + '</a>';
+                        $("#"+client_room_id).remove();
+                       $('.assigned-clients').append(client_link);
+                    }
+                    if (!data.agent_name && !data.new_client_room_id) {
                         var chat = $('#chat');
                         if (data.file_name == null) {
                             var ele = '<div class="Message employee">' +

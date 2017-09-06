@@ -4,6 +4,7 @@ import logging
 
 from channels import Group
 from channels.auth import channel_session_user_from_http, channel_session_user
+from django.core.urlresolvers import reverse
 from django.utils import timezone
 
 from realpal.apps.chat.models import Room, Message
@@ -77,7 +78,16 @@ def ws_connect(message, room_id):
                     room.agent = user
                     room.save()
                     Group(group_name).add(message.reply_channel)
-                    send_chat_room_agent_details(group_name, user.full_name)
+                    newly_added_channel = {
+                        'new_client_room_id': room.id,
+                        'new_client_room_link': reverse('chat:chat-room', args=(room.id,)),
+                        'new_client_details': room.client.full_name,
+                    }
+                    Group(group_name).send(
+                        {
+                            "text": json.dumps(newly_added_channel)
+                        }
+                    )
                     channel_added_logger(message.reply_channel, message.channel_session.get('group_name'))
                 else:
                     Group(group_name).add(message.reply_channel)
@@ -130,7 +140,7 @@ def ws_receive(message):
         'timestamp': timestamp.humanize(),
         'timestamp_string': timestamp.format('YYYY-MM-DD HH:mm:ss ZZ'),
         'user_handle': handle if handle else 'Anonymous',
-        'user_type':user.user_type,
+        'user_type': user.user_type,
         'message': msg
     }
 
