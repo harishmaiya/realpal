@@ -1,20 +1,24 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
+from django.shortcuts import render, HttpResponseRedirect, reverse
 from django.views import View
 
 from realpal.apps.onboarding.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
     CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
 from realpal.apps.users.models import User, City, PasswordReset
 
+from .mixins import anonymous_required
+
 
 class PurchaseStepView(View):
 
     template_name = 'onboarding/purchase_step.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         registration_data = {'purchase_step': request.session.get('purchase_step', None)}
         form = PurchaseStepForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         registration_data = {'purchase_step': request.session.get('purchase_step', None)}
         form = PurchaseStepForm(request.POST or None, initial=registration_data)
@@ -28,11 +32,13 @@ class MaritalStatusView(View):
 
     template_name = 'onboarding/marital_status.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
         form = MaritalStatusForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
         form = MaritalStatusForm(request.POST or None, initial=registration_data)
@@ -46,11 +52,13 @@ class FirstHomeView(View):
 
     template_name = 'onboarding/first_home.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
         form = FirstHomeForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
         form = FirstHomeForm(request.POST or None, initial=registration_data)
@@ -64,6 +72,7 @@ class HouseTypeView(View):
 
     template_name = 'onboarding/house_type.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         registration_data = {
             'house_type': request.session.get('house_type', ''),
@@ -82,6 +91,7 @@ class HouseTypeView(View):
             status=200
         )
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         registration_data = {
             'house_type': request.session.get('house_type', ''),
@@ -109,10 +119,12 @@ class CityView(View):
 
     template_name = 'onboarding/city.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         form = CityForm()
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         form = CityForm(request.POST)
         if form.data['preferred_city']:
@@ -124,11 +136,13 @@ class MaxBudgetView(View):
 
     template_name = 'onboarding/max_budget.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         registration_data = {'max_budget': request.session.get('max_budget', '')}
         form = MaxBudgetForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         registration_data = {'max_budget': request.session.get('max_budget', '')}
         form = MaxBudgetForm(request.POST or '', initial=registration_data)
@@ -142,11 +156,13 @@ class CurrentRentView(View):
 
     template_name = 'onboarding/current_rent.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         registration_data = {'current_rent': request.session.get('current_rent', '')}
         form = CurrentRentForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         registration_data = {'current_rent': request.session.get('current_rent', '')}
         form = CurrentRentForm(request.POST or '', initial=registration_data)
@@ -160,11 +176,13 @@ class HowSoonView(View):
 
     template_name = 'onboarding/how_soon.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', '')}
         form = HowSoonForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', '')}
         form = HowSoonForm(request.POST or '', initial=registration_data)
@@ -178,10 +196,12 @@ class PersonalProfileView(View):
 
     template_name = 'onboarding/personal_profile.html'
 
+    @anonymous_required
     def get(self, request, *args, **kwargs):
         form = PersonalProfileForm()
         return render(request, self.template_name, {'form': form}, status=200)
 
+    @anonymous_required
     def post(self, request, *args, **kwargs):
         form = PersonalProfileForm(request.POST or None)
         if form.is_valid():
