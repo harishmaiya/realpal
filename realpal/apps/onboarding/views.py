@@ -140,7 +140,7 @@ class MaxBudgetView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {'max_budget': request.session.get('max_budget', '')}
-        form = MaxBudgetForm(request.POST or '', initial=registration_data)
+        form = MaxBudgetForm(request.POST)
         if form.is_valid():
             request.session['max_budget'] = form.cleaned_data['budget']
             return HttpResponseRedirect(reverse('onboarding:current-rent'))

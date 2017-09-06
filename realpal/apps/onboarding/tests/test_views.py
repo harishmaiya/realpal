@@ -127,6 +127,7 @@ class RegistrationTest(TestCase):
         # these are the mandatory fields that cannot be skipped
         data = {
             'max_budget': {'budget': 'TEXT'},  # should be a number
+            'current_rent': {'budget': 'TEXT'},  # should be a number
             'personal_profile': {
                 'first_name': 'TestFirstName',
                 'last_name': 'TestLastName',
@@ -172,7 +173,7 @@ class RegistrationTest(TestCase):
             'purchase_step': {'purchase_step': PS_EAO},
             'marital_status': {'status': SC_INV},
             'first_home': {'firsthome': True},
-            'house_type': {'house_type': HT_CN, 'house_age': HA_30, 'house_cond': HC_FU},
+            'house_type': {'house_type': HT_CN, 'house_age': HA_OLD, 'house_cond': HC_FU},
             'city': {'preferred_city': ''},
             'max_budget': {'budget': 564.11},
             'current_rent': {'current_rent': 76.67},

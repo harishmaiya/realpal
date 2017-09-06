@@ -28,6 +28,8 @@ class City(models.Model):
 
 @python_2_unicode_compatible
 class User(AbstractUser):
+    first_name = models.CharField(_('first name'), max_length=255)
+    last_name = models.CharField(_('last name'), max_length=255)
     email = models.EmailField(unique=True, null=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -44,7 +46,7 @@ class User(AbstractUser):
         regex=r'^\+?\d{9,15}$',
         message="Phone number must be entered in the format: '+2777181947'. Up to 15 digits allowed."
     )
-    phone_number = models.CharField(validators=[phone_regex], blank=True, max_length=16)
+    phone_number = models.CharField(validators=[phone_regex], max_length=16)
 
     annual_income = models.FloatField(blank=True, null=True)
 
