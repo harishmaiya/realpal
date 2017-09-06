@@ -1,0 +1,17 @@
+
+
+@mixin Font ($type:sans, $size:m, $weight:normal, $spacing:false) {
+  line-height : 1.25;
+  font-family : map-get($font-types, $type);
+  font-weight : map-get($font-weights, $weight);
+
+  @if (map-has-key($font-sizes, $size)) {
+    font-size: map-get($font-sizes, $size);
+  } @else {
+    font-size: $size;
+  }
+
+  @if $spacing {
+    letter-spacing: map-get($letter-spaces, $spacing);
+  }
+}

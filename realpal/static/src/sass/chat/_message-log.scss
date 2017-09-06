@@ -1,0 +1,53 @@
+.MessageLog {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  -webkit-overflow-scrolling: touch;
+
+  background-color: $color-white;
+  text-align: center;
+}
+
+.MessageLog-Messages {
+  max-width: 500px;
+  margin: 0 auto;
+
+  .Message {
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.MessageTrans {
+  .Message-icon,
+  .Message-parts {
+    transition: 200ms opacity ease;
+  }
+}
+
+.MessageTrans-enter {
+  .Message-parts {
+    opacity: .01;
+    transform: translateX(20px);
+  }
+
+  .Message-icon {
+    opacity: .01;
+  }
+}
+
+.MessageTrans-enter-active {
+  .Message-parts {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .Message-icon {
+    opacity: 1;
+  }
+}

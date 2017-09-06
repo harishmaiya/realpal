@@ -1,0 +1,182 @@
+@import "variables.scss";
+
+.MessageBar {
+  form {
+    height: 100px;
+    position: relative;
+    width: 100%;
+
+    @media (min-width: $mediumViewport) {
+      height: 50px;
+    }
+  }
+  &.offline {
+    background-color: $color-tan;
+    form {
+      border-top: 1px solid transparent;
+    }
+  }
+}
+
+//happens when messages are loaded and are less than 1
+.MessageBar--fixed {
+  position: fixed;
+  bottom: 0;
+}
+
+.Messagebar-offline {
+  padding: spacing(1);
+  @include Font(sans, m, light);
+}
+
+.MessageBar-input {
+  box-sizing: border-box;
+  @include Font(sans, m, light);
+  line-height: 24px;
+  width: calc(100% - 80px);
+  height: 50px;
+  resize: none;
+  border: none;
+  padding: 12px 15px;
+  display: block;
+  &:focus {
+    outline: none;
+  }
+  &[disabled] {
+    background-color: $color-tan;
+  }
+}
+
+@media (min-width: $mediumViewport) {
+  .MessageBar-input {
+    width: calc(100% - 190px);
+  }
+}
+
+.MessageBar--shareBar {
+  form {
+    .MessageBar-input {
+      width: calc(100% - 130px);
+    }
+  }
+}
+
+.MessageBar-send {
+  @include Font(sans, xs, bold, m);
+  text-transform: uppercase;
+  right: $space-small-px;
+  background: none;
+  border: none;
+  color: $color-black;
+  cursor: pointer;
+  @include centerer(false, true);
+  width: 60px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  &:hover {
+    color: $color-black;
+  }
+  &[disabled] {
+    color: $color-grey;
+  }
+}
+
+.MessageBar-bubble {
+  background-color: $color-dark-blue;
+  color: $color-white;
+  top: 10px;
+
+  &:first-child {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 20%;
+      top: 100%;
+      transform: translateX(0);
+      border-style: solid;
+      border-width: 0 8px 15px 8px;
+    }
+    &:after {
+      border-color: rgba(136, 183, 213, 0);
+      border-top-color: $color-dark-blue;
+      border-width: 12px;
+      margin-left: -12px;
+    }
+    &:before {
+      border-color: rgba(194, 225, 245, 0);
+      border-top-color: $color-dark-blue;
+      border-width: 12px;
+      margin-left: -12px;
+    }
+  }
+}
+
+.MessageBar-bubble--left-carat {
+  &:first-child {
+    &:before,
+    &:after {
+      left: 26px;
+    }
+  }
+}
+
+.MessageBar-bubble--Pinterest {
+  &:first-child {
+    &:before,
+    &:after {
+      left: 7%;
+    }
+  }
+  top: auto;
+}
+
+.MessageBar-bubbles {
+  width: auto;
+  max-width: 280px;
+  left: 25px;
+  top: -60px;
+  transform: none;
+  z-index: 500;
+  @media (min-width: 768px) {
+    bottom: 56px;
+  }
+}
+
+.MessageBar-bubbles--ShareBar {
+  left: 3px;
+  top: -60px;
+  @include breakpoint(640px) {
+    left: calc(100% - 347px);
+  }
+}
+
+.MessageBar-attachments {
+  &:not(:empty) {
+    padding-top: 6px;
+  }
+}
+
+.MessageBar-attachmentRow {
+  padding: 0 0 0 60px;
+}
+
+@keyframes AttachmentIn {
+  0% {
+    transform: scale(0.01);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+.MessageBar-cardWrap {
+  display: inline-block;
+  animation: AttachmentIn 500ms ease-in-out;
+}

@@ -8,8 +8,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import environ
+import datetime
 
-ROOT_DIR = environ.Path(__file__) - 3 # (realpal/config/settings/base.py - 3 = realpal/)
+ROOT_DIR = environ.Path(__file__) - 3  # (realpal/config/settings/base.py - 3 = realpal/)
 APPS_DIR = ROOT_DIR.path('realpal')
 
 # Load operating system environment variables and then prepare to use them
@@ -46,19 +47,25 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'channels',
+    'corsheaders',
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
-    'widget_tweaks'
+    'rest_framework',
+    'widget_tweaks',
+    'debug_toolbar',
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
     # custom users app
-    'realpal.users.apps.UsersConfig',
+    'realpal.apps.users.apps.UsersConfig',
     # Your stuff: custom apps go here
-    'realpal.mainapp.apps.MainappConfig'
+    'realpal.mainapp.apps.MainappConfig',
+    # the app that deals with onboarding
+    'realpal.apps.onboarding.apps.RegistrationConfig',
+
+    'realpal.apps.chat.apps.ChatConfig',
+    'realpal.apps.discover.apps.DiscoverConfig'
+
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -67,6 +74,8 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,6 +83,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 # MIGRATIONS CONFIGURATION
@@ -92,6 +102,7 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
 FIXTURE_DIRS = (
     str(APPS_DIR.path('fixtures')),
+    str(ROOT_DIR.path('fixtures')),
 )
 
 # EMAIL CONFIGURATION
@@ -112,10 +123,9 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-   'default': env.db('DATABASE_URL', default='postgres:///realpal'),
+    'default': env.db('DATABASE_URL', default='postgres:///realpal'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
-
 
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -250,27 +260,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 ]
-
-# Some really nice defaults
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-
-ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-ACCOUNT_ADAPTER = 'realpal.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'realpal.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
 # Select the correct user model
 AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = 'users:redirect'
-LOGIN_URL = 'account_login'
+LOGIN_REDIRECT_URL = 'chat:chat-room'
+LOGIN_URL = 'users:login'
 
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
-
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'
@@ -283,13 +282,35 @@ CHANNEL_LAYERS = {
         "CONFIG": {
             "hosts": [env('REDIS_URL', default='redis://localhost:6379')],
         },
-        "ROUTING": "realpal.mainapp.routing.channel_routing"
+        "ROUTING": "realpal.apps.chat.routing.channel_routing"
     }
 }
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'realpal.users.forms.SignupForm'
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USERNAME_REQUIRED = False
-LOGIN_REDIRECT_URL = '/'
+
+# ########## DJANGO REST FRAMEWORK CONFIGURATION
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+# ######### CORS CONFIGURATION
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
+# ######### END CORS CONFIGURATION
+
+# ########## TEST CONFIGURATION
+IS_TESTING = False
+# ########## END TEST CONFIGURATION

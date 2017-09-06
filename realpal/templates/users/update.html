@@ -1,0 +1,369 @@
+{% extends "base_logged_in.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block content %}
+    <section class="update-container ">
+        <div class="text-center">
+            {% if error %}
+                <p class="red-text">{{ error }}</p>
+            {% endif %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vertical-tab-container">
+                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 vertical-tab-menu">
+                    <div>
+                        <div class="profile-form invisible">
+                            <img class="img-rounded shrunk" height="30" width="30" src="{% static 'src/images/default_avatar.png' %}">
+                            <form action="" method="post" class="signup">
+                                {% csrf_token %}
+                                {{ personal_profile_form|crispy }}
+                                <input class="btn btn-brown btn-hollow" type="button" name="personal_profile_form"
+                                       value="Cancel"/>
+                                <input class="btn btn-brown" type="submit" name="personal_profile_form" value="Update"/>
+                            </form>
+                        </div>
+                        <div class="profile-static">
+                            <div class="inline profile-image-container">
+                                <img class="img-rounded" src="{% static 'src/images/default_avatar.png' %}">
+                            </div>
+                            <div class="inline profile-details-container">
+                                <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
+                                <p>{{ user.email }}</p>
+                                <p>{{ user.phone_number }}</p>
+                                <p><a class="brown-link" href="#">Edit</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active text-center update-form">
+                            <span>Purchase Step</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                        </a>
+                        <a href="#" class="list-group-item text-center update-form">
+                            <span>Marital Status</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+
+                        </a>
+                        <a href="#" class="list-group-item text-center update-form">
+                            <span>First home</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center update-form">
+                            <span>House Type</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center update-form">
+                            <span>Preferred City</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center update-form">
+                            <span>Maximum Budget</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center update-form">
+                            <span>Current Rent</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+
+
+                        </a>
+                        <a href="#" class="list-group-item text-center update-form">
+                            <span>How Soon</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                        </a>
+
+                    </div>
+                    <a href="{% url 'users:logout' %}" class="list-group-item text-center update-form sign-out-nav-item">
+                            <span>Sign out</span>
+                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                        </a>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6 vertical-tab">
+                    <!-- flight section -->
+                    <div class="vertical-tab-content active">
+                        <h3>Purchase Step</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {% for value, name in purchase_step_form.fields.purchase_step.choices %}
+
+                                <label class="radio bottom-space">
+                                    <input type="radio" name="purchase_step" value="{{ value }}"
+                                           {% if value == purchase_step_form.initial.purchase_step %}checked{% endif %}>
+                                    <p>
+                                        <span class="lower">
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                    </p>
+                                </label>
+                            {% endfor %}
+                            <input class="btn btn-brown" type="submit" name="purchase_step_form" value="Update"/>
+                        </form>
+                    </div>
+                    <!-- train section -->
+                    <div class="vertical-tab-content">
+                        <h3>Marital Status</h3>
+                        <form action="" method="post" class="bottom-padded">
+                            {% csrf_token %}
+                            <div class="radio-group">
+                                {% for value, name in marital_status_form.fields.status.choices %}
+
+                                    <label class="radio bottom-space">
+                                        <input type="radio" name="status" value="{{ value }}"
+                                                {% if value == marital_status_form.initial.status %}
+                                               checked {% endif %}>
+                                        <p>
+                                        <span class="lower">
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                        </p>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                            <input class="btn btn-brown" type="submit" name="marital_status_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>Is this your first home?</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="button-select invisible">
+                                {{ first_home_form.as_p }}
+                            </div>
+                            <div class="oval-button-container">
+                                <button class="oval-button {% if first_home_form.initial.firsthome %}selected{% endif %}"
+                                        type="button" id="yes">Yes
+                                </button>
+                                <button class="oval-button {% if not first_home_form.initial.firsthome %}selected{% endif %}"
+                                        type="button" id="no">No
+                                </button>
+                            </div>
+                            <input class="btn btn-brown" type="submit" name="first_home_form" value="Update"/>
+                        </form>
+                        <script type="text/javascript">
+                            $('#yes').on('click', function () {
+                                $('input[type="checkbox"]').attr('checked', true);
+                                $(this).addClass('selected');
+                                $('#no').removeClass('selected')
+                            });
+                            $('#no').on('click', function () {
+                                $('input[type="checkbox"]').removeAttr('checked');
+                                $(this).addClass('selected');
+                                $('#yes').removeClass('selected')
+                            });
+                        </script>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>House Type</h3>
+                        <form action="" method="post" class="bottom-padded">
+                            {% csrf_token %}
+                            <fieldset class="moved">
+                                <div class="col-sm-6">
+                                    <img class="img-responsive moved" src="{% static 'images/type.jpg' %}" alt="house">
+                                </div>
+                                <div class="col-sm-6">
+                                    {% for value, name in house_type_form.fields.house_type.choices %}
+
+                                        <label class="radio shrink">
+                                            <input type="radio" name="house_type" value="{{ value }}"
+                                                    {% if value == house_type_form.initial.house_type %}
+                                                   checked {% endif %}>
+                                            <p>
+                                        <span class="lower">
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                            </p>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </fieldset>
+                            <h3>House Age</h3>
+                            <fieldset class="moved">
+                                <div class="col-sm-6">
+                                    <img class="img-responsive moved age" src="{% static 'images/age.jpg' %}"
+                                         alt="house"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    {% for value, name in house_type_form.fields.house_age.choices %}
+
+                                        <label class="radio shrink">
+                                            <input type="radio" name="house_age" value="{{ value }}"
+                                                    {% if value == house_type_form.initial.house_age %}
+                                                   checked {% endif %}>
+                                            <p>
+                                        <span class="lower">
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                            </p>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </fieldset>
+                            <h3>House Condition</h3>
+                            <fieldset class="moved">
+                                <div class="col-sm-6">
+                                    <img class="img-responsive moved" src="{% static 'images/condition.jpg' %}"
+                                         alt="house">
+                                </div>
+
+                                <div class="col-sm-6">
+                                    {% for value, name in house_type_form.fields.house_cond.choices %}
+
+                                        <label class="radio shrink">
+                                            <input type="radio" name="house_cond" value="{{ value }}"
+                                                    {% if value == house_type_form.initial.house_cond %}
+                                                   checked{% endif %}>
+                                            <p>
+                                        <span class="lower">
+                                            {% if not value and not value == 0 %}
+                                                I'd rather not say
+                                            {% else %}
+                                                {{ name }}
+                                            {% endif %}
+                                        </span>
+                                            </p>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </fieldset>
+                            <input class="btn btn-brown" type="submit" name="house_type_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>City</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="invisible pc">
+                                {{ city_form.as_p }}
+                            </div>
+                            <div class="grid-view">
+                                {% for city in city_form.fields.preferred_city.queryset %}
+                                    <div class="grid-item {% if city_form.initial.preferred_city == city.id %}selected{% endif %}"
+                                         data-id="{{ city.id }}">
+                                        {{ city.name }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <input class="btn btn-brown" type="submit" name="city_form" value="Update"/>
+                        </form>
+                        <script type="text/javascript">
+                            $('.grid-item').on('click', function () {
+                                if ($(this).hasClass('selected')) {
+                                    $(this).removeClass('selected');
+                                    $(".pc select").val(null).change();
+                                } else {
+                                    $(this).addClass('selected');
+                                    $(this).siblings().removeClass('selected');
+                                    var value = $(this).attr('data-id');
+                                    $(".pc select").val(value).change();
+                                }
+                            });
+                        </script>
+                    </div>
+
+                    <div class="vertical-tab-content">
+                        <h3>Max Budget</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ max_budget_form|crispy }}
+                            <input class="btn btn-brown" type="submit" name="max_budget_form" value="Update"/>
+                        </form>
+                    </div>
+
+                    <!-- hotel search -->
+                    <div class="vertical-tab-content">
+                        <h3>Current Rent</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ current_rent_form|crispy }}
+                            <input class="btn btn-brown" type="submit" name="current_rent_form" value="Update"/>
+                        </form>
+                    </div>
+                    <div class="vertical-tab-content">
+                        <h3>How soon would you like to buy</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="invisible hsf">
+                                {{ how_soon_form.as_p }}
+                            </div>
+                            <div class="circle-container">
+                                {% for value, time in how_soon_form.fields.how_soon.choices %}
+                                    {% if not forloop.first and not forloop.last %}
+                                        <div class="circle-item {% if how_soon_form.initial.how_soon == value %}selected{% endif %}"
+                                             data-id="{{ value }}">
+                                            {{ time }}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <input class="btn btn-brown" type="submit" name="how_soon_form" value="Update"/>
+                        </form>
+                        <script type="text/javascript">
+                            $('.circle-item').on('click', function () {
+                                if ($(this).hasClass('selected')) {
+                                    $(this).removeClass('selected');
+                                    $(".hsf select").val(null).change();
+                                } else {
+                                    $(this).addClass('selected');
+                                    $(this).siblings().removeClass('selected');
+                                    var value = $(this).attr('data-id');
+                                    $(".hsf select").val(value).change();
+                                }
+                            });
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.account-tab').addClass('is-active');
+            $("div.vertical-tab-menu>div.list-group>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.vertical-tab>div.vertical-tab-content").removeClass("active");
+                $("div.vertical-tab>div.vertical-tab-content").eq(index).addClass("active");
+            });
+        });
+
+        $('.brown-link').on('click', (function () {
+            $('.profile-form').removeClass('invisible');
+            $('.profile-static').addClass('invisible');
+        }));
+
+        $('.btn-hollow').on('click', (function () {
+            $('.profile-form').addClass('invisible');
+            $('.profile-static').removeClass('invisible');
+        }));
+    </script>
+{% endblock %}
+

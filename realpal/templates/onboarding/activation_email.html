@@ -1,0 +1,44 @@
+{% extends 'base_onboarding.html' %}
+
+{% block content %}
+
+    <link href="{% static 'css/onboarding_inputbox.css' %}" rel="stylesheet"/>
+
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">RealPal Email Activation</h1>
+                </div>
+                <p style="text-align: center;">
+                    Dear {{ first_name }} {{ last_name }}
+                </p>
+                <br><br>
+                <p style="text-align: center;">
+                    You have successfully signed up for a RealPal Account, in order to complete the
+                    registration process please click the link below:
+                </p>
+                <br><br>
+                <p style="text-align: center;">
+                    <a href="{{ activation_link }}" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none;
+                         text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #03a;
+                          display: inline-block; background-color:#03a">Activate Now</a>
+                </p>
+                <br><br>
+                <p style="text-align: center;">
+                    Button not working? You can copy and paste this url into your browser address bar. <br>
+                    {{ activation_link }}
+                </p>
+                <br><br>
+                <p style="text-align: center;">
+                    Thank you for registering with <strong>RealPal</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
