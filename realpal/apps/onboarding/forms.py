@@ -24,12 +24,6 @@ class FirstHomeForm(forms.ModelForm):
         model = User
         fields = ['firsthome']
 
-    def clean_firsthome(self):
-        data = self.data['firsthome']
-        if data is '':
-            raise forms.ValidationError('Not a valid first home option')
-        return data
-
 
 class HouseTypeForm(forms.ModelForm):
     class Meta:
@@ -46,7 +40,7 @@ class CityForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['preferred_city']
-        widgets = {'preferred_city': forms.CheckboxSelectMultiple}
+        widgets = {'preferred_city': forms.SelectMultiple}
 
 
 class MaxBudgetForm(forms.ModelForm):

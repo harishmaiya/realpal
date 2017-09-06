@@ -46,7 +46,7 @@ class User(AbstractUser):
         regex=r'^\+?\d{9,15}$',
         message="Phone number must be entered in the format: '+2777181947'. Up to 15 digits allowed."
     )
-    phone_number = models.CharField(validators=[phone_regex], max_length=16)
+    phone_number = models.CharField(validators=[phone_regex], blank=True, max_length=16)
 
     annual_income = models.FloatField(blank=True, null=True)
 
@@ -54,7 +54,7 @@ class User(AbstractUser):
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
-    firsthome = models.BooleanField()
+    firsthome = models.BooleanField(default=False)
 
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 

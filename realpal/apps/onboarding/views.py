@@ -59,7 +59,7 @@ class FirstHomeView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
-        form = FirstHomeForm(request.POST or '')
+        form = FirstHomeForm(request.POST)
         if form.is_valid():
             request.session['first_home'] = form.cleaned_data['firsthome']
             return HttpResponseRedirect(reverse('onboarding:house-type'))
@@ -122,9 +122,10 @@ class CityView(View):
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
+        cities = request.POST.getlist('preferred_city')
         form = CityForm(request.POST)
         if form.data['preferred_city']:
-            request.session['city'] = form.data['preferred_city']
+            request.session['city'] = cities
         return HttpResponseRedirect(reverse('onboarding:max-budget'))
 
 
@@ -197,10 +198,6 @@ class PersonalProfileView(View):
     def post(self, request, *args, **kwargs):
         form = PersonalProfileForm(request.POST)
         if form.is_valid():
-            try:
-                city = City.objects.get(id=request.session.get('city', ''))
-            except (ValueError, City.DoesNotExist):
-                city = None
             user = User.objects.create(
                 first_name=form.cleaned_data['first_name'],
                 last_name=form.cleaned_data['last_name'],
@@ -215,7 +212,6 @@ class PersonalProfileView(View):
                 house_type=request.session.get('house_type', None),
                 house_age=request.session.get('house_age', None),
                 house_cond=request.session.get('house_condition', None),
-                preferred_city=city,
                 budget=request.session.get('max_budget', None),
                 current_rent=request.session.get('current_rent', None),
                 how_soon=request.session.get('how_soon', None),
@@ -224,6 +220,13 @@ class PersonalProfileView(View):
 
             )
             user.set_password(form.cleaned_data['password1'])
+            listt = request.session.get('city', '').split(',')
+            for idd in listt:
+                try:
+                    city = City.objects.get(id=idd)
+                    user.preferred_city.add(city)
+                except (ValueError, City.DoesNotExist):
+                    city = None
             user.save()
             user.send_confirmation_email()
 

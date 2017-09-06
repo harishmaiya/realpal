@@ -12,7 +12,7 @@
                 </div>
                 <form class="" method="post" action="">
                     {% csrf_token %}
-                    <div class="iv">
+                    <div class="invisible iv">
                         {{ form.as_p }}
                     </div>
                     <div class="grid-view">
@@ -33,13 +33,14 @@
     <script type="text/javascript">
         $('.grid-item').on('click', function () {
             var index = $(this).index();
-            var checkbox = $('.iv').find('ul').children().eq(index).find('input');
+            var checkbox = $('.iv').find('select').children().eq(index);
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
-                checkbox.prop('checked', false);
+                checkbox.prop('selected', false);
+
             } else {
                 $(this).addClass('selected');
-                checkbox.prop('checked', true);
+                checkbox.prop('selected', true);
 
             }
         });
