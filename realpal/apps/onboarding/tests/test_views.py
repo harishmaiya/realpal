@@ -27,7 +27,7 @@ class RegistrationTest(TestCase):
     }
 
     def test_get(self):
-        # test to see that all pages are reachable
+        # test to see that all pages are reachable when user is not logged in
         for url_name in self.keys:
             response = self.client.get(self.urls[url_name])
             self.assertEqual(response.status_code, 200)
@@ -136,6 +136,12 @@ class RegistrationTest(TestCase):
             data_to_pass = dict(data[url_name])  # use dict to explicitly convert string to dictionary
             response = self.client.post(self.urls[url_name], data=data_to_pass)
             self.assertEqual(response.status_code, 400)
+
+        # now lets logging and test that the onboarding urls redirect to chat
+        for url_name in self.keys:
+            response = self.client.get(self.urls[url_name])
+            self.assertEqual(response.status_code, 302)
+
 
     def test_multi_registration(self):
         """
