@@ -220,8 +220,7 @@ class PersonalProfileView(View):
 
             )
             user.set_password(form.cleaned_data['password1'])
-            listt = request.session.get('city', '').split(',')
-            for idd in listt:
+            for idd in request.session.get('city', ''):
                 try:
                     city = City.objects.get(id=idd)
                     user.preferred_city.add(city)

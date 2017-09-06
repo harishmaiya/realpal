@@ -12,7 +12,8 @@
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 vertical-tab-menu">
                     <div>
                         <div class="profile-form invisible">
-                            <img class="img-rounded shrunk" height="30" width="30" src="{% static 'src/images/default_avatar.png' %}">
+                            <img class="img-rounded shrunk" height="30" width="30"
+                                 src="{% static 'src/images/default_avatar.png' %}">
                             <form action="" method="post" class="signup">
                                 {% csrf_token %}
                                 {{ personal_profile_form|crispy }}
@@ -79,10 +80,11 @@
                         </a>
 
                     </div>
-                    <a href="{% url 'users:logout' %}" class="list-group-item text-center update-form sign-out-nav-item">
-                            <span>Sign out</span>
-                            <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
-                        </a>
+                    <a href="{% url 'users:logout' %}"
+                       class="list-group-item text-center update-form sign-out-nav-item">
+                        <span>Sign out</span>
+                        <span class="update-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                    </a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6 vertical-tab">
                     <!-- flight section -->
@@ -257,12 +259,12 @@
                         <h3>City</h3>
                         <form action="" method="post">
                             {% csrf_token %}
-                            <div class="invisible pc">
+                            <div class="invisible iv pc">
                                 {{ city_form.as_p }}
                             </div>
                             <div class="grid-view">
                                 {% for city in city_form.fields.preferred_city.queryset %}
-                                    <div class="grid-item {% if city_form.initial.preferred_city == city.id %}selected{% endif %}"
+                                    <div class="grid-item {% if city_form.initial.preferred_city in user.preferred_city.all %}selected{% endif %}"
                                          data-id="{{ city.id }}">
                                         {{ city.name }}
                                     </div>
@@ -272,14 +274,16 @@
                         </form>
                         <script type="text/javascript">
                             $('.grid-item').on('click', function () {
+                                var index = $(this).index();
+                                var checkbox = $('.iv').find('select').children().eq(index);
                                 if ($(this).hasClass('selected')) {
                                     $(this).removeClass('selected');
-                                    $(".pc select").val(null).change();
+                                    checkbox.prop('selected', false);
+
                                 } else {
                                     $(this).addClass('selected');
-                                    $(this).siblings().removeClass('selected');
-                                    var value = $(this).attr('data-id');
-                                    $(".pc select").val(value).change();
+                                    checkbox.prop('selected', true);
+
                                 }
                             });
                         </script>
