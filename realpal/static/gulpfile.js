@@ -62,4 +62,6 @@ gulp.task('imagemin', function () {
   }
 );
 
+gulp.task('build',[ 'copy-assets','scripts','sass','vendor', 'imagemin']);
+
 gulp.task('default', ['serve']);
