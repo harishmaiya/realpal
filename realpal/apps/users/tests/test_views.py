@@ -117,7 +117,7 @@ class TestUserUpdateView(BaseUserTestCase):
 
         # testing current rent update
         data = {'current_rent': 'TEXT'}  # TEXT is not a valid number
-        self.client_user.post(update_url, data)
+        self.client.post(update_url, data)
         self.assertEqual(self.view.get_object().current_rent, None)
 
         # testing how soon update
