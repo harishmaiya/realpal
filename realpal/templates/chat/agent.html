@@ -19,6 +19,10 @@
                                 <a class="list-group-item text-center no-border" id="client-room-{{ client_room.id }}"
                                    href="{% url 'chat:chat-room' client_room.id %}">
                                     {{ client_room.client.full_name }}
+                                    <button type="button" data-client-room="{{ client_room.id }}"
+                                            class="remove-client close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </a>
 
                             {% endfor %}
@@ -190,7 +194,7 @@
                 $('input[type=submit]').prop('disabled', true);
                 $('.attachmentBarContainer').hide();
                 $('#message').attr("placeholder", 'Message ' + '{{ selected_client_profile.full_name }}');
-                $("#client-room-"+{{ selected_client_room }}).addClass('active');
+                $("#client-room-" +{{ selected_client_room }}).addClass('active');
 
                 function clearFileInput() {
                     var $el = $('#attachment');
@@ -207,6 +211,72 @@
                 $(".remove").click(function () {
                     clearFileInput();
                 });
+
+                function getCookie(name) {
+                    var cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        var cookies = document.cookie.split(';');
+                        for (var i = 0; i < cookies.length; i++) {
+                            var cookie = jQuery.trim(cookies[i]);
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
+
+                var csrftoken = getCookie('csrftoken');
+
+                function csrfSafeMethod(method) {
+                    // these HTTP methods do not require CSRF protection
+                    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                }
+
+                $.ajaxSetup({
+                    beforeSend: function (xhr, settings) {
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        }
+                    }
+                });
+
+
+                $('.remove-client').click(function (event) {
+                    event.preventDefault();
+                    var api = window.location.protocol.toString() + '//' + window.location.host + '/chat/room/update/';
+                    var data = {
+                        'id': this.dataset.clientRoom
+                    };
+                    $.ajax({
+                        "url": api,
+                        "type": "PATCH",
+                        "dataType": "json",
+                        "data": data,
+                        "success": function (data) {
+                            var client_room_id = 'client-room-' + data.client_room_id;
+                            var client_link = '<a class="list-group-item text-center no-border" id="' + client_room_id +
+                                    '" href="' + data.client_room_link + '">' +
+                                    data.client_details + '</a>';
+                            var link_ele = $("#" + client_room_id);
+                            if (link_ele.hasClass('active')) {
+                                var chat_home_url = window.location.protocol.toString() + '//' + window.location.host + '/chat/';
+                                link_ele.remove();
+                                $('.unassigned-clients').append(client_link);
+                                window.location.replace(chat_home_url);
+                            }
+                            else {
+                                link_ele.remove();
+                                $('.unassigned-clients').append(client_link);
+                            }
+
+                        }
+                    });
+
+                });
+
 
                 function sendChatMessage() {
                     if ($('#attachment').get(0).files.length === 0) {
@@ -334,9 +404,14 @@
                         var client_room_id = 'client-room-' + data.new_client_room_id;
                         var client_link = '<a class="list-group-item active text-center no-border" id="' + client_room_id +
                                 '" href="' + data.new_client_room_link + '">' +
-                                data.new_client_details + '</a>';
-                        $("#"+client_room_id).remove();
-                       $('.assigned-clients').append(client_link);
+                                data.new_client_details +
+                                '<button type="button" data-client-room="' + client_room_id + '"' +
+                                'class="remove-client close" aria-label="Close">' +
+                                '<span aria-hidden="true">&times;</span>' +
+                                '</button>' +
+                                '</a>';
+                        $("#" + client_room_id).remove();
+                        $('.assigned-clients').append(client_link);
                     }
                     if (!data.agent_name && !data.new_client_room_id) {
                         var chat = $('#chat');
