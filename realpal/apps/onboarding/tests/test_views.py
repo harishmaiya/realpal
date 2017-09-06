@@ -261,12 +261,10 @@ class RegistrationTest(TestCase):
         # lets see if we are taken to the next template first home
         self.assertTemplateUsed('onboarding/first_home.html')
 
-        # test to make sure we are unable to skip first home stage
+        # test to make sure we are able to skip first home stage since a default is set
         data = {'firsthome': ''}
         response = self.client.post(self.urls['first_home'], data=data)
-        self.assertEqual(response.status_code, 400)
-        # lets see if we remain on the same template
-        self.assertTemplateUsed('onboarding/first_home.html')
+        self.assertEqual(response.status_code, 302)
 
         # test to make sure that we can supply a correct value for first home
         data = {'firsthome': False}
