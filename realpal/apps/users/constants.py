@@ -23,10 +23,10 @@ SC_MSK = 3
 SC_INV = 4
 
 STATUS_CHOICES = (
-    (SC_SI, 'Good locality, schools doesn\'t matter'),
-    (SC_MNSK, 'School district upcoming'),
+    (SC_SI, 'Convenience, schools doesn\'t matter much'),
+    (SC_MNSK, 'Upcoming school district'),
     (SC_MSK, 'Need established schools'),
-    (SC_INV, 'Investment, rent')
+    (SC_INV, 'Investment/rent')
 )
 
 HT_SF = 0
@@ -50,9 +50,8 @@ HA_OLD = 3
 
 HOUSE_AGE_CHOICES = (
     (HA_NC, 'New Construction'),
-    (HA_15, 'One to Fifteen'),
-    (HA_30, 'Fifteen to thirty'),
-    (HA_OLD, 'Over thirty')
+    (HA_15, 'One to fifteen'),
+    (HA_OLD, 'Over sixteen')
 )
 
 HC_UP = 0

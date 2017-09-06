@@ -14,7 +14,6 @@ html, body {
 .categories {
   padding: 16px;
   box-sizing: inherit;
-  margin-bottom: -150px
 }
 
 .categories .row {
@@ -49,7 +48,7 @@ html, body {
   background-color: #fff;
   height: 93px;
   width: 100%;
-  max-width: 360px;
+  max-width: 450px;
   line-height: 70px;
   font-size: 18px;
   margin-top: 10px;
@@ -151,14 +150,20 @@ html, body {
   }
 }
 
+
 .bordered-block {
   border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
-  margin-bottom: 30px;
+  padding-bottom: 50px;
+  margin-bottom: 10px;
 
   & img {
     margin-top: 5%;
   }
+
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
+
 }
 
 .grid-view {
@@ -213,18 +218,6 @@ html, body {
   }
 }
 
-.registration-container {
-  &.extended {
-    margin-bottom: 300px;
-  }
-  &.ext {
-    //margin-bottom: calc(100% + 70px);
-  }
-  &.ex {
-    margin-bottom: 200px;
-  }
-}
-
 .currencyinput {
     border: 1px inset #ccc;
     color: #999;
@@ -232,6 +225,12 @@ html, body {
 }
 .currencyinput input {
     border: 0;
+}
+
+h3.subtitle {
+  font-size: 18px;
+  font-family: inherit;
+  margin-bottom: 30px;
 }
 
 /* End Categories Section */

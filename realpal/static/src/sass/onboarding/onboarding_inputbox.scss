@@ -67,6 +67,12 @@ input::-webkit-inner-spin-button {
     left: 5%;
     color: #999;
     font-size: 20px;
+
+  @media (min-width: 768px) {
+    left: 20%;
+  }
+
+
 }
 
 .categories .continue,
