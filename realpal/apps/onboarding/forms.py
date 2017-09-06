@@ -46,7 +46,7 @@ class CityForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['preferred_city']
-        widgets = {'preferred_city': forms.Select}
+        widgets = {'preferred_city': forms.CheckboxSelectMultiple}
 
 
 class MaxBudgetForm(forms.ModelForm):
