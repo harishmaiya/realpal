@@ -21,7 +21,7 @@ class PurchaseStepView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {'purchase_step': request.session.get('purchase_step', None)}
-        form = PurchaseStepForm(request.POST or None, initial=registration_data)
+        form = PurchaseStepForm(request.POST)
         if form.is_valid():
             request.session['purchase_step'] = form.cleaned_data['purchase_step']
             return HttpResponseRedirect(reverse('onboarding:marital-status'))
@@ -40,7 +40,7 @@ class MaritalStatusView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {'marital_status': request.session.get('marital_status', None)}
-        form = MaritalStatusForm(request.POST or None, initial=registration_data)
+        form = MaritalStatusForm(request.POST)
         if form.is_valid():
             request.session['marital_status'] = form.cleaned_data['status']
             return HttpResponseRedirect(reverse('onboarding:first-home'))
@@ -59,7 +59,7 @@ class FirstHomeView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {'first_home': request.session.get('first_home', None)}
-        form = FirstHomeForm(request.POST or None, initial=registration_data)
+        form = FirstHomeForm(request.POST or '')
         if form.is_valid():
             request.session['first_home'] = form.cleaned_data['firsthome']
             return HttpResponseRedirect(reverse('onboarding:house-type'))
@@ -95,7 +95,7 @@ class HouseTypeView(View):
             'house_age': request.session.get('house_age', ''),
             'house_condition': request.session.get('house_condition', '')
         }
-        house_type_form = HouseTypeForm(request.POST or None, initial=registration_data)
+        house_type_form = HouseTypeForm(request.POST)
 
         if house_type_form.is_valid():
             request.session['house_type'] = house_type_form.cleaned_data['house_type']
@@ -159,7 +159,7 @@ class CurrentRentView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {'current_rent': request.session.get('current_rent', '')}
-        form = CurrentRentForm(request.POST or '', initial=registration_data)
+        form = CurrentRentForm(request.POST)
         if form.is_valid():
             request.session['current_rent'] = form.cleaned_data['current_rent']
             return HttpResponseRedirect(reverse('onboarding:how-soon'))
@@ -178,7 +178,7 @@ class HowSoonView(View):
 
     def post(self, request, *args, **kwargs):
         registration_data = {'how_soon': request.session.get('how_soon', '')}
-        form = HowSoonForm(request.POST or '', initial=registration_data)
+        form = HowSoonForm(request.POST)
         if form.is_valid():
             request.session['how_soon'] = form.cleaned_data['how_soon']
             return HttpResponseRedirect(reverse('onboarding:personal-profile'))
@@ -195,7 +195,7 @@ class PersonalProfileView(View):
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        form = PersonalProfileForm(request.POST or None)
+        form = PersonalProfileForm(request.POST)
         if form.is_valid():
             try:
                 city = City.objects.get(id=request.session.get('city', ''))

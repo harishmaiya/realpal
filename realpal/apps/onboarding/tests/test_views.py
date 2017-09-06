@@ -123,11 +123,12 @@ class RegistrationTest(TestCase):
             self.assertEqual(response.status_code, 302)
             self.assertTemplateUsed('chat/client.html')
 
+    def test_wrong_post(self):
         # now lets test with incorrect data to make sure all these give us 400 status codes,
         # these are the mandatory fields that cannot be skipped
-        data = {
+        wrong_data = {
             'max_budget': {'budget': 'TEXT'},  # should be a number
-            'current_rent': {'budget': 'TEXT'},  # should be a number
+            'current_rent': {'current_rent': 'TEXT'},  # should be a number
             'personal_profile': {
                 'first_name': 'TestFirstName',
                 'last_name': 'TestLastName',
@@ -140,8 +141,8 @@ class RegistrationTest(TestCase):
         }
 
         # test to see that all views will post incorrectly
-        for url_name in data:
-            data_to_pass = dict(data[url_name])  # use dict to explicitly convert string to dictionary
+        for url_name in wrong_data:
+            data_to_pass = wrong_data[url_name]  # use dict to explicitly convert string to dictionary
             response = self.client.post(self.urls[url_name], data=data_to_pass)
             self.assertEqual(response.status_code, 400)
 
@@ -261,14 +262,14 @@ class RegistrationTest(TestCase):
         self.assertTemplateUsed('onboarding/first_home.html')
 
         # test to make sure we are unable to skip first home stage
-        data = {}
+        data = {'firsthome': ''}
         response = self.client.post(self.urls['first_home'], data=data)
         self.assertEqual(response.status_code, 400)
         # lets see if we remain on the same template
         self.assertTemplateUsed('onboarding/first_home.html')
 
         # test to make sure that we can supply a correct value for first home
-        data = {'first_home': False}
+        data = {'firsthome': False}
         response = self.client.post(self.urls['first_home'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template house choices
@@ -309,12 +310,12 @@ class RegistrationTest(TestCase):
         # lets see if we are taken to the next template personal profile
         self.assertTemplateUsed('onboarding/personal_profile.html')
 
-        # test to make sure we are unable to skip the personal profile form
+        # test to make sure we are unable to skip the personal profile form without a valid form
         data = {
             'first_name': 'TestFirstName',
             'last_name': 'TestLastName',
             'zipcode': '10119',
-            'phone_number': '',
+            'phone_number': '+263771819478',
             'email': 'test_email2@gmail.com',
             'password1': 'test_password',
             'password2': 'test_password',

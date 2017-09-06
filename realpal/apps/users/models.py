@@ -54,7 +54,7 @@ class User(AbstractUser):
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
-    firsthome = models.BooleanField(default=True)
+    firsthome = models.BooleanField()
 
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 

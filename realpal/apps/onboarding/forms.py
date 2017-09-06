@@ -24,6 +24,12 @@ class FirstHomeForm(forms.ModelForm):
         model = User
         fields = ['firsthome']
 
+    def clean_firsthome(self):
+        data = self.data['firsthome']
+        if data is '':
+            raise forms.ValidationError('Not a valid first home option')
+        return data
+
 
 class HouseTypeForm(forms.ModelForm):
     class Meta:
@@ -48,23 +54,11 @@ class MaxBudgetForm(forms.ModelForm):
         model = User
         fields = ['budget']
 
-    def clean_budget(self):
-        data = self.data['budget']
-        if not re.match(r'(^\d+\.|,\d{2}$)|^$', data):
-            raise forms.ValidationError("This is not a valid amount")
-        return data
-
 
 class CurrentRentForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['current_rent']
-
-    def clean_current_rent(self):
-        data = self.data['current_rent']
-        if not re.match(r'(^\d+\.|,\d{2}$)|^$', data):
-            raise forms.ValidationError("This is not a valid amount")
-        return data
 
 
 class HowSoonForm(forms.ModelForm):
