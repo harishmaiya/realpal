@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+import re
 
 from realpal.apps.users.models import User
 
@@ -39,7 +40,7 @@ class CityForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['preferred_city']
-        widgets = {'preferred_city': forms.Select}
+        widgets = {'preferred_city': forms.SelectMultiple}
 
 
 class MaxBudgetForm(forms.ModelForm):
