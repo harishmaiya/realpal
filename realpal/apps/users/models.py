@@ -28,6 +28,8 @@ class City(models.Model):
 
 @python_2_unicode_compatible
 class User(AbstractUser):
+    first_name = models.CharField(_('first name'), max_length=255)
+    last_name = models.CharField(_('last name'), max_length=255)
     email = models.EmailField(unique=True, null=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -52,7 +54,7 @@ class User(AbstractUser):
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
-    firsthome = models.BooleanField(default=True)
+    firsthome = models.BooleanField(default=False)
 
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
@@ -60,7 +62,7 @@ class User(AbstractUser):
 
     house_cond = models.SmallIntegerField(choices=HOUSE_CONDITION_CHOICES, blank=True, null=True)
 
-    preferred_city = models.ForeignKey(City, blank=True, null=True)
+    preferred_city = models.ManyToManyField(City)
 
     budget = models.FloatField(blank=True, null=True)
 

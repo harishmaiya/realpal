@@ -233,7 +233,7 @@
                             </div>
                             <div class="grid-view">
                                 {% for city in city_form.fields.preferred_city.queryset %}
-                                    <div class="grid-item {% if city_form.initial.preferred_city == city.id %}selected{% endif %}"
+                                    <div class="grid-item {% if city in city_form.initial.preferred_city %}selected{% endif %}"
                                          data-id="{{ city.id }}">
                                         {{ city.name }}
                                     </div>

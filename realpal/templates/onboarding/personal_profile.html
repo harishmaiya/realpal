@@ -9,14 +9,14 @@
 {% block content %}
     <section class="registration-container">
         <div class="categories text-center">
-            <div class="container">
+            <div class="container adjusted">
                 <div class="header">
                     <h1 class="domine">You're almost done</h1>
                     <h3 class="droid">Complete your profile to get started with Real Pal.</h3>
                 </div>
             </div>
             <div class="row">
-                <form role="form" class="signup" id="signup_form" method="post" action="">
+                <form role="form" class="signup adjusted" id="signup_form" method="post" action="">
                     {% csrf_token %}
                     {{ form.status.as_hidden }}
                     {{ form.firsthome.as_hidden }}

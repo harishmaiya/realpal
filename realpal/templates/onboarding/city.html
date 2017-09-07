@@ -12,7 +12,7 @@
                 </div>
                 <form class="" method="post" action="">
                     {% csrf_token %}
-                    <div class="invisible">
+                    <div class="invisible iv">
                         {{ form.as_p }}
                     </div>
                     <div class="grid-view">
@@ -22,7 +22,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <button class="btn" type="submit">Continue</button>
+                    <button class="btn" type="submit">Next</button>
                 </form>
                 <a href="{% url 'onboarding:max-budget' %}">
                     <button class="skip" type="button">Anywhere in Silicon Valley</button>
@@ -32,15 +32,16 @@
     </section>
     <script type="text/javascript">
         $('.grid-item').on('click', function () {
+            var index = $(this).index();
+            var checkbox = $('.iv').find('select').children().eq(index);
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
-            $("select").val(null).change();
+                checkbox.prop('selected', false);
+
             } else {
                 $(this).addClass('selected');
-                $(this).siblings().removeClass('selected');
-                var value = $(this).attr('data-id');
-                $("select").val(value).change();
-                console.log(value);
+                checkbox.prop('selected', true);
+
             }
         });
     </script>
