@@ -1,0 +1,102 @@
+.error {
+  color: red;
+}
+
+.p-space {
+  margin-top: 20px;
+}
+
+input#id_remember.checkboxinput {
+  width: 20px;
+}
+
+button:focus, input:focus {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+/* Star Banner Section */
+
+.banner {
+  height: 45px;
+  color: #FFF;
+}
+
+.banner h4 {
+  letter-spacing: 1.3px;
+  font-size: 19px;
+  transform: scale(1.2, 1);
+  margin-top: 13px;
+  font-weight: 600;
+}
+
+/* End Banner Section */
+
+/* Start Categories Section */
+
+.categories {
+  padding: 16px;
+}
+
+.categories p {
+  margin-bottom: 0
+}
+
+.categories .header {
+  margin: 25px auto 20px;
+  max-width: 800px;
+  padding-right: 0;
+}
+
+.categories .header h1 {
+  padding-bottom: 10px;
+  color: #4a4a4a;
+  font-size: 31px;
+  font-family: serif;
+  margin: 0
+}
+
+.categories .header h3 {
+  font-size: 18px;
+  margin: 0
+}
+
+.categories form {
+  width: 90%;
+  margin: auto;
+}
+
+.categories form .form-group textarea,
+.categories form .form-group input {
+  width: 100%;
+  border-radius: 2px;
+  padding-left: 10px;
+  margin-bottom: 20px
+}
+
+.red-text {
+  color: red;
+}
+
+@media (min-width: 1200px) {
+
+  .container {
+    width: 1249px;
+  }
+
+}
+
+.registration-container {
+  margin-bottom: 50px;
+}
+
+form.adjusted {
+  padding-top: 30px;
+}
+
+.container.adjusted {
+  width: 100%;
+}

@@ -1,0 +1,21 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1>Confirm Registration</h1>
+                    <h3>Please try again</h3>
+                    <br><br>
+                    <button class="button is-primary"><a href="{% url 'onboarding:purchase-step' %}">Register</a>
+                    </button>
+                    <p>or</p>
+                    <button class="button is-primary"><a href="{% url 'mainapp:home' %}">Home</a></button>
+                    <p>{{ error }}</p>
+                </div>
+            </div>
+    </section>
+
+{% endblock %}
+

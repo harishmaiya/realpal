@@ -1,0 +1,116 @@
+/* Start Framework */
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+/* End Framework */
+
+/* Start Categories Section */
+
+.categories {
+  padding: 16px;
+}
+
+.categories p {
+  margin-bottom: 0
+}
+
+.categories .header {
+  margin: 40px auto 20px;
+  max-width: 600px
+}
+
+.categories .header h1 {
+  padding-bottom: 10px;
+  color: #4a4a4a;
+  font-size: 31px;
+  font-family: serif;
+  margin: 0
+}
+
+.categories .header h3 {
+  font-size: 18px;
+  margin: 0
+}
+
+.categories .button-select {
+  max-width: 700px;
+  margin: 55px auto 5px;
+  &.reduced {
+    margin-top: 30px;
+  }
+}
+
+.categories .button-select .home {
+  margin-bottom: 60px;
+  max-width: 140px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-block
+}
+
+.categories .button-select .home:last-of-type {
+  padding-right: 20px;
+  padding-left: 20px
+}
+
+.categories .button-select .home button {
+  min-width: 100px;
+  min-height: 73px;
+  cursor: pointer;
+  background-color: #fff;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.categories .button-select .home button .icon,
+.categories .button-select .home button i {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #4a4a4a;
+  border-radius: 50%;
+}
+
+.categories .button-select .home button:hover i,
+.categories .button-select .home button:hover .icon {
+  background-color: #f9f2ed;
+  border: none;
+}
+
+.categories .button-select .home:not(:nth-of-type(4)) button .icon:before {
+  content: '';
+  position: absolute;
+  background-color: #b77d64;
+  height: 3px;
+  width: 86px;
+  top: 183px;
+  margin-left: 19px;
+}
+
+@media(max-width: 571px) {
+  .categories .button-select .home button .icon:before {
+    display: none
+  }
+}
+
+.categories .button-select .home button .icon {
+  margin: auto
+}
+
+.categories .button-select .home button .status {
+  margin-top: 15px;
+  display: block;
+  font-weight: bold;
+  color: #4a4a4a
+}
+
+.categories .button-select .home button:hover .status {
+  color: #B77E66
+}
+
+/* End Categories Section */
+

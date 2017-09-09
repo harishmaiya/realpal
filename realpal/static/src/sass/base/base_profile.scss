@@ -1,0 +1,60 @@
+/* Start Framework */
+
+html,body{overflow-x: hidden;color:#4a4a4a;height: 100%}
+
+.bold{font-weight: bold}
+
+@media (min-width: 1200px){
+
+    .container
+    {
+        width: 1249px;
+    }
+
+}
+
+*:focus{ outline: 0 !important }
+
+/* End Framework */
+
+/* Star Banner Section */
+
+.banner{
+  height: 61px;
+  border-bottom: 1px solid #ccc
+}
+
+.banner .container{width: 100%;}
+
+.banner ul{height: 61px;}
+
+.banner ul a
+{
+    padding-top: 17px;
+    color: #000;
+    height: 61px;
+    cursor: pointer;
+    text-decoration: none
+}
+
+.banner .active{border-bottom: 2px solid #000}
+
+.banner ul li i{vertical-align: middle;margin-right: 12px}
+
+.banner span
+{
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+/* End Banner Section */
+
+/* Start Body Section */
+
+.body{min-height: 100%}
+
+.body #main {overflow:auto;padding-top:61px;}
+
+/* End Body Section */

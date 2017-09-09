@@ -1,0 +1,30 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">What is your current rent?</h1>
+                    <h3 class="droid">To evaluate buy vs rent</h3>
+                </div>
+
+                <form class="form-inline" action="" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <input class="form-control input-lg" type="number" name="{{ field.name }}"
+                               id="id_{{ field.name }}"
+                                     value="{{ field.value }}">
+                    {% endfor %}
+                    <div class="dollar-sign">$</div>
+                    <button class="continue center-block" type="submit">Next</button>
+                <a href="{% url 'onboarding:how-soon' %}">
+                        <button class="skip" type="button">Skip this step</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

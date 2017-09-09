@@ -1,0 +1,34 @@
+{% extends "base_onboarding.html" %}
+{% block content %}
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">Your Profile</h1>
+                    <h3 class="droid">Helps us understand and serve you better</h3>
+                </div>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="button-select">
+                        {% for choice in form.status %}
+                            {% if not forloop.first %}
+                                <div class="btn sans center-block">{{ choice }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </form>
+                <a href="{% url 'onboarding:first-home' %}">
+                    <button class="skip" type="button">Skip this step</button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+    $('.button-select .btn').on('click', function () {
+        $('form').submit();
+    });
+    </script>
+
+    <!-- End Categories section -->
+{% endblock %}

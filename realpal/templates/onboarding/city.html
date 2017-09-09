@@ -1,0 +1,48 @@
+{% extends "base_onboarding.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!-- Start Categories section -->
+    <section class="registration-container">
+        <div class="categories text-center">
+            <div class="container">
+                <div class="header">
+                    <h1 class="domine">Neighborhood your are interested in</h1>
+                    <h3 class="droid">Get local trends and street level info</h3>
+                </div>
+                <form class="" method="post" action="">
+                    {% csrf_token %}
+                    <div class="invisible iv">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="grid-view">
+                        {% for city in form.fields.preferred_city.queryset %}
+                            <div class="grid-item" data-id="{{ city.id }}">
+                                {{ city.name }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="btn" type="submit">Next</button>
+                </form>
+                <a href="{% url 'onboarding:max-budget' %}">
+                    <button class="skip" type="button">Anywhere in Silicon Valley</button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $('.grid-item').on('click', function () {
+            var index = $(this).index();
+            var checkbox = $('.iv').find('select').children().eq(index);
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+                checkbox.prop('selected', false);
+
+            } else {
+                $(this).addClass('selected');
+                checkbox.prop('selected', true);
+
+            }
+        });
+    </script>
+{% endblock %}

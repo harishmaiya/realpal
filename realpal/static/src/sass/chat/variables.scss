@@ -1,0 +1,139 @@
+/**
+ * Theme definition
+ *
+ * This defines the theme in fundamental terms, but not how it is applied to
+ * the components.
+ */
+
+/**
+ * Colors
+ */
+
+$color-white             : #fff;
+
+$color-grey              : #ddd;
+$color-grey-grey         : #ccc;
+$color-very-light-grey   : #f2f2f2;
+$color-light-grey        : #ededed;
+$color-light-blue-grey   : #A9B4BF;
+$color-blue-grey-green   : #85A6B3;
+$color-medium-light-grey : #bbb;
+$color-medium-grey       : #818181;
+$color-medium-dark-grey  : #666;
+$color-dark-grey         : #999;
+$color-darker-grey       : #4A4A4A;
+$color-medium-black      : #333;
+$color-black             : #000;
+$color-tan               : #E7D3CB;
+$color-copper            : #b77d64;
+$color-copper-hover      : #b66f4f;
+
+$color-badge-border      : #B89C07;
+$color-badge-light       : #E2BF00;
+$color-badge-dark        : #B39701;
+
+$color-blue-link   : #4A90E2;
+$color-blue        : #022d46;
+$color-dark-blue   : darken($color-blue,  10%);
+$color-medium-blue : #2867a9;
+$color-orange      : #F09B00;
+$color-red         : #C92929;
+$color-dark-red    : darken($color-red,   10%);
+$color-green       : #65AC7F;
+$color-dark-green  : darken($color-green, 10%);
+$color-yellow      : #fcf0d9;
+$color-navy        : #022D46;
+
+
+/**
+ * Z-Indexices
+ */
+
+$z-local-under  : 0;
+$z-local-over   : 1;
+$z-topbar       : 500;
+$z-floating     : 700;
+$z-popover      : 700;
+$z-overlay      : 800;
+$z-modal        : 900;
+$z-notification : 99999;
+
+/**
+ * Fonts
+ */
+
+// old
+$font-family-proxima-nova: 400 normal 16px/1.25 "proxima-nova", sans-serif;
+
+// new
+$font-sans  : "LL Akkurat Web", sans-serif;
+$font-mono  : "Akkuratmono-Regular", monospace;
+$font-serif : "Sentinel A", "Sentinel B", serif;
+
+$font-weight-w8 : 800;
+$font-weight-w4 : 400;
+$font-weight-w3 : 300;
+
+$font-weights:(bold:$font-weight-w8, normal:$font-weight-w4, light:$font-weight-w3);
+
+$font-size-xxl : 30px;
+$font-size-xl  : 22px;
+$font-size-l   : 18px;
+$font-size-m   : 16px;
+$font-size-s   : 14px;
+$font-size-xs  : 12px;
+$font-size-xxs  : 11px;
+
+$font-sizes:(xxl:$font-size-xxl, xl:$font-size-xl, l:$font-size-l, m:$font-size-m, s:$font-size-s, xs:$font-size-xs, xxs:$font-size-xxs);
+
+/**
+ * Spacing
+ */
+
+$unit: 8px;//use with spacing() function
+
+$space-micro-px           : 4px;
+$space-mini-px            : 8px;
+$space-small-px           : 16px;
+$space-medium-px          : 24px;
+$space-large-px           : 32px;
+$space-xlarge-px          : 48px;
+
+$letter-space-extra-small : 0.4px;
+$letter-space-small       : 1.1px;
+$letter-space-medium      : 2px;
+
+$letter-spaces:(xs:$letter-space-extra-small, s:$letter-space-small, m:$letter-space-medium);
+
+$font-types:(sans:$font-sans, mono:$font-mono, serif:$font-serif);
+
+$top-nav-accent: #333333;
+$top-nav-letter-spacing: 1.65px;
+
+/**
+ * transitions
+ */
+
+$transition-duration-short: 0.3s;
+$transition-duration-normal: 0.4s;
+$transition-duration-long: 0.6s;
+
+/**
+ * breakpoints
+ **/
+ $mediumViewport: 640px;
+ $largeViewport: 1024px;
+ $xlargeViewport: 1200px;
+ $xxlargeViewport: 1440px;
+
+
+ /**
+  * grid config
+  **/
+ $grid-gutter-size: 19.99px;
+
+/**
+ * Gradients
+ **/
+
+$linear-gradient-badge   : linear-gradient(-135deg, $color-badge-light 0%, $color-badge-dark 100%)

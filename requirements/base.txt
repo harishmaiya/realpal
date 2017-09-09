@@ -26,11 +26,6 @@ Pillow==4.2.1
 # Password storage
 argon2-cffi==16.3.0
 
-# For user registration, either via email or social
-# Well-built with regular release cycles!
-django-allauth==0.32.0
-
-
 # Python-PostgreSQL Database Adapter
 psycopg2==2.7.1
 
@@ -39,6 +34,7 @@ awesome-slugify==1.6.5
 
 # Time zones support
 pytz==2017.2
+arrow
 
 # Redis support
 django-redis==4.8.0
@@ -49,3 +45,10 @@ asgi-redis==1.4.2
 # Your custom requirements go here
 channels==1.1.6
 django-widget-tweaks
+djangorestframework
+django-cors-headers
+
+django-debug-toolbar==1.8
+
+# Model mommy used for tests
+-e git+https://github.com/vandersonmota/model_mommy@development#egg=model_mommy
