@@ -5,13 +5,10 @@
         <div class="header text-center textSerif">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-md-4 prepare">
-                        <div class="overlay"></div>
-                        <a href="{% url 'mainapp:prepare' %}" class="link-btn">
-                            <span class="textSerif">Prepare</span>
-                            <span class="works sans">How Real Pal can help you -></span>
-                        </a>
+                    <div class="col-xs-12 col-md-6 own">
+                          <span class="textSerif">Own</span>
                     </div>
+                    <!---
                     <div class="col-xs-12 col-md-4 purchase">
                         <div class="overlay"></div>
                         <a href="{% url 'mainapp:purchase' %}" class="link-btn">
@@ -19,13 +16,15 @@
                             <span class="works sans">How Real Pal can help you -></span>
                         </a>
                     </div>
-                    <div class="col-xs-12 col-md-4 own">
+                    -->
+                    <div class="col-xs-12 col-md-6 prepare">
+                        <a href="{% url 'mainapp:prepare' %}" class="overlay">
                         <div class="overlay"></div>
-                        <a href="{% url 'mainapp:own' %}" class="link-btn">
-                            <span class="textSerif">Own</span>
+                            <span class="textSerif">Prepare to purchase</span>
                             <span class="works sans">How Real Pal can help you -></span>
                         </a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -40,8 +39,7 @@
                     <div class="col-md-10 col-md-offset-1">
                         <h2 class="text-center brown textSerif">
                             Buying your biggest asset is a well advised journey with right deals at every step. Being
-                            your
-                            trusted pal we like to help you have happy home.
+                            your trusted pal we like to help you have happy home.
                         </h2>
                     </div>
                 </div>
@@ -59,18 +57,18 @@
                     <div class="box col-md-4">
                         <i class="fa fa-check fa-5x back-navy"></i>
                         <p class="lead sans">Trustworthy & Knowledgeable</p>
-                        <p class="textSerif">For a wise investment & peaceful living you need a team of experts (finance, real estate, engineer) just working for you</p>
+                        <p class="textSerif">A peaceful living and wise investment needs a team of experts from finance, real estate, engineer and handyman just working for you</p>
                     </div>
                     <div class="box col-md-4">
                         <i class="fa fa-wifi fa-5x back-navy"></i>
                         <p class="lead sans">Guide who listens</p>
-                        <p class="textSerif">Chat with a pal—anytime—about everything from housing goals to preparation, location, agent selection, negotiation.
+                        <p class="textSerif">Chat with a pal—anytime—about everything from your housing goals to concerns, convenience, trade-offs.
                            Get an expert advice from search until you move-in</p>
                     </div>
                     <div class="box col-md-4">
                         <i class="fa fa-refresh fa-5x back-navy"></i>
                         <p class="lead sans">Comfortable experience</p>
-                        <p class="textSerif">We'll help you get right deal at every step of lengthy house buying process. Our relation continues past prepare, purchase and owning phases</p>
+                        <p class="textSerif">Have a seamless journey through prepare, search, purchase and house owning phases. Our relation with you continues beyond the deals</p>
                     </div>
                 </div>
             </div>
@@ -83,13 +81,14 @@
             <div class="container">
                 <div class="box row ">
                     <div class="col-md-12">
-                        <div class="box col-md-8">
-                            <h2 class="textSerif">Learn more about how Real Pal works</h2>
-                        </div>
                         <div class="box col-md-4">
                             <button class="btn"><a href="{% url 'onboarding:purchase-step' %}">Get Started</a>
                             </button>
                         </div>
+                        <div class="box col-md-8">
+                            <h2 class="textSerif">Learn more about how Real Pal works</h2>
+                        </div>
+
                     </div>
                 </div>
             </div>
