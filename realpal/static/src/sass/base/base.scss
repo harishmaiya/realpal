@@ -9,7 +9,6 @@ body {
   flex: 1;
 }
 
-
 .alert-debug {
   color: black;
   background-color: white;
@@ -119,6 +118,16 @@ body {
   min-height: 80px
 }
 
+.navbar .navbar-header {
+    margin-left: 6%;
+}
+
+.navbar .navbar-collapse {
+  @media (min-width: 768px) {
+    margin-right: 6%;
+  }
+}
+
 .navbar .navbar-header .navbar-brand {
   font-size: 23px;
   padding-top: 20px;
@@ -145,6 +154,7 @@ body {
 .navbar .collapse ul {
   padding-bottom: 15px;
   padding-top: 15px;
+  font-weight: bold;
 }
 
 .navbar .collapse ul li a {
@@ -181,6 +191,7 @@ body {
   border: 0;
   border-radius: 50px;
   padding: 11px 30px;
+  font-weight: bold;
 }
 
 .navbar .collapse ul .btn:hover {
