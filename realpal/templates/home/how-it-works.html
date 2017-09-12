@@ -11,7 +11,7 @@
                                 <span><i class="fa fa-home fa-3x brown"></i></span>
                             </div>
                             <h2>Begin your American dream</h2>
-                            <hr>
+                            <hr class="short-bar">
                             <p class="bold">Making sense of Real Estate</p>
                             <p class="description">Owing home should not make you feel overwhelmed of time and efforts it takes to get ready for purchase.
                               With Real Pal we'll make this journey seamless with right deals and wise decisions
@@ -28,7 +28,7 @@
 
         <!-- Start Sub-Navbar -->
 
-        <div class="sub-nav col-xs-12 back-beige">
+        <div id="sub-nav" class="sub-nav col-xs-12 back-beige">
             <ul class="list-unstyled pull-right">
                 <li><a href="#" class="navy active">Prepare</a></li>
                 <li><a href="#how" class="navy">How It Works</a></li>
@@ -38,6 +38,10 @@
             </ul>
         </div>
 
+        <script>
+            makeSticky($("#sub-nav"));
+        </script>
+        <script src="{% static 'src/js/jquery.menu.js' %}"></script>
         <!-- End Sub-Navbar -->
 
         <!-- Start How It Works -->
@@ -49,6 +53,9 @@
                     <p class="lead">A guided journey from your initial thoughts to making an offer on your ideal house</p>
                     <div class="time-path row">
                         <div class="timeline col-sm-3 hidden-xs">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="scroll timeline col-sm-3 hidden-xs">
                             <div class="progress-bar"></div>
                         </div>
                         <ul class=" blocks list-unstyled">
@@ -101,6 +108,7 @@
                     </div>
                 </div>
             </div>
+            <a class="btn back-brown" href="{% url 'onboarding:purchase-step' %}">Get Started</a>
         </section>
 
         <!-- End How It Works -->
@@ -109,7 +117,8 @@
 
         <section id="pricing" class="cost text-center">
             <div class="container">
-                <h2 class="h1">What it costs?</h2>
+                <h2 class="h1 textSerif">What it costs?</h2>
+                <hr class="short-bar">
                 <p class="description sans">All of our research data and market analysis are free of cost<br>
                 Get your personal assistance at flat fee of $249.99, with no time limit
                   <br>Our goal is to make you confident to put offer on your ideal home
@@ -126,7 +135,10 @@
         <section id="why" class="expect">
             <div class="container">
                 <div class="row">
-                    <div class="card text-center">
+                    <div class="card text-center corrected">
+                        <div class="logo ">
+                                <span><i class="fa fa-home fa-3x brown"></i></span>
+                        </div>
                         <h2 class="h1 textSerif">What else can I expect?</h2>
                         <p class="textSerif">Every family and housing deal is different, but there are some things you can always count on:</p>
                         <ul class="list-unstyled">
@@ -201,29 +213,29 @@
 
         <!-- Start Benefits Section -->
 
-        <div id="benefits" class="benefits text-center  navy">
+        <section id="benefits" class="benefits text-center  navy">
             <div class="container">
                 <div class="row">
                     <h2 class="h1 textSerif">The benefits of Real Pal</h2>
                     <div class="box col-md-4">
                         <i class="fa fa-check fa-5x back-navy"></i>
                         <p class="lead sans">Trustworthy & Knowledgeable</p>
-                        <p class="textSerif">A peaceful living and wise investment needs a team of experts from finance, real estate, engineer and handyman just working for you</p>
+                        <p>A peaceful living and wise investment needs a team of experts from finance, real estate, engineer and handyman just working for you</p>
                     </div>
                     <div class="box col-md-4">
                         <i class="fa fa-wifi fa-5x back-navy"></i>
                         <p class="lead sans">Guide who listens</p>
-                        <p class="textSerif">Chat with a pal—anytime—about everything from your housing goals to concerns, convenience, trade-offs.
+                        <p>Chat with a pal—anytime—about everything from your housing goals to concerns, convenience, trade-offs.
                            Get an expert advice from search until you move-in</p>
                     </div>
                     <div class="box col-md-4">
                         <i class="fa fa-refresh fa-5x back-navy"></i>
                         <p class="lead sans">Comfortable experience</p>
-                        <p class="textSerif">Have a seamless journey through prepare, search, purchase and house owning phases. Our relation with you continues beyond the deals</p>
+                        <p>Have a seamless journey through prepare, search, purchase and house owning phases. Our relation with you continues beyond the deals</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <!-- End Benefits  Section -->
 
         <!-- Start Contact us Section-->

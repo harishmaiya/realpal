@@ -118,6 +118,11 @@ body {
   min-height: 80px
 }
 
+.navbar-fixed-top {
+  position: relative;
+  margin: 0;
+}
+
 .navbar .navbar-header {
     margin-left: 6%;
 }
@@ -130,14 +135,10 @@ body {
 
 .navbar .navbar-header .navbar-brand {
   font-size: 23px;
-  padding-top: 20px;
+  padding-top: 28px;
   transform: scale(1.6, 1.2);
   letter-spacing: 1px;
   font-family: sans-serif
-}
-
-.navbar .navbar-header .navbar-brand:hover {
-  color: #232F39
 }
 
 .navbar .navbar-header .navbar-brand span {
@@ -172,6 +173,11 @@ body {
   background: none
 }
 
+.navbar .navbar-header .navbar-brand,
+.navbar .navbar-header .navbar-brand:hover{
+  color: #232e39;
+}
+
 .navbar .collapse ul .dropdown-menu {
   padding: 30px;
   transform: translateX(18%) translateZ(0) translateY(-2%);
@@ -190,7 +196,7 @@ body {
   margin-top: 4px;
   border: 0;
   border-radius: 50px;
-  padding: 11px 30px;
+  padding: 12px 30px;
   font-weight: bold;
 }
 
