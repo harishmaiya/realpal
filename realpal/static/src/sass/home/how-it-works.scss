@@ -5,10 +5,14 @@
   }
 
   .header .card {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 30px;
     padding: 25px;
-    background-color: #FFF
+    background-color: #FFF;
+    height: 500px;
+    width: 400px;
+    box-shadow: 0 0 1px 1px darkgrey;
+    margin-left: 10px;
   }
 
   .header .card .logo {
@@ -25,10 +29,12 @@
   .header .card h2 {
     font-family: 'Domine', serif;
     line-height: 1.3;
+    font-size: 48px;
+    font-weight: 300;
   }
 
-  .header .card hr {
-    width: 20%;
+  .short-bar {
+    width: 25px;
     text-align: center;
     border-top: 2px solid #B77E66;
     margin-top: 30px;
@@ -73,6 +79,7 @@
     padding: 27px 10px;
     display: inline-block;
     font-size: 14px;
+    font-weight: bold;
     line-height: 1;
     letter-spacing: .5px;
     cursor: pointer
@@ -116,17 +123,25 @@
   /* Start Timeline */
 
   .how-works .time-path {
-    position: relative
+    position: relative;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
   .how-works .time-path .timeline {
     position: absolute;
-    width: 4px !important;
-    height: 84%;
-    top: 14.5%;
+    width: 2px !important;
+    height: 86%;
+    top: 14%;
     left: calc(50% - 1px);
     background-color: #dad4c8;
     padding: 0
+  }
+
+  .how-works .time-path .scroll.timeline {
+    height: 0%;
+    background-color: #a5725d;
+    max-height: 86%;
   }
 
   .how-works .time-path .progress-bar {
@@ -155,6 +170,7 @@
     .block:before {
       content: counter(my-counter);
       counter-increment: my-counter;
+      counter-reset: mycounter;
       position: absolute;
       text-align: center;
       line-height: 36px;
@@ -318,18 +334,41 @@
 
   }
 
+  #why li > span,
+  #why p,
+  #benefits .text-serif,
   .cost .description {
     font-weight: 300;
-    font-size: 21px;
+    font-size: 18px;
     line-height: 31px;
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 0;
+    text-align: left;
+  }
+
+  #benefits h2 {
+    font-size: 48px;
+  }
+
+  #benefits .box p + p {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 31px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+
+  #benefits .box p:first-of-type {
+    margin: 0;
+    font-size: 18px;
+    padding: 0;
+    margin-top: 20px;
+    font-weight: bold;
   }
 
   .cost .setPrice {
-    background-color: #f5f5f1;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1), 0 1px 3px 0 rgba(0, 0, 0, .2);
     padding: 10px 20px;
     margin-top: 30px;
     margin-bottom: 50px;
@@ -392,7 +431,7 @@
   /* Start expect Section */
 
   .expect {
-    background: url('../images/expect.jpeg') fixed no-repeat center;
+    background: url('../images/expect.jpeg') no-repeat center;
     padding-top: 40px;
     padding-bottom: 40px;
     color: #4a4a4a
@@ -405,6 +444,11 @@
     padding: 0 20px 40px;
     max-width: 95%;
     margin: auto;
+
+    &.corrected {
+      box-shadow: none !important;
+      padding-top: 30px;
+    }
   }
 
   .expect .h1 {
@@ -716,6 +760,99 @@
     border: none
 
   }
+}
+
+#how .btn {
+  position: relative;
+  left: 10px;
+  color: #FFF;
+  border: 0;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-size: 16px;
+  line-height: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a5725d;
+  }
+}
+
+.block.active:before {
+  color: #fff;
+  background-color: #232e39;
+}
+
+.no1:before {
+  counter-increment: my-counter 1 !important;
+}
+
+.no2:before {
+  counter-increment: my-counter 2 !important;
+}
+
+.no3:before {
+  counter-increment: my-counter 3 !important;
+}
+
+.no4:before {
+  counter-increment: my-counter 4 !important;
+}
+
+.no5:before {
+  counter-increment: my-counter 5 !important;
+}
+
+#pricing {
+
+  background-image: url(https://static.pexels.com/photos/164558/pexels-photo-164558.jpeg);
+  background-color: #C2C0CB;
+
+  & div {
+    max-width: 560px;
+    padding: 60px 45px;
+    margin-right: 25px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  }
+
+  @media (min-width: 800px) {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat no-repeat;
+    padding: 90px 0 120px;
+
+    & h2 {
+      font-size: 48px;
+    }
+
+  }
+
+}
+
+#why {
+
+  background-image: url(../../images/expect.jpeg);
+  background-color: #C2C0CB;
+
+  & > div {
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+  }
+
+  @media (min-width: 800px) {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat no-repeat;
+    padding: 90px 0 120px;
+
+    & h2 {
+      font-size: 48px;
+    }
+
+  }
+
 }
 
 /* End Contact us Section */
