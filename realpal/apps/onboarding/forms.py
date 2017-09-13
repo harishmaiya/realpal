@@ -29,6 +29,7 @@ class FirstHomeForm(forms.ModelForm):
             'has_agent': forms.CheckboxInput
         }
 
+
 class HouseTypeForm(forms.ModelForm):
     class Meta:
         model = User

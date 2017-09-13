@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import User
 
 from realpal.apps.onboarding.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
-    CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm
+    CityForm, MaxBudgetForm, HowSoonForm
 from realpal.apps.users.forms import PersonalProfileForm
 
 
@@ -27,7 +27,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         'house_type_form': HouseTypeForm,
         'city_form': CityForm,
         'max_budget_form': MaxBudgetForm,
-        'current_rent_form': CurrentRentForm,
         'how_soon_form': HowSoonForm,
         'personal_profile_form': PersonalProfileForm,
     }
@@ -41,7 +40,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
             'house_type_form': HouseTypeForm(initial=model_to_dict(self.get_object())),
             'city_form': CityForm(initial=model_to_dict(self.get_object())),
             'max_budget_form': MaxBudgetForm(initial=model_to_dict(self.get_object())),
-            'current_rent_form': CurrentRentForm(initial=model_to_dict(self.get_object())),
             'how_soon_form': HowSoonForm(initial=model_to_dict(self.get_object())),
             'personal_profile_form': PersonalProfileForm(initial=model_to_dict(self.get_object())),
         }
@@ -69,7 +67,6 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         'house_type_form': HouseTypeForm,
         'city_form': CityForm,
         'max_budget_form': MaxBudgetForm,
-        'current_rent_form': CurrentRentForm,
         'how_soon_form': HowSoonForm,
         'personal_profile_form': PersonalProfileForm,
     }
@@ -83,7 +80,6 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
             'house_type_form': HouseTypeForm(initial=model_to_dict(self.get_object())),
             'city_form': CityForm(initial=model_to_dict(self.get_object())),
             'max_budget_form': MaxBudgetForm(initial=model_to_dict(self.get_object())),
-            'current_rent_form': CurrentRentForm(initial=model_to_dict(self.get_object())),
             'how_soon_form': HowSoonForm(initial=model_to_dict(self.get_object())),
             'personal_profile_form': PersonalProfileForm(initial=model_to_dict(self.get_object())),
         }
