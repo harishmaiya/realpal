@@ -14,7 +14,7 @@
                 <li><a class="navy sans" href="#">Locations</a></li>
                 {% if user.is_anonymous %}
                     <li><a class="navy sans" href="{% url 'users:login' %}">Sign In</a></li>
-                    <li class="btn back-brown sans"><a href="{% url 'onboarding:purchase-step' %}">Get Started</a></li>
+                    <li class="btn back-brown sans"><a href="{% url 'onboarding:marital-status' %}">Get Started</a></li>
                 {% else %}
                     <li><a class="navy sans" href="{% url 'chat:chat-room' %}">Chat</a></li>
                     <li><a class="navy sans" href="{% url 'users:update' %}"><img class="img-rounded for-nav" src="{% static 'src/images/default_avatar.png' %}"> My Profile</a></li>

@@ -5,7 +5,6 @@ from .views import PurchaseStepView, MaritalStatusView, FirstHomeView,\
     ResendActivationEmail
 
 urlpatterns = [
-    url(r'^prepare/user-phase$', PurchaseStepView.as_view(), name='purchase-step'),
     url(r'^prepare/family$', MaritalStatusView.as_view(), name='marital-status'),
     url(r'^prepare/first-home$', FirstHomeView.as_view(), name='first-home'),
     url(r'^prepare/house-type$', HouseTypeView.as_view(), name='house-type'),
