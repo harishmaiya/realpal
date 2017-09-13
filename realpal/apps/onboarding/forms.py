@@ -22,8 +22,12 @@ class MaritalStatusForm(forms.ModelForm):
 class FirstHomeForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['firsthome']
-
+        fields = ['firsthome', 'has_mortgage', 'has_agent']
+        widgets = {
+            'firsthome': forms.CheckboxInput,
+            'has_mortgage': forms.CheckboxInput,
+            'has_agent': forms.CheckboxInput
+        }
 
 class HouseTypeForm(forms.ModelForm):
     class Meta:

@@ -1,34 +1,79 @@
 {% extends "base_onboarding.html" %}
 {% block content %}
+
     <!-- Start Categories section -->
-    <section class="registration-container">
-        <div class="text-center">
+    <section class="registration-container ext">
+        <div class="categories text-center">
             <div class="container">
                 <div class="header">
-                    <h1 class="textSerif">Is this your first home buy?</h1>
-                    <h3 class="subtitle">So you can know about tax advantages, house choosing criteria</h3>
+                    <h1 class="domine">Is this your first home buy?</h1>
+                    <h3 class="droid">So you can know about tax advantages, house choosing criteria</h3>
                 </div>
-                <form method="post" action="">
+                <form action="" method="post" class="options button-select reduced">
                     {% csrf_token %}
-                    <div class="button-select invisible">
+
+                    <div class="">
                         {{ form.as_p }}
                     </div>
-                    <div class="oval-button-container">
-                        <button class="oval-button" type="button" id="yes">Yes</button>
-                        <button class="oval-button" type="button" id="no">No</button>
+
+                    <div class="bordered-block col-sm-12">
+                        <h2 class="domine text-center"> First Home </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="btn center-block status btn-smaller">Yes</div>
+                            <div class="btn center-block status btn-smaller">No</div>
+                        </div>
                     </div>
+
+                    <div class="bordered-block col-sm-12">
+                        <h2 class="domine text-center"> Do you have a mortgage? </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="btn center-block status btn-smaller">Yes</div>
+                            <div class="btn center-block status btn-smaller">No</div>
+                        </div>
+                    </div>
+
+                    <div class="bordered-block col-sm-12">
+                        <h2 class="domine text-center"> Do you have a Real Estate Agent? </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="btn center-block status btn-smaller">Yes</div>
+                            <div class="btn center-block status btn-smaller">No</div>
+                        </div>
+                    </div>
+                    <button class="next center-block droid" type="submit">Next</button>
+                    <a href="{% url 'onboarding:city' %}">
+                        <button class="skip" type="button">Skip this step</button>
+                    </a>
                 </form>
+
             </div>
         </div>
     </section>
     <script type="text/javascript">
-        $('#yes').on('click', function () {
-            $('input[type="checkbox"]').attr('checked', true);
-            $('form').submit();
-        });
-        $('#no').on('click', function () {
-            $('input[type="checkbox"]').removeAttr('checked');
-            $('form').submit();
+        $('.bordered-block').on('click', '.btn-smaller', function (evt) {
+            evt.stopImmediatePropagation();
+            evt.preventDefault();
+            evt.stopPropagation();
+            if ($(this).hasClass('checked')) {
+                $(this).find('input[type="radio"]').removeAttr('checked');
+                $(this).removeClass('checked');
+            } else {
+                $(this).find('input[type="radio"]').attr("checked", true);
+                $(this).siblings().find('input[type="radio"]').removeAttr("checked");
+                $(this).addClass('checked');
+                $(this).siblings().removeClass('checked');
+            }
+
         });
     </script>
+
 {% endblock %}
