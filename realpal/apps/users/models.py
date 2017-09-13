@@ -56,6 +56,10 @@ class User(AbstractUser):
 
     firsthome = models.BooleanField(default=False)
 
+    has_mortgage = models.BooleanField(default=False)
+
+    has_agent = models.BooleanField(default=False)
+
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
     house_age = models.SmallIntegerField(choices=HOUSE_AGE_CHOICES,  blank=True, null=True)

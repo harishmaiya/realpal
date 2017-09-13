@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
-from .views import PurchaseStepView, MaritalStatusView, FirstHomeView,\
+from .views import MaritalStatusView, FirstHomeView,\
     HouseTypeView, CityView, MaxBudgetView, CurrentRentView, HowSoonView, PersonalProfileView, ActivateAccount,\
     ResendActivationEmail
 
