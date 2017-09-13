@@ -11,11 +11,10 @@ class RegistrationTest(TestCase):
     client_2 = Client()
 
     # here we create this list of keys so we can iterate in this order, the personal profile step must be the last
-    keys = ('purchase_step', 'marital_status', 'first_home', 'house_type', 'city', 'max_budget', 'current_rent',
+    keys = ('marital_status', 'first_home', 'house_type', 'city', 'max_budget', 'current_rent',
             'how_soon', 'personal_profile')
 
     urls = {
-        'purchase_step': reverse('onboarding:purchase-step'),
         'marital_status': reverse('onboarding:marital-status'),
         'first_home': reverse('onboarding:first-home'),
         'house_type': reverse('onboarding:house-type'),
@@ -39,9 +38,8 @@ class RegistrationTest(TestCase):
          we test posting to the matching url from self.urls
         """
         data = {
-            'purchase_step': {'purchase_step': PS_DAP},
             'marital_status': {'status': SC_SI},
-            'first_home': {'firsthome': True},
+            'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
             'city': {'preferred_city': ''},
             'max_budget': {'budget': 1200.59},
@@ -75,9 +73,10 @@ class RegistrationTest(TestCase):
 
         # test to ensure the user we just added got the session variables
         user = User.objects.latest('id')
-        self.assertEqual(user.purchase_step, data['purchase_step']['purchase_step'])
         self.assertEqual(user.status, data['marital_status']['status'])
         self.assertEqual(user.firsthome, data['first_home']['firsthome'])
+        self.assertEqual(user.has_mortgage, data['first_home']['has_mortgage'])
+        self.assertEqual(user.has_agent, data['first_home']['has_agent'])
         self.assertEqual(user.house_type, data['house_type']['house_type'])
         self.assertEqual(user.house_age, data['house_type']['house_age'])
         self.assertEqual(user.house_cond, data['house_type']['house_cond'])
@@ -151,9 +150,8 @@ class RegistrationTest(TestCase):
         We are doing this test to assert that multiple registrations can occur without mixing up the session variables
         """
         data = {
-            'purchase_step': {'purchase_step': PS_DAP},
             'marital_status': {'status': SC_SI},
-            'first_home': {'firsthome': True},
+            'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
             'city': {'preferred_city': ''},
             'max_budget': {'budget': 1200.59},
@@ -171,7 +169,6 @@ class RegistrationTest(TestCase):
         }
 
         data_2 = {
-            'purchase_step': {'purchase_step': PS_EAO},
             'marital_status': {'status': SC_INV},
             'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_CN, 'house_age': HA_OLD, 'house_cond': HC_FU},
