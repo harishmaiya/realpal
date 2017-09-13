@@ -53,15 +53,25 @@ class FirstHomeView(View):
     template_name = 'onboarding/first_home.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'first_home': request.session.get('first_home', None)}
+        registration_data = {
+            'first_home': request.session.get('first_home', None),
+            'has_mortgage': request.session.get('has_mortgage', None),
+            'has_agent': request.session.get('has_agent', None)
+        }
         form = FirstHomeForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'first_home': request.session.get('first_home', None)}
+        registration_data = {
+            'first_home': request.session.get('first_home', None),
+            'has_mortgage': request.session.get('has_mortgage', None),
+            'has_agent': request.session.get('has_agent', None)
+        }
         form = FirstHomeForm(request.POST)
         if form.is_valid():
             request.session['first_home'] = form.cleaned_data['firsthome']
+            request.session['has_mortgage'] = form.cleaned_data['has_mortgage']
+            request.session['has_agent'] = form.cleaned_data['has_agent']
             return HttpResponseRedirect(reverse('onboarding:house-type'))
         return render(request, self.template_name, {'form': form}, status=400)
 
@@ -209,6 +219,8 @@ class PersonalProfileView(View):
                 purchase_step=request.session.get('purchase_step', None),
                 status=request.session.get('marital_status', None),
                 firsthome=request.session.get('first_home', None),
+                has_mortgage=request.session.get('has_mortgage', None),
+                has_agent=request.session.get('has_agent', None),
                 house_type=request.session.get('house_type', None),
                 house_age=request.session.get('house_age', None),
                 house_cond=request.session.get('house_condition', None),

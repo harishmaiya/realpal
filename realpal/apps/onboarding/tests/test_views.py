@@ -173,7 +173,7 @@ class RegistrationTest(TestCase):
         data_2 = {
             'purchase_step': {'purchase_step': PS_EAO},
             'marital_status': {'status': SC_INV},
-            'first_home': {'firsthome': True},
+            'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_CN, 'house_age': HA_OLD, 'house_cond': HC_FU},
             'city': {'preferred_city': ''},
             'max_budget': {'budget': 564.11},
@@ -214,6 +214,8 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.purchase_step, data['purchase_step']['purchase_step'])
         self.assertEqual(user.status, data['marital_status']['status'])
         self.assertEqual(user.firsthome, data['first_home']['firsthome'])
+        self.assertEqual(user.has_mortgage, data['first_home']['has_mortgage'])
+        self.assertEqual(user.has_agent, data['first_home']['has_agent'])
         self.assertEqual(user.house_type, data['house_type']['house_type'])
         self.assertEqual(user.house_age, data['house_type']['house_age'])
         self.assertEqual(user.house_cond, data['house_type']['house_cond'])
