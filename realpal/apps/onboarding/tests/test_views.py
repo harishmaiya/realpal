@@ -11,11 +11,10 @@ class RegistrationTest(TestCase):
     client_2 = Client()
 
     # here we create this list of keys so we can iterate in this order, the personal profile step must be the last
-    keys = ('purchase_step', 'marital_status', 'first_home', 'house_type', 'city', 'max_budget', 'current_rent',
+    keys = ('marital_status', 'first_home', 'house_type', 'city', 'max_budget', 'current_rent',
             'how_soon', 'personal_profile')
 
     urls = {
-        'purchase_step': reverse('onboarding:purchase-step'),
         'marital_status': reverse('onboarding:marital-status'),
         'first_home': reverse('onboarding:first-home'),
         'house_type': reverse('onboarding:house-type'),
@@ -39,9 +38,8 @@ class RegistrationTest(TestCase):
          we test posting to the matching url from self.urls
         """
         data = {
-            'purchase_step': {'purchase_step': PS_DAP},
             'marital_status': {'status': SC_SI},
-            'first_home': {'firsthome': True},
+            'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
             'city': {'preferred_city': ''},
             'max_budget': {'budget': 1200.59},
@@ -75,9 +73,10 @@ class RegistrationTest(TestCase):
 
         # test to ensure the user we just added got the session variables
         user = User.objects.latest('id')
-        self.assertEqual(user.purchase_step, data['purchase_step']['purchase_step'])
         self.assertEqual(user.status, data['marital_status']['status'])
         self.assertEqual(user.firsthome, data['first_home']['firsthome'])
+        self.assertEqual(user.has_mortgage, data['first_home']['has_mortgage'])
+        self.assertEqual(user.has_agent, data['first_home']['has_agent'])
         self.assertEqual(user.house_type, data['house_type']['house_type'])
         self.assertEqual(user.house_age, data['house_type']['house_age'])
         self.assertEqual(user.house_cond, data['house_type']['house_cond'])
@@ -151,9 +150,8 @@ class RegistrationTest(TestCase):
         We are doing this test to assert that multiple registrations can occur without mixing up the session variables
         """
         data = {
-            'purchase_step': {'purchase_step': PS_DAP},
             'marital_status': {'status': SC_SI},
-            'first_home': {'firsthome': True},
+            'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
             'city': {'preferred_city': ''},
             'max_budget': {'budget': 1200.59},
@@ -171,9 +169,8 @@ class RegistrationTest(TestCase):
         }
 
         data_2 = {
-            'purchase_step': {'purchase_step': PS_EAO},
             'marital_status': {'status': SC_INV},
-            'first_home': {'firsthome': True},
+            'first_home': {'firsthome': False, 'has_mortgage': False, 'has_agent': False},
             'house_type': {'house_type': HT_CN, 'house_age': HA_OLD, 'house_cond': HC_FU},
             'city': {'preferred_city': ''},
             'max_budget': {'budget': 564.11},
@@ -211,9 +208,10 @@ class RegistrationTest(TestCase):
         user_2 = User.objects.latest('id')
 
         # test to see that user got the correct information from the data dictionary
-        self.assertEqual(user.purchase_step, data['purchase_step']['purchase_step'])
         self.assertEqual(user.status, data['marital_status']['status'])
         self.assertEqual(user.firsthome, data['first_home']['firsthome'])
+        self.assertEqual(user.has_mortgage, data['first_home']['has_mortgage'])
+        self.assertEqual(user.has_agent, data['first_home']['has_agent'])
         self.assertEqual(user.house_type, data['house_type']['house_type'])
         self.assertEqual(user.house_age, data['house_type']['house_age'])
         self.assertEqual(user.house_cond, data['house_type']['house_cond'])
@@ -225,7 +223,6 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.zipcode, data['personal_profile']['zipcode'])
 
         # test to see that user_2 got the correct information from the data_2 dictionary
-        self.assertEqual(user_2.purchase_step, data_2['purchase_step']['purchase_step'])
         self.assertEqual(user_2.status, data_2['marital_status']['status'])
         self.assertEqual(user_2.firsthome, data_2['first_home']['firsthome'])
         self.assertEqual(user_2.house_type, data_2['house_type']['house_type'])
@@ -239,20 +236,6 @@ class RegistrationTest(TestCase):
         self.assertEqual(user_2.zipcode, data_2['personal_profile']['zipcode'])
 
     def test_skipping_fields(self):
-
-        # test to make sure skipping purchase step is not allowed
-        data = {'purchase_step': None}
-        response = self.client.post(self.urls['purchase_step'], data=data)
-        self.assertEqual(response.status_code, 400)
-        # lets see if we are returned to the same template
-        self.assertTemplateUsed('onboarding/purchase_step.html')
-
-        # test to make sure that we can supply a correct value for purchase step
-        data = {'purchase_step': PS_EAO}
-        response = self.client.post(self.urls['purchase_step'], data=data)
-        self.assertEqual(response.status_code, 302)
-        # lets see if we are taken to the next template marital status
-        self.assertTemplateUsed('onboarding/marital_status.html')
 
         # test to make sure we can skip marital status
         data = {'marital_status': None}
@@ -324,7 +307,6 @@ class RegistrationTest(TestCase):
         self.assertTemplateUsed('onboarding/personal_profile.html')
 
         user = User.objects.latest('id')
-        self.assertEqual(user.purchase_step, PS_EAO)
         self.assertEqual(user.status, None)
         self.assertEqual(user.firsthome, False)
         self.assertEqual(user.house_type, None)

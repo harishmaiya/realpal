@@ -48,7 +48,7 @@ class User(AbstractUser):
     )
     phone_number = models.CharField(validators=[phone_regex], blank=True, max_length=16)
 
-    purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP)
+    purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP, null=True, blank=True)
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
