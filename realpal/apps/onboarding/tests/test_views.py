@@ -11,8 +11,7 @@ class RegistrationTest(TestCase):
     client_2 = Client()
 
     # here we create this list of keys so we can iterate in this order, the personal profile step must be the last
-    keys = ('marital_status', 'first_home', 'house_type', 'city', 'max_budget', 'current_rent',
-            'how_soon', 'personal_profile')
+    keys = ('marital_status', 'first_home', 'house_type', 'city', 'max_budget', 'how_soon', 'personal_profile')
 
     urls = {
         'marital_status': reverse('onboarding:marital-status'),
@@ -20,7 +19,6 @@ class RegistrationTest(TestCase):
         'house_type': reverse('onboarding:house-type'),
         'city': reverse('onboarding:city'),
         'max_budget': reverse('onboarding:max-budget'),
-        'current_rent': reverse('onboarding:current-rent'),
         'how_soon': reverse('onboarding:how-soon'),
         'personal_profile': reverse('onboarding:personal-profile'),
     }
@@ -42,8 +40,7 @@ class RegistrationTest(TestCase):
             'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
             'city': {'preferred_city': ''},
-            'max_budget': {'budget': 1200.59},
-            'current_rent': {'current_rent': 321.49},
+            'max_budget': {'budget': 1200.59, 'current_rent': 321.49, 'annual_income': 445.41},
             'how_soon': {'how_soon': HS_3},
             'personal_profile': {
                 'first_name': 'TestFirstName',
@@ -81,7 +78,8 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.house_age, data['house_type']['house_age'])
         self.assertEqual(user.house_cond, data['house_type']['house_cond'])
         self.assertEqual(user.budget, data['max_budget']['budget'])
-        self.assertEqual(user.current_rent, data['current_rent']['current_rent'])
+        self.assertEqual(user.current_rent, data['max_budget']['current_rent'])
+        self.assertEqual(user.annual_income, data['max_budget']['annual_income'])
         self.assertEqual(user.how_soon, data['how_soon']['how_soon'])
 
         self.assertEqual(user.email, data['personal_profile']['email'])
@@ -126,8 +124,7 @@ class RegistrationTest(TestCase):
         # now lets test with incorrect data to make sure all these give us 400 status codes,
         # these are the mandatory fields that cannot be skipped
         wrong_data = {
-            'max_budget': {'budget': 'TEXT'},  # should be a number
-            'current_rent': {'current_rent': 'TEXT'},  # should be a number
+            'max_budget': {'budget': 'TEXT', 'current_rent': 'TEXT'},  # should be a number
             'personal_profile': {
                 'first_name': 'TestFirstName',
                 'last_name': 'TestLastName',
@@ -154,8 +151,7 @@ class RegistrationTest(TestCase):
             'first_home': {'firsthome': True, 'has_mortgage': True, 'has_agent': True},
             'house_type': {'house_type': HT_SF, 'house_age': HA_15, 'house_cond': HC_SL},
             'city': {'preferred_city': ''},
-            'max_budget': {'budget': 1200.59},
-            'current_rent': {'current_rent': 321.49},
+            'max_budget': {'budget': 1200.59, 'current_rent': 23.56, 'annual_income': 0.34},
             'how_soon': {'how_soon': HS_3},
             'personal_profile': {
                 'first_name': 'TestFirstName',
@@ -173,8 +169,7 @@ class RegistrationTest(TestCase):
             'first_home': {'firsthome': False, 'has_mortgage': False, 'has_agent': False},
             'house_type': {'house_type': HT_CN, 'house_age': HA_OLD, 'house_cond': HC_FU},
             'city': {'preferred_city': ''},
-            'max_budget': {'budget': 564.11},
-            'current_rent': {'current_rent': 76.67},
+            'max_budget': {'budget': 564.11, 'current_rent': 88.34, 'annual_income': 12},
             'how_soon': {'how_soon': HS_12},
             'personal_profile': {
                 'first_name': 'TestFirstName2',
@@ -216,7 +211,8 @@ class RegistrationTest(TestCase):
         self.assertEqual(user.house_age, data['house_type']['house_age'])
         self.assertEqual(user.house_cond, data['house_type']['house_cond'])
         self.assertEqual(user.budget, data['max_budget']['budget'])
-        self.assertEqual(user.current_rent, data['current_rent']['current_rent'])
+        self.assertEqual(user.current_rent, data['max_budget']['current_rent'])
+        self.assertEqual(user.annual_income, data['max_budget']['annual_income'])
         self.assertEqual(user.how_soon, data['how_soon']['how_soon'])
 
         self.assertEqual(user.email, data['personal_profile']['email'])
@@ -229,7 +225,8 @@ class RegistrationTest(TestCase):
         self.assertEqual(user_2.house_age, data_2['house_type']['house_age'])
         self.assertEqual(user_2.house_cond, data_2['house_type']['house_cond'])
         self.assertEqual(user_2.budget, data_2['max_budget']['budget'])
-        self.assertEqual(user_2.current_rent, data_2['current_rent']['current_rent'])
+        self.assertEqual(user_2.current_rent, data_2['max_budget']['current_rent'])
+        self.assertEqual(user_2.annual_income, data_2['max_budget']['annual_income'])
         self.assertEqual(user_2.how_soon, data_2['how_soon']['how_soon'])
 
         self.assertEqual(user_2.email, data_2['personal_profile']['email'])
@@ -271,18 +268,11 @@ class RegistrationTest(TestCase):
         self.assertTemplateUsed('onboarding/max_budget.html')
 
         # test to make sure we can skip the max budget form
-        data = {'budget': ''}
+        data = {'budget': '', 'current_rent': '', 'annual_income': ''}
         response = self.client.post(self.urls['max_budget'], data=data)
         self.assertEqual(response.status_code, 302)
         # lets see if we are taken to the next template current rent
         self.assertTemplateUsed('onboarding/current_rent.html')
-
-        # test to make sure we can skip the current rent form
-        data = {'current_rent': ''}
-        response = self.client.post(self.urls['current_rent'], data=data)
-        self.assertEqual(response.status_code, 302)
-        # lets see if we are taken to the next template how soon
-        self.assertTemplateUsed('onboarding/how_soon.html')
 
         # test to make sure we can skip the how soon form
         data = {'how_soon': ''}

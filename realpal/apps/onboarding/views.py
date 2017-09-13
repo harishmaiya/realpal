@@ -212,6 +212,7 @@ class PersonalProfileView(View):
                 house_cond=request.session.get('house_condition', None),
                 budget=request.session.get('max_budget', None),
                 current_rent=request.session.get('current_rent', None),
+                annual_income=request.session.get('annual_income', None),
                 how_soon=request.session.get('how_soon', None),
 
                 is_active=False
