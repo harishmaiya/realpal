@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, reverse
 from django.views import View
 
 from realpal.apps.onboarding.forms import PurchaseStepForm, MaritalStatusForm, FirstHomeForm, HouseTypeForm, \
-    CityForm, MaxBudgetForm, CurrentRentForm, HowSoonForm, PersonalProfileForm
+    CityForm, MaxBudgetForm, HowSoonForm, PersonalProfileForm
 from realpal.apps.users.models import User, City, PasswordReset
 from django.utils.decorators import method_decorator
 
@@ -135,34 +135,20 @@ class MaxBudgetView(View):
     template_name = 'onboarding/max_budget.html'
 
     def get(self, request, *args, **kwargs):
-        registration_data = {'max_budget': request.session.get('max_budget', '')}
+        registration_data = {
+            'budget': request.session.get('max_budget', ''),
+            'current_rent': request.session.get('current_rent', ''),
+            'annual_income': request.session.get('annual_income', '')
+        }
         form = MaxBudgetForm(initial=registration_data)
         return render(request, self.template_name, {'form': form}, status=200)
 
     def post(self, request, *args, **kwargs):
-        registration_data = {'max_budget': request.session.get('max_budget', '')}
         form = MaxBudgetForm(request.POST)
         if form.is_valid():
             request.session['max_budget'] = form.cleaned_data['budget']
-            return HttpResponseRedirect(reverse('onboarding:current-rent'))
-        return render(request, self.template_name, {'form': form}, status=400)
-
-
-@method_decorator(anonymous_required, name='dispatch')
-class CurrentRentView(View):
-
-    template_name = 'onboarding/current_rent.html'
-
-    def get(self, request, *args, **kwargs):
-        registration_data = {'current_rent': request.session.get('current_rent', '')}
-        form = CurrentRentForm(initial=registration_data)
-        return render(request, self.template_name, {'form': form}, status=200)
-
-    def post(self, request, *args, **kwargs):
-        registration_data = {'current_rent': request.session.get('current_rent', '')}
-        form = CurrentRentForm(request.POST)
-        if form.is_valid():
             request.session['current_rent'] = form.cleaned_data['current_rent']
+            request.session['annual_income'] = form.cleaned_data['annual_income']
             return HttpResponseRedirect(reverse('onboarding:how-soon'))
         return render(request, self.template_name, {'form': form}, status=400)
 

@@ -46,13 +46,7 @@ class CityForm(forms.ModelForm):
 class MaxBudgetForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['budget']
-
-
-class CurrentRentForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['current_rent']
+        fields = ['budget', 'current_rent', 'annual_income']
 
 
 class HowSoonForm(forms.ModelForm):
