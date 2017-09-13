@@ -12,41 +12,47 @@
                 <form action="" method="post" class="options button-select reduced">
                     {% csrf_token %}
 
-                    <div class="">
-                        {{ form.as_p }}
-                    </div>
 
                     <div class="bordered-block col-sm-12">
                         <h2 class="domine text-center"> First Home </h2>
+                        <div class="invisible">
+                            {{ form.firsthome }}
+                        </div>
                         <div class="col-sm-6">
                             <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
                         </div>
                         <div class="col-sm-6">
-                            <div class="btn center-block status btn-smaller">Yes</div>
-                            <div class="btn center-block status btn-smaller">No</div>
+                            <div id="fh-yes" class="btn center-block status btn-smaller">Yes</div>
+                            <div id="fh-no" class="btn center-block status btn-smaller">No</div>
                         </div>
                     </div>
 
                     <div class="bordered-block col-sm-12">
                         <h2 class="domine text-center"> Do you have a mortgage? </h2>
+                        <div class="invisible">
+                            {{ form.has_mortgage }}
+                        </div>
                         <div class="col-sm-6">
                             <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
                         </div>
                         <div class="col-sm-6">
-                            <div class="btn center-block status btn-smaller">Yes</div>
-                            <div class="btn center-block status btn-smaller">No</div>
+                            <div id="hm-yes" class="btn center-block status btn-smaller">Yes</div>
+                            <div id="hm-no" class="btn center-block status btn-smaller">No</div>
                         </div>
                     </div>
 
                     <div class="bordered-block col-sm-12">
                         <h2 class="domine text-center"> Do you have a Real Estate Agent? </h2>
+                        <div class="invisible">
+                            {{ form.has_agent }}
+                        </div>
                         <div class="col-sm-6">
                             <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="btn center-block status btn-smaller">Yes</div>
-                            <div class="btn center-block status btn-smaller">No</div>
+                            <div id="ha-yes" class="btn center-block status btn-smaller">Yes</div>
+                            <div id="ha-no" class="btn center-block status btn-smaller">No</div>
                         </div>
                     </div>
                     <button class="next center-block droid" type="submit">Next</button>
@@ -63,14 +69,17 @@
             evt.stopImmediatePropagation();
             evt.preventDefault();
             evt.stopPropagation();
+            var checkbox = $(this).parent().parent().find('input[type="checkbox"]');
             if ($(this).hasClass('checked')) {
-                $(this).find('input[type="radio"]').removeAttr('checked');
+                checkbox.removeAttr('checked');
                 $(this).removeClass('checked');
             } else {
-                $(this).find('input[type="radio"]').attr("checked", true);
-                $(this).siblings().find('input[type="radio"]').removeAttr("checked");
+                checkbox.prop("checked", true);
                 $(this).addClass('checked');
                 $(this).siblings().removeClass('checked');
+            }
+            if($(this).html() == 'No'){
+                checkbox.removeAttr('checked');
             }
 
         });
