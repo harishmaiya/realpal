@@ -50,7 +50,7 @@ class User(AbstractUser):
 
     annual_income = models.FloatField(blank=True, null=True)
 
-    purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP)
+    purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP, null=True, blank=True)
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
