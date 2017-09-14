@@ -1,0 +1,26 @@
+#discover-container{
+
+  & .tab-options > a {
+    color: #022d46;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 7px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+    &.active {
+      border-bottom: 1px solid #022d46;
+    }
+  }
+
+  & .tab-options {
+    margin-top: 10px;
+  }
+
+  & .tab {
+    margin-top: 20px;
+  }
+
+}

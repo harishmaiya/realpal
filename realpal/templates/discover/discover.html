@@ -4,19 +4,53 @@
 
 {% block content %}
     <!-- Start section -->
+<section id="discover-container">
+        <div class="text-center">
+            <div class="col-xs-12 tab-container">
+                <div class="col-xs-12 tab-menu">
 
-    <div class="chat-body">
-    <div class="text-center"><h1>{{ display_text }}</h1></div>
-    </div>
-    <!-- End section -->
-    <!--Message bar  section -->
-    <section class="chat-footer">
+                    <div class="tab-options active">
+                        <a href="#" class="text-center">
+                            <span>Checkpoints</span>
+                        </a>
+                        <a href="#" class="text-center">
+                            <span>House stories</span>
+                        </a>
+                        <a href="#" class=" text-center">
+                            <span>Trends</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-12 tab">
 
+                    <div class="tab-content active">
+                        Tab here
+                    </div>
+
+                    <div class="tab-content">
+                        Nother tab here
+                    </div>
+
+                    <div class="tab-content">
+                        third tab here
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </section>
-        <script type="text/javascript" src='{% static "chat/js/jquery-1.12.1.min.js" %}'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function () {
-        $('.discover-tab').addClass('is-active');
-    });
+        $(document).ready(function () {
+            $(".tab-options>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $(".tab-content").removeClass("active");
+                $(".tab-content").eq(index).addClass("active");
+            });
+        });
+
     </script>
 {% endblock %}
