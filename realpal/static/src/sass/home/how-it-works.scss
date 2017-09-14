@@ -40,13 +40,15 @@
     border-top: 2px solid #B77E66;
     margin-top: 30px;
     margin-bottom: 30px;
-    &.tighter{
+    &.tighter {
       margin: 15px auto;
     }
   }
 
   .fixed-height-540 {
-    height: 540px !important;
+    @media (min-width: 800px) {
+      height: 540px !important;
+    }
   }
 
   .header .card p {
@@ -827,9 +829,12 @@
   & div {
     max-width: 560px;
     padding: 60px 45px;
-    margin-right: 25px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+    @media (min-width: 800px) {
+      margin-right: 25px;
+    }
   }
 
   & .description {
