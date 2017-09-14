@@ -832,11 +832,15 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
   }
 
+  & .description {
+    font-weight: bold;
+  }
+
   @media (min-width: 800px) {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat no-repeat;
-    padding: 90px 0 120px;
+    padding: 40px 0 50px;
 
     & h2 {
       font-size: 48px;
