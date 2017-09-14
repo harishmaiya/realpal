@@ -52,12 +52,14 @@ div.vertical-tab-menu div.list-group > a:hover {
   /*padding-top: 90px;*/
 }
 
+.tab-content,
 div.vertical-tab-content {
   background-color: #ffffff;
   padding-left: 20px;
   padding-top: 10px;
 }
 
+.tab:not(.active),
 div.vertical-tab div.vertical-tab-content:not(.active) {
   display: none;
 }
