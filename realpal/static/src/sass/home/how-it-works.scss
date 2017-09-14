@@ -46,7 +46,7 @@
   }
 
   .fixed-height-540 {
-    height: 540px;
+    height: 540px !important;
   }
 
   .header .card p {
@@ -452,11 +452,10 @@
 
   .expect .card {
     background-color: #FFF;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1), 0 1px 3px 0 rgba(0, 0, 0, .2);
     border-radius: 2px;
     padding: 0 20px 40px;
-    max-width: 95%;
     margin: auto;
+    width: 450px;
 
     &.corrected {
       box-shadow: none !important;
@@ -843,7 +842,7 @@
 
 }
 
-#why {
+#why.modified {
 
   background-image: url(../../images/expect.jpeg);
   background-color: #C2C0CB;
