@@ -18,5 +18,12 @@
 
 .col-xs-offset-2 {margin-left: 20.666667%;}
 
+.flex-button-container{
+  display: flex;
+  justify-content: space-around;
+  & > div {
+    transform: scaleX(0.95);
+  }
+}
 /* End Categories Section */
 
