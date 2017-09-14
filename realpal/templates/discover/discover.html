@@ -4,13 +4,13 @@
 
 {% block content %}
     <!-- Start section -->
-<section id="discover-container">
+    <section id="discover-container">
         <div class="text-center">
             <div class="col-xs-12 tab-container">
                 <div class="col-xs-12 tab-menu">
 
-                    <div class="tab-options active">
-                        <a href="#" class="text-center">
+                    <div class="tab-options">
+                        <a href="#" class="text-center active">
                             <span>Checkpoints</span>
                         </a>
                         <a href="#" class="text-center">
@@ -21,18 +21,151 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xs-12 tab">
-
-                    <div class="tab-content active">
-                        Tab here
+                <div class="col-xs-12 tabs">
+                    <div class="tab active">
+                        <div class="sub-section">
+                            <h2 class="textSerif">Evaluate buy vs rent</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Short/long term effects</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Tax savings & charges</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Hidden costs and time factors</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-section">
+                            <h2 class="textSerif">Personal finance and readiness</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Improve credit worthiness</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Saving plan, tips </span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Paper works to get ready</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-section">
+                            <h2 class="textSerif">Type of houses - selection</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Appreciation factors</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Property taxes, insurance, HOA</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Condition, tradeoffs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-section">
+                            <h2 class="textSerif">Mortgage/housing loan</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Different types and interest rates</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Down payments</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Timeline, terms and benefits</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-section">
+                            <h2 class="textSerif">Location selection</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Local trends</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Lifestyle and decisive factors</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-section">
+                            <h2 class="textSerif">Agent (Mortgage & Real estate) selection</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Interview and negotiate</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Are they really working for you?</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Cash back or Value add services</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-section">
+                            <h2 class="textSerif">Your journey</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Overall timeline and efforts</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Family and priorities</span>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <span>Disappointment and Surprises </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="tab-content">
-                        Nother tab here
+                    <div class="tab">
+                        <div class="sub-section">
+                            <h2 class="textSerif">Blogs - covering personal experiences about pain points, gotchas during house buy</h2>
+                            <div class="flex">
+                                <div class="article">
+                                </div>
+                                <div class="article">
+                                </div>
+                                <div class="article">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="tab-content">
-                        third tab here
+                    <div class="tab">
+                        <div class="sub-section">
+                            <h2 class="textSerif">News articles - Upcoming development/projects, growth areas, Stats</h2>
+                            <div class="flex">
+                                <div class="article">
+                                </div>
+                                <div class="article">
+                                </div>
+                                <div class="article">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -47,8 +180,8 @@
                 $(this).siblings('a.active').removeClass("active");
                 $(this).addClass("active");
                 var index = $(this).index();
-                $(".tab-content").removeClass("active");
-                $(".tab-content").eq(index).addClass("active");
+                $(".tab").removeClass("active");
+                $(".tab").eq(index).addClass("active");
             });
         });
 

@@ -1,4 +1,5 @@
-#discover-container{
+#discover-container {
+  overflow-y: scroll;
 
   & .tab-options > a {
     color: #022d46;
@@ -15,12 +16,55 @@
     }
   }
 
+  & .article span {
+    color: #022d46;
+    padding: 3px;
+    border-bottom: 1px solid #eee;
+
+    &:hover {
+      border-bottom-color: #022d46;
+    }
+
+  }
+
   & .tab-options {
     margin-top: 10px;
   }
 
-  & .tab {
+  & .article {
+    width: 30%;
+  }
+
+  & .flex {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  & .tabs {
     margin-top: 20px;
+  }
+
+  & .image-placeholder {
+    height: 300px;
+    background: lightgray;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  & .tab-container {
+    max-width: 960px;
+  }
+
+  & .sub-section {
+
+    &:not(:last-of-type) {
+      margin-bottom: 100px;
+    }
+
+    & h2 {
+      margin-bottom: 30px;
+    }
+
   }
 
 }
