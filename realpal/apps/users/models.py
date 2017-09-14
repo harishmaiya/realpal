@@ -48,9 +48,7 @@ class User(AbstractUser):
     )
     phone_number = models.CharField(validators=[phone_regex], blank=True, max_length=16)
 
-    annual_income = models.FloatField(blank=True, null=True)
-
-    purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP)
+    purchase_step = models.SmallIntegerField(choices=PURCHASE_STEP_CHOICES, default=PS_DAP, null=True, blank=True)
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
@@ -71,6 +69,8 @@ class User(AbstractUser):
     budget = models.FloatField(blank=True, null=True)
 
     current_rent = models.FloatField(blank=True, null=True)
+
+    annual_income = models.FloatField(blank=True, null=True)
 
     how_soon = models.SmallIntegerField(choices=HOW_SOON_CHOICES, null=True, blank=True)
 

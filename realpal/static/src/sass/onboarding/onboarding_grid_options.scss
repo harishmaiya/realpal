@@ -155,11 +155,9 @@ html, body {
   border-bottom: 1px solid #ddd;
   padding-bottom: 70px;
   margin-bottom: 10px;
-
-  & img {
-    margin-top: 5%;
+  & h2 {
+    margin-bottom: 30px;
   }
-
   &:last-of-type {
     margin-bottom: 30px;
   }

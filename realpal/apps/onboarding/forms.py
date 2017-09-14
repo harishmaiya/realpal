@@ -22,7 +22,12 @@ class MaritalStatusForm(forms.ModelForm):
 class FirstHomeForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['firsthome']
+        fields = ['firsthome', 'has_mortgage', 'has_agent']
+        widgets = {
+            'firsthome': forms.CheckboxInput,
+            'has_mortgage': forms.CheckboxInput,
+            'has_agent': forms.CheckboxInput
+        }
 
 
 class HouseTypeForm(forms.ModelForm):
@@ -46,13 +51,7 @@ class CityForm(forms.ModelForm):
 class MaxBudgetForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['budget']
-
-
-class CurrentRentForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['current_rent']
+        fields = ['budget', 'current_rent', 'annual_income']
 
 
 class HowSoonForm(forms.ModelForm):

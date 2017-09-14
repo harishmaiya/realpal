@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
 from .views import MaritalStatusView, FirstHomeView,\
-    HouseTypeView, CityView, MaxBudgetView, CurrentRentView, HowSoonView, PersonalProfileView, ActivateAccount,\
+    HouseTypeView, CityView, MaxBudgetView, HowSoonView, PersonalProfileView, ActivateAccount,\
     ResendActivationEmail
 
 urlpatterns = [
@@ -10,7 +10,6 @@ urlpatterns = [
     url(r'^prepare/house-type$', HouseTypeView.as_view(), name='house-type'),
     url(r'^prepare/city$', CityView.as_view(), name='city'),
     url(r'^prepare/max-budget$', MaxBudgetView.as_view(), name='max-budget'),
-    url(r'^prepare/current-rent$', CurrentRentView.as_view(), name='current-rent'),
     url(r'^prepare/how-soon$', HowSoonView.as_view(), name='how-soon'),
     url(r'^prepare/personal-profile$', PersonalProfileView.as_view(), name='personal-profile'),
     url(r'^prepare/activate/(?P<uuid>.*)/$', ActivateAccount.as_view(), name='activate-account'),

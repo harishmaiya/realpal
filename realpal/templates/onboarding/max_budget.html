@@ -2,29 +2,78 @@
 {% block content %}
 
     <!-- Start Categories section -->
-    <section class="registration-container">
+    <section class="registration-container ext">
         <div class="categories text-center">
             <div class="container">
                 <div class="header">
-                    <h1 class="domine">Do you have maximum budget?</h1>
+                    <h1 class="domine">Financials</h1>
+                    <h3 class="droid">So we can help you find an affordable home</h3>
                 </div>
-                <form class="form-inline" method="post" action="">
+                <form action="" method="post" class="options">
                     {% csrf_token %}
-                    {% for field in form %}
-                        <input class="form-control input-lg" type="number" name="{{ field.name }}"
-                               id="id_{{ field.name }}"
-                               value="{{ field.value }}">
-                    {% endfor %}
-                    <div class="dollar-sign">$</div>
-                    <div class="button-container">
-                        <button class="next center-block droid" type="submit">Next</button>
+
+                    <div class="bordered-block col-sm-12">
+                        <h2 class="domine text-center"> Maximum Budget </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
+                        </div>
+                        <div class="col-sm-6 fixed-height">
+                            {% for field in form.budget %}
+                                <input class="form-control input-lg" type="number" name="{{ field.name }}"
+                                       id="id_{{ field.name }}"
+                                       value="{{ field.value }}">
+                            {% endfor %}
+                            {% if form.budget.errors %}
+                                <p class="red-text">{{ form.budget.errors }}</p>
+                            {% endif %}
+                            <div class="dollar-sign positioned">$</div>
+                        </div>
                     </div>
-                <a href="{% url 'onboarding:current-rent' %}">
+
+                    <div class="bordered-block col-sm-12">
+                        <h2 class="domine text-center"> Current Rent </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
+                        </div>
+                        <div class="col-sm-6 fixed-height">
+                            {% for field in form.current_rent %}
+                                <input class="form-control input-lg" type="number" name="{{ field.name }}"
+                                       id="id_{{ field.name }}"
+                                       value="{{ field.value }}">
+                            {% endfor %}
+                            {% if form.current_rent.errors %}
+                                <p class="red-text">{{ form.current_rent.errors }}</p>
+                            {% endif %}
+                            <div class="dollar-sign positioned">$</div>
+                        </div>
+                    </div>
+
+                    <div class="bordered-block col-sm-12">
+                        <h2 class="domine text-center"> Annual Income before Tax </h2>
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
+                        </div>
+
+                        <div class="col-sm-6 fixed-height">
+                            {% for field in form.annual_income %}
+                                <input class="form-control input-lg" type="number" name="{{ field.name }}"
+                                       id="id_{{ field.name }}"
+                                       value="{{ field.value }}">
+                            {% endfor %}
+                            {% if form.annual_income.errors %}
+                                <p class="red-text">{{ form.annual_income.errors }}</p>
+                            {% endif %}
+                            <div class="dollar-sign positioned">$</div>
+                        </div>
+                    </div>
+                    <button class="next center-block droid" type="submit">Next</button>
+                    <a href="{% url 'onboarding:how-soon' %}">
                         <button class="skip" type="button">Skip this step</button>
                     </a>
                 </form>
+
             </div>
         </div>
     </section>
-
 {% endblock %}
+

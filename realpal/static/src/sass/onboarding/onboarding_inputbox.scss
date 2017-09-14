@@ -57,21 +57,20 @@ input[type="text"]:focus {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 .categories .form-inline .dollar-sign {
-    position: absolute;
-    z-index: 3;
-    top: 4%;
-    left: 5%;
-    color: #999;
-    font-size: 20px;
+  position: absolute;
+  z-index: 3;
+  top: 4%;
+  left: 5%;
+  color: #999;
+  font-size: 20px;
 
   @media (min-width: 768px) {
     left: 20%;
   }
-
 
 }
 
@@ -85,6 +84,25 @@ input::-webkit-inner-spin-button {
   border-radius: 22px;
   margin-top: 30px;
   margin-bottom: 0px
+}
+
+.dollar-sign.positioned {
+  position: absolute;
+  top: 34px;
+  left: 25px;
+  color: gray;
+  font-size: 1.5em;
+}
+
+.bordered-block input {
+  padding-left: 25px;
+}
+
+.bordered-block div + div.fixed-height {
+  height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* End Categories Section */
