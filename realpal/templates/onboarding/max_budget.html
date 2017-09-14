@@ -12,12 +12,9 @@
                 <form action="" method="post" class="options">
                     {% csrf_token %}
 
-                    <div class="bordered-block col-sm-12">
+                    <div class="bordered-block col-sm-12 adjusted">
                         <h2 class="domine text-center"> Maximum Budget </h2>
-                        <div class="col-sm-6">
-                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
-                        </div>
-                        <div class="col-sm-6 fixed-height">
+                        <div class="col-sm-12 fixed-height">
                             {% for field in form.budget %}
                                 <input class="form-control input-lg" type="number" name="{{ field.name }}"
                                        id="id_{{ field.name }}"
@@ -30,12 +27,10 @@
                         </div>
                     </div>
 
-                    <div class="bordered-block col-sm-12">
+                    <div class="bordered-block col-sm-12 adjusted">
                         <h2 class="domine text-center"> Current Rent </h2>
-                        <div class="col-sm-6">
-                            <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
-                        </div>
-                        <div class="col-sm-6 fixed-height">
+
+                        <div class="col-sm-12 fixed-height">
                             {% for field in form.current_rent %}
                                 <input class="form-control input-lg" type="number" name="{{ field.name }}"
                                        id="id_{{ field.name }}"
@@ -48,13 +43,10 @@
                         </div>
                     </div>
 
-                    <div class="bordered-block col-sm-12">
+                    <div class="bordered-block col-sm-12 adjusted">
                         <h2 class="domine text-center"> Annual Income before Tax </h2>
-                        <div class="col-sm-6">
-                            <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
-                        </div>
 
-                        <div class="col-sm-6 fixed-height">
+                        <div class="col-sm-12 fixed-height">
                             {% for field in form.annual_income %}
                                 <input class="form-control input-lg" type="number" name="{{ field.name }}"
                                        id="id_{{ field.name }}"

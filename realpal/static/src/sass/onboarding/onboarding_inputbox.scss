@@ -87,22 +87,28 @@ input::-webkit-inner-spin-button {
 }
 
 .dollar-sign.positioned {
-  position: absolute;
-  top: 34px;
-  left: 25px;
+  position: relative;
+  top: -38px;
+  left: -180px;
   color: gray;
   font-size: 1.5em;
+  @media (max-width: 580px) {
+    left: -45%;
+  }
 }
 
 .bordered-block input {
-  padding-left: 25px;
+  padding-left: 30px;
+  max-width: 400px;
+  margin: auto;
+  display: block;
 }
 
 .bordered-block div + div.fixed-height {
   height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* End Categories Section */

@@ -155,6 +155,10 @@ html, body {
   border-bottom: 1px solid #ddd;
   padding-bottom: 70px;
   margin-bottom: 10px;
+  &.adjusted{
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+  }
   & h2 {
     margin-bottom: 30px;
   }

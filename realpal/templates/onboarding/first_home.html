@@ -5,52 +5,46 @@
     <section class="registration-container ext">
         <div class="categories text-center">
             <div class="container">
-                <div class="header">
-                    <h1 class="domine">Is this your first home buy?</h1>
-                    <h3 class="droid">So you can know about tax advantages, house choosing criteria</h3>
-                </div>
                 <form action="" method="post" class="options button-select reduced">
                     {% csrf_token %}
-
-
-                    <div class="bordered-block col-sm-12">
-                        <h2 class="domine text-center"> First Home </h2>
+                    <div class="header">
+                        <h1 class="domine">Is this your first home buy?</h1>
+                        <h3 class="droid">So you can know about tax advantages, house choosing criteria</h3>
+                    </div>
+                    <br>
+                    <div class="bordered-block col-sm-12 adjusted">
                         <div class="invisible">
                             {{ form.firsthome }}
                         </div>
-                        <div class="col-sm-6">
-                            <img class="img-responsive" src="{% static 'images/type.jpg' %}" alt="house">
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12 flex-button-container">
                             <div id="fh-yes" class="btn center-block status btn-smaller">Yes</div>
                             <div id="fh-no" class="btn center-block status btn-smaller">No</div>
                         </div>
                     </div>
 
-                    <div class="bordered-block col-sm-12">
-                        <h2 class="domine text-center"> Do you have a mortgage? </h2>
+                    <div class="header">
+                        <h1 class="domine">Do you have a mortgage?</h1>
+                        <h3 class="droid"></h3>
+                    </div>
+                    <div class="bordered-block col-sm-12 adjusted">
                         <div class="invisible">
                             {{ form.has_mortgage }}
                         </div>
-                        <div class="col-sm-6">
-                            <img class="img-responsive age" src="{% static 'images/age.jpg' %}" alt="house"/>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12 flex-button-container">
                             <div id="hm-yes" class="btn center-block status btn-smaller">Yes</div>
                             <div id="hm-no" class="btn center-block status btn-smaller">No</div>
                         </div>
                     </div>
 
-                    <div class="bordered-block col-sm-12">
-                        <h2 class="domine text-center"> Do you have a Real Estate Agent? </h2>
+                    <div class="header">
+                        <h1 class="domine">Do you have a real estate agent?</h1>
+                        <h3 class="droid"></h3>
+                    </div>
+                    <div class="bordered-block col-sm-12 adjusted">
                         <div class="invisible">
                             {{ form.has_agent }}
                         </div>
-                        <div class="col-sm-6">
-                            <img class="img-responsive" src="{% static 'images/condition.jpg' %}" alt="house">
-                        </div>
-
-                        <div class="col-sm-6">
+                        <div class="col-sm-12 flex-button-container">
                             <div id="ha-yes" class="btn center-block status btn-smaller">Yes</div>
                             <div id="ha-no" class="btn center-block status btn-smaller">No</div>
                         </div>
@@ -75,7 +69,7 @@
                 $(this).addClass('checked');
                 $(this).siblings().removeClass('checked');
             }
-            if($(this).html() == 'No'){
+            if ($(this).html() == 'No') {
                 checkbox.removeAttr('checked');
             }
 
