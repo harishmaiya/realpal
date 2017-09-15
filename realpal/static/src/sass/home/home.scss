@@ -2,7 +2,10 @@
 .home-container {
   .header .container {
     width: 100%;
-    padding: 0
+    padding: 0;
+    .row {
+      margin-bottom: -150px;
+    }
   }
 
   .header .row .prepare {
