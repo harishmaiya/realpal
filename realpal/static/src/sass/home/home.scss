@@ -17,7 +17,7 @@
 
   .header .row .own {
     padding: 0;
-    background: url('../images/DreamHouse.jpg') no-repeat center
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/DreamHouse.jpg') no-repeat center
   }
 
   .header .row .prepare,
@@ -248,6 +248,22 @@
 
   }
 
+}
+
+.white-text {
+  color: #fff;
+}
+
+.bold-text {
+  font-weight: bold !important;
+}
+
+.home-container .flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px !important;
+  font-weight: bold !important;
 }
 
 @import "how-it-works";
