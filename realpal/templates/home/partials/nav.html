@@ -1,24 +1,33 @@
 <nav class="navbar navbar-fixed-top">
-        <div class="navbar-header ">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#our-navbar"
-                    aria-expanded="false">
-                <i class="fa fa-bars fa-2x"></i>
-            </button>
-            <a class="navbar-brand sans navy text-center bold" href="/">
-                REAL PAL
-            </a>
-        </div>
-        <div class="collapse navbar-collapse" id="our-navbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a class="navy sans" href="#">Locations</a></li>
-                {% if user.is_anonymous %}
-                    <li><a class="navy sans" href="{% url 'users:login' %}">Sign In</a></li>
-                    <li class="btn back-brown sans"><a href="{% url 'onboarding:marital-status' %}">Get Started</a></li>
-                {% else %}
-                    <li><a class="navy sans" href="{% url 'chat:chat-room' %}">Chat</a></li>
-                    <li><a class="navy sans" href="{% url 'users:update' %}"><img class="img-rounded for-nav" src="{% static 'src/images/default_avatar.png' %}"> My Profile</a></li>
-                    <li><a class="text-danger sans" href="{% url 'users:logout' %}">Sign Out</a></li>
-                {% endif %}
-            </ul>
-        </div>
+    <div class="navbar-header ">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#our-navbar"
+                aria-expanded="false">
+            <i class="fa fa-bars fa-2x"></i>
+        </button>
+        <a class="navbar-brand sans navy text-center bold" href="/">
+            REAL PAL
+        </a>
+    </div>
+    <div class="collapse navbar-collapse" id="our-navbar">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                    <a href="#" class="navy sans dropdown-toggle" type="button" data-toggle="dropdown">Locations
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu adjusted">
+                        <li><a href="#" class="navy sans">Silicon Valley</a></li>
+                    </ul>
+            </li>
+            {% if user.is_anonymous %}
+                <li><a class="navy sans" href="{% url 'users:login' %}">Sign In</a></li>
+                <li class="btn back-brown sans"><a href="{% url 'onboarding:marital-status' %}">Get Started</a></li>
+            {% else %}
+                <li><a class="navy sans" href="{% url 'chat:chat-room' %}">Chat</a></li>
+                <li><a class="navy sans" href="{% url 'users:update' %}"><img class="img-rounded for-nav"
+                                                                              src="{% static 'src/images/default_avatar.png' %}">
+                    My Profile</a></li>
+                <li><a class="text-danger sans" href="{% url 'users:logout' %}">Sign Out</a></li>
+            {% endif %}
+        </ul>
+    </div>
 </nav>

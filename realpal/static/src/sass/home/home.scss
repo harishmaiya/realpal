@@ -303,4 +303,10 @@
 
 }
 
+.dropdown a:active,
+.dropdown a:focus {
+  background: none !important;
+  border: none;
+}
+
 @import "how-it-works";
