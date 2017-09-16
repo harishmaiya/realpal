@@ -2,7 +2,10 @@
 .home-container {
   .header .container {
     width: 100%;
-    padding: 0
+    padding: 0;
+    .row {
+      margin-bottom: -150px;
+    }
   }
 
   .header .row .prepare {
@@ -17,7 +20,22 @@
 
   .header .row .own {
     padding: 0;
-    background: url('../images/DreamHouse.jpg') no-repeat center
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: -1;
+      display: block;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/DreamHouse.jpg) no-repeat center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      filter: blur(5px);
+    }
+
   }
 
   .header .row .prepare,
@@ -247,6 +265,41 @@
     }
 
   }
+
+}
+
+.white-text {
+  color: #fff;
+}
+
+.bold-text {
+  font-weight: bold !important;
+}
+
+.home-container .flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px !important;
+  font-weight: bold !important;
+
+  & img {
+    width: 35%;
+    position: absolute;
+    border-radius: 2px;
+    box-shadow: 0 0 1px 1px grey;
+  }
+
+}
+
+.quote-text {
+  font-size: 16px;
+  font-weight: bold;
+  width: 60%;
+  margin-left: 40%;
+  text-align: left;
+  font-family: Roboto;
+  letter-spacing: 0.5px;
 
 }
 
