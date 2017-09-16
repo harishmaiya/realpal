@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^house-loan$', DiscoverView.as_view(), name='house-loan'),
     url(r'^location$', DiscoverView.as_view(), name='location'),
     url(r'^agent-selection$', DiscoverView.as_view(), name='agent-selection'),
+    url(r'^your-journey', DiscoverView.as_view(), name='your-journey'),
 ]
