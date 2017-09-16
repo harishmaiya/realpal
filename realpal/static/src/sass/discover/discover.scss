@@ -1,5 +1,15 @@
 #discover-container {
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  & a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
   & .tab-options > a {
     color: #022d46;
@@ -7,10 +17,7 @@
     font-weight: bold;
     font-size: 13px;
     padding: 7px;
-    text-decoration: none;
-    &:hover {
-      text-decoration: none;
-    }
+
     &.active {
       border-bottom: 1px solid #022d46;
     }
@@ -33,11 +40,15 @@
 
   & .article {
     width: 30%;
+    margin: auto 5px;
+    margin-bottom: 30px;
+    min-width: 200px;
   }
 
   & .flex {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   & .tabs {
