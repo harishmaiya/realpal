@@ -24,6 +24,7 @@
   }
 
   & .article span {
+
     color: #022d46;
     padding: 3px;
     border-bottom: 1px solid #eee;
@@ -43,6 +44,9 @@
     margin: auto 5px;
     margin-bottom: 30px;
     min-width: 200px;
+    &.full-width {
+      width: 100%;
+    }
   }
 
   & .flex {
