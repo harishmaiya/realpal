@@ -46,6 +46,9 @@
     min-width: 200px;
     &.full-width {
       width: 100%;
+      border-top: 1px solid lightgray;
+      padding-top: 5px;
+      margin-bottom: 20px;
     }
   }
 
@@ -80,6 +83,62 @@
       margin-bottom: 30px;
     }
 
+  }
+
+  & .date-container {
+    width: 20%;
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  & .content-container {
+    width: 79%;
+    height: 100%;
+    display: inline-block;
+    border-top: 2px solid lightblue;
+
+  }
+
+  & .wording-container {
+    width: 50%;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+    background: #eee;
+    padding: 0 5px;
+
+    & .title {
+      font-family: serif;
+      font-weight: bold;
+      line-height: 1em;
+      font-size: 28px;
+      text-align: left;
+
+    }
+
+    & .description {
+      font-family: serif;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    & .social-buttons {
+      text-align: left;
+      position: absolute;
+      margin: 0;
+      font-size: 13px;
+      bottom: 0;
+      text-transform: uppercase;
+    }
+
+  }
+
+  & .image-container {
+    display: inline-block;
+    width: 50%;
+    height: 250px;
+    float: right;
+    background: gray;
   }
 
 }
