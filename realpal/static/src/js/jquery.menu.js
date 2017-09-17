@@ -14,7 +14,6 @@ document.addEventListener('scroll', function (event) {
     var start = 400;
 
     scrollpos = $('.how-works .time-path .scroll.timeline').offset().top;
-    console.log(scrollpos);
     diff = start - scrollpos;
     perc = diff / 2000 * 100;
     hei = 86 * perc / 100;
