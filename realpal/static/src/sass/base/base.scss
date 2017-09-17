@@ -181,6 +181,10 @@ body {
 .navbar .collapse ul .dropdown-menu {
   padding: 30px;
   transform: translateX(18%) translateZ(0) translateY(-2%);
+  &.adjusted {
+    padding: 10px;
+    text-align: center;
+  }
 }
 
 .navbar .collapse ul .dropdown-menu li a {

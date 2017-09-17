@@ -801,6 +801,14 @@
   background-color: #232e39;
 }
 
+.block.active:after {
+  content: '';
+  width: 45px;
+  z-index: 1;
+  height: 2px;
+  background: #b77d64;
+}
+
 .no1:before {
   counter-increment: my-counter 1 !important;
 }

@@ -14,7 +14,10 @@
                             <span>Checkpoints</span>
                         </a>
                         <a href="#" class="text-center">
-                            <span>House stories</span>
+                            <span>Locality</span>
+                        </a>
+                        <a href="#" class=" text-center">
+                            <span>Blogs</span>
                         </a>
                         <a href="#" class=" text-center">
                             <span>Trends</span>
@@ -24,117 +27,97 @@
                 <div class="col-xs-12 tabs">
                     <div class="tab active">
                         <div class="sub-section">
-                            <h2 class="textSerif">Evaluate buy vs rent</h2>
+                            <h2 class="textSerif">Covering the basics</h2>
                             <div class="flex">
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Short/long term effects</span>
+                                    <a href="{% url 'discover:rent-buy' %}"><span>Evaluate buy vs rent</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Tax savings & charges</span>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Personal finance and readiness</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Hidden costs and time factors</span>
+                                    <a href="{% url 'discover:house-select' %}"><span>Type of houses - selection</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="{% url 'discover:house-loan' %}"><span>Mortgage/housing loan</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="{% url 'discover:location' %}"><span>Location selection</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="{% url 'discover:agent-selection' %}"><span>Agent (Mortgage & Real estate)</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="{% url 'discover:your-journey' %}"><span>Your journey</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="#"><span>###</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="#"><span>###</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab">
+                        <div class="sub-section">
+                            <h2 class="textSerif">Local Developments</h2>
+                            <div class="flex">
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="#"><span>###</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="#"><span>###</span></a>
+                                </div>
+                                <div class="article">
+                                    <div class="image-placeholder"></div>
+                                    <a href="#"><span>###</span></a>
                                 </div>
                             </div>
                         </div>
                         <div class="sub-section">
-                            <h2 class="textSerif">Personal finance and readiness</h2>
+                            <h2 class="textSerif">Statistics</h2>
                             <div class="flex">
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Improve credit worthiness</span>
+                                    <a href="#"><span>###</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Saving plan, tips </span>
+                                    <a href="#"><span>###</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Paper works to get ready</span>
+                                    <a href="#"><span>###</span></a>
                                 </div>
                             </div>
                         </div>
                         <div class="sub-section">
-                            <h2 class="textSerif">Type of houses - selection</h2>
+                            <h2 class="textSerif">Quora Posts</h2>
                             <div class="flex">
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Appreciation factors</span>
+                                    <a href="#"><span>###</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Property taxes, insurance, HOA</span>
+                                    <a href="#"><span>###</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder"></div>
-                                    <span>Condition, tradeoffs</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sub-section">
-                            <h2 class="textSerif">Mortgage/housing loan</h2>
-                            <div class="flex">
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Different types and interest rates</span>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Down payments</span>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Timeline, terms and benefits</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sub-section">
-                            <h2 class="textSerif">Location selection</h2>
-                            <div class="flex">
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Local trends</span>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Lifestyle and decisive factors</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sub-section">
-                            <h2 class="textSerif">Agent (Mortgage & Real estate) selection</h2>
-                            <div class="flex">
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Interview and negotiate</span>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Are they really working for you?</span>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Cash back or Value add services</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sub-section">
-                            <h2 class="textSerif">Your journey</h2>
-                            <div class="flex">
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Overall timeline and efforts</span>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Family and priorities</span>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <span>Disappointment and Surprises </span>
+                                    <a href="#"><span>###</span></a>
                                 </div>
                             </div>
                         </div>
@@ -144,11 +127,50 @@
                         <div class="sub-section">
                             <h2 class="textSerif">Blogs - covering personal experiences about pain points, gotchas during house buy</h2>
                             <div class="flex">
-                                <div class="article">
+                                <div class="article full-width">
+                                    <div class="date-container">
+                                        <p>18 November 2014</p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="wording-container">
+                                            <p class="title">Facebook at work to take on LinkedIn and Google Drive</p>
+                                            <p class="description">Have yur word on the social network's move into business. Spotify's Uber deal Google's project Tango and more.</p>
+                                            <p class="social-buttons">
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 7:30am</span>
+                                                <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span></p>
+                                        </div>
+                                        <div class="image-container"></div>
+                                    </div>
                                 </div>
-                                <div class="article">
+                                <div class="article full-width">
+                                    <div class="date-container">
+                                        <p>18 November 2014</p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="wording-container">
+                                            <p class="title">Facebook at work to take on LinkedIn and Google Drive</p>
+                                            <p class="description">Have yur word on the social network's move into business. Spotify's Uber deal Google's project Tango and more.</p>
+                                            <p class="social-buttons">
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 7:30am</span>
+                                                <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span></p>
+                                        </div>
+                                        <div class="image-container"></div>
+                                    </div>
                                 </div>
-                                <div class="article">
+                                <div class="article full-width">
+                                    <div class="date-container">
+                                        <p>18 November 2014</p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="wording-container">
+                                            <p class="title">Facebook at work to take on LinkedIn and Google Drive</p>
+                                            <p class="description">Have yur word on the social network's move into business. Spotify's Uber deal Google's project Tango and more.</p>
+                                            <p class="social-buttons">
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 7:30am</span>
+                                                <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span></p>
+                                        </div>
+                                        <div class="image-container"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -158,11 +180,50 @@
                         <div class="sub-section">
                             <h2 class="textSerif">News articles - Upcoming development/projects, growth areas, Stats</h2>
                             <div class="flex">
-                                <div class="article">
+                                <div class="article full-width">
+                                    <div class="date-container">
+                                        <p>18 November 2014</p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="wording-container">
+                                            <p class="title">People sentiment</p>
+                                            <p class="description">SV market upbeat for next year - will go on, slow down, almost same. </p>
+                                            <p class="social-buttons">
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 7:30am</span>
+                                                <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span></p>
+                                        </div>
+                                        <div class="image-container"></div>
+                                    </div>
                                 </div>
-                                <div class="article">
+                                <div class="article full-width">
+                                    <div class="date-container">
+                                        <p>18 November 2014</p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="wording-container">
+                                            <p class="title">Startup and tech scene</p>
+                                            <p class="description">Have yur word on the social network's move into business. Spotify's Uber deal Google's project Tango and more.</p>
+                                            <p class="social-buttons">
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 7:30am</span>
+                                                <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span></p>
+                                        </div>
+                                        <div class="image-container"></div>
+                                    </div>
                                 </div>
-                                <div class="article">
+                                <div class="article full-width">
+                                    <div class="date-container">
+                                        <p>18 November 2014</p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="wording-container">
+                                            <p class="title">Your voice</p>
+                                            <p class="description">Ideas from people</p>
+                                            <p class="social-buttons">
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 7:30am</span>
+                                                <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span></p>
+                                        </div>
+                                        <div class="image-container"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -175,6 +236,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('.discover-tab').addClass('is-active');
             $(".tab-options>a").click(function (e) {
                 e.preventDefault();
                 $(this).siblings('a.active').removeClass("active");
