@@ -19,6 +19,7 @@ document.addEventListener('scroll', function (event) {
     hei = 86 * perc / 100;
     $('.how-works .time-path .scroll.timeline').css({'height': hei+'%'});
 
+
     if (scrollpos < 400){
         if (!$('.no1').hasClass('active'))
             $('.no1').addClass('active');
@@ -34,14 +35,14 @@ document.addEventListener('scroll', function (event) {
     }
 
 
-    if (scrollpos < -340){
+    if (scrollpos < -310){
         if (!$('.no3').hasClass('active'))
             $('.no3').addClass('active');
     } else {
         $('.no3').removeClass('active');
     }
 
-    if (scrollpos < -765){
+    if (scrollpos < -840){
         if (!$('.no4').hasClass('active'))
             $('.no4').addClass('active');
     } else {
