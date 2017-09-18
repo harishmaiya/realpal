@@ -36,7 +36,7 @@
   }
 
   & .tab-options {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   & .article {
@@ -49,6 +49,10 @@
       border-top: 1px solid lightgray;
       padding-top: 10px;
       margin-bottom: 20px;
+    }
+
+    &.half-width{
+      width: 45%;
     }
   }
 
@@ -67,6 +71,10 @@
     background: lightgray;
     width: 100%;
     margin-bottom: 10px;
+
+    &.height-400{
+      height: 400px;
+    }
   }
 
   & .tab-container {
