@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^location$', DiscoverView.as_view(), name='location'),
     url(r'^agent-selection$', DiscoverView.as_view(), name='agent-selection'),
     url(r'^your-journey', DiscoverView.as_view(), name='your-journey'),
+    url(r'^(?P<url_name>\w)/$', DiscoverView.as_view(), name='rent-buy'),
 ]
