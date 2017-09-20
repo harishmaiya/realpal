@@ -241,6 +241,7 @@
                 var index = $(this).index();
                 $(".tab").removeClass("active");
                 $(".tab").eq(index).addClass("active");
+                window.history.pushState("", "Discover", "/discover/"+ $(this).children().eq(0).text().toLowerCase());
             });
             {% if url_name %}
                 $('#{{ url_name }}').click();
