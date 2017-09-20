@@ -43,6 +43,16 @@ html, body {
   font-weight: 600;
 }
 
+.banner a {
+  color: #fff;
+}
+
+.banner a:focus,
+.banner a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
 /* End Banner Section */
 
 /* Start Body Section */

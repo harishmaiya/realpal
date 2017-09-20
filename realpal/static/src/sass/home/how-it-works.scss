@@ -4,13 +4,17 @@
     background: url('../images/header%20(2).jpg') no-repeat center 40%
   }
 
+  .header .container .row {
+    height: auto !important;
+  }
+
   .header .card {
     margin-top: 50px;
     margin-bottom: 30px;
     padding: 25px 10px;
     background-color: #FFF;
-    height: 530px;
-    width: 320px;
+    height: 445px;
+    width: 380px;
     box-shadow: 0 0 1px 1px darkgrey;
     margin-left: 10px;
   }
@@ -117,7 +121,7 @@
   /* Start How It Works Section */
 
   .how-works {
-    padding-top: 140px;
+    padding-top: 80px;
     padding-bottom: 75px
   }
 

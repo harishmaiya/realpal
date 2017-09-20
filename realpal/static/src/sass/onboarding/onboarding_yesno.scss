@@ -20,9 +20,11 @@
 
 .flex-button-container{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   & > div {
     transform: scaleX(0.95);
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 /* End Categories Section */
