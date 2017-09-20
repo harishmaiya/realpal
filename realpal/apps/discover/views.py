@@ -6,4 +6,5 @@ class DiscoverView(View):
     template_name = 'discover/discover.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, context={}, status=200)
+        url_name = kwargs.get('url_name', '').replace('/', '')
+        return render(request, self.template_name, context={'url_name': url_name}, status=200)
