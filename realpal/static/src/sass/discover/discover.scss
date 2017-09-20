@@ -71,9 +71,16 @@
     background: lightgray;
     width: 100%;
     margin-bottom: 10px;
+    overflow: hidden;
 
     &.height-400 {
       height: 400px;
+    }
+
+    & iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
   }
@@ -108,6 +115,7 @@
 
   }
 
+
   & .wording-container {
     width: 50%;
     height: 250px;
@@ -122,6 +130,7 @@
       line-height: 1em;
       font-size: 28px;
       text-align: left;
+      cursor: pointer;
 
     }
 
@@ -148,6 +157,8 @@
     height: 250px;
     float: right;
     background: gray;
+    cursor: pointer;
+    overflow: hidden;
 
     & iframe {
       width: 100%;
