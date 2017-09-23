@@ -13,14 +13,14 @@
                         <a href="#" class="text-center active" id="checkpoints">
                             <span>Checkpoints</span>
                         </a>
-                        <a href="#" class="text-center" id="locality">
-                            <span>Locality</span>
-                        </a>
-                        <a href="#" class=" text-center" id="blogs">
-                            <span>Blogs</span>
-                        </a>
-                        <a href="#" class=" text-center" id="trends">
+                        <a href="{% url 'discover:trends' %}" class=" text-center" id="trends">
                             <span>Trends</span>
+                        </a>
+                        <a href="{% url 'discover:media' %}" class="text-center" id="media">
+                            <span>Media</span>
+                        </a>
+                        <a href="{% url 'discover:stories' %}" class=" text-center" id="stories">
+                            <span>Stories</span>
                         </a>
                     </div>
                 </div>
@@ -30,41 +30,154 @@
                             <h2 class="textSerif">Covering the basics</h2>
                             <div class="flex">
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="{% url 'discover:rent-buy' %}"><span>Evaluate buy vs rent</span></a>
+                                    <a href="{% url 'discover:rent-buy' %}"><span>Whether to Buy or Rent</span></a>
+                                    <div class="text-placeholder">
+                                      <br><p class="block-heading">Know about short & long term impact on you and your finances. Use calculator to get an estimate. But also include:</p>
+                                      <li>Potential tax savings on purchase</li>
+                                      <li>Appreciation factors and house updates</li>
+                                      <li>Related ongoing costs, taxes of home ownership</li>
+                                    </div>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="{% url 'discover:personal-finance' %}"><span>Personal finance and readiness</span></a>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Your Financial Readiness</span></a>
+                                    <div class="text-placeholder">
+                                  <br><p class="block-heading">Includes more than having a strong income. You need to evaluate:</p>
+                                  <br><li>
+                                      Your credit worthiness </li>
+                                      <li>Your ability to put money down on the home and handle closing costs</li>
+                                      <li>The documentation you can provide to support your loan application</li>
+                                     <li>Your ability to get pre-approved affects whether you are viewed as a strong buyer during negotiations</li>
+                                    </div>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="{% url 'discover:house-select' %}"><span>Type of houses - selection</span></a>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Decide on Type of Home You Want</span></a>
+                                    <div class="text-placeholder">
+                                  <br><p class="block-heading">Home buying often involves compromises. It’s not usually possible to get the perfect home in the perfect location.
+                                    Here are some issues you’ll need to address:</p>
+                                      <li>Style of home for your family</li>
+                                      <li>Property taxes, insurance and HOA costs</li>
+                                      <li>The condition of the home, yard space, square footage.</li>
+                                    </div>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="{% url 'discover:house-loan' %}"><span>Mortgage/housing loan</span></a>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Your Preferred Location</span></a>
+                                    <div class="text-placeholder">
+                                  <br><p class="block-heading">Will have a big impact on your lifestyle.
+                                    <br>You’ll need to choose a general location and then evaluate how well different neighborhoods meet your family preferences. Consider:</p>
+                                      <li>Commute to work, schools and shopping</li>
+                                      <li>Evaluate location during night and day times. Get to know at street level, talk to residents</li>
+                                    <li>Local real estate trends and developments.</li>
+                                  </p>
+                                    </div>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="{% url 'discover:location' %}"><span>Location selection</span></a>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Mortgage You’d Prefer</span></a>
+                                    <div class="text-placeholder">
+                                  <br><p class="block-heading">You’ll find a variety of available loans and terms. You would need to review these alternatives before you talk to a loan officer and make decision.
+                                    <br>start out by understanding the basics, including:</p>
+                                  <p>
+                                    <li>Bank loans vs. independent mortgage lenders</li>
+                                      <li>Length of loan (fixed, ARM), types (FHA/Jumbo) and Interest Rates</li>>
+                                      <li>Varied Down payment requirements</li>
+                                  </p>
+                                    </div>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="{% url 'discover:agent-selection' %}"><span>Agent (Mortgage & Real estate)</span></a>
+                                    <div class="text-placeholder">
+                                  <br><h5>You’ll need several different experts as you move through the home-buying journey. <br>Two of the most important are your mortgage lender and real estate agent.
+                                    Consider these issues when selecting them:
+                                  </h5>
+                                  <p><br>
+                                    - Real estate agent roles: dual, buyer and listing agents<br>
+                                    - Best fit for your needs and terms<br>
+                                    - Cash-back or value added services
+                                  </p>
+                                    </div>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Select a Mortgage Lender and Real Estate Agent</span></a>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="{% url 'discover:your-journey' %}"><span>Your journey</span></a>
+                                    <div class="text-placeholder">
+                                  <br><h5>Knowing what to expect during the home-buying process will help you prepare for any issues that may arise. Consider:</h5>
+                                  <p><br>
+                                    - Overall timeline and effort required <br>
+                                    - Family and priorities <br>
+                                    - Disappointments and surprises <br>
+                                  </p>
+                                    </div>
+                                    <a href="{% url 'discover:personal-finance' %}"><span> Your Journey</span></a>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="#"><span>###</span></a>
+                                    <div class="text-placeholder">
+                                  <br><h5>Take the time to learn all you can about the topics listed above. You can get more information by clicking on the links.
+                                    <br>Further, keep in mind that you’re always welcome to chat with a Real Pal any time you have questions. <br>Enjoy your journey!</h5>
+                                  <p><br>
+                                    - Your credit worthiness
+                                    - Your ability to put money down on the home and handle closing costs
+                                    - The documentation you can provide to support your loan application
+                                    - Your ability to get pre-approved affects whether you are viewed as a strong buyer during negotiations
+                                  </p>
+                                    </div>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Your Financial Readiness</span></a>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder"></div>
-                                    <a href="#"><span>###</span></a>
+                                    <div class="text-placeholder">
+                                  <br><h5>Readiness to finance includes more than having a strong income. You need to evaluate:</h5>
+                                  <p><br>
+                                    - Your credit worthiness
+                                    - Your ability to put money down on the home and handle closing costs
+                                    - The documentation you can provide to support your loan application
+                                    - Your ability to get pre-approved affects whether you are viewed as a strong buyer during negotiations
+                                  </p>
+                                    </div>
+                                    <a href="{% url 'discover:personal-finance' %}"><span>Your Financial Readiness</span></a>
                                 </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab">
+                        <div class="sub-section">
+                            <h2 class="textSerif">People sentiments and Statistics
+                                </h2>
+                            <div class="flex">
+                                <div class="article half-width">
+                                    <div class="image-placeholder height-400">
+                                        <div class="infogram-embed" data-id="4e0d0ef3-4a39-4e41-a041-ce860cb68a10" data-type="interactive" data-title="Market sentiment"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),d=o[0],r=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=r+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,d.parentNode.insertBefore(a,d)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/4e0d0ef3-4a39-4e41-a041-ce860cb68a10" style="color:#989898!important;text-decoration:none!important;" target="_blank">Market sentiment</a><br></div>
+                                    </div>
+                                  <p><br>Sentiment Analysis</p>
+                                </div>
+                                <div class="article half-width">
+                                    <div class="image-placeholder height-400">
+                                        <script id="infogram_0_e34af812-2c83-4ebf-8327-98dd7e69d068" title="Buying decision" src="https://e.infogram.com/js/dist/embed.js?WdO" type="text/javascript"></script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/e34af812-2c83-4ebf-8327-98dd7e69d068" style="color:#989898!important;text-decoration:none!important;" target="_blank">Buying decision</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>
+                                    </div>
+                                  <p><br>Buying decision</p>
+                                </div>
+                                <div class="article half-width">
+                                    <div class="image-placeholder height-400">
+                                        <div class="infogram-embed" data-id="76b6483b-017b-4392-8300-792804a1b5df" data-type="interactive" data-title="Agents"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),d=o[0],r=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=r+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,d.parentNode.insertBefore(a,d)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/76b6483b-017b-4392-8300-792804a1b5df" style="color:#989898!important;text-decoration:none!important;" target="_blank">Agents</a><br></div>
+                                    </div>
+                                  <p><br>Real Estate Agents</p>
+                                </div>
+                                <div class="article half-width">
+                                    <div class="image-placeholder height-400">
+                                        <div class="infogram-embed" data-id="ab9604de-45bd-4f83-996c-5f4cbd229d57" data-type="interactive" data-title="Type of house"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),d=o[0],r=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=r+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,d.parentNode.insertBefore(a,d)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/ab9604de-45bd-4f83-996c-5f4cbd229d57" style="color:#989898!important;text-decoration:none!important;" target="_blank">Type of house</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>
+                                    </div>
+                                  <p><br>Type of house</p>
+                                </div>
+                                <div class="article half-width">
+                                    <div class="image-placeholder height-550">
+                                        <div class="infogram-embed" data-id="988f6141-e330-4cb1-a2a5-6aa2f0d2051d" data-type="interactive" data-title="Quadrant"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),d=o[0],r=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=r+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,d.parentNode.insertBefore(a,d)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/988f6141-e330-4cb1-a2a5-6aa2f0d2051d" style="color:#989898!important;text-decoration:none!important;" target="_blank">Quadrant</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>
+                                    </div>
+                                  <p><br>Area quadrant</p>
+                                </div>
+                                <div class="article half-width">
+                                    <div class="image-placeholder height-550">
+                                        <div class="infogram-embed" data-id="b18e2f15-28e4-44fa-b367-0f0376c89994" data-type="interactive" data-title="Upcoming"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),d=o[0],r=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=r+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,d.parentNode.insertBefore(a,d)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/b18e2f15-28e4-44fa-b367-0f0376c89994" style="color:#989898!important;text-decoration:none!important;" target="_blank">Upcoming</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>
+                                    </div>
+                                    <p><br>Growth areas</p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -74,8 +187,8 @@
                             <h2 class="textSerif">Local Developments</h2>
                             <div class="flex">
                                 <div class="article">
-                                    <div class="image-placeholder">
-                                        <iframe src="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"></iframe>
+                                    <div class="image-placeholder" onclick="window.open('https://www.betterment.com/resources/personal-finance/goals-and-advice/buying-my-first-home/', '_blank');">
+                                                See the new spots where Google is expanding next in the Bay Area</p>
                                     </div>
                                     <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
                                 </div>
@@ -94,13 +207,12 @@
                             </div>
                         </div>
                         <div class="sub-section">
-                            <h2 class="textSerif">Statistics</h2>
+                            <h2 class="textSerif">Realty updates</h2>
                             <div class="flex">
                                 <div class="article">
                                     <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                        <a href="https://blog.pacificunion.com/forecast-california-home-prices-to-grow-by-10-percent-through-2018/"></a>
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder">
@@ -117,7 +229,7 @@
                             </div>
                         </div>
                         <div class="sub-section">
-                            <h2 class="textSerif">Quora Posts</h2>
+                            <h2 class="textSerif">Social Media Posts</h2>
                             <div class="flex">
                                 <div class="article">
                                     <div class="image-placeholder">
@@ -143,135 +255,73 @@
 
                     <div class="tab">
                         <div class="sub-section">
-                            <h2 class="textSerif">Blogs - covering personal experiences about pain points, gotchas
-                                during house buy</h2>
+                            <h2 class="textSerif">Blogs - personal experience and gotchas</h2>
                             <div class="flex">
                                 <div class="article full-width">
-                                    <div class="date-container">
-                                        <p>22 August 2017</p>
-                                    </div>
                                     <div class="content-container">
                                         <div class="wording-container">
                                             <p class="title"
-                                               onclick="window.location = 'https://sf.curbed.com/2017/8/22/16185230/golden-gate-heights-redfin';">
-                                                Golden Gate Heights is second-hottest neighborhood in the U.S., says
-                                                real estate site</p>
-                                            <p class="description">Will the Inner Sunset’s inner subset see its fortunes
-                                                up or down?</p>
+                                               onclick="window.open('https://www.betterment.com/resources/personal-finance/goals-and-advice/buying-my-first-home/', '_blank');">
+                                                What I Learned From Buying My First Home </p>
+                                            <p class="description">
+                                          KEY TAKEAWAYS<br>- Negotiate for the best mortgage rate. Once you finally get to where the broker can go no lower, seal the deal as soon as you can, as rates can change.<br>- Buy a house you can pay for with one salary—and doesn't require a huge amount of expensive repairs. (Unless you factor that into your budget.)</p>
                                             <p class="social-buttons">
-                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 13:00pm</span>
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> Oct 2016</span>
                                                 <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span>
                                             </p>
                                         </div>
                                         <div class="image-container"
-                                             onclick="window.location = 'https://sf.curbed.com/2017/8/22/16185230/golden-gate-heights-redfin';">
-                                            <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                             onclick="window.open('https://www.betterment.com/resources/personal-finance/goals-and-advice/buying-my-first-home/', '_blank');">
+                                            <img src="https://www.betterment.com/wp-content/uploads/2014/10/buying-a-first-home1.jpg">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="article full-width">
-                                    <div class="date-container">
-                                        <p>22 August 2017</p>
-                                    </div>
                                     <div class="content-container">
                                         <div class="wording-container">
                                             <p class="title"
-                                               onclick="window.location = 'https://sf.curbed.com/2017/8/22/16185230/golden-gate-heights-redfin';">
-                                                Golden Gate Heights is second-hottest neighborhood in the U.S., says
-                                                real estate site</p>
-                                            <p class="description">Will the Inner Sunset’s inner subset see its fortunes
-                                                up or down?</p>
-                                            <p class="social-buttons">
-                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 13:00pm</span>
+                                               onclick="window.open('https://www.sofi.com/blog/the-truly-ultimate-guide-to-buying-a-house-in-the-san-francisco-bay-area/', '_blank');">
+                                                A True Guide to buying a house in the San Francisco Bay Area</p>
+                                            <p class="description">
+                                              Don’ts: <br>
+                                              - Fall in love with a listing without finding out what the block is like. In compact San Francisco, neighborhoods can change drastically within few blocks<br>
+                                              - Try to speed things along by skipping the inspection. With heavy rains, termites and seismic activity, there are plenty of ways Bay Area houses can suffer unseen damage<br>
+                                              - Let the price tag on a house overwhelm you. Always check with your mortgage lender<br>
+                                              Do's: <br>
+                                              - Write a letter telling sellers why you love their home.<br>
+                                              - Get pre-approved for a mortgage before you make your offer.
+                                              </p>
+                                             <p class="social-buttons">
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> Apr 2017</span>
                                                 <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span>
                                             </p>
                                         </div>
                                         <div class="image-container"
-                                             onclick="window.location = 'https://sf.curbed.com/2017/8/22/16185230/golden-gate-heights-redfin';">
-                                            <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                             onclick="window.open('https://www.sofi.com/blog/the-truly-ultimate-guide-to-buying-a-house-in-the-san-francisco-bay-area/', '_blank');">
+                                            <img src="https://d32ijn7u0aqfv4.cloudfront.net/wp/wp-content/uploads/20170417143804/SoFi_budget_friendly_blog-1.jpg">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="article full-width">
-                                    <div class="date-container">
-                                        <p>22 August 2017</p>
-                                    </div>
                                     <div class="content-container">
                                         <div class="wording-container">
                                             <p class="title"
-                                               onclick="window.location = 'https://sf.curbed.com/2017/8/22/16185230/golden-gate-heights-redfin';">
-                                                Golden Gate Heights is second-hottest neighborhood in the U.S., says
-                                                real estate site</p>
-                                            <p class="description">Will the Inner Sunset’s inner subset see its fortunes
-                                                up or down?</p>
+                                               onclick="window.open('https://www.usatoday.com/story/money/personalfinance/2017/03/15/one-thing-everyone-should-do-before-buying-house/99005436/', '_blank');">
+                                                The one thing everyone should do before buying a house</p>
+                                            <p class="description">Buying a new home can be very overwhelming, especially if it's your first one. <br>
+                                              These six tips – like getting extra inspections and researching your neighborhood beforehand – can help simplify the process.
+                                            </p>
                                             <p class="social-buttons">
-                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> 13:00pm</span>
+                                                <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> Mar 2016</span>
                                                 <span class="shares"><i class="fa fa-envelope" aria-hidden="true"></i> 475</span>
                                             </p>
                                         </div>
                                         <div class="image-container"
-                                             onclick="window.location = 'https://sf.curbed.com/2017/8/22/16185230/golden-gate-heights-redfin';">
-                                            <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                             onclick="window.open('https://www.usatoday.com/story/money/personalfinance/2017/03/15/one-thing-everyone-should-do-before-buying-house/99005436/', '_blank');">
+                                            <img src="http://matchmakers-real-estate.com/wp-content/uploads/2011/02/san-francisco-condo.1.jpg">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab">
-                        <div class="sub-section">
-                            <h2 class="textSerif">News articles - Upcoming development/projects, growth areas,
-                                Stats</h2>
-                            <div class="flex">
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-                                <div class="article half-width">
-                                    <div class="image-placeholder height-400">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="#"><span>U.S., Bay Area Homes Sell Faster When Staged</span></a>
-                                </div>
-
                             </div>
                         </div>
                     </div>

@@ -333,21 +333,21 @@
   /* Start Cost Section */
 
   .cost {
-    padding-top: 90px;
+    padding-top: 110px;
     padding-bottom: 110px;
     color: #4a4a4a
   }
 
   .cost .h1 {
-    letter-spacing: 1.2px;
-    margin-bottom: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
     margin-top: 0
   }
 
   @media (min-width: 1200px) {
 
     .cost .container .expect {
-      width: 880px;
+      width: 600px;
     }
 
   }
@@ -362,7 +362,7 @@
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 0;
-    text-align: left;
+    text-align: center;
   }
 
   #benefits h2 {
