@@ -36,7 +36,7 @@
   }
 
   & .tab-options {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   & .article {
@@ -54,6 +54,18 @@
     &.half-width {
       width: 45%;
     }
+
+    & .span {
+
+    margin-bottom: 10px;
+    }
+  }
+
+  & .checkpoint {
+    width: 31.5%;
+    margin: auto 5px;
+    margin-bottom: 40px;
+    min-width: 200px;
   }
 
   & .flex {
@@ -90,11 +102,13 @@
   }
 
   & .text-placeholder {
-    height: 300px;
+    height: 350px;
     background: ghostwhite;
     width: 100%;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     overflow: hidden;
+    text-align: left;
 
     & .block-heading {
       font-family: textSerif;
@@ -103,11 +117,19 @@
       text-align: center;
     }
 
+    & .ul {
+      list-style-type: none;
+    }
+
     & .li {
+      margin-left: 2px;
+      margin-right: 1px;
       font-family: Roboto;
-      font-size: 24px;
+      font-size: 8px;
       font-weight: 500;
-      text-align: left;
+      content: '\2014';
+      position: absolute;
+      margin-left: -20px;
     }
 
     &.height-400 {

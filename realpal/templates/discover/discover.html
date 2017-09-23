@@ -29,107 +29,113 @@
                         <div class="sub-section">
                             <h2 class="textSerif">Covering the basics</h2>
                             <div class="flex">
-                                <div class="article">
+                                <div class="checkpoint">
                                     <a href="{% url 'discover:rent-buy' %}"><span>Whether to Buy or Rent</span></a>
                                     <div class="text-placeholder">
-                                      <br><p class="block-heading">Know about short & long term impact on you and your finances. Use calculator to get an estimate. But also include:</p>
-                                      <li>Potential tax savings on purchase</li>
+                                      <p class="block-heading">Know about short & long term impact on you and your finances. Use a <a href="https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html?mcubz=0" target="_blank">calculator </a> to get an estimate. Also include factors:</p>
+                                      <ul>
+                                      <li>Diversification and liquidity of assets</li>
+                                      <li>Potential tax savings and liens on purchase</li>
                                       <li>Appreciation factors and house updates</li>
-                                      <li>Related ongoing costs, taxes of home ownership</li>
+                                      <li>Ongoing costs, taxes of home ownership</li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="article">
+                                <div class="checkpoint">
                                     <a href="{% url 'discover:personal-finance' %}"><span>Your Financial Readiness</span></a>
                                     <div class="text-placeholder">
-                                  <br><p class="block-heading">Includes more than having a strong income. You need to evaluate:</p>
-                                  <br><li>
-                                      Your credit worthiness </li>
-                                      <li>Your ability to put money down on the home and handle closing costs</li>
+                                  <p class="block-heading">Includes more than having a strong income. You need to evaluate:</p>
+                                      <ul>
+                                      <li>Your credit worthiness</li>
+                                      <li>Ability to put money down on the house and handle closing costs</li>
                                       <li>The documentation you can provide to support your loan application</li>
-                                     <li>Your ability to get pre-approved affects whether you are viewed as a strong buyer during negotiations</li>
+                                     <li>Pre-approval affects whether you are viewed as a strong buyer during negotiations</li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="article">
-                                    <a href="{% url 'discover:personal-finance' %}"><span>Decide on Type of Home You Want</span></a>
+                                <div class="checkpoint">
+                                    <a href="{% url 'discover:house-select' %}"><span>Decide on Type of Home You Want</span></a>
                                     <div class="text-placeholder">
-                                  <br><p class="block-heading">Home buying often involves compromises. It’s not usually possible to get the perfect home in the perfect location.
-                                    Here are some issues you’ll need to address:</p>
-                                      <li>Style of home for your family</li>
-                                      <li>Property taxes, insurance and HOA costs</li>
-                                      <li>The condition of the home, yard space, square footage.</li>
+                                  <p class="block-heading">Often involves compromises. It’s usual not to get the perfect home in the perfect location.
+                                    Issues you’ll need to address:</p>
+                                      <ul>
+                                      <li>Style of home suited for your family</li>
+                                      <li>Variance in Property taxes, insurance and HOA costs</li>
+                                       <li>New construction, ready to move-in, fixer upper</li>
+                                      <li>Will you need yard space, open kitchen, garage, etc</li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="article">
-                                    <a href="{% url 'discover:personal-finance' %}"><span>Your Preferred Location</span></a>
+                                <div class="checkpoint">
+                                    <a href="{% url 'discover:location' %}"><span>Your Preferred Location</span></a>
                                     <div class="text-placeholder">
-                                  <br><p class="block-heading">Will have a big impact on your lifestyle.
-                                    <br>You’ll need to choose a general location and then evaluate how well different neighborhoods meet your family preferences. Consider:</p>
-                                      <li>Commute to work, schools and shopping</li>
+                                  <p class="block-heading">Will have a big impact on your lifestyle.
+                                    You can start with general location and then evaluate micro neighborhoods which meets your family preferences. Consider:</p>
+                                      <ul>
+                                        <li>Schools and ratings. Neighborhood culture</li>
+                                      <li>Commute to work, shopping, amenities nearby</li>
                                       <li>Evaluate location during night and day times. Get to know at street level, talk to residents</li>
                                     <li>Local real estate trends and developments.</li>
-                                  </p>
+                                  </ul>
                                     </div>
                                 </div>
-                                <div class="article">
-                                    <a href="{% url 'discover:personal-finance' %}"><span>Mortgage You’d Prefer</span></a>
+                                <div class="checkpoint">
+                                    <a href="{% url 'discover:house-loan' %}"><span>Mortgage You’d Prefer</span></a>
                                     <div class="text-placeholder">
-                                  <br><p class="block-heading">You’ll find a variety of available loans and terms. You would need to review these alternatives before you talk to a loan officer and make decision.
-                                    <br>start out by understanding the basics, including:</p>
-                                  <p>
+                                  <p class="block-heading">With variety of available loans and terms, you would need to review these before talking to loan officer and make decision.
+                                    <br>Start out by understanding:</p>
+                                      <ul>
                                     <li>Bank loans vs. independent mortgage lenders</li>
-                                      <li>Length of loan (fixed, ARM), types (FHA/Jumbo) and Interest Rates</li>>
+                                      <li>Length of loan, terms (Fixed, ARM), types (FHA/Jumbo) and Interest Rates</li>
                                       <li>Varied Down payment requirements</li>
-                                  </p>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="article">
+                                <div class="checkpoint">
+                                    <a href="{% url 'discover:agent-selection' %}"><span>Selecting Real Estate Agent</span></a>
                                     <div class="text-placeholder">
-                                  <br><h5>You’ll need several different experts as you move through the home-buying journey. <br>Two of the most important are your mortgage lender and real estate agent.
-                                    Consider these issues when selecting them:
-                                  </h5>
-                                  <p><br>
-                                    - Real estate agent roles: dual, buyer and listing agents<br>
-                                    - Best fit for your needs and terms<br>
-                                    - Cash-back or value added services
-                                  </p>
+                                  <p class="block-heading">An agent who gives you full attention, can help by pointing vital flaws in house, provide right valuation,
+                                    negotiating for best terms, competitive with offers</p>
+                                      <ul>
+                                    <li>Evaluate not only by star rating or sales number. Know their strengths and what works best for your needs</li>
+                                    <li>Interview few agents & do negotiate for value additions, cash backs or credits</li>
+                                      <li>Referral or online agents? Do you need as much or too less of their involvement?</li>
+                                      </ul>
                                     </div>
-                                    <a href="{% url 'discover:personal-finance' %}"><span>Select a Mortgage Lender and Real Estate Agent</span></a>
                                 </div>
-                                <div class="article">
+                                <div class="checkpoint">
+                                    <a href="{% url 'discover:services' %}"><span>Getting right services</span></a>
                                     <div class="text-placeholder">
-                                  <br><h5>Knowing what to expect during the home-buying process will help you prepare for any issues that may arise. Consider:</h5>
-                                  <p><br>
-                                    - Overall timeline and effort required <br>
-                                    - Family and priorities <br>
-                                    - Disappointments and surprises <br>
-                                  </p>
+                                  <p class="block-heading">You’ll need several different experts as you move through the home-buying journey. You will need to get right services at right time</p>
+                                      <ul>
+                                     <li>Generally avoid houses which has structural issue (ex: shifted foundation). Other issues can be updated or fixed. Get a fair estimate from trusted contractor or handyman</li>
+                                    <li>Major cost hit for house repair comes from roof, plumbing, flooring, HVAC make sure to cover them</li>
+                                    <li>Get your own house inspection done from unbiased sources. Remember to ask termite report, county approval records for any extra units</li>
+                                     <li></li>
+                                      </ul>
                                     </div>
-                                    <a href="{% url 'discover:personal-finance' %}"><span> Your Journey</span></a>
                                 </div>
-                                <div class="article">
+                                <div class="checkpoint">
+                                    <a href="{% url 'discover:offers' %}"><span>Scene in Silicon valley</span></a>
                                     <div class="text-placeholder">
-                                  <br><h5>Take the time to learn all you can about the topics listed above. You can get more information by clicking on the links.
-                                    <br>Further, keep in mind that you’re always welcome to chat with a Real Pal any time you have questions. <br>Enjoy your journey!</h5>
-                                  <p><br>
-                                    - Your credit worthiness
-                                    - Your ability to put money down on the home and handle closing costs
-                                    - The documentation you can provide to support your loan application
-                                    - Your ability to get pre-approved affects whether you are viewed as a strong buyer during negotiations
-                                  </p>
+                                  <p class="block-heading">With Real Estate prices peaking new highs in SF bay area, it is natural for first time buyers to be intimidated or be in denial</p>
+                                      <ul>
+                                    <li>Good practise not to bid too high just to get a piece of land in valley. Is there fundamentals to justify the price?</li>
+                                    <li>Does the market continue to boom or waiting to bust? There could be micro level cycles, do some research</li>
+                                      <li>Drive until you qualify! Horizontal or vertical development which one is for you?</li>
+                                      </ul>
                                     </div>
-                                    <a href="{% url 'discover:personal-finance' %}"><span>Your Financial Readiness</span></a>
                                 </div>
-                                <div class="article">
+                                <div class="checkpoint">
+                                    <a href="{% url 'discover:real-tech' %}"><span>New tech in real estate</span></a>
                                     <div class="text-placeholder">
-                                  <br><h5>Readiness to finance includes more than having a strong income. You need to evaluate:</h5>
-                                  <p><br>
-                                    - Your credit worthiness
-                                    - Your ability to put money down on the home and handle closing costs
-                                    - The documentation you can provide to support your loan application
-                                    - Your ability to get pre-approved affects whether you are viewed as a strong buyer during negotiations
-                                  </p>
+                                  <p class="block-heading">Realty market is trending with apps and tools to make buying process effective and easier. Try below to be an early adopter</p>
+                                      <ul>
+                                    <li>DIY: You can get all of buyers agent commission (up to 3%) to your pocket by self representing</li>
+                                    <li>Semi agent involvement: Do property search, evaluate and select. Involve real estate agent only during final offer stage</li>
+                                      <li>Get full service agents with cash back: Agents bid to give you highest money back</li>
+                                      </ul>
                                     </div>
-                                    <a href="{% url 'discover:personal-finance' %}"><span>Your Financial Readiness</span></a>
                                 </div>
 
                             </div>
@@ -177,7 +183,6 @@
                                     </div>
                                     <p><br>Growth areas</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -187,44 +192,47 @@
                             <h2 class="textSerif">Local Developments</h2>
                             <div class="flex">
                                 <div class="article">
-                                    <div class="image-placeholder" onclick="window.open('https://www.betterment.com/resources/personal-finance/goals-and-advice/buying-my-first-home/', '_blank');">
-                                                See the new spots where Google is expanding next in the Bay Area</p>
+                                    <div class="image-placeholder">
+                                    <img src="https://s-media-cache-ak0.pinimg.com/originals/cb/8c/68/cb8c6848dc10436216c200594030ab70.jpg">
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
+                                    <a onclick="window.open('http://www.mercurynews.com/2017/08/08/how-big-can-google-get-its-aggressive-push-for-elbow-room-in-the-bay-area/', '_blank');"><span>See the new spots where Google is expanding next in the Bay Area</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                        <img src="http://cdn.funcheap.com/wp-content/uploads/2015/10/43201_lytton_plaza_palo_alto-550x395.jpg">
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
+                                    <a onclick="window.open('https://sf.curbed.com/2017/7/7/15937186/campus-facebook-hq-housing', '_blank');"><span>Facebook planning home and retail expansion to headquarters</span></a>
                                 </div>
                                 <div class="article">
-                                    <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                    <div class="image-placeholder" >
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Downtown_Concord%2C_NH%2C_near_the_state_capitol_IMG_2719.JPG/320px-Downtown_Concord%2C_NH%2C_near_the_state_capitol_IMG_2719.JPG">
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
+                                    <a onclick="window.open('https://sf.curbed.com/2017/9/14/16308100/amazon-hq-concord', '_blank');"><span>Concord bids to host Amazon’s second headquarters</span></a>
                                 </div>
                             </div>
                         </div>
                         <div class="sub-section">
                             <h2 class="textSerif">Realty updates</h2>
                             <div class="flex">
+
                                 <div class="article">
                                     <div class="image-placeholder">
-                                        <a href="https://blog.pacificunion.com/forecast-california-home-prices-to-grow-by-10-percent-through-2018/"></a>
+                                        <img src="http://ruthkrishnan.com/wp-content/uploads/2017/04/645-Texas-St-SF-New-Dev-The-Knox-Condo-San-Francisco-street2.jpg">
                                     </div>
+                                    <a onclick="window.open('https://sf.curbed.com/2017/5/24/15685126/homes-sf-affordable-housing-bonus-program', '_blank');"><span>San Francisco finally passes affordable housing law</span></a>
+                                </div>
+
+                                <div class="article">
+                                    <div class="image-placeholder">
+                                        <img src="https://blog.pacificunion.com/wp-content/uploads/makeitrain_sm.jpg">
+                                    </div>
+                                    <a onclick="window.open('https://blog.pacificunion.com/bay-area-buyers-make-the-nations-largest-down-payments/', '_blank');"><span>Bay Area Buyers Make the Nation’s Largest Down Payments</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                        <img src="https://blog.pacificunion.com/wp-content/uploads/fpo_66_TIBURON_-_20_sm.jpg">
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
-                                </div>
-                                <div class="article">
-                                    <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
-                                    </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
+                                    <a onclick="window.open('https://blog.pacificunion.com/home-prices-rise-in-all-nine-bay-area-counties-in-july/', '_blank');"><span>Home Prices Rise in All Nine Bay Area Counties in Q3</span></a>
                                 </div>
                             </div>
                         </div>
@@ -233,21 +241,21 @@
                             <div class="flex">
                                 <div class="article">
                                     <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                        <img src="http://static.adweek.com/adweek.com-prod/wp-content/uploads/sites/2/2011/02/Quora3.png">
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
+                                    <a onclick="window.open('https://www.quora.com/Whats-the-benefits-of-taking-a-home-mortgage-for-15-years-rather-than-30/answer/Curt-Sutherland-1?srid=8ILH', '_blank');"><span>What's the benefits of taking a home mortgage for 15 years rather than 30?</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                        <img src="http://static.adweek.com/adweek.com-prod/wp-content/uploads/sites/2/2011/02/Quora3.png">
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
+                                    <a onclick="window.open('https://www.quora.com/What-is-it-like-to-buy-your-first-house-in-Silicon-Valley/answers/3779118?srid=8ILH', '_blank');"><span>What is it like to buy your first house in Silicon Valley?</span></a>
                                 </div>
                                 <div class="article">
                                     <div class="image-placeholder">
-                                        <img src="https://cdn.vox-cdn.com/thumbor/oZ1IrVfz0LiySJEifeg4tHUgyFg=/400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9096113/Mariusz_S._Jurgielewicz.jpg">
+                                        <img src="http://static.adweek.com/adweek.com-prod/wp-content/uploads/sites/2/2011/02/Quora3.png">
                                     </div>
-                                    <a href="http://news.theregistrysf.com/opinion-job-trends-bay-area-will-hit-real-estate-economy-municipal-budgets-hype/"><span>Opinion: Job Trends in Bay</span></a>
+                                    <a onclick="window.open('https://www.quora.com/What-are-some-non-obvious-downstream-consequences-if-the-Bay-Area-housing-crisis-persists/answer/Jay-Wacker?srid=8ILH', '_blank');"><span>Non-obvious downstream consequences if Bay Area housing crisis persists</span></a>
                                 </div>
                             </div>
                         </div>
