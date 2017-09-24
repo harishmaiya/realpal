@@ -52,11 +52,11 @@ class User(AbstractUser):
 
     status = models.SmallIntegerField(choices=STATUS_CHOICES, blank=True, null=True)
 
-    firsthome = models.BooleanField(default=False)
+    firsthome = models.NullBooleanField(default=False)
 
-    has_mortgage = models.BooleanField(default=False)
+    has_mortgage = models.NullBooleanField(default=False)
 
-    has_agent = models.BooleanField(default=False)
+    has_agent = models.NullBooleanField(default=False)
 
     house_type = models.SmallIntegerField(choices=HOUSE_TYPE_CHOICES, blank=True, null=True)
 
