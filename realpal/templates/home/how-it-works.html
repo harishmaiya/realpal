@@ -1,290 +1,107 @@
 {% extends "base.html" %}
 {% block content %}
     <!-- Start Intro -->
-    <section class="hw-container">
-        <div class="header">
+    <section class="home-container">
+        <div class="header text-center textSerif">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 ">
-                        <div class="navy card text-center">
-                            <div class="logo ">
-                                <span><i class="fa fa-home fa-3x brown"></i></span>
-                            </div>
-                            <h2>Begin your American dream</h2>
-                            <hr class="short-bar tighter">
-                            <p class="bold">Making sense of Real Estate</p>
-                            <p class="description">Owing home should not make you feel overwhelmed of time and efforts
-                                it involves to get ready for purchase.
-                                With Real Pal we'll make this journey seamless with right deals and wise decisions
-                            </p>
-                            <a class=" btn back-brown" href="{% url 'onboarding:marital-status' %}">Get Started</a>
-                        </div>
+                    <div class="col-xs-12 col-md-6 own white-text flex">
+                        <img src="{% static 'src/images/family-house.jpg' %}">
+                        <p class="quote-text">
+                          I was hesitant at beginning to involve another person for my housing need.
+                          Real pal helped us wade through different processes and people during our purchase.
+                          We were able to buy our home with ease and confidence
+                        </p>
+                        <p class="quote-text">- John Smith, San Mateo</p>
                     </div>
+                    <!---
+                    <div class="col-xs-12 col-md-4 purchase">
+                        <div class="overlay"></div>
+                        <a href="{% url 'mainapp:purchase' %}" class="link-btn">
+                            <span class="textSerif">Purchase</span>
+                            <span class="works sans">How Real Pal can help you -></span>
+                        </a>
+                    </div>
+                    -->
+                    <div class="col-xs-12 col-md-6 prepare">
+                        <a href="{% url 'mainapp:prepare' %}" class="overlay">
+                            <div class="overlay"></div>
+                            <span class="textSerif">Prepare to purchase</span>
+                            <span class="works">How Real Pal can help you -></span>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
-
 
         <!-- End Intro -->
 
-        <!-- Start Sub-Navbar -->
+        <!-- Start Text section -->
 
-        <div id="sub-nav" class="sub-nav col-xs-12 back-beige">
-            <ul class="list-unstyled pull-right">
-                <li><a href="#" class="navy active">Prepare</a></li>
-                <li><a href="#how" class="navy">How It Works</a></li>
-                <li><a href="#pricing" class="navy">Pricing</a></li>
-                <li><a href="#why" class="navy">Why Us</a></li>
-                <li><a href="#benefits" class="navy">Benefits</a></li>
-            </ul>
+        <div class="text">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h2 class="text-center brown textSerif">
+                            Buying your biggest asset is a well advised journey with right decision at every step. Being
+                            your trusted pal we like to help you have happy home.
+                        </h2>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <script>
-            makeSticky($("#sub-nav"));
-        </script>
-        <script src="{% static 'src/js/jquery.menu.js' %}"></script>
-        <!-- End Sub-Navbar -->
-
-        <!-- Start How It Works -->
-
-        <section id="how" class="how-works back-beige text-center navy">
-            <div class="container">
-                <div class="row">
-                    <h2 class="h1">How Real Pal Works</h2>
-                    <p class="lead">A guided journey from your initial thoughts to making an offer on your ideal
-                        house</p>
-                    <div class="time-path row">
-                        <div class="timeline col-sm-3 hidden-xs">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <div class="scroll timeline col-sm-3 hidden-xs">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <ul class=" blocks list-unstyled">
-                            <li class="block l col-sm-6 no1">
-                                <img class="img-responsive" src="{% static 'images/create_your_profile.jpg' %}"/>
-                                <div class="caption">
-                                    <h3 class="bold">Create your profile</h3>
-                                    <p>Set your preferences about housing, finance and family goals. You can provide as
-                                        little or as much info you would like to
-                                        <br>Get to know what works best for your situation</p>
-                                </div>
-                            </li>
-                            <li class="block r col-sm-6 no2">
-                                <img class="img-responsive" src="{% static 'images/discuss_with_pal.jpg' %}"/>
-                                <div class="caption">
-                                    <h3 class="bold">Discuss with your pal</h3>
-                                    <p>You’ll talk to a real person in real time, either on phone or in our messenger.
-                                        Involve your pal to get right solution for every step <br>Create checkpoints and resolve them as you
-                                        proceed</p>
-                                </div>
-                            </li>
-                            <li class="block l col-sm-6 no3">
-                                <img class="img-responsive" src="{% static 'images/evaluate_howit_works.jpg' %}"/>
-                                <div class="caption">
-                                    <h3 class="bold">Evaluate your options</h3>
-                                    <p>Get know to about short/long term effects of buying, Tax savings, Property
-                                        charges, Market direction, Alternate investments, Buyers remorse,
-                                        Hidden costs and more<br>Get answers which are data driven and well researched</p>
-                                </div>
-                            </li>
-                            <li class="block r col-sm-6 no4">
-                                <img class="img-responsive" src="{% static 'images/select_howit_works_2.jpg' %}"/>
-                                <div class="caption">
-                                    <h3 class="bold">Do right choices</h3>
-                                    <p>You need a trusted one working by your side.
-                                        We'll help you interview and negotiate with Real estate agents, for
-                                        best fit and great value add<br>
-                                        Location - get info on local trends, developments and lifestyle<br>
-                                        House type - know about appreciation factors, condition aspects, insurances</p>
-                                </div>
-                            </li>
-                            <li class="block l col-sm-6 no5">
-                                <img class="img-responsive" src="{% static 'images/begin_howit_works.jpeg' %}"/>
-                                <div class="caption">
-                                    <h3 class="bold">Begin your search</h3>
-                                    <p> Get advice and tips on
-                                        improving your credit worthiness, personal savings,
-                                        house inspection, upgrade options<br>Feel free to talk about
-                                        any interests, concerns with your pal
-                                    </p>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <a class="btn back-brown" href="{% url 'onboarding:marital-status' %}">Get Started</a>
-        </section>
-
-        <!-- End How It Works -->
-
-        <!-- Start Cost Section -->
-
-        <section id="pricing" class="cost text-center">
-            <div class="container">
-                <h2 class="h1 textSerif">What it costs?</h2>
-                <hr class="short-bar">
-                <ul class="setPrice sans">
-                    <li>All of our data models and market analysis are free of cost with no ads</li>
-                    <li>Get your personal assistance at monthly subscription $24.99</li>
-                    <li>Our suggestion and selections are per your profile and needs. We handpick agents, contracts for every deal</li>
-                </ul>
-                <p class="description center-block">We work truly for you and not for commission</p>
-                <a class=" btn back-brown" href="{% url 'onboarding:marital-status' %}">Sign up for free trial</a>
-            </div>
-        </section>
-
-        <!-- End Cost Section -->
-
-        <!-- Start expect Section -->
-
-        <section id="why" class="expect modified">
-            <div class="container">
-                <div class="row">
-                    <div class="card text-center corrected">
-                        <div class="logo ">
-                            <span><i class="fa fa-home fa-3x brown"></i></span>
-                        </div>
-                        <h2 class="h1 textSerif">What else can I expect?</h2>
-                        <p class="sans">Every house and deal is different, but there are somethings you
-                            can always count on</p>
-                        <ul class="list-unstyled">
-                            <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp; Your data is private. We do not sell them</span>
-                            </li>
-                            <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp; Unbiased opinions on open houses you shortlist</span>
-                            </li>
-                            <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp; Full money back if you are not satisfied</span>
-                            </li>
-                            <li class="fa fa-check">
-                                <span class=" sans">&nbsp;&nbsp; Continued housing advice whenever you need it</span>
-                            </li>
-                        </ul>
-                        <a class=" btn back-brown" href="{% url 'onboarding:marital-status' %}">Get Started</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- End expect Section -->
-
-        <!-- Start Find Section -->
-
-        <section id="dream" class="find text-center">
-            <div class="overlay">
-                <div class="container">
-                    <div class="row">
-                        <h2 class="h1">Find YOUR DREAM HOUSE</h2>
-                        <div class="col-xs-6 col-md-3">
-                            <h3>No. of Bedrooms</h3>
-                            <select>
-                                <option selected disabled>Any</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-6 col-md-3">
-                            <h3>No. of Bathrooms</h3>
-                            <select>
-                                <option selected disabled>Any</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-6 col-md-3">
-                            <h3>Min Area (sqft)</h3>
-                            <select>
-                                <option selected disabled>Any</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-6 col-md-3 last">
-                            <h3>Max Area (sqft)</h3>
-                            <select>
-                                <option selected disabled>Any</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 col-md-offset-3">
-                            <form class="form-inline">
-                                <input class="form-control input-lg" type="text"
-                                       placeholder="Address, City, Zip, or Neighborhood"/>
-                                <button class="btn btn-lg"><i class="fa fa-search"></i>Search Local</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- End Find Section -->
+        <!-- End Text section -->
 
         <!-- Start Benefits Section -->
 
-        <section id="benefits" class="benefits text-center  navy">
+        <div id="why" class="benefits text-center  navy">
             <div class="container">
                 <div class="row">
                     <h2 class="h1 textSerif">The benefits of Real Pal</h2>
                     <div class="box col-md-4">
                         <img src="{% static 'src/images/trustworthy.jpg' %}">
                         <p class="lead sans">Trustworthy & Knowledgeable</p>
-                        <p>A peaceful living and wise investment needs a team of experts from finance, real estate,
-                            engineer and handyman just working for you</p>
+                        <p class="textSerif">A peaceful living and wise investment needs a team of experts from finance,
+                            real estate, engineer and handyman, just working for you</p>
                     </div>
                     <div class="box col-md-4">
                         <img src="{% static 'src/images/guide.png' %}">
                         <p class="lead sans">Guide who listens</p>
-                        <p>Chat with a pal—anytime—about everything from your housing goals to concerns, convenience,
-                            trade-offs.
+                        <p class="textSerif">Chat with a pal—anytime—about everything from your housing goals to
+                            concerns, convenience, trade-offs.
                             Get an expert advice from search until you move-in</p>
                     </div>
                     <div class="box col-md-4">
                         <img src="{% static 'src/images/comfortable.png' %}">
                         <p class="lead sans">Comfortable experience</p>
-                        <p>Have a seamless journey through prepare, search, purchase and house owning phases. Our
-                            relation with you continues beyond the deals</p>
+                        <p class="textSerif">Have a seamless journey through prepare, search, purchase and house owning
+                            phases. Our relation with you continues beyond the deals</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
         <!-- End Benefits  Section -->
 
-        <!-- Start Contact us Section-->
+        <!-- Start Learn About Section -->
+        <div class="learn back-brown">
+            <div class="container">
+                <div class="box row ">
+                    <div class="col-md-12">
+                        <div class="box col-md-4">
+                            <button class="btn"><a href="{% url 'onboarding:marital-status' %}">Get Started</a>
+                            </button>
+                        </div>
+                        <div class="box col-md-8">
+                            <h2 class="textSerif">Learn more about how Real Pal works</h2>
+                        </div>
 
-
-        <section id="contact" class="contact-us text-center">
-            <div class="overlay">
-                <div class="container">
-                    <div class="row">
-                        <i class="fa fa-weixin fa-5x navy"></i>
-                        <h2 class="h1 navy">Have a Question?</h2>
-                        <p class="lead navy">Feel Free To Contact Us Anytime</p>
-                        <!-- Start Contact Form -->
-
-                        <form role="form">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Username"/>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Email"/>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Cell Phone"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea class="form-control input-lg" placeholder="Your Message"></textarea>
-                                </div>
-                                <button class="btn back-brown bold navy btn-lg btn-block">Contact Us</button>
-                            </div>
-                        </form>
-
-                        <!-- End Contact Form -->
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- End Contact us Section-->
+        </div>
     </section>
+
 {% endblock %}

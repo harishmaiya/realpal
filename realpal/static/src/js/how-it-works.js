@@ -2,101 +2,39 @@
 
 $(document).ready(function () {
 
-    //Sub-navbar navigation
+    $('.header .row').height($(window).height());
 
-    $(".sub-nav ul li a").click(function(){
+    $(window).resize(function(){
 
-        $(this).addClass("active");
-        $(".sub-nav ul li a").not(this).removeClass("active");
-
+    $('.header .row').height($(window).height());
     });
 
-    //Sub-navbar getiing fixed
+   $('.header .row .prepare').mouseover(function(){
+       $('.prepare a').children('.works').stop().slideDown()
+   });
 
-   $(window).scroll(function () {
+    $('.header .row .prepare').mouseout(function(){
+       $('.prepare a').children('.works').stop().slideUp()
+   });
 
-       //fixing the navbar
+   $('.header .row .purchase').mouseover(function(){
+       $('.purchase a').children('.works').stop().slideDown()
+   });
 
-        if ($(this).scrollTop() >= 600) {
+    $('.header .row .purchase').mouseout(function(){
+       $('.purchase a').children('.works').stop().slideUp()
+   });
 
-            $(".sub-nav").addClass("fixed");
+   $('.header .row .own').mouseover(function(){
+       $('.own a').children('.works').stop().slideDown()
+   });
 
-            $(".sub-nav").removeClass("back-beige");
-
-        } else {
-
-            $(".sub-nav").removeClass("fixed");
-
-            $(".sub-nav").addClass("back-beige");
-        };
-
-       // coloring the first circle
-
-       if ($(this).scrollTop() >= 650) {
-
-            $(".no1").addClass("active-l");
-
-        }else{
-
-            $(".no1").removeClass("active-l")
-
-        }
-
-       // coloring the second circle
-
-       if ($(this).scrollTop() >= 1148) {
-
-            $(".no2").addClass("active-r");
-
-        }else{
-
-            $(".no2").removeClass("active-r ")
-
-        }
-
-       //coloring the third circle
-
-       if ($(this).scrollTop() >= 1500) {
-
-            $(".no3").addClass("active-l");
-
-        }else{
-
-            $(".no3").removeClass("active-l")
-
-        }
-
-       //coloring the forth circle
-
-       if ($(this).scrollTop() >= 1900) {
-
-            $(".no4").addClass("active-l");
-
-        }else{
-
-            $(".no4").removeClass("active-l")
-
-        }
-
-       //coloring the fifth circle
-
-       if ($(this).scrollTop() >= 2300) {
-
-            $(".no5").addClass("active-l");
-
-        }else{
-
-            $(".no5").removeClass("active-l")
-
-        }
-
-       // coloring the timeline while scolling
-
-       var percent = ($(window).scrollTop() - $(".no1").offset().top)/17;
+    $('.header .row .own').mouseout(function(){
+       $('.own a').children('.works').stop().slideUp()
+   });
 
 
-       $(".progress-bar").css( 'height', percent + "%" );
 
 
-    });
+
 });
